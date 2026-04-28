@@ -1,0 +1,138 @@
+{
+  "case_id": "SHV9C61",
+  "assessments": [
+    {
+      "image_id": "FOTDEV_49",
+      "aprovada": false,
+      "motivo": "Imagem de baixa qualidade e não mostra o capô.",
+      "qualidade_imagem": "baixa",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_50",
+      "aprovada": true,
+      "motivo": "",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": true
+    },
+    {
+      "image_id": "FOTDEV_51",
+      "aprovada": false,
+      "motivo": "A imagem não mostra a peça interior claramente.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_52",
+      "aprovada": false,
+      "motivo": "A imagem não mostra claramente a porta traseira direita.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_53",
+      "aprovada": false,
+      "motivo": "A imagem não mostra claramente a porta traseira direita.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_54",
+      "aprovada": false,
+      "motivo": "Imagem de qualidade baixa, borrada e com ângulo não ideal.",
+      "qualidade_imagem": "baixa",
+      "corresponde_a_peca": true
+    },
+    {
+      "image_id": "FOTDEV_55",
+      "aprovada": false,
+      "motivo": "A imagem não mostra a peça interior, mas sim um documento.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_56",
+      "aprovada": true,
+      "motivo": "",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": true
+    },
+    {
+      "image_id": "FOTDEV_57",
+      "aprovada": true,
+      "motivo": "",
+      "qualidade_imagem": "alta",
+      "corresponde_a_peca": true
+    },
+    {
+      "image_id": "FOTDEV_64",
+      "aprovada": true,
+      "motivo": "",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": true
+    },
+    {
+      "image_id": "FOTDEV_65",
+      "aprovada": false,
+      "motivo": "A imagem não mostra a porta dianteira direita claramente.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_66",
+      "aprovada": true,
+      "motivo": "",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": true
+    },
+    {
+      "image_id": "FOTDEV_67",
+      "aprovada": true,
+      "motivo": "",
+      "qualidade_imagem": "alta",
+      "corresponde_a_peca": true
+    },
+    {
+      "image_id": "FOTDEV_68",
+      "aprovada": false,
+      "motivo": "Imagem de qualidade baixa, com iluminação inadequada e ângulo não ideal para análise.",
+      "qualidade_imagem": "baixa",
+      "corresponde_a_peca": true
+    },
+    {
+      "image_id": "FOTDEV_69",
+      "aprovada": true,
+      "motivo": "",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": true
+    },
+    {
+      "image_id": "FOTDEV_70",
+      "aprovada": true,
+      "motivo": "",
+      "qualidade_imagem": "alta",
+      "corresponde_a_peca": true
+    },
+    {
+      "image_id": "FOTDEV_71",
+      "aprovada": true,
+      "motivo": "",
+      "qualidade_imagem": "alta",
+      "corresponde_a_peca": true
+    },
+    {
+      "image_id": "FOTDEV_72",
+      "aprovada": false,
+      "motivo": "Imagem de baixa qualidade e não é possível identificar a roda traseira direita.",
+      "qualidade_imagem": "baixa",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_73",
+      "aprovada": false,
+      "motivo": "A imagem não mostra claramente a porta dianteira direita.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": false
+    }
+  ]
+}

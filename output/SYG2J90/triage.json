@@ -1,0 +1,190 @@
+{
+  "case_id": "SYG2J90",
+  "images": [
+    {
+      "image_id": "FOTDEV_30",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SYG2J90\\Fotos\\FOTDEV_30.jpg",
+      "part_id": "interior",
+      "view": "media",
+      "confidence": 0.8,
+      "checklist_damage_reported": false
+    },
+    {
+      "image_id": "FOTDEV_31",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SYG2J90\\Fotos\\FOTDEV_31.jpg",
+      "part_id": "roda_dianteira_direita",
+      "view": "detalhe",
+      "confidence": 0.8,
+      "checklist_damage_reported": false
+    },
+    {
+      "image_id": "FOTDEV_32",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SYG2J90\\Fotos\\FOTDEV_32.jpg",
+      "part_id": "tampa_porta_malas",
+      "view": "media",
+      "confidence": 0.8,
+      "checklist_damage_reported": false
+    },
+    {
+      "image_id": "FOTDEV_33",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SYG2J90\\Fotos\\FOTDEV_33.jpg",
+      "part_id": "porta_dianteira_direita",
+      "view": "media",
+      "confidence": 0.8,
+      "checklist_damage_reported": true
+    },
+    {
+      "image_id": "FOTDEV_34",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SYG2J90\\Fotos\\FOTDEV_34.jpg",
+      "part_id": "porta_dianteira_direita",
+      "view": "media",
+      "confidence": 0.85,
+      "checklist_damage_reported": true
+    },
+    {
+      "image_id": "FOTDEV_35",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SYG2J90\\Fotos\\FOTDEV_35.jpg",
+      "part_id": "roda_dianteira_direita",
+      "view": "detalhe",
+      "confidence": 0.8,
+      "checklist_damage_reported": false
+    },
+    {
+      "image_id": "FOTDEV_36",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SYG2J90\\Fotos\\FOTDEV_36.jpg",
+      "part_id": "tampa_porta_malas",
+      "view": "interior",
+      "confidence": 0.7,
+      "checklist_damage_reported": false
+    },
+    {
+      "image_id": "FOTDEV_37",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SYG2J90\\Fotos\\FOTDEV_37.jpg",
+      "part_id": "capo",
+      "view": "interior",
+      "confidence": 0.8,
+      "checklist_damage_reported": false
+    },
+    {
+      "image_id": "FOTDEV_38",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SYG2J90\\Fotos\\FOTDEV_38.jpg",
+      "part_id": "parachoque_dianteiro",
+      "view": "media",
+      "confidence": 0.85,
+      "checklist_damage_reported": true
+    },
+    {
+      "image_id": "FOTDEV_39",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SYG2J90\\Fotos\\FOTDEV_39.jpg",
+      "part_id": "roda_dianteira_direita",
+      "view": "detalhe",
+      "confidence": 0.8,
+      "checklist_damage_reported": false
+    },
+    {
+      "image_id": "FOTDEV_40",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SYG2J90\\Fotos\\FOTDEV_40.jpg",
+      "part_id": "parachoque_dianteiro",
+      "view": "media",
+      "confidence": 0.9,
+      "checklist_damage_reported": true
+    },
+    {
+      "image_id": "FOTDEV_41",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SYG2J90\\Fotos\\FOTDEV_41.jpg",
+      "part_id": "interior",
+      "view": "interior",
+      "confidence": 0.9,
+      "checklist_damage_reported": false
+    },
+    {
+      "image_id": "FOTDEV_42",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SYG2J90\\Fotos\\FOTDEV_42.jpg",
+      "part_id": "interior",
+      "view": "detalhe",
+      "confidence": 0.9,
+      "checklist_damage_reported": false
+    },
+    {
+      "image_id": "FOTDEV_43",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SYG2J90\\Fotos\\FOTDEV_43.jpg",
+      "part_id": "parachoque_dianteiro",
+      "view": "media",
+      "confidence": 0.9,
+      "checklist_damage_reported": true
+    },
+    {
+      "image_id": "FOTDEV_44",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SYG2J90\\Fotos\\FOTDEV_44.jpg",
+      "part_id": "",
+      "view": "",
+      "confidence": 0.0,
+      "checklist_damage_reported": false
+    },
+    {
+      "image_id": "FOTDEV_45",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SYG2J90\\Fotos\\FOTDEV_45.jpg",
+      "part_id": "roda_dianteira_direita",
+      "view": "detalhe",
+      "confidence": 0.8,
+      "checklist_damage_reported": false
+    },
+    {
+      "image_id": "FOTDEV_46",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SYG2J90\\Fotos\\FOTDEV_46.jpg",
+      "part_id": "tampa_porta_malas",
+      "view": "media",
+      "confidence": 0.7,
+      "checklist_damage_reported": false
+    },
+    {
+      "image_id": "FOTDEV_47",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SYG2J90\\Fotos\\FOTDEV_47.jpg",
+      "part_id": "parachoque_traseiro",
+      "view": "media",
+      "confidence": 0.8,
+      "checklist_damage_reported": false
+    },
+    {
+      "image_id": "FOTDEV_48",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SYG2J90\\Fotos\\FOTDEV_48.jpg",
+      "part_id": "parachoque_traseiro",
+      "view": "media",
+      "confidence": 0.9,
+      "checklist_damage_reported": false
+    },
+    {
+      "image_id": "FOTDEV_49",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SYG2J90\\Fotos\\FOTDEV_49.jpg",
+      "part_id": "interior",
+      "view": "interior",
+      "confidence": 0.9,
+      "checklist_damage_reported": false
+    },
+    {
+      "image_id": "FOTDEV_50",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SYG2J90\\Fotos\\FOTDEV_50.jpg",
+      "part_id": "parachoque_dianteiro",
+      "view": "detalhe",
+      "confidence": 0.9,
+      "checklist_damage_reported": true
+    },
+    {
+      "image_id": "FOTDEV_51",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SYG2J90\\Fotos\\FOTDEV_51.jpg",
+      "part_id": "porta_dianteira_direita",
+      "view": "detalhe",
+      "confidence": 0.8,
+      "checklist_damage_reported": true
+    },
+    {
+      "image_id": "FOTDEV_52",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SYG2J90\\Fotos\\FOTDEV_52.jpg",
+      "part_id": "porta_dianteira_direita",
+      "view": "media",
+      "confidence": 0.8,
+      "checklist_damage_reported": true
+    }
+  ],
+  "checklist_summary": "parachoque_dianteiro\nporta_dianteira_direita\nporta_traseira_direita"
+}

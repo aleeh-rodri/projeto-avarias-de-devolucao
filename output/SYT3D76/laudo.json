@@ -1,0 +1,139 @@
+{
+  "case_id": "SYT3D76",
+  "triagem": {
+    "total_imagens": 20,
+    "imagens_aprovadas_qualidade": 10
+  },
+  "peritos": {
+    "perito_parachoque": {
+      "imagens_usadas": [
+        {
+          "image_id": "FOTDEV_37",
+          "part_id": "parachoque_traseiro",
+          "view": "media"
+        },
+        {
+          "image_id": "FOTDEV_56",
+          "part_id": "parachoque_dianteiro",
+          "view": "media"
+        },
+        {
+          "image_id": "FOTDEV_54",
+          "part_id": "parachoque_traseiro",
+          "view": "media"
+        }
+      ],
+      "resultado": {
+        "nivel_dano": "sem_dano",
+        "peca": "para-choques",
+        "itens": [],
+        "servicos": [],
+        "preco_total": 0,
+        "justificativa": "[DESCONSIDERADO POR CHECKLIST] dianteiro: sem_dano (Imagem ignorada: qualidade/visibilidade insuficiente); traseiro: sem_dano (Imagem ignorada: qualidade/visibilidade insuficiente)",
+        "fotos_analisadas": [
+          "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SYT3D76\\Fotos\\FOTDEV_37.jpg",
+          "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SYT3D76\\Fotos\\FOTDEV_56.jpg",
+          "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SYT3D76\\Fotos\\FOTDEV_54.jpg"
+        ]
+      }
+    },
+    "perito_emblemas": {
+      "imagens_usadas": [
+        {
+          "image_id": "FOTDEV_37",
+          "part_id": "parachoque_traseiro",
+          "view": "media"
+        },
+        {
+          "image_id": "FOTDEV_54",
+          "part_id": "parachoque_traseiro",
+          "view": "media"
+        },
+        {
+          "image_id": "FOTDEV_56",
+          "part_id": "parachoque_dianteiro",
+          "view": "media"
+        }
+      ],
+      "resultado": {
+        "nivel_dano": "sem_dano",
+        "peca": "emblemas (dianteiro/traseiro)",
+        "servicos": [],
+        "preco_total": 0,
+        "justificativa": "[DESCONSIDERADO POR CHECKLIST] dianteiro: O emblema da montadora está visível e intacto na parte dianteira do carro.; traseiro: O emblema da montadora está visível e intacto na parte traseira do veículo.",
+        "fotos_analisadas": [
+          "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SYT3D76\\Fotos\\FOTDEV_56.jpg",
+          "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SYT3D76\\Fotos\\FOTDEV_37.jpg"
+        ]
+      }
+    },
+    "perito_lataria": {
+      "resultado": {
+        "erro": "nenhuma imagem elegivel"
+      }
+    },
+    "perito_vidros": {
+      "resultado": {
+        "erro": "nenhuma imagem elegivel"
+      }
+    },
+    "perito_pneus_rodas": {
+      "resultado": {
+        "erro": "nenhuma imagem elegivel"
+      }
+    },
+    "perito_interior": {
+      "imagens_usadas": [
+        {
+          "image_id": "FOTDEV_59",
+          "part_id": "interior",
+          "view": "media"
+        },
+        {
+          "image_id": "FOTDEV_34",
+          "part_id": "interior",
+          "view": "interior"
+        }
+      ],
+      "resultado": {
+        "nivel_dano": "sem_dano",
+        "peca": "painel",
+        "servicos": [],
+        "preco_total": 0,
+        "justificativa": "[DESCONSIDERADO POR CHECKLIST] Sem danos identificados.",
+        "fotos_analisadas": [
+          "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SYT3D76\\Fotos\\FOTDEV_59.jpg",
+          "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SYT3D76\\Fotos\\FOTDEV_34.jpg"
+        ]
+      }
+    },
+    "perito_acessorios": {
+      "imagens_usadas": [
+        {
+          "image_id": "FOTDEV_58",
+          "part_id": "acessorios",
+          "view": "media"
+        },
+        {
+          "image_id": "FOTDEV_60",
+          "part_id": "acessorios",
+          "view": "media"
+        }
+      ],
+      "resultado": {
+        "nivel_dano": "sem_dano",
+        "peca": "chave",
+        "servicos": [],
+        "preco_total": 0,
+        "justificativa": "[DESCONSIDERADO POR CHECKLIST] A imagem mostra apenas uma chave e o checklist menciona que o veículo deve ter 2 chaves, indicando que uma chave está faltando.",
+        "fotos_analisadas": [
+          "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SYT3D76\\Fotos\\FOTDEV_58.jpg",
+          "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SYT3D76\\Fotos\\FOTDEV_60.jpg"
+        ]
+      }
+    }
+  },
+  "divergencias_checklist": [],
+  "cobrancas_checklist_fallback": [],
+  "preco_total_geral": 0.0
+}

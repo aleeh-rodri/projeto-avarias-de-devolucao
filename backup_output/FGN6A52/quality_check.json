@@ -1,0 +1,152 @@
+{
+  "case_id": "FGN6A52",
+  "assessments": [
+    {
+      "image_id": "FOTDEV_38",
+      "aprovada": true,
+      "motivo": "Imagem utilizável para análise, mostra avaria no para-choque.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": true
+    },
+    {
+      "image_id": "FOTDEV_39",
+      "aprovada": false,
+      "motivo": "A imagem não mostra a roda dianteira direita, mas sim o pneu.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_40",
+      "aprovada": true,
+      "motivo": "Imagem utilizável para análise, apesar de leve reflexo.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": true
+    },
+    {
+      "image_id": "FOTDEV_41",
+      "aprovada": false,
+      "motivo": "Imagem de baixa qualidade e não mostra a roda dianteira direita.",
+      "qualidade_imagem": "baixa",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_42",
+      "aprovada": false,
+      "motivo": "A imagem não mostra o capô do veículo.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_43",
+      "aprovada": true,
+      "motivo": "A imagem não mostra a peça dianteira do carro.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_44",
+      "aprovada": true,
+      "motivo": "Imagem utilizável para análise, apesar de ângulo não ideal.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": true
+    },
+    {
+      "image_id": "FOTDEV_45",
+      "aprovada": true,
+      "motivo": "",
+      "qualidade_imagem": "alta",
+      "corresponde_a_peca": true
+    },
+    {
+      "image_id": "FOTDEV_46",
+      "aprovada": true,
+      "motivo": "",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": true
+    },
+    {
+      "image_id": "FOTDEV_47",
+      "aprovada": true,
+      "motivo": "",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": true
+    },
+    {
+      "image_id": "FOTDEV_48",
+      "aprovada": true,
+      "motivo": "",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": true
+    },
+    {
+      "image_id": "FOTDEV_49",
+      "aprovada": false,
+      "motivo": "A imagem está em ângulo inadequado e não mostra claramente a roda dianteira direita.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_50",
+      "aprovada": true,
+      "motivo": "",
+      "qualidade_imagem": "alta",
+      "corresponde_a_peca": true
+    },
+    {
+      "image_id": "FOTDEV_51",
+      "aprovada": false,
+      "motivo": "A imagem não mostra o capô, mas sim o motor do veículo.",
+      "qualidade_imagem": "alta",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_52",
+      "aprovada": true,
+      "motivo": "Imagem utilizável para análise, apesar de não mostrar a peça frontal de forma ideal.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": true
+    },
+    {
+      "image_id": "FOTDEV_53",
+      "aprovada": false,
+      "motivo": "A imagem não mostra a roda dianteira direita, mas sim um pneu.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_54",
+      "aprovada": true,
+      "motivo": "",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": true
+    },
+    {
+      "image_id": "FOTDEV_55",
+      "aprovada": false,
+      "motivo": "A imagem não mostra a peça 'acessórios' claramente.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_56",
+      "aprovada": true,
+      "motivo": "",
+      "qualidade_imagem": "alta",
+      "corresponde_a_peca": true
+    },
+    {
+      "image_id": "FOTDEV_57",
+      "aprovada": false,
+      "motivo": "A imagem não mostra uma peça automotiva, mas sim um documento de identidade.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_58",
+      "aprovada": true,
+      "motivo": "",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": true
+    }
+  ]
+}

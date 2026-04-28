@@ -1,0 +1,246 @@
+{
+  "case_id": "QXW8F67",
+  "images": [
+    {
+      "image_id": "FOTDEV_63",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\QXW8F67\\Fotos\\FOTDEV_63.jpg",
+      "part_id": "capo",
+      "view": "interior",
+      "confidence": 0.8,
+      "checklist_damage_reported": false
+    },
+    {
+      "image_id": "FOTDEV_64",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\QXW8F67\\Fotos\\FOTDEV_64.jpg",
+      "part_id": "parachoque_dianteiro",
+      "view": "detalhe",
+      "confidence": 0.9,
+      "checklist_damage_reported": true
+    },
+    {
+      "image_id": "FOTDEV_65",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\QXW8F67\\Fotos\\FOTDEV_65.jpg",
+      "part_id": "tampa_porta_malas",
+      "view": "interior",
+      "confidence": 0.7,
+      "checklist_damage_reported": false
+    },
+    {
+      "image_id": "FOTDEV_66",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\QXW8F67\\Fotos\\FOTDEV_66.jpg",
+      "part_id": "roda_dianteira_direita",
+      "view": "detalhe",
+      "confidence": 0.8,
+      "checklist_damage_reported": false
+    },
+    {
+      "image_id": "FOTDEV_67",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\QXW8F67\\Fotos\\FOTDEV_67.jpg",
+      "part_id": "parachoque_dianteiro",
+      "view": "media",
+      "confidence": 0.9,
+      "checklist_damage_reported": true
+    },
+    {
+      "image_id": "FOTDEV_68",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\QXW8F67\\Fotos\\FOTDEV_68.jpg",
+      "part_id": "porta_traseira_direita",
+      "view": "detalhe",
+      "confidence": 0.85,
+      "checklist_damage_reported": true
+    },
+    {
+      "image_id": "FOTDEV_69",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\QXW8F67\\Fotos\\FOTDEV_69.jpg",
+      "part_id": "capo",
+      "view": "detalhe",
+      "confidence": 0.9,
+      "checklist_damage_reported": false
+    },
+    {
+      "image_id": "FOTDEV_70",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\QXW8F67\\Fotos\\FOTDEV_70.jpg",
+      "part_id": "parachoque_traseiro",
+      "view": "media",
+      "confidence": 0.9,
+      "checklist_damage_reported": false
+    },
+    {
+      "image_id": "FOTDEV_71",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\QXW8F67\\Fotos\\FOTDEV_71.jpg",
+      "part_id": "parachoque_dianteiro",
+      "view": "media",
+      "confidence": 0.9,
+      "checklist_damage_reported": true
+    },
+    {
+      "image_id": "FOTDEV_72",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\QXW8F67\\Fotos\\FOTDEV_72.jpg",
+      "part_id": "porta_dianteira_direita",
+      "view": "media",
+      "confidence": 0.8,
+      "checklist_damage_reported": false
+    },
+    {
+      "image_id": "FOTDEV_73",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\QXW8F67\\Fotos\\FOTDEV_73.jpg",
+      "part_id": "parachoque_traseiro",
+      "view": "media",
+      "confidence": 0.9,
+      "checklist_damage_reported": false
+    },
+    {
+      "image_id": "FOTDEV_74",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\QXW8F67\\Fotos\\FOTDEV_74.jpg",
+      "part_id": "roda_dianteira_direita",
+      "view": "detalhe",
+      "confidence": 0.8,
+      "checklist_damage_reported": false
+    },
+    {
+      "image_id": "FOTDEV_75",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\QXW8F67\\Fotos\\FOTDEV_75.jpg",
+      "part_id": "parachoque_dianteiro",
+      "view": "media",
+      "confidence": 0.9,
+      "checklist_damage_reported": true
+    },
+    {
+      "image_id": "FOTDEV_83",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\QXW8F67\\Fotos\\FOTDEV_83.jpg",
+      "part_id": "porta_traseira_direita",
+      "view": "media",
+      "confidence": 0.8,
+      "checklist_damage_reported": true
+    },
+    {
+      "image_id": "FOTDEV_84",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\QXW8F67\\Fotos\\FOTDEV_84.jpg",
+      "part_id": "porta_traseira_direita",
+      "view": "media",
+      "confidence": 0.85,
+      "checklist_damage_reported": true
+    },
+    {
+      "image_id": "FOTDEV_85",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\QXW8F67\\Fotos\\FOTDEV_85.jpg",
+      "part_id": "porta_traseira_direita",
+      "view": "media",
+      "confidence": 0.8,
+      "checklist_damage_reported": true
+    },
+    {
+      "image_id": "FOTDEV_86",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\QXW8F67\\Fotos\\FOTDEV_86.jpg",
+      "part_id": "paralama_traseiro_direito",
+      "view": "detalhe",
+      "confidence": 0.85,
+      "checklist_damage_reported": false
+    },
+    {
+      "image_id": "FOTDEV_87",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\QXW8F67\\Fotos\\FOTDEV_87.jpg",
+      "part_id": "parachoque_dianteiro",
+      "view": "detalhe",
+      "confidence": 0.9,
+      "checklist_damage_reported": true
+    },
+    {
+      "image_id": "FOTDEV_88",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\QXW8F67\\Fotos\\FOTDEV_88.jpg",
+      "part_id": "paralama_traseiro_direito",
+      "view": "media",
+      "confidence": 0.85,
+      "checklist_damage_reported": false
+    },
+    {
+      "image_id": "FOTDEV_89",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\QXW8F67\\Fotos\\FOTDEV_89.jpg",
+      "part_id": "parachoque_traseiro",
+      "view": "detalhe",
+      "confidence": 0.9,
+      "checklist_damage_reported": false
+    },
+    {
+      "image_id": "FOTDEV_90",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\QXW8F67\\Fotos\\FOTDEV_90.jpg",
+      "part_id": "paralama_traseiro_direito",
+      "view": "media",
+      "confidence": 0.85,
+      "checklist_damage_reported": false
+    },
+    {
+      "image_id": "FOTDEV_91",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\QXW8F67\\Fotos\\FOTDEV_91.jpg",
+      "part_id": "porta_traseira_direita",
+      "view": "detalhe",
+      "confidence": 0.8,
+      "checklist_damage_reported": true
+    },
+    {
+      "image_id": "FOTDEV_92",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\QXW8F67\\Fotos\\FOTDEV_92.jpg",
+      "part_id": "paralama_traseiro_direito",
+      "view": "media",
+      "confidence": 0.8,
+      "checklist_damage_reported": false
+    },
+    {
+      "image_id": "FOTDEV_93",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\QXW8F67\\Fotos\\FOTDEV_93.jpg",
+      "part_id": "",
+      "view": "",
+      "confidence": 0.0,
+      "checklist_damage_reported": false
+    },
+    {
+      "image_id": "FOTDEV_94",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\QXW8F67\\Fotos\\FOTDEV_94.jpg",
+      "part_id": "interior",
+      "view": "interior",
+      "confidence": 0.9,
+      "checklist_damage_reported": false
+    },
+    {
+      "image_id": "FOTDEV_95",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\QXW8F67\\Fotos\\FOTDEV_95.jpg",
+      "part_id": "interior",
+      "view": "media",
+      "confidence": 0.9,
+      "checklist_damage_reported": false
+    },
+    {
+      "image_id": "FOTDEV_96",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\QXW8F67\\Fotos\\FOTDEV_96.jpg",
+      "part_id": "roda_dianteira_esquerda",
+      "view": "detalhe",
+      "confidence": 0.8,
+      "checklist_damage_reported": false
+    },
+    {
+      "image_id": "FOTDEV_97",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\QXW8F67\\Fotos\\FOTDEV_97.jpg",
+      "part_id": "roda_dianteira_direita",
+      "view": "detalhe",
+      "confidence": 0.8,
+      "checklist_damage_reported": false
+    },
+    {
+      "image_id": "FOTDEV_98",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\QXW8F67\\Fotos\\FOTDEV_98.jpg",
+      "part_id": "interior",
+      "view": "interior",
+      "confidence": 0.9,
+      "checklist_damage_reported": false
+    },
+    {
+      "image_id": "FOTDEV_99",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\QXW8F67\\Fotos\\FOTDEV_99.jpg",
+      "part_id": "interior",
+      "view": "media",
+      "confidence": 0.9,
+      "checklist_damage_reported": false
+    }
+  ],
+  "checklist_summary": "parachoque_dianteiro\nporta_traseira_direita\nporta_traseira_esquerda"
+}

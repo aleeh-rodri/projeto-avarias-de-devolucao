@@ -1,0 +1,138 @@
+{
+  "case_id": "SYD8E64",
+  "assessments": [
+    {
+      "image_id": "FOTDEV_25",
+      "aprovada": true,
+      "motivo": "",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": true
+    },
+    {
+      "image_id": "FOTDEV_26",
+      "aprovada": false,
+      "motivo": "Imagem não mostra a dianteira do carro, apenas a lateral.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_27",
+      "aprovada": false,
+      "motivo": "A imagem não mostra a roda traseira esquerda.",
+      "qualidade_imagem": "alta",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_28",
+      "aprovada": false,
+      "motivo": "A imagem não mostra o capô, mas sim o motor do veículo.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_29",
+      "aprovada": false,
+      "motivo": "A imagem não mostra o teto do veículo.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_30",
+      "aprovada": false,
+      "motivo": "A imagem não mostra a roda dianteira direita, mas sim o pneu.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_31",
+      "aprovada": false,
+      "motivo": "Imagem de baixa qualidade e não mostra a roda dianteira direita.",
+      "qualidade_imagem": "baixa",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_48",
+      "aprovada": false,
+      "motivo": "A imagem não mostra a roda dianteira direita, mas sim um pneu.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_49",
+      "aprovada": false,
+      "motivo": "A imagem não mostra uma peça automotiva, mas sim um documento de identidade.",
+      "qualidade_imagem": "alta",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_50",
+      "aprovada": false,
+      "motivo": "Imagem de baixa qualidade e não mostra a roda dianteira direita.",
+      "qualidade_imagem": "baixa",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_51",
+      "aprovada": false,
+      "motivo": "A imagem não mostra a peça interior, mas sim documentos.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_52",
+      "aprovada": false,
+      "motivo": "A imagem não mostra a peça 'acessórios' claramente.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_53",
+      "aprovada": false,
+      "motivo": "A imagem não mostra a dianteira do carro.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_54",
+      "aprovada": false,
+      "motivo": "A imagem não mostra claramente a porta traseira direita.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_55",
+      "aprovada": true,
+      "motivo": "",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": true
+    },
+    {
+      "image_id": "FOTDEV_56",
+      "aprovada": true,
+      "motivo": "",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": true
+    },
+    {
+      "image_id": "FOTDEV_57",
+      "aprovada": false,
+      "motivo": "A imagem não mostra a porta dianteira direita claramente.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_58",
+      "aprovada": false,
+      "motivo": "A imagem não mostra a peça interior, apenas o painel do veículo.",
+      "qualidade_imagem": "alta",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_59",
+      "aprovada": false,
+      "motivo": "A imagem não mostra claramente a traseira do carro.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": false
+    }
+  ]
+}

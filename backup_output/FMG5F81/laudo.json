@@ -1,0 +1,156 @@
+{
+  "case_id": "FMG5F81",
+  "triagem": {
+    "total_imagens": 21,
+    "imagens_aprovadas_qualidade": 9
+  },
+  "peritos": {
+    "perito_parachoque": {
+      "imagens_usadas": [
+        {
+          "image_id": "FOTDEV_30",
+          "part_id": "parachoque_traseiro",
+          "view": "detalhe"
+        },
+        {
+          "image_id": "FOTDEV_38",
+          "part_id": "parachoque_dianteiro",
+          "view": "media"
+        },
+        {
+          "image_id": "FOTDEV_47",
+          "part_id": "parachoque_traseiro",
+          "view": "detalhe"
+        }
+      ],
+      "resultado": {
+        "nivel_dano": "leve",
+        "peca": "para-choques",
+        "itens": [
+          {
+            "nivel_dano": "leve",
+            "peca": "para-choque traseiro",
+            "servicos": [
+              {
+                "descricao": "Pintura para-choque traseiro",
+                "preco": 320.0
+              }
+            ],
+            "preco_total": 320.0,
+            "justificativa": "Dano leve. Obs: arranhões profundos com sulco evidente | calibracao: moderado/grave sem suporte >=2 fotos; tratado como leve/pintura",
+            "fotos_analisadas": [
+              "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\input\\FMG5F81\\Fotos\\FOTDEV_30.jpg",
+              "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\input\\FMG5F81\\Fotos\\FOTDEV_47.jpg"
+            ]
+          }
+        ],
+        "servicos": [
+          {
+            "descricao": "Pintura para-choque traseiro",
+            "preco": 320.0
+          }
+        ],
+        "preco_total": 320.0,
+        "justificativa": "para-choque traseiro: leve (Dano leve. Obs: arranhões profundos com sulco evidente | calibracao: moderado/grave sem suporte >=2 fotos; tratado como leve/pintura)",
+        "fotos_analisadas": [
+          "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\input\\FMG5F81\\Fotos\\FOTDEV_30.jpg",
+          "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\input\\FMG5F81\\Fotos\\FOTDEV_47.jpg"
+        ]
+      }
+    },
+    "perito_emblemas": {
+      "imagens_usadas": [
+        {
+          "image_id": "FOTDEV_30",
+          "part_id": "parachoque_traseiro",
+          "view": "detalhe"
+        },
+        {
+          "image_id": "FOTDEV_47",
+          "part_id": "parachoque_traseiro",
+          "view": "detalhe"
+        },
+        {
+          "image_id": "FOTDEV_48",
+          "part_id": "parachoque_traseiro",
+          "view": "media"
+        }
+      ],
+      "resultado": {
+        "nivel_dano": "sem_dano",
+        "peca": "emblemas (dianteiro/traseiro)",
+        "servicos": [],
+        "preco_total": 0.0,
+        "justificativa": "traseiro: O emblema da montadora está visível e intacto na parte traseira do veículo.",
+        "fotos_analisadas": [
+          "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\input\\FMG5F81\\Fotos\\FOTDEV_48.jpg"
+        ]
+      }
+    },
+    "perito_lataria": {
+      "resultado": {
+        "erro": "nenhuma imagem elegivel"
+      }
+    },
+    "perito_vidros": {
+      "resultado": {
+        "erro": "nenhuma imagem elegivel"
+      }
+    },
+    "perito_pneus_rodas": {
+      "resultado": {
+        "erro": "nenhuma imagem elegivel"
+      }
+    },
+    "perito_interior": {
+      "imagens_usadas": [
+        {
+          "image_id": "FOTDEV_32",
+          "part_id": "interior",
+          "view": "interior"
+        },
+        {
+          "image_id": "FOTDEV_45",
+          "part_id": "interior",
+          "view": "interior"
+        }
+      ],
+      "resultado": {
+        "nivel_dano": "sem_dano",
+        "peca": "interior",
+        "servicos": [],
+        "preco_total": 0,
+        "justificativa": "[DESCONSIDERADO POR CHECKLIST] Sem danos identificados.",
+        "fotos_analisadas": [
+          "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\input\\FMG5F81\\Fotos\\FOTDEV_32.jpg",
+          "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\input\\FMG5F81\\Fotos\\FOTDEV_45.jpg"
+        ]
+      }
+    },
+    "perito_acessorios": {
+      "resultado": {
+        "erro": "nenhuma imagem elegivel"
+      }
+    }
+  },
+  "divergencias_checklist": [
+    {
+      "tipo": "checklist_vs_visao",
+      "perito": "perito_emblemas",
+      "part_id": "parachoque_traseiro",
+      "mensagem": "Checklist marcou avaria para esta peça, mas o perito retornou nivel_dano='sem_dano'. Recomendado revisar manualmente.",
+      "image_ids": [
+        "FOTDEV_30",
+        "FOTDEV_47",
+        "FOTDEV_48"
+      ],
+      "photo_paths": [
+        "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\input\\FMG5F81\\Fotos\\FOTDEV_30.jpg",
+        "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\input\\FMG5F81\\Fotos\\FOTDEV_47.jpg",
+        "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\input\\FMG5F81\\Fotos\\FOTDEV_48.jpg"
+      ]
+    }
+  ],
+  "cobrancas_checklist_fallback": [],
+  "preco_total_geral": 320.0
+}

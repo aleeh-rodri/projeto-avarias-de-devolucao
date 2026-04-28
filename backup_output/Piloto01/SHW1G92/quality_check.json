@@ -1,0 +1,166 @@
+{
+  "case_id": "SHW1G92",
+  "assessments": [
+    {
+      "image_id": "FOTDEV_1",
+      "aprovada": true,
+      "motivo": "",
+      "qualidade_imagem": "alta",
+      "corresponde_a_peca": true
+    },
+    {
+      "image_id": "FOTDEV_10",
+      "aprovada": false,
+      "motivo": "A imagem não mostra a peça traseira do carro, mas sim um documento.",
+      "qualidade_imagem": "alta",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_11",
+      "aprovada": false,
+      "motivo": "A imagem não mostra claramente o retrovisor.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_12",
+      "aprovada": true,
+      "motivo": "",
+      "qualidade_imagem": "alta",
+      "corresponde_a_peca": true
+    },
+    {
+      "image_id": "FOTDEV_13",
+      "aprovada": false,
+      "motivo": "A imagem não mostra o paralama dianteiro direito.",
+      "qualidade_imagem": "alta",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_14",
+      "aprovada": false,
+      "motivo": "Imagem de qualidade baixa, com falta de nitidez e ângulo não ideal.",
+      "qualidade_imagem": "baixa",
+      "corresponde_a_peca": true
+    },
+    {
+      "image_id": "FOTDEV_15",
+      "aprovada": false,
+      "motivo": "Imagem de baixa qualidade e não mostra claramente o paralama dianteiro direito.",
+      "qualidade_imagem": "baixa",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_16",
+      "aprovada": false,
+      "motivo": "A imagem não mostra claramente o paralama dianteiro direito.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_17",
+      "aprovada": false,
+      "motivo": "A imagem não mostra claramente o paralama traseiro direito.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_18",
+      "aprovada": false,
+      "motivo": "A imagem não mostra a tampa do porta-malas.",
+      "qualidade_imagem": "alta",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_19",
+      "aprovada": false,
+      "motivo": "A imagem não mostra o retrovisor, apenas o carro em geral.",
+      "qualidade_imagem": "alta",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_2",
+      "aprovada": false,
+      "motivo": "Imagem borrada e ilegível, dificultando a análise.",
+      "qualidade_imagem": "baixa",
+      "corresponde_a_peca": true
+    },
+    {
+      "image_id": "FOTDEV_20",
+      "aprovada": false,
+      "motivo": "A imagem não mostra claramente o paralama traseiro direito.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_21",
+      "aprovada": true,
+      "motivo": "A imagem não mostra o retrovisor, apenas a frente do veículo.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_22",
+      "aprovada": false,
+      "motivo": "A imagem não mostra o capô, mas sim o motor do veículo.",
+      "qualidade_imagem": "alta",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_23",
+      "aprovada": false,
+      "motivo": "A imagem não mostra a roda dianteira direita, apenas o pneu.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_3",
+      "aprovada": true,
+      "motivo": "",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": true
+    },
+    {
+      "image_id": "FOTDEV_4",
+      "aprovada": true,
+      "motivo": "",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": true
+    },
+    {
+      "image_id": "FOTDEV_5",
+      "aprovada": false,
+      "motivo": "A imagem não mostra claramente a roda dianteira direita.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_6",
+      "aprovada": false,
+      "motivo": "Imagem borrada e não é possível identificar claramente a roda dianteira direita.",
+      "qualidade_imagem": "baixa",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_7",
+      "aprovada": true,
+      "motivo": "",
+      "qualidade_imagem": "alta",
+      "corresponde_a_peca": true
+    },
+    {
+      "image_id": "FOTDEV_8",
+      "aprovada": true,
+      "motivo": "Imagem utilizável para análise, apesar de ângulo não ideal.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": true
+    },
+    {
+      "image_id": "FOTDEV_9",
+      "aprovada": false,
+      "motivo": "A imagem não mostra a peça interior do veículo.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": false
+    }
+  ]
+}

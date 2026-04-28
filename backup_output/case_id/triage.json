@@ -1,0 +1,285 @@
+{
+  "case_id": "case_id",
+  "images": [
+    {
+      "image_id": "02d9c488-2f02-baa3-fda0-b6911d63279b-v1",
+      "photo_path": "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\src\\..\\Fotos\\case_id\\02d9c488-2f02-baa3-fda0-b6911d63279b-v1.jpg",
+      "part_id": "trunk_lid",
+      "view": "close_up",
+      "confidence": 0.7
+    },
+    {
+      "image_id": "07a2fe59-a36c-f7d3-a39d-62f51f26120a-v1",
+      "photo_path": "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\src\\..\\Fotos\\case_id\\07a2fe59-a36c-f7d3-a39d-62f51f26120a-v1.jpg",
+      "part_id": "hood",
+      "view": "close_up",
+      "confidence": 0.6
+    },
+    {
+      "image_id": "0a29ab70-6aa0-0f40-242d-c0f5e6df77ca-v1",
+      "photo_path": "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\src\\..\\Fotos\\case_id\\0a29ab70-6aa0-0f40-242d-c0f5e6df77ca-v1.jpg",
+      "part_id": "right_rear_fender",
+      "view": "medium",
+      "confidence": 0.8
+    },
+    {
+      "image_id": "0f3b55ab-dde4-a0ad-4bba-8058c0bf9d3e-v1",
+      "photo_path": "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\src\\..\\Fotos\\case_id\\0f3b55ab-dde4-a0ad-4bba-8058c0bf9d3e-v1.jpg",
+      "part_id": "hood",
+      "view": "close_up",
+      "confidence": 0.9
+    },
+    {
+      "image_id": "179e7233-d795-40ea-61f7-fdee64f2e5f3-v1",
+      "photo_path": "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\src\\..\\Fotos\\case_id\\179e7233-d795-40ea-61f7-fdee64f2e5f3-v1.jpg",
+      "part_id": "rear_bumper",
+      "view": "close_up",
+      "confidence": 0.8
+    },
+    {
+      "image_id": "18faf217-b857-d494-d0d3-fa67fe70c994-v1",
+      "photo_path": "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\src\\..\\Fotos\\case_id\\18faf217-b857-d494-d0d3-fa67fe70c994-v1.jpg",
+      "part_id": "",
+      "view": "",
+      "confidence": 0.0
+    },
+    {
+      "image_id": "1b54e6e1-9e48-b925-0364-98913dc2b878-v1",
+      "photo_path": "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\src\\..\\Fotos\\case_id\\1b54e6e1-9e48-b925-0364-98913dc2b878-v1.jpg",
+      "part_id": "left_rear_fender",
+      "view": "close_up",
+      "confidence": 0.7
+    },
+    {
+      "image_id": "251c4f44-4387-e45a-5dd2-4c54345e8340-v1",
+      "photo_path": "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\src\\..\\Fotos\\case_id\\251c4f44-4387-e45a-5dd2-4c54345e8340-v1.jpg",
+      "part_id": "front_bumper",
+      "view": "medium",
+      "confidence": 0.8
+    },
+    {
+      "image_id": "2ab584ca-99f1-f8c0-1a36-9d9c62e7039d-v1",
+      "photo_path": "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\src\\..\\Fotos\\case_id\\2ab584ca-99f1-f8c0-1a36-9d9c62e7039d-v1.jpg",
+      "part_id": "interior",
+      "view": "interior",
+      "confidence": 0.9
+    },
+    {
+      "image_id": "2b87207f-7efd-a6be-62a5-cfd95de5e430-v1",
+      "photo_path": "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\src\\..\\Fotos\\case_id\\2b87207f-7efd-a6be-62a5-cfd95de5e430-v1.jpg",
+      "part_id": "wheel_front_left",
+      "view": "close_up",
+      "confidence": 0.8
+    },
+    {
+      "image_id": "347d5416-d297-3e3a-6943-56bec9949314-v1",
+      "photo_path": "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\src\\..\\Fotos\\case_id\\347d5416-d297-3e3a-6943-56bec9949314-v1.jpg",
+      "part_id": "left_front_door",
+      "view": "medium",
+      "confidence": 0.8
+    },
+    {
+      "image_id": "3f393c37-8850-1010-6638-da546782f260-v1",
+      "photo_path": "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\src\\..\\Fotos\\case_id\\3f393c37-8850-1010-6638-da546782f260-v1.jpg",
+      "part_id": "front_bumper",
+      "view": "close_up",
+      "confidence": 0.9
+    },
+    {
+      "image_id": "4cf549cc-91bf-1b24-26d7-f8dad696b385-v1",
+      "photo_path": "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\src\\..\\Fotos\\case_id\\4cf549cc-91bf-1b24-26d7-f8dad696b385-v1.jpg",
+      "part_id": "windshield",
+      "view": "close_up",
+      "confidence": 0.9
+    },
+    {
+      "image_id": "56f4a9bd-6de1-304f-7ced-f0d3b889430b-v1",
+      "photo_path": "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\src\\..\\Fotos\\case_id\\56f4a9bd-6de1-304f-7ced-f0d3b889430b-v1.jpg",
+      "part_id": "wheel_front_right",
+      "view": "close_up",
+      "confidence": 0.9
+    },
+    {
+      "image_id": "71bc4229-ac13-9708-ba53-98e086435d65-v1",
+      "photo_path": "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\src\\..\\Fotos\\case_id\\71bc4229-ac13-9708-ba53-98e086435d65-v1.jpg",
+      "part_id": "interior",
+      "view": "interior",
+      "confidence": 0.9
+    },
+    {
+      "image_id": "83433539-8e4c-6218-84b9-c858e41b913e-v1",
+      "photo_path": "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\src\\..\\Fotos\\case_id\\83433539-8e4c-6218-84b9-c858e41b913e-v1.jpg",
+      "part_id": "rear_bumper",
+      "view": "close_up",
+      "confidence": 0.8
+    },
+    {
+      "image_id": "83bf76a3-1f97-e150-c655-fc0f1b1d10ae-v1",
+      "photo_path": "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\src\\..\\Fotos\\case_id\\83bf76a3-1f97-e150-c655-fc0f1b1d10ae-v1.jpg",
+      "part_id": "hood",
+      "view": "close_up",
+      "confidence": 0.8
+    },
+    {
+      "image_id": "8665a7f2-9845-3a1a-1b80-bf11299e1641-v1",
+      "photo_path": "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\src\\..\\Fotos\\case_id\\8665a7f2-9845-3a1a-1b80-bf11299e1641-v1.jpg",
+      "part_id": "wheel_front_left",
+      "view": "close_up",
+      "confidence": 0.9
+    },
+    {
+      "image_id": "8ab15d52-3240-0309-8493-facd992137d5-v1",
+      "photo_path": "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\src\\..\\Fotos\\case_id\\8ab15d52-3240-0309-8493-facd992137d5-v1.jpg",
+      "part_id": "hood",
+      "view": "close_up",
+      "confidence": 0.8
+    },
+    {
+      "image_id": "8bedba5a-da85-a47f-5df9-998c5d6ffd60-v1",
+      "photo_path": "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\src\\..\\Fotos\\case_id\\8bedba5a-da85-a47f-5df9-998c5d6ffd60-v1.jpg",
+      "part_id": "right_front_door",
+      "view": "medium",
+      "confidence": 0.8
+    },
+    {
+      "image_id": "9a5f26a9-fc81-b27b-f366-c375c8943bba-v1",
+      "photo_path": "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\src\\..\\Fotos\\case_id\\9a5f26a9-fc81-b27b-f366-c375c8943bba-v1.jpg",
+      "part_id": "right_rear_fender",
+      "view": "medium",
+      "confidence": 0.8
+    },
+    {
+      "image_id": "9d94ee9d-38b3-1b1b-3e7c-a4a6672ce187-v1",
+      "photo_path": "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\src\\..\\Fotos\\case_id\\9d94ee9d-38b3-1b1b-3e7c-a4a6672ce187-v1.jpg",
+      "part_id": "left_front_door",
+      "view": "close_up",
+      "confidence": 0.7
+    },
+    {
+      "image_id": "a4e03e00-1be3-05af-3aca-3e10d055637e-v1",
+      "photo_path": "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\src\\..\\Fotos\\case_id\\a4e03e00-1be3-05af-3aca-3e10d055637e-v1.jpg",
+      "part_id": "wheel_rear_left",
+      "view": "close_up",
+      "confidence": 0.8
+    },
+    {
+      "image_id": "a771acf2-4fd6-4d80-ff92-031e66cc0470-v1",
+      "photo_path": "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\src\\..\\Fotos\\case_id\\a771acf2-4fd6-4d80-ff92-031e66cc0470-v1.jpg",
+      "part_id": "interior",
+      "view": "interior",
+      "confidence": 0.9
+    },
+    {
+      "image_id": "a88ad3e0-5fee-b19a-18f6-b302b3e7bfa4-v1",
+      "photo_path": "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\src\\..\\Fotos\\case_id\\a88ad3e0-5fee-b19a-18f6-b302b3e7bfa4-v1.jpg",
+      "part_id": "windshield",
+      "view": "interior",
+      "confidence": 0.8
+    },
+    {
+      "image_id": "aceab112-d496-e0ef-a23e-f02ca299892d-v1",
+      "photo_path": "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\src\\..\\Fotos\\case_id\\aceab112-d496-e0ef-a23e-f02ca299892d-v1.jpg",
+      "part_id": "wheel_front_left",
+      "view": "close_up",
+      "confidence": 0.9
+    },
+    {
+      "image_id": "c3e71633-27a3-1784-5044-de1d98f443ef-v1",
+      "photo_path": "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\src\\..\\Fotos\\case_id\\c3e71633-27a3-1784-5044-de1d98f443ef-v1.jpg",
+      "part_id": "interior",
+      "view": "interior",
+      "confidence": 0.9
+    },
+    {
+      "image_id": "ccb2bd38-711c-9c43-467e-b0b9c51d12bb-v1",
+      "photo_path": "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\src\\..\\Fotos\\case_id\\ccb2bd38-711c-9c43-467e-b0b9c51d12bb-v1.jpg",
+      "part_id": "wheel_front_left",
+      "view": "close_up",
+      "confidence": 0.9
+    },
+    {
+      "image_id": "cd901354-3e9a-111d-6849-74938fbb4038-v1",
+      "photo_path": "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\src\\..\\Fotos\\case_id\\cd901354-3e9a-111d-6849-74938fbb4038-v1.jpg",
+      "part_id": "wheel_rear_left",
+      "view": "interior",
+      "confidence": 0.8
+    },
+    {
+      "image_id": "d5bebce8-edbc-ddf0-63a8-1a6b68792315-v1",
+      "photo_path": "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\src\\..\\Fotos\\case_id\\d5bebce8-edbc-ddf0-63a8-1a6b68792315-v1.jpg",
+      "part_id": "trunk_lid",
+      "view": "medium",
+      "confidence": 0.9
+    },
+    {
+      "image_id": "d86918ca-e211-3eea-7cc5-6db75c0939cb-v1",
+      "photo_path": "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\src\\..\\Fotos\\case_id\\d86918ca-e211-3eea-7cc5-6db75c0939cb-v1.jpg",
+      "part_id": "front_bumper",
+      "view": "close_up",
+      "confidence": 0.9
+    },
+    {
+      "image_id": "da04d6fa-0ad7-314e-a46b-eeeaf760cca2-v1",
+      "photo_path": "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\src\\..\\Fotos\\case_id\\da04d6fa-0ad7-314e-a46b-eeeaf760cca2-v1.jpg",
+      "part_id": "rear_bumper",
+      "view": "close_up",
+      "confidence": 0.7
+    },
+    {
+      "image_id": "e1987460-3b81-9d40-a939-976f027b917a-v1",
+      "photo_path": "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\src\\..\\Fotos\\case_id\\e1987460-3b81-9d40-a939-976f027b917a-v1.jpg",
+      "part_id": "right_mirror",
+      "view": "close_up",
+      "confidence": 0.8
+    },
+    {
+      "image_id": "ecab879c-18e9-ca22-90a3-fa06b4b632be-v1",
+      "photo_path": "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\src\\..\\Fotos\\case_id\\ecab879c-18e9-ca22-90a3-fa06b4b632be-v1.jpg",
+      "part_id": "interior",
+      "view": "close_up",
+      "confidence": 0.9
+    },
+    {
+      "image_id": "eef786b8-b5fd-6e4b-2439-23cfc7578164-v1",
+      "photo_path": "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\src\\..\\Fotos\\case_id\\eef786b8-b5fd-6e4b-2439-23cfc7578164-v1.jpg",
+      "part_id": "wheel_front_left",
+      "view": "close_up",
+      "confidence": 0.9
+    },
+    {
+      "image_id": "f479eae7-c621-eb32-f833-d87cdf61b843-v1",
+      "photo_path": "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\src\\..\\Fotos\\case_id\\f479eae7-c621-eb32-f833-d87cdf61b843-v1.jpg",
+      "part_id": "wheel_front_right",
+      "view": "close_up",
+      "confidence": 0.9
+    },
+    {
+      "image_id": "f65e1c43-0540-39f5-b74f-d6782286b808-v1",
+      "photo_path": "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\src\\..\\Fotos\\case_id\\f65e1c43-0540-39f5-b74f-d6782286b808-v1.jpg",
+      "part_id": "right_rear_fender",
+      "view": "medium",
+      "confidence": 0.8
+    },
+    {
+      "image_id": "f9c496b4-12e4-230f-20f4-4f0f24688885-v1",
+      "photo_path": "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\src\\..\\Fotos\\case_id\\f9c496b4-12e4-230f-20f4-4f0f24688885-v1.jpg",
+      "part_id": "right_mirror",
+      "view": "close_up",
+      "confidence": 0.8
+    },
+    {
+      "image_id": "fdae2ecb-ea89-4f98-f5a0-04f6d81426d6-v1",
+      "photo_path": "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\src\\..\\Fotos\\case_id\\fdae2ecb-ea89-4f98-f5a0-04f6d81426d6-v1.jpg",
+      "part_id": "interior",
+      "view": "close_up",
+      "confidence": 0.9
+    },
+    {
+      "image_id": "fe3475ac-2b61-a507-bb51-aa6a2da63b39-v1",
+      "photo_path": "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\src\\..\\Fotos\\case_id\\fe3475ac-2b61-a507-bb51-aa6a2da63b39-v1.jpg",
+      "part_id": "wheel_front_left",
+      "view": "close_up",
+      "confidence": 0.8
+    }
+  ]
+}

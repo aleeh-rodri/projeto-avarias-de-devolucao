@@ -1,0 +1,189 @@
+{
+  "case_id": "SSU0J20",
+  "triagem": {
+    "total_imagens": 19,
+    "imagens_aprovadas_qualidade": 11
+  },
+  "peritos": {
+    "perito_parachoque": {
+      "imagens_usadas": [
+        {
+          "image_id": "FOTDEV_38",
+          "part_id": "parachoque_dianteiro",
+          "view": "media"
+        },
+        {
+          "image_id": "FOTDEV_43",
+          "part_id": "parachoque_traseiro",
+          "view": "media"
+        },
+        {
+          "image_id": "FOTDEV_48",
+          "part_id": "parachoque_traseiro",
+          "view": "media"
+        }
+      ],
+      "resultado": {
+        "nivel_dano": "sem_dano",
+        "peca": "para-choques",
+        "itens": [],
+        "servicos": [],
+        "preco_total": 0,
+        "justificativa": "[DESCONSIDERADO POR CHECKLIST] dianteiro: sem_dano (Imagem ignorada: qualidade/visibilidade insuficiente); traseiro: sem_dano (Imagem ignorada: qualidade/visibilidade insuficiente)",
+        "fotos_analisadas": [
+          "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SSU0J20\\Fotos\\FOTDEV_38.jpg",
+          "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SSU0J20\\Fotos\\FOTDEV_43.jpg",
+          "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SSU0J20\\Fotos\\FOTDEV_48.jpg"
+        ]
+      }
+    },
+    "perito_emblemas": {
+      "imagens_usadas": [
+        {
+          "image_id": "FOTDEV_38",
+          "part_id": "parachoque_dianteiro",
+          "view": "media"
+        },
+        {
+          "image_id": "FOTDEV_43",
+          "part_id": "parachoque_traseiro",
+          "view": "media"
+        },
+        {
+          "image_id": "FOTDEV_48",
+          "part_id": "parachoque_traseiro",
+          "view": "media"
+        }
+      ],
+      "resultado": {
+        "nivel_dano": "sem_dano",
+        "peca": "emblemas (dianteiro/traseiro)",
+        "servicos": [],
+        "preco_total": 0,
+        "justificativa": "[DESCONSIDERADO POR CHECKLIST] dianteiro: O emblema da montadora está visível e intacto no centro da dianteira do carro.; traseiro: O emblema da montadora está visível e intacto na parte central traseira do veículo.",
+        "fotos_analisadas": [
+          "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SSU0J20\\Fotos\\FOTDEV_38.jpg",
+          "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SSU0J20\\Fotos\\FOTDEV_43.jpg"
+        ]
+      }
+    },
+    "perito_lataria": {
+      "imagens_usadas": [
+        {
+          "image_id": "FOTDEV_49",
+          "part_id": "paralama_dianteiro_direito",
+          "view": "media"
+        }
+      ],
+      "resultado": {
+        "nivel_dano": "grave",
+        "peca": "lataria",
+        "itens": [
+          {
+            "nivel_dano": "grave",
+            "peca": "paralama dianteiro direito",
+            "servicos": [
+              {
+                "descricao": "Mão de obra troca do para-lama dianteiro direito",
+                "preco": 140.0
+              }
+            ],
+            "preco_total": 140.0,
+            "justificativa": "A peça apresenta uma deformação estrutural evidente, com amassado significativo na área central, indicando necessidade de reparo ou substituição.",
+            "fotos_analisadas": [
+              "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SSU0J20\\Fotos\\FOTDEV_49.jpg"
+            ]
+          }
+        ],
+        "servicos": [
+          {
+            "descricao": "Mão de obra troca do para-lama dianteiro direito",
+            "preco": 140.0
+          }
+        ],
+        "preco_total": 140.0,
+        "justificativa": "paralama dianteiro direito: grave (A peça apresenta uma deformação estrutural evidente, com amassado significativo na área central, indicando necessidade de reparo ou substituição.)",
+        "fotos_analisadas": [
+          "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SSU0J20\\Fotos\\FOTDEV_49.jpg"
+        ]
+      }
+    },
+    "perito_vidros": {
+      "resultado": {
+        "erro": "nenhuma imagem elegivel"
+      }
+    },
+    "perito_pneus_rodas": {
+      "imagens_usadas": [
+        {
+          "image_id": "FOTDEV_46",
+          "part_id": "roda_dianteira_esquerda",
+          "view": "detalhe"
+        },
+        {
+          "image_id": "FOTDEV_50",
+          "part_id": "roda_dianteira_direita",
+          "view": "detalhe"
+        },
+        {
+          "image_id": "FOTDEV_53",
+          "part_id": "roda_dianteira_direita",
+          "view": "detalhe"
+        }
+      ],
+      "resultado": {
+        "nivel_dano": "sem_dano",
+        "peca": "calota",
+        "servicos": [],
+        "preco_total": 0,
+        "justificativa": "[DESCONSIDERADO POR CHECKLIST] Sem danos identificados nas rodas.",
+        "fotos_analisadas": [
+          "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SSU0J20\\Fotos\\FOTDEV_46.jpg",
+          "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SSU0J20\\Fotos\\FOTDEV_50.jpg",
+          "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SSU0J20\\Fotos\\FOTDEV_53.jpg"
+        ]
+      }
+    },
+    "perito_interior": {
+      "imagens_usadas": [
+        {
+          "image_id": "FOTDEV_44",
+          "part_id": "interior",
+          "view": "interior"
+        }
+      ],
+      "resultado": {
+        "nivel_dano": "sem_dano",
+        "peca": "painel",
+        "servicos": [],
+        "preco_total": 0,
+        "justificativa": "[DESCONSIDERADO POR CHECKLIST] Sem danos identificados.",
+        "fotos_analisadas": [
+          "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SSU0J20\\Fotos\\FOTDEV_44.jpg"
+        ]
+      }
+    },
+    "perito_acessorios": {
+      "imagens_usadas": [
+        {
+          "image_id": "FOTDEV_45",
+          "part_id": "acessorios",
+          "view": "detalhe"
+        }
+      ],
+      "resultado": {
+        "nivel_dano": "sem_dano",
+        "peca": "chaves",
+        "servicos": [],
+        "preco_total": 0,
+        "justificativa": "[DESCONSIDERADO POR CHECKLIST] As chaves estão presentes, mas a imagem não permite verificar se estão funcionando corretamente ou se apresentam danos visíveis.",
+        "fotos_analisadas": [
+          "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SSU0J20\\Fotos\\FOTDEV_45.jpg"
+        ]
+      }
+    }
+  },
+  "divergencias_checklist": [],
+  "cobrancas_checklist_fallback": [],
+  "preco_total_geral": 140.0
+}

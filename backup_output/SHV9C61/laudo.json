@@ -1,0 +1,162 @@
+{
+  "case_id": "SHV9C61",
+  "triagem": {
+    "total_imagens": 19,
+    "imagens_aprovadas_qualidade": 9
+  },
+  "peritos": {
+    "perito_parachoque": {
+      "imagens_usadas": [
+        {
+          "image_id": "FOTDEV_66",
+          "part_id": "parachoque_dianteiro",
+          "view": "media"
+        },
+        {
+          "image_id": "FOTDEV_70",
+          "part_id": "parachoque_traseiro",
+          "view": "media"
+        }
+      ],
+      "resultado": {
+        "nivel_dano": "sem_dano",
+        "peca": "para-choques",
+        "itens": [],
+        "servicos": [],
+        "preco_total": 0,
+        "justificativa": "[DESCONSIDERADO POR CHECKLIST] dianteiro: sem_dano (Imagem ignorada: qualidade/visibilidade insuficiente); traseiro: sem_dano (Imagem ignorada: qualidade/visibilidade insuficiente)",
+        "fotos_analisadas": [
+          "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\input\\SHV9C61\\Fotos\\FOTDEV_66.jpg",
+          "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\input\\SHV9C61\\Fotos\\FOTDEV_70.jpg"
+        ]
+      }
+    },
+    "perito_emblemas": {
+      "imagens_usadas": [
+        {
+          "image_id": "FOTDEV_66",
+          "part_id": "parachoque_dianteiro",
+          "view": "media"
+        },
+        {
+          "image_id": "FOTDEV_70",
+          "part_id": "parachoque_traseiro",
+          "view": "media"
+        }
+      ],
+      "resultado": {
+        "nivel_dano": "sem_dano",
+        "peca": "emblemas (dianteiro/traseiro)",
+        "servicos": [],
+        "preco_total": 0,
+        "justificativa": "[DESCONSIDERADO POR CHECKLIST] dianteiro: O emblema da montadora está visível e intacto na parte frontal do veículo.; traseiro: O emblema da montadora está visível e intacto na parte traseira do veículo.",
+        "fotos_analisadas": [
+          "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\input\\SHV9C61\\Fotos\\FOTDEV_66.jpg",
+          "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\input\\SHV9C61\\Fotos\\FOTDEV_70.jpg"
+        ]
+      }
+    },
+    "perito_lataria": {
+      "imagens_usadas": [
+        {
+          "image_id": "FOTDEV_50",
+          "part_id": "porta_dianteira_direita",
+          "view": "media"
+        }
+      ],
+      "resultado": {
+        "nivel_dano": "sem_dano",
+        "peca": "lataria",
+        "servicos": [],
+        "preco_total": 0,
+        "justificativa": "[DESCONSIDERADO POR CHECKLIST] Sem evidência de dano em lataria nas fotos fornecidas.",
+        "fotos_analisadas": [
+          "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\input\\SHV9C61\\Fotos\\FOTDEV_50.jpg"
+        ]
+      }
+    },
+    "perito_vidros": {
+      "resultado": {
+        "erro": "nenhuma imagem elegivel"
+      }
+    },
+    "perito_pneus_rodas": {
+      "imagens_usadas": [
+        {
+          "image_id": "FOTDEV_64",
+          "part_id": "roda_dianteira_direita",
+          "view": "detalhe"
+        },
+        {
+          "image_id": "FOTDEV_67",
+          "part_id": "roda_dianteira_direita",
+          "view": "media"
+        },
+        {
+          "image_id": "FOTDEV_69",
+          "part_id": "roda_dianteira_direita",
+          "view": "media"
+        }
+      ],
+      "resultado": {
+        "nivel_dano": "sem_dano",
+        "peca": "calota",
+        "servicos": [],
+        "preco_total": 0,
+        "justificativa": "[DESCONSIDERADO POR CHECKLIST] A roda apresenta ralada de guia, caracterizando um desgaste superficial sem deformação significativa.",
+        "fotos_analisadas": [
+          "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\input\\SHV9C61\\Fotos\\FOTDEV_64.jpg",
+          "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\input\\SHV9C61\\Fotos\\FOTDEV_67.jpg",
+          "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\input\\SHV9C61\\Fotos\\FOTDEV_69.jpg"
+        ]
+      }
+    },
+    "perito_interior": {
+      "imagens_usadas": [
+        {
+          "image_id": "FOTDEV_56",
+          "part_id": "interior",
+          "view": "interior"
+        }
+      ],
+      "resultado": {
+        "nivel_dano": "sem_dano",
+        "peca": "painel",
+        "servicos": [],
+        "preco_total": 0,
+        "justificativa": "[DESCONSIDERADO POR CHECKLIST] Sem danos identificados.",
+        "fotos_analisadas": [
+          "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\input\\SHV9C61\\Fotos\\FOTDEV_56.jpg"
+        ]
+      }
+    },
+    "perito_acessorios": {
+      "imagens_usadas": [
+        {
+          "image_id": "FOTDEV_57",
+          "part_id": "acessorios",
+          "view": "media"
+        },
+        {
+          "image_id": "FOTDEV_71",
+          "part_id": "acessorios",
+          "view": "media"
+        }
+      ],
+      "resultado": {
+        "nivel_dano": "sem_dano",
+        "peca": "chave",
+        "servicos": [],
+        "preco_total": 0,
+        "justificativa": "[DESCONSIDERADO POR CHECKLIST] A chave apresenta um desgaste visível na parte metálica, indicando que pode estar danificada.",
+        "fotos_analisadas": [
+          "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\input\\SHV9C61\\Fotos\\FOTDEV_57.jpg",
+          "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\input\\SHV9C61\\Fotos\\FOTDEV_71.jpg"
+        ]
+      }
+    }
+  },
+  "divergencias_checklist": [],
+  "cobrancas_checklist_fallback": [],
+  "preco_total_geral": 0.0
+}

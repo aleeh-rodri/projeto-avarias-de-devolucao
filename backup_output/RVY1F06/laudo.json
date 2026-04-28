@@ -1,0 +1,229 @@
+{
+  "case_id": "RVY1F06",
+  "triagem": {
+    "total_imagens": 25,
+    "imagens_aprovadas_qualidade": 19
+  },
+  "peritos": {
+    "perito_parachoque": {
+      "imagens_usadas": [
+        {
+          "image_id": "1ea29178-010d-0399-6239-3ddb85afdbe5-v1",
+          "part_id": "parachoque_traseiro",
+          "view": "detalhe"
+        },
+        {
+          "image_id": "d5b4ee97-515e-ae1a-0d3e-2376e1acbd6b-v1",
+          "part_id": "parachoque_dianteiro",
+          "view": "media"
+        },
+        {
+          "image_id": "40b721c4-187a-b59d-2973-833ea409c75d-v1",
+          "part_id": "parachoque_traseiro",
+          "view": "detalhe"
+        }
+      ],
+      "resultado": {
+        "nivel_dano": "leve",
+        "peca": "para-choques",
+        "itens": [
+          {
+            "nivel_dano": "sem_dano",
+            "peca": "para-choque dianteiro",
+            "servicos": [],
+            "preco_total": 0.0,
+            "justificativa": "Dano sem_dano. Obs: Imagem ignorada: qualidade/visibilidade insuficiente",
+            "fotos_analisadas": [
+              "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\input\\RVY1F06\\fotos\\d5b4ee97-515e-ae1a-0d3e-2376e1acbd6b-v1.jpg"
+            ]
+          },
+          {
+            "nivel_dano": "leve",
+            "peca": "para-choque traseiro",
+            "servicos": [
+              {
+                "descricao": "Pintura para-choque traseiro",
+                "preco": 320.0
+              }
+            ],
+            "preco_total": 320.0,
+            "justificativa": "Dano leve. Obs: trinca visível na parte inferior do para-choque | calibracao: moderado/grave sem suporte >=2 fotos; tratado como leve/pintura",
+            "fotos_analisadas": [
+              "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\input\\RVY1F06\\fotos\\1ea29178-010d-0399-6239-3ddb85afdbe5-v1.jpg",
+              "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\input\\RVY1F06\\fotos\\40b721c4-187a-b59d-2973-833ea409c75d-v1.jpg"
+            ]
+          }
+        ],
+        "servicos": [
+          {
+            "descricao": "Pintura para-choque traseiro",
+            "preco": 320.0
+          }
+        ],
+        "preco_total": 320.0,
+        "justificativa": "para-choque dianteiro: sem_dano (Dano sem_dano. Obs: Imagem ignorada: qualidade/visibilidade insuficiente); para-choque traseiro: leve (Dano leve. Obs: trinca visível na parte inferior do para-choque | calibracao: moderado/grave sem suporte >=2 fotos; tratado como leve/pintura)",
+        "fotos_analisadas": [
+          "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\input\\RVY1F06\\fotos\\d5b4ee97-515e-ae1a-0d3e-2376e1acbd6b-v1.jpg",
+          "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\input\\RVY1F06\\fotos\\1ea29178-010d-0399-6239-3ddb85afdbe5-v1.jpg",
+          "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\input\\RVY1F06\\fotos\\40b721c4-187a-b59d-2973-833ea409c75d-v1.jpg"
+        ]
+      }
+    },
+    "perito_lataria": {
+      "imagens_usadas": [
+        {
+          "image_id": "c6d84af3-3bc5-c42a-d733-7712233f353d-v1",
+          "part_id": "porta_traseira_direita",
+          "view": "detalhe"
+        },
+        {
+          "image_id": "df2192f2-6f26-6fad-4d4b-ab4ec0e3641e-v1",
+          "part_id": "paralama_traseiro_direito",
+          "view": "detalhe"
+        },
+        {
+          "image_id": "727b35a0-e291-5187-dd31-6d3be85228b4-v1",
+          "part_id": "porta_dianteira_direita",
+          "view": "media"
+        }
+      ],
+      "resultado": {
+        "nivel_dano": "moderado",
+        "peca": "lataria",
+        "itens": [
+          {
+            "nivel_dano": "moderado",
+            "peca": "porta traseira direito",
+            "servicos": [
+              {
+                "descricao": "Recuperação e pintura porta traseira direita",
+                "preco": 420.0
+              }
+            ],
+            "preco_total": 420.0,
+            "justificativa": "A imagem mostra um amassado evidente na porta traseira direita, com deformação visível e necessidade de repuxo.",
+            "fotos_analisadas": [
+              "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\input\\RVY1F06\\fotos\\c6d84af3-3bc5-c42a-d733-7712233f353d-v1.jpg"
+            ]
+          }
+        ],
+        "servicos": [
+          {
+            "descricao": "Recuperação e pintura porta traseira direita",
+            "preco": 420.0
+          }
+        ],
+        "preco_total": 420.0,
+        "justificativa": "porta traseira direito: moderado (A imagem mostra um amassado evidente na porta traseira direita, com deformação visível e necessidade de repuxo.)",
+        "fotos_analisadas": [
+          "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\input\\RVY1F06\\fotos\\c6d84af3-3bc5-c42a-d733-7712233f353d-v1.jpg"
+        ]
+      }
+    },
+    "perito_vidros": {
+      "resultado": {
+        "erro": "nenhuma imagem elegivel"
+      }
+    },
+    "perito_pneus_rodas": {
+      "imagens_usadas": [
+        {
+          "image_id": "3cd4c73f-220f-651e-d695-cba5190812c2-v1",
+          "part_id": "roda_dianteira_direita",
+          "view": "detalhe"
+        },
+        {
+          "image_id": "3ebfa528-06d3-b77a-08a6-be2caccecff7-v1",
+          "part_id": "roda_dianteira_direita",
+          "view": "detalhe"
+        },
+        {
+          "image_id": "61157a17-b50e-215f-3052-0c79397b3dd3-v1",
+          "part_id": "roda_dianteira_direita",
+          "view": "detalhe"
+        }
+      ],
+      "resultado": {
+        "nivel_dano": "moderado",
+        "peca": "calota",
+        "servicos": [
+          {
+            "descricao": "Troca jogo de calotas",
+            "preco": 135.0
+          }
+        ],
+        "preco_total": 135.0,
+        "justificativa": "Profundidade do sulco do pneu dianteiro direito é de 4mm, o que indica desgaste moderado. A troca é recomendada para garantir a segurança e a performance do veículo.",
+        "fotos_analisadas": [
+          "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\input\\RVY1F06\\fotos\\3cd4c73f-220f-651e-d695-cba5190812c2-v1.jpg",
+          "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\input\\RVY1F06\\fotos\\3ebfa528-06d3-b77a-08a6-be2caccecff7-v1.jpg",
+          "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\input\\RVY1F06\\fotos\\61157a17-b50e-215f-3052-0c79397b3dd3-v1.jpg"
+        ]
+      }
+    },
+    "perito_interior": {
+      "imagens_usadas": [
+        {
+          "image_id": "9f3fc295-1dc3-26b6-86ec-2af4e18f596b-v1",
+          "part_id": "interior",
+          "view": "media"
+        },
+        {
+          "image_id": "f44707fe-dd35-6b21-cdf6-131ab9db6006-v1",
+          "part_id": "interior",
+          "view": "media"
+        }
+      ],
+      "resultado": {
+        "nivel_dano": "sem_dano",
+        "peca": "painel",
+        "servicos": [],
+        "preco_total": 0,
+        "justificativa": "[DESCONSIDERADO POR CHECKLIST] Sem danos identificados.",
+        "fotos_analisadas": [
+          "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\input\\RVY1F06\\fotos\\9f3fc295-1dc3-26b6-86ec-2af4e18f596b-v1.jpg",
+          "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\input\\RVY1F06\\fotos\\f44707fe-dd35-6b21-cdf6-131ab9db6006-v1.jpg"
+        ]
+      }
+    },
+    "perito_acessorios": {
+      "resultado": {
+        "erro": "nenhuma imagem elegivel"
+      }
+    }
+  },
+  "divergencias_checklist": [],
+  "cobrancas_checklist_fallback": [
+    {
+      "descricao": "CHECKLIST — Avaria reportada na peça 'parachoque_dianteiro' (REVISAR)",
+      "valor": 0,
+      "needs_human_review": true,
+      "origin": "checklist_fallback",
+      "part_id": "parachoque_dianteiro",
+      "fotos": [
+        "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\input\\RVY1F06\\fotos\\d5b4ee97-515e-ae1a-0d3e-2376e1acbd6b-v1.jpg"
+      ]
+    },
+    {
+      "descricao": "CHECKLIST — Avaria reportada na peça 'paralama_traseiro_direito' (REVISAR)",
+      "valor": 0,
+      "needs_human_review": true,
+      "origin": "checklist_fallback",
+      "part_id": "paralama_traseiro_direito",
+      "fotos": [
+        "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\input\\RVY1F06\\fotos\\df2192f2-6f26-6fad-4d4b-ab4ec0e3641e-v1.jpg"
+      ]
+    },
+    {
+      "descricao": "CHECKLIST — Avaria reportada na peça 'porta_dianteira_direita' (REVISAR)",
+      "valor": 0,
+      "needs_human_review": true,
+      "origin": "checklist_fallback",
+      "part_id": "porta_dianteira_direita",
+      "fotos": [
+        "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\input\\RVY1F06\\fotos\\727b35a0-e291-5187-dd31-6d3be85228b4-v1.jpg"
+      ]
+    }
+  ],
+  "preco_total_geral": 875.0
+}

@@ -1,0 +1,267 @@
+{
+  "case_id": "SID2D96",
+  "triagem": {
+    "total_imagens": 20,
+    "imagens_aprovadas_qualidade": 13
+  },
+  "peritos": {
+    "perito_parachoque": {
+      "imagens_usadas": [
+        {
+          "image_id": "FOTDEV_63",
+          "part_id": "parachoque_dianteiro",
+          "view": "media"
+        },
+        {
+          "image_id": "FOTDEV_58",
+          "part_id": "parachoque_traseiro",
+          "view": "media"
+        },
+        {
+          "image_id": "FOTDEV_51",
+          "part_id": "parachoque_dianteiro",
+          "view": "media"
+        }
+      ],
+      "resultado": {
+        "nivel_dano": "sem_dano",
+        "peca": "para-choques",
+        "itens": [
+          {
+            "nivel_dano": "sem_dano",
+            "peca": "para-choque dianteiro",
+            "servicos": [],
+            "preco_total": 0.0,
+            "justificativa": "Dano sem_dano. Obs: Imagem ignorada: qualidade/visibilidade insuficiente",
+            "fotos_analisadas": [
+              "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SID2D96\\Fotos\\FOTDEV_63.jpg",
+              "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SID2D96\\Fotos\\FOTDEV_51.jpg"
+            ]
+          }
+        ],
+        "servicos": [],
+        "preco_total": 0.0,
+        "justificativa": "para-choque dianteiro: sem_dano (Dano sem_dano. Obs: Imagem ignorada: qualidade/visibilidade insuficiente)",
+        "fotos_analisadas": [
+          "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SID2D96\\Fotos\\FOTDEV_63.jpg",
+          "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SID2D96\\Fotos\\FOTDEV_51.jpg"
+        ]
+      }
+    },
+    "perito_emblemas": {
+      "imagens_usadas": [
+        {
+          "image_id": "FOTDEV_58",
+          "part_id": "parachoque_traseiro",
+          "view": "media"
+        },
+        {
+          "image_id": "FOTDEV_63",
+          "part_id": "parachoque_dianteiro",
+          "view": "media"
+        },
+        {
+          "image_id": "FOTDEV_51",
+          "part_id": "parachoque_dianteiro",
+          "view": "media"
+        }
+      ],
+      "resultado": {
+        "nivel_dano": "sem_dano",
+        "peca": "emblemas (dianteiro/traseiro)",
+        "servicos": [],
+        "preco_total": 0,
+        "justificativa": "[DESCONSIDERADO POR CHECKLIST] dianteiro: O emblema da montadora está visível e intacto na parte frontal do veículo.; traseiro: O emblema da montadora está visível e intacto na parte traseira do veículo.",
+        "fotos_analisadas": [
+          "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SID2D96\\Fotos\\FOTDEV_63.jpg",
+          "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SID2D96\\Fotos\\FOTDEV_58.jpg"
+        ]
+      }
+    },
+    "perito_lataria": {
+      "imagens_usadas": [
+        {
+          "image_id": "FOTDEV_50",
+          "part_id": "porta_dianteira_direita",
+          "view": "media"
+        },
+        {
+          "image_id": "FOTDEV_52",
+          "part_id": "porta_traseira_direita",
+          "view": "media"
+        }
+      ],
+      "resultado": {
+        "nivel_dano": "moderado",
+        "peca": "lataria",
+        "itens": [
+          {
+            "nivel_dano": "moderado",
+            "peca": "porta traseira direito",
+            "servicos": [
+              {
+                "descricao": "Recuperação e pintura porta traseira direita",
+                "preco": 420.0
+              }
+            ],
+            "preco_total": 420.0,
+            "justificativa": "A peça apresenta um amassado evidente na região central, com deformação visível na chapa, indicando a necessidade de repuxo e pintura.",
+            "fotos_analisadas": [
+              "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SID2D96\\Fotos\\FOTDEV_52.jpg"
+            ]
+          }
+        ],
+        "servicos": [
+          {
+            "descricao": "Recuperação e pintura porta traseira direita",
+            "preco": 420.0
+          }
+        ],
+        "preco_total": 420.0,
+        "justificativa": "porta traseira direito: moderado (A peça apresenta um amassado evidente na região central, com deformação visível na chapa, indicando a necessidade de repuxo e pintura.)",
+        "fotos_analisadas": [
+          "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SID2D96\\Fotos\\FOTDEV_52.jpg"
+        ]
+      }
+    },
+    "perito_vidros": {
+      "resultado": {
+        "erro": "nenhuma imagem elegivel"
+      }
+    },
+    "perito_pneus_rodas": {
+      "imagens_usadas": [
+        {
+          "image_id": "FOTDEV_53",
+          "part_id": "roda_dianteira_direita",
+          "view": "detalhe"
+        },
+        {
+          "image_id": "FOTDEV_54",
+          "part_id": "roda_traseira_direita",
+          "view": "detalhe"
+        }
+      ],
+      "resultado": {
+        "nivel_dano": "sem_dano",
+        "peca": "calota",
+        "servicos": [],
+        "preco_total": 0,
+        "justificativa": "[DESCONSIDERADO POR CHECKLIST] A roda apresenta ralada leve na borda, sem deformação significativa ou trinca visível, permitindo reparo.",
+        "fotos_analisadas": [
+          "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SID2D96\\Fotos\\FOTDEV_53.jpg",
+          "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SID2D96\\Fotos\\FOTDEV_54.jpg"
+        ]
+      }
+    },
+    "perito_interior": {
+      "imagens_usadas": [
+        {
+          "image_id": "FOTDEV_48",
+          "part_id": "interior",
+          "view": "media"
+        },
+        {
+          "image_id": "FOTDEV_47",
+          "part_id": "interior",
+          "view": "interior"
+        },
+        {
+          "image_id": "FOTDEV_49",
+          "part_id": "interior",
+          "view": "interior"
+        }
+      ],
+      "resultado": {
+        "nivel_dano": "sem_dano",
+        "peca": "painel",
+        "servicos": [],
+        "preco_total": 0.0,
+        "justificativa": "Sem danos identificados.",
+        "fotos_analisadas": [
+          "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SID2D96\\Fotos\\FOTDEV_48.jpg",
+          "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SID2D96\\Fotos\\FOTDEV_47.jpg",
+          "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SID2D96\\Fotos\\FOTDEV_49.jpg"
+        ]
+      }
+    },
+    "perito_acessorios": {
+      "resultado": {
+        "erro": "nenhuma imagem elegivel"
+      }
+    }
+  },
+  "divergencias_checklist": [
+    {
+      "tipo": "checklist_vs_visao",
+      "perito": "perito_parachoque",
+      "part_id": "parachoque_dianteiro",
+      "mensagem": "Checklist marcou avaria para esta peça, mas o perito retornou nivel_dano='sem_dano'. Recomendado revisar manualmente.",
+      "image_ids": [
+        "FOTDEV_51"
+      ],
+      "photo_paths": [
+        "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SID2D96\\Fotos\\FOTDEV_51.jpg"
+      ]
+    },
+    {
+      "tipo": "checklist_vs_visao",
+      "perito": "perito_emblemas",
+      "part_id": "parachoque_dianteiro",
+      "mensagem": "Checklist marcou avaria para esta peça, mas o perito retornou nivel_dano='sem_dano'. Recomendado revisar manualmente.",
+      "image_ids": [
+        "FOTDEV_51"
+      ],
+      "photo_paths": [
+        "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SID2D96\\Fotos\\FOTDEV_51.jpg"
+      ]
+    },
+    {
+      "tipo": "checklist_vs_visao",
+      "perito": "perito_interior",
+      "part_id": "interior",
+      "mensagem": "Checklist marcou avaria para esta peça, mas o perito retornou nivel_dano='sem_dano'. Recomendado revisar manualmente.",
+      "image_ids": [
+        "FOTDEV_47",
+        "FOTDEV_49"
+      ],
+      "photo_paths": [
+        "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SID2D96\\Fotos\\FOTDEV_47.jpg",
+        "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SID2D96\\Fotos\\FOTDEV_49.jpg"
+      ]
+    }
+  ],
+  "cobrancas_checklist_fallback": [
+    {
+      "descricao": "CHECKLIST — Avaria reportada na peça 'interior' (REVISAR)",
+      "valor": 0,
+      "needs_human_review": true,
+      "origin": "checklist_fallback",
+      "part_id": "interior",
+      "fotos": [
+        "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SID2D96\\Fotos\\FOTDEV_47.jpg"
+      ]
+    },
+    {
+      "descricao": "CHECKLIST — Avaria reportada na peça 'parachoque_dianteiro' (REVISAR)",
+      "valor": 0,
+      "needs_human_review": true,
+      "origin": "checklist_fallback",
+      "part_id": "parachoque_dianteiro",
+      "fotos": [
+        "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SID2D96\\Fotos\\FOTDEV_51.jpg"
+      ]
+    },
+    {
+      "descricao": "CHECKLIST — Avaria reportada na peça 'porta_dianteira_direita' (REVISAR)",
+      "valor": 0,
+      "needs_human_review": true,
+      "origin": "checklist_fallback",
+      "part_id": "porta_dianteira_direita",
+      "fotos": [
+        "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SID2D96\\Fotos\\FOTDEV_50.jpg"
+      ]
+    }
+  ],
+  "preco_total_geral": 420.0
+}

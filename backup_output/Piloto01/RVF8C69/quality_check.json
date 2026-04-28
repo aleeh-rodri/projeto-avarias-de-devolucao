@@ -1,0 +1,138 @@
+{
+  "case_id": "RVF8C69",
+  "assessments": [
+    {
+      "image_id": "FOTDEV_26",
+      "aprovada": false,
+      "motivo": "Imagem de baixa qualidade e não mostra claramente a porta traseira direita.",
+      "qualidade_imagem": "baixa",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_27",
+      "aprovada": true,
+      "motivo": "",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": true
+    },
+    {
+      "image_id": "FOTDEV_28",
+      "aprovada": false,
+      "motivo": "A imagem não mostra a peça 'acessórios' e é de um documento de identidade.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_29",
+      "aprovada": true,
+      "motivo": "",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": true
+    },
+    {
+      "image_id": "FOTDEV_30",
+      "aprovada": true,
+      "motivo": "",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": true
+    },
+    {
+      "image_id": "FOTDEV_31",
+      "aprovada": true,
+      "motivo": "",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": true
+    },
+    {
+      "image_id": "FOTDEV_32",
+      "aprovada": false,
+      "motivo": "A imagem não mostra claramente a dianteira do carro.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_33",
+      "aprovada": false,
+      "motivo": "Imagem de qualidade baixa, não é possível ver claramente a dianteira do carro.",
+      "qualidade_imagem": "baixa",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_34",
+      "aprovada": false,
+      "motivo": "Imagem de baixa qualidade e não mostra claramente a roda dianteira direita.",
+      "qualidade_imagem": "baixa",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_35",
+      "aprovada": false,
+      "motivo": "Imagem de baixa qualidade e não é possível identificar a roda dianteira direita.",
+      "qualidade_imagem": "baixa",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_36",
+      "aprovada": false,
+      "motivo": "A imagem não mostra a roda dianteira direita, mas sim um pneu.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_37",
+      "aprovada": false,
+      "motivo": "A imagem não mostra claramente o capô, focando mais no motor.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_38",
+      "aprovada": true,
+      "motivo": "",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": true
+    },
+    {
+      "image_id": "FOTDEV_39",
+      "aprovada": true,
+      "motivo": "",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": true
+    },
+    {
+      "image_id": "FOTDEV_40",
+      "aprovada": false,
+      "motivo": "Imagem de baixa qualidade e não mostra claramente a roda dianteira direita.",
+      "qualidade_imagem": "baixa",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_41",
+      "aprovada": true,
+      "motivo": "",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": true
+    },
+    {
+      "image_id": "FOTDEV_42",
+      "aprovada": false,
+      "motivo": "A imagem não mostra a peça interior do veículo.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_43",
+      "aprovada": false,
+      "motivo": "A imagem não mostra claramente a porta dianteira direita.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_44",
+      "aprovada": false,
+      "motivo": "A imagem não mostra a peça 'capo', apenas o painel do carro.",
+      "qualidade_imagem": "alta",
+      "corresponde_a_peca": false
+    }
+  ]
+}

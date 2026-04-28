@@ -1,0 +1,206 @@
+{
+  "case_id": "SYE6G48",
+  "images": [
+    {
+      "image_id": "FOTDEV_41",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SYE6G48\\Fotos\\FOTDEV_41.jpg",
+      "part_id": "interior",
+      "view": "interior",
+      "confidence": 0.9,
+      "checklist_damage_reported": false
+    },
+    {
+      "image_id": "FOTDEV_42",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SYE6G48\\Fotos\\FOTDEV_42.jpg",
+      "part_id": "interior",
+      "view": "media",
+      "confidence": 0.8,
+      "checklist_damage_reported": false
+    },
+    {
+      "image_id": "FOTDEV_43",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SYE6G48\\Fotos\\FOTDEV_43.jpg",
+      "part_id": "roda_dianteira_direita",
+      "view": "media",
+      "confidence": 0.8,
+      "checklist_damage_reported": false
+    },
+    {
+      "image_id": "FOTDEV_44",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SYE6G48\\Fotos\\FOTDEV_44.jpg",
+      "part_id": "roda_traseira_direita",
+      "view": "media",
+      "confidence": 0.8,
+      "checklist_damage_reported": false
+    },
+    {
+      "image_id": "FOTDEV_45",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SYE6G48\\Fotos\\FOTDEV_45.jpg",
+      "part_id": "interior",
+      "view": "detalhe",
+      "confidence": 0.9,
+      "checklist_damage_reported": false
+    },
+    {
+      "image_id": "FOTDEV_46",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SYE6G48\\Fotos\\FOTDEV_46.jpg",
+      "part_id": "roda_dianteira_direita",
+      "view": "media",
+      "confidence": 0.9,
+      "checklist_damage_reported": false
+    },
+    {
+      "image_id": "FOTDEV_47",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SYE6G48\\Fotos\\FOTDEV_47.jpg",
+      "part_id": "parachoque_dianteiro",
+      "view": "media",
+      "confidence": 0.9,
+      "checklist_damage_reported": true
+    },
+    {
+      "image_id": "FOTDEV_48",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SYE6G48\\Fotos\\FOTDEV_48.jpg",
+      "part_id": "porta_dianteira_direita",
+      "view": "detalhe",
+      "confidence": 0.8,
+      "checklist_damage_reported": true
+    },
+    {
+      "image_id": "FOTDEV_49",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SYE6G48\\Fotos\\FOTDEV_49.jpg",
+      "part_id": "porta_traseira_direita",
+      "view": "media",
+      "confidence": 0.8,
+      "checklist_damage_reported": true
+    },
+    {
+      "image_id": "FOTDEV_50",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SYE6G48\\Fotos\\FOTDEV_50.jpg",
+      "part_id": "tampa_porta_malas",
+      "view": "media",
+      "confidence": 0.7,
+      "checklist_damage_reported": false
+    },
+    {
+      "image_id": "FOTDEV_51",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SYE6G48\\Fotos\\FOTDEV_51.jpg",
+      "part_id": "roda_dianteira_direita",
+      "view": "detalhe",
+      "confidence": 0.9,
+      "checklist_damage_reported": false
+    },
+    {
+      "image_id": "FOTDEV_70",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SYE6G48\\Fotos\\FOTDEV_70.jpg",
+      "part_id": "parachoque_dianteiro",
+      "view": "media",
+      "confidence": 0.9,
+      "checklist_damage_reported": true
+    },
+    {
+      "image_id": "FOTDEV_71",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SYE6G48\\Fotos\\FOTDEV_71.jpg",
+      "part_id": "parachoque_traseiro",
+      "view": "media",
+      "confidence": 0.9,
+      "checklist_damage_reported": false
+    },
+    {
+      "image_id": "FOTDEV_72",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SYE6G48\\Fotos\\FOTDEV_72.jpg",
+      "part_id": "capo",
+      "view": "interior",
+      "confidence": 0.7,
+      "checklist_damage_reported": false
+    },
+    {
+      "image_id": "FOTDEV_73",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SYE6G48\\Fotos\\FOTDEV_73.jpg",
+      "part_id": "parachoque_dianteiro",
+      "view": "detalhe",
+      "confidence": 0.9,
+      "checklist_damage_reported": true
+    },
+    {
+      "image_id": "FOTDEV_74",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SYE6G48\\Fotos\\FOTDEV_74.jpg",
+      "part_id": "roda_dianteira_direita",
+      "view": "detalhe",
+      "confidence": 0.9,
+      "checklist_damage_reported": false
+    },
+    {
+      "image_id": "FOTDEV_75",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SYE6G48\\Fotos\\FOTDEV_75.jpg",
+      "part_id": "roda_dianteira_direita",
+      "view": "detalhe",
+      "confidence": 0.9,
+      "checklist_damage_reported": false
+    },
+    {
+      "image_id": "FOTDEV_76",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SYE6G48\\Fotos\\FOTDEV_76.jpg",
+      "part_id": "parachoque_traseiro",
+      "view": "media",
+      "confidence": 0.9,
+      "checklist_damage_reported": false
+    },
+    {
+      "image_id": "FOTDEV_77",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SYE6G48\\Fotos\\FOTDEV_77.jpg",
+      "part_id": "porta_dianteira_direita",
+      "view": "detalhe",
+      "confidence": 0.85,
+      "checklist_damage_reported": true
+    },
+    {
+      "image_id": "FOTDEV_78",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SYE6G48\\Fotos\\FOTDEV_78.jpg",
+      "part_id": "roda_dianteira_direita",
+      "view": "detalhe",
+      "confidence": 0.9,
+      "checklist_damage_reported": false
+    },
+    {
+      "image_id": "FOTDEV_79",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SYE6G48\\Fotos\\FOTDEV_79.jpg",
+      "part_id": "parachoque_traseiro",
+      "view": "detalhe",
+      "confidence": 0.9,
+      "checklist_damage_reported": false
+    },
+    {
+      "image_id": "FOTDEV_80",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SYE6G48\\Fotos\\FOTDEV_80.jpg",
+      "part_id": "roda_dianteira_esquerda",
+      "view": "media",
+      "confidence": 0.8,
+      "checklist_damage_reported": true
+    },
+    {
+      "image_id": "FOTDEV_81",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SYE6G48\\Fotos\\FOTDEV_81.jpg",
+      "part_id": "interior",
+      "view": "media",
+      "confidence": 0.8,
+      "checklist_damage_reported": false
+    },
+    {
+      "image_id": "FOTDEV_82",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SYE6G48\\Fotos\\FOTDEV_82.jpg",
+      "part_id": "",
+      "view": "",
+      "confidence": 0.0,
+      "checklist_damage_reported": false
+    },
+    {
+      "image_id": "FOTDEV_83",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SYE6G48\\Fotos\\FOTDEV_83.jpg",
+      "part_id": "roda_dianteira_direita",
+      "view": "detalhe",
+      "confidence": 0.9,
+      "checklist_damage_reported": false
+    }
+  ],
+  "checklist_summary": "parachoque_dianteiro\nporta_dianteira_direita\nporta_traseira_direita\nroda_dianteira_esquerda"
+}

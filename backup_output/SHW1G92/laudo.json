@@ -1,0 +1,158 @@
+{
+  "case_id": "SHW1G92",
+  "triagem": {
+    "total_imagens": 23,
+    "imagens_aprovadas_qualidade": 7
+  },
+  "peritos": {
+    "perito_parachoque": {
+      "imagens_usadas": [
+        {
+          "image_id": "FOTDEV_1",
+          "part_id": "parachoque_traseiro",
+          "view": "detalhe"
+        },
+        {
+          "image_id": "FOTDEV_12",
+          "part_id": "parachoque_traseiro",
+          "view": "media"
+        }
+      ],
+      "resultado": {
+        "nivel_dano": "sem_dano",
+        "peca": "para-choques",
+        "itens": [],
+        "servicos": [],
+        "preco_total": 0,
+        "justificativa": "[DESCONSIDERADO POR CHECKLIST] traseiro: leve (arranhões profundos com perda de material visível | calibracao: moderado/grave sem suporte >=2 fotos; tratado como leve/pintura)",
+        "fotos_analisadas": [
+          "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\input\\SHW1G92\\Fotos\\FOTDEV_1.jpg",
+          "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\input\\SHW1G92\\Fotos\\FOTDEV_12.jpg"
+        ]
+      }
+    },
+    "perito_emblemas": {
+      "imagens_usadas": [
+        {
+          "image_id": "FOTDEV_1",
+          "part_id": "parachoque_traseiro",
+          "view": "detalhe"
+        },
+        {
+          "image_id": "FOTDEV_12",
+          "part_id": "parachoque_traseiro",
+          "view": "media"
+        }
+      ],
+      "resultado": {
+        "nivel_dano": "sem_dano",
+        "peca": "emblemas (dianteiro/traseiro)",
+        "servicos": [],
+        "preco_total": 0,
+        "justificativa": "[DESCONSIDERADO POR CHECKLIST] traseiro: O emblema da montadora está visível e intacto na parte traseira do veículo.",
+        "fotos_analisadas": [
+          "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\input\\SHW1G92\\Fotos\\FOTDEV_12.jpg"
+        ]
+      }
+    },
+    "perito_lataria": {
+      "imagens_usadas": [
+        {
+          "image_id": "FOTDEV_8",
+          "part_id": "retrovisor_direito",
+          "view": "detalhe"
+        },
+        {
+          "image_id": "FOTDEV_21",
+          "part_id": "retrovisor_direito",
+          "view": "media"
+        }
+      ],
+      "resultado": {
+        "nivel_dano": "leve",
+        "peca": "lataria",
+        "itens": [
+          {
+            "nivel_dano": "leve",
+            "peca": "retrovisor direito",
+            "servicos": [
+              {
+                "descricao": "Pintura retrovisor direito",
+                "preco": 150.0
+              }
+            ],
+            "preco_total": 150.0,
+            "justificativa": "Presença de um risco superficial na pintura do retrovisor direito, sem deformação visível.",
+            "fotos_analisadas": [
+              "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\input\\SHW1G92\\Fotos\\FOTDEV_8.jpg",
+              "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\input\\SHW1G92\\Fotos\\FOTDEV_21.jpg"
+            ]
+          }
+        ],
+        "servicos": [
+          {
+            "descricao": "Pintura retrovisor direito",
+            "preco": 150.0
+          }
+        ],
+        "preco_total": 150.0,
+        "justificativa": "retrovisor direito: leve (Presença de um risco superficial na pintura do retrovisor direito, sem deformação visível.)",
+        "fotos_analisadas": [
+          "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\input\\SHW1G92\\Fotos\\FOTDEV_8.jpg",
+          "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\input\\SHW1G92\\Fotos\\FOTDEV_21.jpg"
+        ]
+      }
+    },
+    "perito_vidros": {
+      "resultado": {
+        "erro": "nenhuma imagem elegivel"
+      }
+    },
+    "perito_pneus_rodas": {
+      "imagens_usadas": [
+        {
+          "image_id": "FOTDEV_7",
+          "part_id": "roda_dianteira_direita",
+          "view": "detalhe"
+        }
+      ],
+      "resultado": {
+        "nivel_dano": "sem_dano",
+        "peca": "roda liga leve",
+        "servicos": [],
+        "preco_total": 0,
+        "justificativa": "[DESCONSIDERADO POR CHECKLIST] A roda de liga leve apresenta ralada de guia na borda, indicando desgaste, mas sem deformação clara ou trinca visível.",
+        "fotos_analisadas": [
+          "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\input\\SHW1G92\\Fotos\\FOTDEV_7.jpg"
+        ]
+      }
+    },
+    "perito_interior": {
+      "imagens_usadas": [
+        {
+          "image_id": "FOTDEV_3",
+          "part_id": "interior",
+          "view": "interior"
+        }
+      ],
+      "resultado": {
+        "nivel_dano": "sem_dano",
+        "peca": "painel",
+        "servicos": [],
+        "preco_total": 0,
+        "justificativa": "[DESCONSIDERADO POR CHECKLIST] Sem danos identificados.",
+        "fotos_analisadas": [
+          "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\input\\SHW1G92\\Fotos\\FOTDEV_3.jpg"
+        ]
+      }
+    },
+    "perito_acessorios": {
+      "resultado": {
+        "erro": "nenhuma imagem elegivel"
+      }
+    }
+  },
+  "divergencias_checklist": [],
+  "cobrancas_checklist_fallback": [],
+  "preco_total_geral": 150.0
+}

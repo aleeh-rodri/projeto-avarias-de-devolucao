@@ -1,0 +1,176 @@
+{
+  "case_id": "SHQ3J89",
+  "triagem": {
+    "total_imagens": 26,
+    "imagens_aprovadas_qualidade": 17
+  },
+  "peritos": {
+    "perito_parachoque": {
+      "imagens_usadas": [
+        {
+          "image_id": "FOTDEV_4",
+          "part_id": "parachoque_traseiro",
+          "view": "media"
+        },
+        {
+          "image_id": "FOTDEV_3",
+          "part_id": "parachoque_dianteiro",
+          "view": "media"
+        }
+      ],
+      "resultado": {
+        "nivel_dano": "sem_dano",
+        "peca": "para-choques",
+        "itens": [],
+        "servicos": [],
+        "preco_total": 0,
+        "justificativa": "[DESCONSIDERADO POR CHECKLIST] dianteiro: sem_dano (Imagem ignorada: qualidade/visibilidade insuficiente); traseiro: sem_dano (Imagem ignorada: qualidade/visibilidade insuficiente)",
+        "fotos_analisadas": [
+          "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\input\\SHQ3J89\\Fotos\\FOTDEV_4.jpg",
+          "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\input\\SHQ3J89\\Fotos\\FOTDEV_3.jpg"
+        ]
+      }
+    },
+    "perito_emblemas": {
+      "imagens_usadas": [
+        {
+          "image_id": "FOTDEV_4",
+          "part_id": "parachoque_traseiro",
+          "view": "media"
+        },
+        {
+          "image_id": "FOTDEV_3",
+          "part_id": "parachoque_dianteiro",
+          "view": "media"
+        }
+      ],
+      "resultado": {
+        "nivel_dano": "sem_dano",
+        "peca": "emblemas (dianteiro/traseiro)",
+        "servicos": [],
+        "preco_total": 0,
+        "justificativa": "[DESCONSIDERADO POR CHECKLIST] dianteiro: O emblema da montadora está visível e intacto na grade frontal do veículo.; traseiro: O emblema da montadora está visível e intacto no centro da parte traseira do veículo.",
+        "fotos_analisadas": [
+          "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\input\\SHQ3J89\\Fotos\\FOTDEV_3.jpg",
+          "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\input\\SHQ3J89\\Fotos\\FOTDEV_4.jpg"
+        ]
+      }
+    },
+    "perito_lataria": {
+      "imagens_usadas": [
+        {
+          "image_id": "FOTDEV_17",
+          "part_id": "retrovisor_direito",
+          "view": "media"
+        },
+        {
+          "image_id": "FOTDEV_20",
+          "part_id": "porta_traseira_direita",
+          "view": "detalhe"
+        },
+        {
+          "image_id": "FOTDEV_19",
+          "part_id": "porta_traseira_direita",
+          "view": "detalhe"
+        }
+      ],
+      "resultado": {
+        "nivel_dano": "moderado",
+        "peca": "lataria",
+        "itens": [
+          {
+            "nivel_dano": "moderado",
+            "peca": "porta traseira direito",
+            "servicos": [
+              {
+                "descricao": "Recuperação e pintura porta traseira direita",
+                "preco": 420.0
+              }
+            ],
+            "preco_total": 420.0,
+            "justificativa": "A peça apresenta um amassado evidente no centro, com deformação visível na superfície da pintura.",
+            "fotos_analisadas": [
+              "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\input\\SHQ3J89\\Fotos\\FOTDEV_20.jpg",
+              "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\input\\SHQ3J89\\Fotos\\FOTDEV_19.jpg"
+            ]
+          }
+        ],
+        "servicos": [
+          {
+            "descricao": "Recuperação e pintura porta traseira direita",
+            "preco": 420.0
+          }
+        ],
+        "preco_total": 420.0,
+        "justificativa": "porta traseira direito: moderado (A peça apresenta um amassado evidente no centro, com deformação visível na superfície da pintura.)",
+        "fotos_analisadas": [
+          "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\input\\SHQ3J89\\Fotos\\FOTDEV_20.jpg",
+          "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\input\\SHQ3J89\\Fotos\\FOTDEV_19.jpg"
+        ]
+      }
+    },
+    "perito_vidros": {
+      "resultado": {
+        "erro": "nenhuma imagem elegivel"
+      }
+    },
+    "perito_pneus_rodas": {
+      "resultado": {
+        "erro": "nenhuma imagem elegivel"
+      }
+    },
+    "perito_interior": {
+      "imagens_usadas": [
+        {
+          "image_id": "FOTDEV_11",
+          "part_id": "interior",
+          "view": "detalhe"
+        },
+        {
+          "image_id": "FOTDEV_13",
+          "part_id": "interior",
+          "view": "interior"
+        },
+        {
+          "image_id": "FOTDEV_6",
+          "part_id": "interior",
+          "view": "interior"
+        }
+      ],
+      "resultado": {
+        "nivel_dano": "sem_dano",
+        "peca": "tapete",
+        "servicos": [],
+        "preco_total": 0,
+        "justificativa": "[DESCONSIDERADO POR CHECKLIST] Mancha significativa e sujeira evidente no tapete, indicando necessidade de higienização.",
+        "fotos_analisadas": [
+          "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\input\\SHQ3J89\\Fotos\\FOTDEV_11.jpg",
+          "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\input\\SHQ3J89\\Fotos\\FOTDEV_13.jpg",
+          "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\input\\SHQ3J89\\Fotos\\FOTDEV_6.jpg"
+        ]
+      }
+    },
+    "perito_acessorios": {
+      "imagens_usadas": [
+        {
+          "image_id": "FOTDEV_14",
+          "part_id": "acessorios",
+          "view": "interior"
+        }
+      ],
+      "resultado": {
+        "nivel_dano": "sem_dano",
+        "peca": "chave",
+        "servicos": [],
+        "preco_total": 0,
+        "justificativa": "[DESCONSIDERADO POR CHECKLIST] A chave apresenta danos visíveis, como desgaste na parte superior, indicando que pode não funcionar corretamente.",
+        "fotos_analisadas": [
+          "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\input\\SHQ3J89\\Fotos\\FOTDEV_14.jpg"
+        ]
+      }
+    }
+  },
+  "divergencias_checklist": [],
+  "cobrancas_checklist_fallback": [],
+  "preco_total_geral": 420.0
+}

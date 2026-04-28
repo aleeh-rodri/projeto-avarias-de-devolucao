@@ -1,0 +1,32 @@
+[
+  {
+    "desc": "Recuperação e pintura para-choque dianteiro",
+    "amount": 400.0,
+    "source": "perito_parachoque"
+  },
+  {
+    "desc": "Pintura retrovisor direito",
+    "amount": 150.0,
+    "source": "perito_lataria"
+  },
+  {
+    "desc": "Pintura retrovisor esquerdo",
+    "amount": 150.0,
+    "source": "perito_lataria"
+  },
+  {
+    "desc": "Troca para-brisa dianteiro (vidro - não consta na LPU)",
+    "amount": 0.0,
+    "source": "perito_vidros"
+  },
+  {
+    "desc": "Mão de obra troca do para-brisa",
+    "amount": 180.0,
+    "source": "perito_vidros"
+  },
+  {
+    "desc": "Troca jogo de calotas",
+    "amount": 135.0,
+    "source": "perito_pneus_rodas"
+  }
+]

@@ -1,0 +1,138 @@
+{
+  "case_id": "EEM7A61",
+  "assessments": [
+    {
+      "image_id": "FOTDEV_35",
+      "aprovada": false,
+      "motivo": "A imagem não mostra a peça interior, mas sim um manual.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_36",
+      "aprovada": true,
+      "motivo": "",
+      "qualidade_imagem": "alta",
+      "corresponde_a_peca": true
+    },
+    {
+      "image_id": "FOTDEV_37",
+      "aprovada": true,
+      "motivo": "",
+      "qualidade_imagem": "alta",
+      "corresponde_a_peca": true
+    },
+    {
+      "image_id": "FOTDEV_38",
+      "aprovada": true,
+      "motivo": "",
+      "qualidade_imagem": "alta",
+      "corresponde_a_peca": true
+    },
+    {
+      "image_id": "FOTDEV_39",
+      "aprovada": true,
+      "motivo": "",
+      "qualidade_imagem": "alta",
+      "corresponde_a_peca": true
+    },
+    {
+      "image_id": "FOTDEV_40",
+      "aprovada": false,
+      "motivo": "A imagem não mostra a porta traseira direita claramente.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_41",
+      "aprovada": false,
+      "motivo": "A imagem não mostra a roda dianteira direita, mas sim um pneu com um medidor.",
+      "qualidade_imagem": "alta",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_42",
+      "aprovada": false,
+      "motivo": "A imagem não mostra o capô, mas sim o motor do veículo.",
+      "qualidade_imagem": "alta",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_43",
+      "aprovada": false,
+      "motivo": "A imagem não mostra a roda dianteira direita, mas sim o pneu e um medidor de profundidade.",
+      "qualidade_imagem": "alta",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_46",
+      "aprovada": true,
+      "motivo": "",
+      "qualidade_imagem": "alta",
+      "corresponde_a_peca": true
+    },
+    {
+      "image_id": "FOTDEV_47",
+      "aprovada": true,
+      "motivo": "",
+      "qualidade_imagem": "alta",
+      "corresponde_a_peca": true
+    },
+    {
+      "image_id": "FOTDEV_48",
+      "aprovada": true,
+      "motivo": "",
+      "qualidade_imagem": "alta",
+      "corresponde_a_peca": true
+    },
+    {
+      "image_id": "FOTDEV_49",
+      "aprovada": false,
+      "motivo": "A imagem não mostra a porta dianteira direita claramente.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_50",
+      "aprovada": true,
+      "motivo": "",
+      "qualidade_imagem": "alta",
+      "corresponde_a_peca": true
+    },
+    {
+      "image_id": "FOTDEV_51",
+      "aprovada": false,
+      "motivo": "A imagem não mostra a roda traseira direita, mas sim uma roda sobressalente.",
+      "qualidade_imagem": "alta",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_52",
+      "aprovada": false,
+      "motivo": "A imagem não mostra claramente a dianteira do carro.",
+      "qualidade_imagem": "alta",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_53",
+      "aprovada": false,
+      "motivo": "A imagem não mostra a peça interior solicitada.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_54",
+      "aprovada": false,
+      "motivo": "A imagem não mostra a roda dianteira direita, mas sim um pneu com um medidor.",
+      "qualidade_imagem": "alta",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_55",
+      "aprovada": false,
+      "motivo": "A imagem não mostra claramente a roda dianteira direita.",
+      "qualidade_imagem": "alta",
+      "corresponde_a_peca": false
+    }
+  ]
+}

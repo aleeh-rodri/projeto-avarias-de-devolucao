@@ -1,0 +1,152 @@
+{
+  "case_id": "RTB4D20",
+  "assessments": [
+    {
+      "image_id": "FOTDEV_34",
+      "aprovada": true,
+      "motivo": "",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": true
+    },
+    {
+      "image_id": "FOTDEV_35",
+      "aprovada": true,
+      "motivo": "Imagem utilizável para análise, apesar de algumas limitações.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": true
+    },
+    {
+      "image_id": "FOTDEV_36",
+      "aprovada": true,
+      "motivo": "",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": true
+    },
+    {
+      "image_id": "FOTDEV_37",
+      "aprovada": false,
+      "motivo": "A imagem não mostra uma peça automotiva, mas sim um documento de identidade.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_38",
+      "aprovada": false,
+      "motivo": "Imagem de baixa qualidade e não mostra a porta traseira direita.",
+      "qualidade_imagem": "baixa",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_39",
+      "aprovada": true,
+      "motivo": "Imagem utilizável para análise, apesar de não mostrar a peça inteira.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_40",
+      "aprovada": false,
+      "motivo": "Imagem de baixa qualidade e não mostra claramente a tampa do porta-malas.",
+      "qualidade_imagem": "baixa",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_41",
+      "aprovada": false,
+      "motivo": "Imagem de baixa qualidade e não é possível identificar a roda dianteira direita.",
+      "qualidade_imagem": "baixa",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_42",
+      "aprovada": true,
+      "motivo": "Imagem utilizável para análise, apesar de não ser possível confirmar a correspondência exata da peça.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_43",
+      "aprovada": false,
+      "motivo": "Qualidade da imagem é baixa, dificultando a visualização da peça.",
+      "qualidade_imagem": "baixa",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_44",
+      "aprovada": false,
+      "motivo": "Imagem de baixa qualidade, difícil de identificar a peça.",
+      "qualidade_imagem": "baixa",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_45",
+      "aprovada": false,
+      "motivo": "Imagem muito escura e não mostra claramente a porta dianteira direita.",
+      "qualidade_imagem": "baixa",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_46",
+      "aprovada": false,
+      "motivo": "A imagem não mostra o capô do veículo.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_47",
+      "aprovada": false,
+      "motivo": "A imagem é de baixa qualidade e não mostra claramente a roda dianteira esquerda.",
+      "qualidade_imagem": "baixa",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_48",
+      "aprovada": false,
+      "motivo": "A imagem não mostra a roda dianteira direita, mas sim um pneu.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_49",
+      "aprovada": true,
+      "motivo": "A imagem é utilizável para análise, apesar de não mostrar claramente a porta dianteira direita.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_50",
+      "aprovada": true,
+      "motivo": "Imagem utilizável para análise, apesar de não ser possível confirmar a correspondência exata da peça.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_51",
+      "aprovada": false,
+      "motivo": "Imagem de baixa qualidade e não corresponde à roda dianteira esquerda.",
+      "qualidade_imagem": "baixa",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_52",
+      "aprovada": false,
+      "motivo": "Imagem de baixa qualidade e não mostra claramente a tampa do porta-malas.",
+      "qualidade_imagem": "baixa",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_53",
+      "aprovada": false,
+      "motivo": "Imagem muito escura e com reflexos que dificultam a visualização da peça.",
+      "qualidade_imagem": "baixa",
+      "corresponde_a_peca": true
+    },
+    {
+      "image_id": "FOTDEV_54",
+      "aprovada": false,
+      "motivo": "A imagem não mostra a roda dianteira esquerda, mas sim um pneu.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": false
+    }
+  ]
+}

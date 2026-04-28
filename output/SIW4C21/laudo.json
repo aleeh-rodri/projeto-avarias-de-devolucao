@@ -1,0 +1,160 @@
+{
+  "case_id": "SIW4C21",
+  "triagem": {
+    "total_imagens": 23,
+    "imagens_aprovadas_qualidade": 7
+  },
+  "peritos": {
+    "perito_parachoque": {
+      "imagens_usadas": [
+        {
+          "image_id": "FOTDEV_33",
+          "part_id": "parachoque_dianteiro",
+          "view": "detalhe"
+        },
+        {
+          "image_id": "FOTDEV_44",
+          "part_id": "parachoque_traseiro",
+          "view": "media"
+        },
+        {
+          "image_id": "FOTDEV_39",
+          "part_id": "parachoque_dianteiro",
+          "view": "detalhe"
+        }
+      ],
+      "resultado": {
+        "nivel_dano": "leve",
+        "peca": "para-choques",
+        "itens": [
+          {
+            "nivel_dano": "leve",
+            "peca": "para-choque dianteiro",
+            "servicos": [
+              {
+                "descricao": "Pintura para-choque dianteiro",
+                "preco": 320.0
+              }
+            ],
+            "preco_total": 320.0,
+            "justificativa": "Dano leve. Obs: risco superficial sem deformação",
+            "fotos_analisadas": [
+              "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SIW4C21\\Fotos\\FOTDEV_33.jpg",
+              "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SIW4C21\\Fotos\\FOTDEV_39.jpg"
+            ]
+          }
+        ],
+        "servicos": [
+          {
+            "descricao": "Pintura para-choque dianteiro",
+            "preco": 320.0
+          }
+        ],
+        "preco_total": 320.0,
+        "justificativa": "para-choque dianteiro: leve (Dano leve. Obs: risco superficial sem deformação)",
+        "fotos_analisadas": [
+          "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SIW4C21\\Fotos\\FOTDEV_33.jpg",
+          "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SIW4C21\\Fotos\\FOTDEV_39.jpg"
+        ]
+      }
+    },
+    "perito_emblemas": {
+      "imagens_usadas": [
+        {
+          "image_id": "FOTDEV_33",
+          "part_id": "parachoque_dianteiro",
+          "view": "detalhe"
+        },
+        {
+          "image_id": "FOTDEV_39",
+          "part_id": "parachoque_dianteiro",
+          "view": "detalhe"
+        },
+        {
+          "image_id": "FOTDEV_44",
+          "part_id": "parachoque_traseiro",
+          "view": "media"
+        }
+      ],
+      "resultado": {
+        "nivel_dano": "sem_dano",
+        "peca": "emblemas (dianteiro/traseiro)",
+        "servicos": [],
+        "preco_total": 0,
+        "justificativa": "[DESCONSIDERADO POR CHECKLIST] traseiro: O emblema da montadora está visível e intacto na parte traseira do veículo.",
+        "fotos_analisadas": [
+          "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SIW4C21\\Fotos\\FOTDEV_44.jpg"
+        ]
+      }
+    },
+    "perito_lataria": {
+      "resultado": {
+        "erro": "nenhuma imagem elegivel"
+      }
+    },
+    "perito_vidros": {
+      "resultado": {
+        "erro": "nenhuma imagem elegivel"
+      }
+    },
+    "perito_pneus_rodas": {
+      "resultado": {
+        "erro": "nenhuma imagem elegivel"
+      }
+    },
+    "perito_interior": {
+      "imagens_usadas": [
+        {
+          "image_id": "FOTDEV_41",
+          "part_id": "interior",
+          "view": "media"
+        },
+        {
+          "image_id": "FOTDEV_48",
+          "part_id": "interior",
+          "view": "media"
+        },
+        {
+          "image_id": "FOTDEV_34",
+          "part_id": "interior",
+          "view": "interior"
+        }
+      ],
+      "resultado": {
+        "nivel_dano": "sem_dano",
+        "peca": "banco",
+        "servicos": [],
+        "preco_total": 0.0,
+        "justificativa": "Sem danos identificados.",
+        "fotos_analisadas": [
+          "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SIW4C21\\Fotos\\FOTDEV_41.jpg",
+          "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SIW4C21\\Fotos\\FOTDEV_48.jpg",
+          "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SIW4C21\\Fotos\\FOTDEV_34.jpg"
+        ]
+      }
+    },
+    "perito_acessorios": {
+      "resultado": {
+        "erro": "nenhuma imagem elegivel"
+      }
+    }
+  },
+  "divergencias_checklist": [
+    {
+      "tipo": "checklist_vs_visao",
+      "perito": "perito_emblemas",
+      "part_id": "parachoque_dianteiro",
+      "mensagem": "Checklist marcou avaria para esta peça, mas o perito retornou nivel_dano='sem_dano'. Recomendado revisar manualmente.",
+      "image_ids": [
+        "FOTDEV_33",
+        "FOTDEV_39"
+      ],
+      "photo_paths": [
+        "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SIW4C21\\Fotos\\FOTDEV_33.jpg",
+        "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SIW4C21\\Fotos\\FOTDEV_39.jpg"
+      ]
+    }
+  ],
+  "cobrancas_checklist_fallback": [],
+  "preco_total_geral": 320.0
+}

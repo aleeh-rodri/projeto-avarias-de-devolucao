@@ -1,0 +1,182 @@
+{
+  "case_id": "SJD3D91",
+  "images": [
+    {
+      "image_id": "FOTDEV_12",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SJD3D91\\Fotos\\FOTDEV_12.jpg",
+      "part_id": "roda_dianteira_direita",
+      "view": "detalhe",
+      "confidence": 0.9,
+      "checklist_damage_reported": false
+    },
+    {
+      "image_id": "FOTDEV_13",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SJD3D91\\Fotos\\FOTDEV_13.jpg",
+      "part_id": "porta_traseira_direita",
+      "view": "media",
+      "confidence": 0.8,
+      "checklist_damage_reported": true
+    },
+    {
+      "image_id": "FOTDEV_14",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SJD3D91\\Fotos\\FOTDEV_14.jpg",
+      "part_id": "acessorios",
+      "view": "media",
+      "confidence": 0.8,
+      "checklist_damage_reported": false
+    },
+    {
+      "image_id": "FOTDEV_15",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SJD3D91\\Fotos\\FOTDEV_15.jpg",
+      "part_id": "parachoque_traseiro",
+      "view": "media",
+      "confidence": 0.9,
+      "checklist_damage_reported": false
+    },
+    {
+      "image_id": "FOTDEV_16",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SJD3D91\\Fotos\\FOTDEV_16.jpg",
+      "part_id": "parachoque_dianteiro",
+      "view": "media",
+      "confidence": 0.7,
+      "checklist_damage_reported": false
+    },
+    {
+      "image_id": "FOTDEV_17",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SJD3D91\\Fotos\\FOTDEV_17.jpg",
+      "part_id": "interior",
+      "view": "interior",
+      "confidence": 0.9,
+      "checklist_damage_reported": false
+    },
+    {
+      "image_id": "FOTDEV_18",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SJD3D91\\Fotos\\FOTDEV_18.jpg",
+      "part_id": "retrovisor_esquerdo",
+      "view": "media",
+      "confidence": 0.8,
+      "checklist_damage_reported": false
+    },
+    {
+      "image_id": "FOTDEV_19",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SJD3D91\\Fotos\\FOTDEV_19.jpg",
+      "part_id": "tampa_porta_malas",
+      "view": "media",
+      "confidence": 0.7,
+      "checklist_damage_reported": false
+    },
+    {
+      "image_id": "FOTDEV_20",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SJD3D91\\Fotos\\FOTDEV_20.jpg",
+      "part_id": "interior",
+      "view": "media",
+      "confidence": 0.0,
+      "checklist_damage_reported": false
+    },
+    {
+      "image_id": "FOTDEV_21",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SJD3D91\\Fotos\\FOTDEV_21.jpg",
+      "part_id": "roda_dianteira_direita",
+      "view": "detalhe",
+      "confidence": 0.9,
+      "checklist_damage_reported": false
+    },
+    {
+      "image_id": "FOTDEV_22",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SJD3D91\\Fotos\\FOTDEV_22.jpg",
+      "part_id": "roda_dianteira_direita",
+      "view": "detalhe",
+      "confidence": 0.9,
+      "checklist_damage_reported": true
+    },
+    {
+      "image_id": "FOTDEV_23",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SJD3D91\\Fotos\\FOTDEV_23.jpg",
+      "part_id": "porta_traseira_direita",
+      "view": "media",
+      "confidence": 0.8,
+      "checklist_damage_reported": false
+    },
+    {
+      "image_id": "FOTDEV_24",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SJD3D91\\Fotos\\FOTDEV_24.jpg",
+      "part_id": "parachoque_traseiro",
+      "view": "media",
+      "confidence": 0.8,
+      "checklist_damage_reported": false
+    },
+    {
+      "image_id": "FOTDEV_25",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SJD3D91\\Fotos\\FOTDEV_25.jpg",
+      "part_id": "interior",
+      "view": "media",
+      "confidence": 0.8,
+      "checklist_damage_reported": false
+    },
+    {
+      "image_id": "FOTDEV_26",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SJD3D91\\Fotos\\FOTDEV_26.jpg",
+      "part_id": "interior",
+      "view": "media",
+      "confidence": 0.8,
+      "checklist_damage_reported": false
+    },
+    {
+      "image_id": "FOTDEV_27",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SJD3D91\\Fotos\\FOTDEV_27.jpg",
+      "part_id": "interior",
+      "view": "media",
+      "confidence": 0.9,
+      "checklist_damage_reported": false
+    },
+    {
+      "image_id": "FOTDEV_28",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SJD3D91\\Fotos\\FOTDEV_28.jpg",
+      "part_id": "roda_traseira_esquerda",
+      "view": "media",
+      "confidence": 0.8,
+      "checklist_damage_reported": false
+    },
+    {
+      "image_id": "FOTDEV_29",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SJD3D91\\Fotos\\FOTDEV_29.jpg",
+      "part_id": "capo",
+      "view": "media",
+      "confidence": 0.7,
+      "checklist_damage_reported": false
+    },
+    {
+      "image_id": "FOTDEV_30",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SJD3D91\\Fotos\\FOTDEV_30.jpg",
+      "part_id": "capo",
+      "view": "media",
+      "confidence": 0.9,
+      "checklist_damage_reported": false
+    },
+    {
+      "image_id": "FOTDEV_31",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SJD3D91\\Fotos\\FOTDEV_31.jpg",
+      "part_id": "interior",
+      "view": "media",
+      "confidence": 0.0,
+      "checklist_damage_reported": false
+    },
+    {
+      "image_id": "FOTDEV_32",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SJD3D91\\Fotos\\FOTDEV_32.jpg",
+      "part_id": "roda_dianteira_direita",
+      "view": "detalhe",
+      "confidence": 0.8,
+      "checklist_damage_reported": false
+    },
+    {
+      "image_id": "FOTDEV_33",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SJD3D91\\Fotos\\FOTDEV_33.jpg",
+      "part_id": "interior",
+      "view": "media",
+      "confidence": 0.0,
+      "checklist_damage_reported": false
+    }
+  ],
+  "checklist_summary": "Devolução do Veículo | Checklist Solicitação 2TEHVF/40 A Localiza agradece sua conﬁança e permaneceremos sempre aqui, pra você. Você está recebendo este documento com as informações da vistoria feita no veículo que você nos devolveu. Lembrando que de acordo com o contrato, caso sejam identiﬁcados itens quebrados ou que estejam faltando no carro, falhas ou danos causados por acidentes ou mal uso do carro, serão analisados e poderão ser cobrados. Informações do carro Modelo CRONOS DRIVE 1.3 8V FLEX 4P C/AR Cor BRANCO Placa SJD3D91 Km 93150 Combustível 0/8 Blindagem NÃO Hora 17:33:00 Local PARAUAPEBAS | PA Detalhes do checklist DESCRIÇÃO ITEM Pneus/Roda/Calota Estepe - Medida Pneus/Roda/Calota Estepe - Marca Pneus/Roda/Calota Estepe - Profundidade Do Sulco - Twi Pneus/Roda/Calota Pneu Dianteiro Direito - Medida Pneus/Roda/Calota Pneu Dianteiro Direito - Marca REGISTRO 185/65 R 15 Outros 22 185/65 R 15 Outros Pneus/Roda/Calota Pneu Dianteiro Direito - Profundidade Do Sulco - Twi 20 Pneus/Roda/Calota Pneu Traseiro Direito - Medida Pneus/Roda/Calota Pneu Traseiro Direito - Modelo 185/65 R 15 Outros Pneus/Roda/Calota Pneu Traseiro Direito - Profundidade Do Sulco - Twi 20 Pneus/Roda/Calota Pneu Traseiro Esquerdo - Medida Pneus/Roda/Calota Pneu Traseiro Esquerdo - Marca 185/65 R 15 Outros Pneus/Roda/Calota Pneu Traseiro Esquerdo - Profundidade Do Sulco - Twi 20 Pneus/Roda/Calota Pneu Dianteiro Esquerdo - Medida Pneus/Roda/Calota Pneu Dianteiro Esquerdo - Marca 185/65 R 15 Outros Pneus/Roda/Calota Pneu Dianteiro Esquerdo - Profundidade Do Sulco - Twi 20 * Avaria: AVARIA ITENS INTERNOS E EXTERNOS: quebrado; amassado; descascado; oxidado; cortado; furado; manchado; risco com dano; descascado; mossas; piques; reparo defeituoso; trincado; inﬁltração; não funciona. AVARIA PNEUS: desgaste irregular; furado; bolha. 1 de 5 Observações Adicionais Observações realizadas por você Imagens CHECKLIST MANUAL DIANTEIRA DO CARRO INTERIOR 2 de 5 ITENS DE CONFERÊNCIA LATERAL DIREITA LATERAL ESQUERDA 3 de 5 PNEUS/RODA/CALOTA TRASEIRA 4 de 5 TRASEIRA INTERIOR Parauapebas, 23 de fevereiro de 2026 Responsável pela devolução 5 de 5"
+}

@@ -1,0 +1,166 @@
+{
+  "case_id": "SYG2J90",
+  "assessments": [
+    {
+      "image_id": "FOTDEV_30",
+      "aprovada": false,
+      "motivo": "A imagem não mostra a peça interior do veículo.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_31",
+      "aprovada": false,
+      "motivo": "A imagem não mostra a roda dianteira direita, mas sim o pneu.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_32",
+      "aprovada": false,
+      "motivo": "Imagem de baixa qualidade e não mostra claramente a tampa do porta-malas.",
+      "qualidade_imagem": "baixa",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_33",
+      "aprovada": true,
+      "motivo": "Imagem utilizável para análise, apesar de não mostrar claramente a peça.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_34",
+      "aprovada": true,
+      "motivo": "Imagem utilizável para análise, apesar de não ser possível confirmar a correspondência exata da peça.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_35",
+      "aprovada": false,
+      "motivo": "Imagem borrada e não é possível identificar claramente a roda dianteira direita.",
+      "qualidade_imagem": "baixa",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_36",
+      "aprovada": false,
+      "motivo": "Imagem muito escura e não mostra a peça indicada.",
+      "qualidade_imagem": "baixa",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_37",
+      "aprovada": false,
+      "motivo": "Imagem muito escura e borrada, dificultando a visualização da peça.",
+      "qualidade_imagem": "baixa",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_38",
+      "aprovada": true,
+      "motivo": "Imagem utilizável para análise, apesar de algumas limitações de iluminação e ângulo.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": true
+    },
+    {
+      "image_id": "FOTDEV_39",
+      "aprovada": false,
+      "motivo": "Imagem muito borrada e não é possível identificar a peça.",
+      "qualidade_imagem": "baixa",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_40",
+      "aprovada": true,
+      "motivo": "Imagem utilizável para análise, apesar de algumas limitações de iluminação.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": true
+    },
+    {
+      "image_id": "FOTDEV_41",
+      "aprovada": true,
+      "motivo": "",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": true
+    },
+    {
+      "image_id": "FOTDEV_42",
+      "aprovada": false,
+      "motivo": "A imagem não mostra a peça interior do veículo.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_43",
+      "aprovada": true,
+      "motivo": "Imagem utilizável para análise, apesar de ângulo não ideal.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": true
+    },
+    {
+      "image_id": "FOTDEV_44",
+      "aprovada": false,
+      "motivo": "A imagem não mostra uma peça automotiva, mas sim um documento de identidade.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_45",
+      "aprovada": false,
+      "motivo": "A imagem não mostra a roda dianteira direita, mas sim o pneu.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_46",
+      "aprovada": false,
+      "motivo": "Imagem de baixa qualidade e não mostra claramente a tampa do porta-malas.",
+      "qualidade_imagem": "baixa",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_47",
+      "aprovada": false,
+      "motivo": "Imagem de baixa qualidade e não mostra claramente a traseira do carro.",
+      "qualidade_imagem": "baixa",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_48",
+      "aprovada": false,
+      "motivo": "Imagem borrada e com baixa iluminação, dificultando a visualização da peça.",
+      "qualidade_imagem": "baixa",
+      "corresponde_a_peca": true
+    },
+    {
+      "image_id": "FOTDEV_49",
+      "aprovada": true,
+      "motivo": "",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": true
+    },
+    {
+      "image_id": "FOTDEV_50",
+      "aprovada": true,
+      "motivo": "Imagem utilizável para análise, apesar de não mostrar a peça completa.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": true
+    },
+    {
+      "image_id": "FOTDEV_51",
+      "aprovada": true,
+      "motivo": "Imagem utilizável para análise, apesar de reflexos e ângulo não ideal.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": true
+    },
+    {
+      "image_id": "FOTDEV_52",
+      "aprovada": true,
+      "motivo": "Imagem utilizável para análise, apesar de não mostrar claramente a peça.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": false
+    }
+  ]
+}

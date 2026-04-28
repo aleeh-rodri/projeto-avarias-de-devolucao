@@ -1,0 +1,40 @@
+{
+  "checklist_pdf": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\QXW8F67\\PDF\\RELDEV_17.pdf",
+  "zoom": 2.0,
+  "titulos": {
+    "inicio": "LATERAL DIREITA",
+    "paginas_selecionadas_por": [
+      "LATERAL DIREITA",
+      "LATERAL ESQUERDA"
+    ],
+    "fim": "PNEUS/RODA/CALOTA"
+  },
+  "paginas_selecionadas": [
+    {
+      "page_number_1based": 1,
+      "image_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\output_teste_recorte_laterais\\pagina_1.png",
+      "width_px": 1192,
+      "height_px": 1686
+    },
+    {
+      "page_number_1based": 3,
+      "image_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\output_teste_recorte_laterais\\pagina_3.png",
+      "width_px": 1192,
+      "height_px": 1686
+    },
+    {
+      "page_number_1based": 4,
+      "image_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\output_teste_recorte_laterais\\pagina_4.png",
+      "width_px": 1192,
+      "height_px": 1686
+    }
+  ],
+  "imagem_unida_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\output_teste_recorte_laterais\\paginas_laterais_unidas.png",
+  "recorte_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\output_teste_recorte_laterais\\recorte_lateral_direita_ate_pneus.png",
+  "recorte": {
+    "start_page_1based": 1,
+    "start_y_px_in_combined": 1122,
+    "end_y_px_in_combined": 1251,
+    "end_rule": "titulo_pneus"
+  }
+}

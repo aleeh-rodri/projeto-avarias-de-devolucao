@@ -1,0 +1,213 @@
+{
+  "case_id": "ECU8I02",
+  "triagem": {
+    "total_imagens": 20,
+    "imagens_aprovadas_qualidade": 10
+  },
+  "peritos": {
+    "perito_parachoque": {
+      "imagens_usadas": [
+        {
+          "image_id": "FOTDEV_40",
+          "part_id": "parachoque_dianteiro",
+          "view": "media"
+        },
+        {
+          "image_id": "FOTDEV_36",
+          "part_id": "parachoque_traseiro",
+          "view": "media"
+        },
+        {
+          "image_id": "FOTDEV_50",
+          "part_id": "parachoque_dianteiro",
+          "view": "media"
+        }
+      ],
+      "resultado": {
+        "nivel_dano": "leve",
+        "peca": "para-choques",
+        "itens": [
+          {
+            "nivel_dano": "leve",
+            "peca": "para-choque dianteiro",
+            "servicos": [
+              {
+                "descricao": "Pintura para-choque dianteiro",
+                "preco": 320.0
+              }
+            ],
+            "preco_total": 320.0,
+            "justificativa": "Dano leve. Obs: risco superficial sem deformação",
+            "fotos_analisadas": [
+              "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\ECU8I02\\Fotos\\FOTDEV_40.jpg",
+              "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\ECU8I02\\Fotos\\FOTDEV_50.jpg"
+            ]
+          }
+        ],
+        "servicos": [
+          {
+            "descricao": "Pintura para-choque dianteiro",
+            "preco": 320.0
+          }
+        ],
+        "preco_total": 320.0,
+        "justificativa": "para-choque dianteiro: leve (Dano leve. Obs: risco superficial sem deformação)",
+        "fotos_analisadas": [
+          "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\ECU8I02\\Fotos\\FOTDEV_40.jpg",
+          "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\ECU8I02\\Fotos\\FOTDEV_50.jpg"
+        ]
+      }
+    },
+    "perito_emblemas": {
+      "imagens_usadas": [
+        {
+          "image_id": "FOTDEV_40",
+          "part_id": "parachoque_dianteiro",
+          "view": "media"
+        },
+        {
+          "image_id": "FOTDEV_36",
+          "part_id": "parachoque_traseiro",
+          "view": "media"
+        },
+        {
+          "image_id": "FOTDEV_50",
+          "part_id": "parachoque_dianteiro",
+          "view": "media"
+        }
+      ],
+      "resultado": {
+        "nivel_dano": "sem_dano",
+        "peca": "emblemas (dianteiro/traseiro)",
+        "servicos": [],
+        "preco_total": 0,
+        "justificativa": "[DESCONSIDERADO POR CHECKLIST] dianteiro: O emblema da montadora está visível e intacto no centro da grade dianteira.; traseiro: O emblema da montadora está visível e intacto na parte traseira do veículo.",
+        "fotos_analisadas": [
+          "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\ECU8I02\\Fotos\\FOTDEV_40.jpg",
+          "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\ECU8I02\\Fotos\\FOTDEV_36.jpg"
+        ]
+      }
+    },
+    "perito_lataria": {
+      "imagens_usadas": [
+        {
+          "image_id": "FOTDEV_38",
+          "part_id": "retrovisor_esquerdo",
+          "view": "media"
+        },
+        {
+          "image_id": "FOTDEV_57",
+          "part_id": "retrovisor_direito",
+          "view": "media"
+        }
+      ],
+      "resultado": {
+        "nivel_dano": "sem_dano",
+        "peca": "lataria",
+        "itens": [],
+        "servicos": [],
+        "preco_total": 0,
+        "justificativa": "[DESCONSIDERADO POR CHECKLIST] retrovisor direito: leve (Existem marcas superficiais na pintura da lateral direita, indicando riscos que não comprometem a estrutura da chapa.)",
+        "fotos_analisadas": [
+          "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\ECU8I02\\Fotos\\FOTDEV_38.jpg",
+          "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\ECU8I02\\Fotos\\FOTDEV_57.jpg"
+        ]
+      }
+    },
+    "perito_vidros": {
+      "resultado": {
+        "erro": "nenhuma imagem elegivel"
+      }
+    },
+    "perito_pneus_rodas": {
+      "imagens_usadas": [
+        {
+          "image_id": "FOTDEV_42",
+          "part_id": "roda_dianteira_direita",
+          "view": "detalhe"
+        },
+        {
+          "image_id": "FOTDEV_53",
+          "part_id": "roda_dianteira_direita",
+          "view": "detalhe"
+        }
+      ],
+      "resultado": {
+        "nivel_dano": "sem_dano",
+        "peca": "calota",
+        "servicos": [],
+        "preco_total": 0,
+        "justificativa": "[DESCONSIDERADO POR CHECKLIST] A roda apresenta ralada de guia visível, mas não há deformação clara ou trinca, permitindo reparo.",
+        "fotos_analisadas": [
+          "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\ECU8I02\\Fotos\\FOTDEV_42.jpg",
+          "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\ECU8I02\\Fotos\\FOTDEV_53.jpg"
+        ]
+      }
+    },
+    "perito_interior": {
+      "imagens_usadas": [
+        {
+          "image_id": "FOTDEV_59",
+          "part_id": "interior",
+          "view": "detalhe"
+        },
+        {
+          "image_id": "FOTDEV_56",
+          "part_id": "interior",
+          "view": "media"
+        }
+      ],
+      "resultado": {
+        "nivel_dano": "leve",
+        "peca": "tapete",
+        "servicos": [
+          {
+            "descricao": "Serviço higienização Interna",
+            "preco": 250.0
+          }
+        ],
+        "preco_total": 250.0,
+        "justificativa": "Sujeira leve visível no tapete, não requer reparo, mas sugere necessidade de higienização.",
+        "fotos_analisadas": [
+          "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\ECU8I02\\Fotos\\FOTDEV_59.jpg",
+          "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\ECU8I02\\Fotos\\FOTDEV_56.jpg"
+        ]
+      }
+    },
+    "perito_acessorios": {
+      "imagens_usadas": [
+        {
+          "image_id": "FOTDEV_54",
+          "part_id": "acessorios",
+          "view": "interior"
+        }
+      ],
+      "resultado": {
+        "nivel_dano": "sem_dano",
+        "peca": "chave",
+        "servicos": [],
+        "preco_total": 0,
+        "justificativa": "[DESCONSIDERADO POR CHECKLIST] As chaves apresentadas estão visivelmente sujas e com desgaste, indicando uso excessivo ou danos que podem afetar seu funcionamento.",
+        "fotos_analisadas": [
+          "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\ECU8I02\\Fotos\\FOTDEV_54.jpg"
+        ]
+      }
+    }
+  },
+  "divergencias_checklist": [
+    {
+      "tipo": "checklist_vs_visao",
+      "perito": "perito_emblemas",
+      "part_id": "parachoque_dianteiro",
+      "mensagem": "Checklist marcou avaria para esta peça, mas o perito retornou nivel_dano='sem_dano'. Recomendado revisar manualmente.",
+      "image_ids": [
+        "FOTDEV_50"
+      ],
+      "photo_paths": [
+        "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\ECU8I02\\Fotos\\FOTDEV_50.jpg"
+      ]
+    }
+  ],
+  "cobrancas_checklist_fallback": [],
+  "preco_total_geral": 570.0
+}

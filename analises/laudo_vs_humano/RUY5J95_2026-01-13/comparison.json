@@ -1,0 +1,79 @@
+{
+  "case_id": "RUY5J95",
+  "totals": {
+    "laudo_sum_servicos": 1015.0,
+    "humano_sum_parsed": 2616.74,
+    "humano_total_hint": 2616.74,
+    "delta_laudo_minus_humano": -1601.74
+  },
+  "matched": [
+    {
+      "descricao_norm": "mao de obra troca do para brisa",
+      "valor": 180.0,
+      "qtd": 1
+    },
+    {
+      "descricao_norm": "pintura retrovisor esquerdo",
+      "valor": 150.0,
+      "qtd": 1
+    }
+  ],
+  "somente_laudo": [
+    {
+      "descricao_norm": "recuperacao e pintura para choque dianteiro",
+      "valor": 400.0,
+      "qtd": 1
+    },
+    {
+      "descricao_norm": "pintura retrovisor direito",
+      "valor": 150.0,
+      "qtd": 1
+    },
+    {
+      "descricao_norm": "troca jogo de calotas",
+      "valor": 135.0,
+      "qtd": 1
+    },
+    {
+      "descricao_norm": "troca para brisa dianteiro vidro nao consta na lpu",
+      "valor": 0.0,
+      "qtd": 1
+    }
+  ],
+  "somente_humano": [
+    {
+      "descricao_norm": "troca para brisa dianteiro",
+      "valor": 936.74,
+      "qtd": 1
+    },
+    {
+      "descricao_norm": "recuperacao e pintura da caixa de ar do lado esquerdo",
+      "valor": 370.0,
+      "qtd": 1
+    },
+    {
+      "descricao_norm": "pintura porta dianteira esquerda",
+      "valor": 340.0,
+      "qtd": 1
+    },
+    {
+      "descricao_norm": "pintura para choque dianteiro",
+      "valor": 320.0,
+      "qtd": 2
+    }
+  ],
+  "possiveis_mismatches": [
+    {
+      "laudo": {
+        "descricao_norm": "recuperacao e pintura para choque dianteiro",
+        "valor": 400.0
+      },
+      "humano": {
+        "descricao_norm": "pintura para choque dianteiro",
+        "valor": 320.0
+      },
+      "similaridade": 0.806,
+      "delta": 80.0
+    }
+  ]
+}

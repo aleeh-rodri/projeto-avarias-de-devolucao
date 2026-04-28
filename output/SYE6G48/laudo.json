@@ -1,0 +1,276 @@
+{
+  "case_id": "SYE6G48",
+  "triagem": {
+    "total_imagens": 25,
+    "imagens_aprovadas_qualidade": 14
+  },
+  "peritos": {
+    "perito_parachoque": {
+      "imagens_usadas": [
+        {
+          "image_id": "FOTDEV_73",
+          "part_id": "parachoque_dianteiro",
+          "view": "detalhe"
+        },
+        {
+          "image_id": "FOTDEV_79",
+          "part_id": "parachoque_traseiro",
+          "view": "detalhe"
+        },
+        {
+          "image_id": "FOTDEV_47",
+          "part_id": "parachoque_dianteiro",
+          "view": "media"
+        }
+      ],
+      "resultado": {
+        "nivel_dano": "leve",
+        "peca": "para-choques",
+        "itens": [
+          {
+            "nivel_dano": "leve",
+            "peca": "para-choque dianteiro",
+            "servicos": [
+              {
+                "descricao": "Pintura para-choque dianteiro",
+                "preco": 320.0
+              }
+            ],
+            "preco_total": 320.0,
+            "justificativa": "Dano leve. Obs: deformação visível e arranhão profundo na pintura | calibracao: moderado/grave sem suporte >=2 fotos; tratado como leve/pintura",
+            "fotos_analisadas": [
+              "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SYE6G48\\Fotos\\FOTDEV_73.jpg",
+              "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SYE6G48\\Fotos\\FOTDEV_47.jpg"
+            ]
+          }
+        ],
+        "servicos": [
+          {
+            "descricao": "Pintura para-choque dianteiro",
+            "preco": 320.0
+          }
+        ],
+        "preco_total": 320.0,
+        "justificativa": "para-choque dianteiro: leve (Dano leve. Obs: deformação visível e arranhão profundo na pintura | calibracao: moderado/grave sem suporte >=2 fotos; tratado como leve/pintura)",
+        "fotos_analisadas": [
+          "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SYE6G48\\Fotos\\FOTDEV_73.jpg",
+          "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SYE6G48\\Fotos\\FOTDEV_47.jpg"
+        ]
+      }
+    },
+    "perito_emblemas": {
+      "imagens_usadas": [
+        {
+          "image_id": "FOTDEV_73",
+          "part_id": "parachoque_dianteiro",
+          "view": "detalhe"
+        },
+        {
+          "image_id": "FOTDEV_79",
+          "part_id": "parachoque_traseiro",
+          "view": "detalhe"
+        },
+        {
+          "image_id": "FOTDEV_47",
+          "part_id": "parachoque_dianteiro",
+          "view": "media"
+        }
+      ],
+      "resultado": {
+        "nivel_dano": "sem_dano",
+        "peca": "emblemas (dianteiro/traseiro)",
+        "servicos": [],
+        "preco_total": 0.0,
+        "justificativa": "dianteiro: O emblema da montadora está visível e intacto na parte frontal do veículo.; traseiro: A imagem não mostra claramente a área do emblema da montadora.",
+        "fotos_analisadas": [
+          "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SYE6G48\\Fotos\\FOTDEV_47.jpg",
+          "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SYE6G48\\Fotos\\FOTDEV_79.jpg"
+        ]
+      }
+    },
+    "perito_lataria": {
+      "imagens_usadas": [
+        {
+          "image_id": "FOTDEV_77",
+          "part_id": "porta_dianteira_direita",
+          "view": "detalhe"
+        },
+        {
+          "image_id": "FOTDEV_49",
+          "part_id": "porta_traseira_direita",
+          "view": "media"
+        },
+        {
+          "image_id": "FOTDEV_48",
+          "part_id": "porta_dianteira_direita",
+          "view": "detalhe"
+        }
+      ],
+      "resultado": {
+        "nivel_dano": "sem_dano",
+        "peca": "lataria",
+        "servicos": [],
+        "preco_total": 0.0,
+        "justificativa": "Sem evidência de dano em lataria nas fotos fornecidas.",
+        "fotos_analisadas": [
+          "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SYE6G48\\Fotos\\FOTDEV_77.jpg",
+          "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SYE6G48\\Fotos\\FOTDEV_49.jpg",
+          "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SYE6G48\\Fotos\\FOTDEV_48.jpg"
+        ]
+      }
+    },
+    "perito_vidros": {
+      "resultado": {
+        "erro": "nenhuma imagem elegivel"
+      }
+    },
+    "perito_pneus_rodas": {
+      "imagens_usadas": [
+        {
+          "image_id": "FOTDEV_74",
+          "part_id": "roda_dianteira_direita",
+          "view": "detalhe"
+        },
+        {
+          "image_id": "FOTDEV_83",
+          "part_id": "roda_dianteira_direita",
+          "view": "detalhe"
+        },
+        {
+          "image_id": "FOTDEV_80",
+          "part_id": "roda_dianteira_esquerda",
+          "view": "media"
+        }
+      ],
+      "resultado": {
+        "nivel_dano": "sem_dano",
+        "peca": "roda liga leve",
+        "servicos": [],
+        "preco_total": 0.0,
+        "justificativa": "Sem danos identificados nas rodas.",
+        "fotos_analisadas": [
+          "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SYE6G48\\Fotos\\FOTDEV_74.jpg",
+          "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SYE6G48\\Fotos\\FOTDEV_83.jpg",
+          "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SYE6G48\\Fotos\\FOTDEV_80.jpg"
+        ]
+      }
+    },
+    "perito_interior": {
+      "imagens_usadas": [
+        {
+          "image_id": "FOTDEV_45",
+          "part_id": "interior",
+          "view": "detalhe"
+        },
+        {
+          "image_id": "FOTDEV_41",
+          "part_id": "interior",
+          "view": "interior"
+        }
+      ],
+      "resultado": {
+        "nivel_dano": "sem_dano",
+        "peca": "painel",
+        "servicos": [],
+        "preco_total": 0,
+        "justificativa": "[DESCONSIDERADO POR CHECKLIST] Sem danos identificados.",
+        "fotos_analisadas": [
+          "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SYE6G48\\Fotos\\FOTDEV_45.jpg",
+          "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SYE6G48\\Fotos\\FOTDEV_41.jpg"
+        ]
+      }
+    },
+    "perito_acessorios": {
+      "resultado": {
+        "erro": "nenhuma imagem elegivel"
+      }
+    }
+  },
+  "divergencias_checklist": [
+    {
+      "tipo": "checklist_vs_visao",
+      "perito": "perito_emblemas",
+      "part_id": "parachoque_dianteiro",
+      "mensagem": "Checklist marcou avaria para esta peça, mas o perito retornou nivel_dano='sem_dano'. Recomendado revisar manualmente.",
+      "image_ids": [
+        "FOTDEV_73",
+        "FOTDEV_47"
+      ],
+      "photo_paths": [
+        "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SYE6G48\\Fotos\\FOTDEV_73.jpg",
+        "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SYE6G48\\Fotos\\FOTDEV_47.jpg"
+      ]
+    },
+    {
+      "tipo": "checklist_vs_visao",
+      "perito": "perito_lataria",
+      "part_id": "porta_dianteira_direita",
+      "mensagem": "Checklist marcou avaria para esta peça, mas o perito retornou nivel_dano='sem_dano'. Recomendado revisar manualmente.",
+      "image_ids": [
+        "FOTDEV_77",
+        "FOTDEV_48"
+      ],
+      "photo_paths": [
+        "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SYE6G48\\Fotos\\FOTDEV_77.jpg",
+        "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SYE6G48\\Fotos\\FOTDEV_48.jpg"
+      ]
+    },
+    {
+      "tipo": "checklist_vs_visao",
+      "perito": "perito_lataria",
+      "part_id": "porta_traseira_direita",
+      "mensagem": "Checklist marcou avaria para esta peça, mas o perito retornou nivel_dano='sem_dano'. Recomendado revisar manualmente.",
+      "image_ids": [
+        "FOTDEV_49"
+      ],
+      "photo_paths": [
+        "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SYE6G48\\Fotos\\FOTDEV_49.jpg"
+      ]
+    },
+    {
+      "tipo": "checklist_vs_visao",
+      "perito": "perito_pneus_rodas",
+      "part_id": "roda_dianteira_esquerda",
+      "mensagem": "Checklist marcou avaria para esta peça, mas o perito retornou nivel_dano='sem_dano'. Recomendado revisar manualmente.",
+      "image_ids": [
+        "FOTDEV_80"
+      ],
+      "photo_paths": [
+        "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SYE6G48\\Fotos\\FOTDEV_80.jpg"
+      ]
+    }
+  ],
+  "cobrancas_checklist_fallback": [
+    {
+      "descricao": "CHECKLIST — Avaria reportada na peça 'porta_dianteira_direita' (REVISAR)",
+      "valor": 0,
+      "needs_human_review": true,
+      "origin": "checklist_fallback",
+      "part_id": "porta_dianteira_direita",
+      "fotos": [
+        "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SYE6G48\\Fotos\\FOTDEV_77.jpg"
+      ]
+    },
+    {
+      "descricao": "CHECKLIST — Avaria reportada na peça 'porta_traseira_direita' (REVISAR)",
+      "valor": 0,
+      "needs_human_review": true,
+      "origin": "checklist_fallback",
+      "part_id": "porta_traseira_direita",
+      "fotos": [
+        "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SYE6G48\\Fotos\\FOTDEV_49.jpg"
+      ]
+    },
+    {
+      "descricao": "CHECKLIST — Avaria reportada na peça 'roda_dianteira_esquerda' (REVISAR)",
+      "valor": 0,
+      "needs_human_review": true,
+      "origin": "checklist_fallback",
+      "part_id": "roda_dianteira_esquerda",
+      "fotos": [
+        "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\SYE6G48\\Fotos\\FOTDEV_80.jpg"
+      ]
+    }
+  ],
+  "preco_total_geral": 320.0
+}

@@ -1,0 +1,152 @@
+{
+  "case_id": "SYS5G21",
+  "assessments": [
+    {
+      "image_id": "FOTDEV_28",
+      "aprovada": true,
+      "motivo": "",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": true
+    },
+    {
+      "image_id": "FOTDEV_29",
+      "aprovada": true,
+      "motivo": "",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": true
+    },
+    {
+      "image_id": "FOTDEV_30",
+      "aprovada": true,
+      "motivo": "",
+      "qualidade_imagem": "alta",
+      "corresponde_a_peca": true
+    },
+    {
+      "image_id": "FOTDEV_31",
+      "aprovada": false,
+      "motivo": "A imagem não mostra a roda dianteira direita, mas sim um pneu.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_32",
+      "aprovada": false,
+      "motivo": "A imagem não mostra a roda dianteira direita, mas sim o pneu.",
+      "qualidade_imagem": "alta",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_33",
+      "aprovada": false,
+      "motivo": "Imagem borrada e não mostra claramente o interior do veículo.",
+      "qualidade_imagem": "baixa",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_34",
+      "aprovada": true,
+      "motivo": "",
+      "qualidade_imagem": "alta",
+      "corresponde_a_peca": true
+    },
+    {
+      "image_id": "FOTDEV_35",
+      "aprovada": false,
+      "motivo": "A imagem não mostra a roda traseira direita, mas sim o compartimento de ferramentas.",
+      "qualidade_imagem": "alta",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_36",
+      "aprovada": true,
+      "motivo": "",
+      "qualidade_imagem": "alta",
+      "corresponde_a_peca": true
+    },
+    {
+      "image_id": "FOTDEV_37",
+      "aprovada": true,
+      "motivo": "",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": true
+    },
+    {
+      "image_id": "FOTDEV_38",
+      "aprovada": false,
+      "motivo": "A imagem não mostra a porta dianteira direita claramente.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_39",
+      "aprovada": false,
+      "motivo": "Imagem de baixa qualidade e não é possível identificar a peça.",
+      "qualidade_imagem": "baixa",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_40",
+      "aprovada": false,
+      "motivo": "A imagem não mostra o capô do veículo.",
+      "qualidade_imagem": "alta",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_41",
+      "aprovada": false,
+      "motivo": "A imagem não mostra claramente o paralama traseiro direito.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_42",
+      "aprovada": false,
+      "motivo": "A imagem não mostra a roda dianteira direita, apenas o pneu.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_43",
+      "aprovada": true,
+      "motivo": "",
+      "qualidade_imagem": "alta",
+      "corresponde_a_peca": true
+    },
+    {
+      "image_id": "FOTDEV_44",
+      "aprovada": true,
+      "motivo": "",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": true
+    },
+    {
+      "image_id": "FOTDEV_45",
+      "aprovada": true,
+      "motivo": "A imagem é utilizável para análise, apesar de não ser perfeitamente clara.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": true
+    },
+    {
+      "image_id": "FOTDEV_46",
+      "aprovada": false,
+      "motivo": "Imagem de baixa qualidade e não é possível identificar claramente o retrovisor.",
+      "qualidade_imagem": "baixa",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_47",
+      "aprovada": false,
+      "motivo": "A imagem não mostra claramente a roda dianteira direita.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_48",
+      "aprovada": false,
+      "motivo": "A imagem não mostra a peça interior, mas sim uma carteira de habilitação.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": false
+    }
+  ]
+}

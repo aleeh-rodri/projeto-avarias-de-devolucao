@@ -1,0 +1,145 @@
+{
+  "case_id": "SHO5I56",
+  "assessments": [
+    {
+      "image_id": "FOTDEV_1",
+      "aprovada": true,
+      "motivo": "",
+      "qualidade_imagem": "alta",
+      "corresponde_a_peca": true
+    },
+    {
+      "image_id": "FOTDEV_10",
+      "aprovada": false,
+      "motivo": "A imagem não mostra claramente o interior do veículo.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_11",
+      "aprovada": true,
+      "motivo": "A imagem não mostra claramente a traseira do carro.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_12",
+      "aprovada": true,
+      "motivo": "A imagem não mostra a traseira do carro, apenas a lateral.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_13",
+      "aprovada": true,
+      "motivo": "",
+      "qualidade_imagem": "alta",
+      "corresponde_a_peca": true
+    },
+    {
+      "image_id": "FOTDEV_14",
+      "aprovada": false,
+      "motivo": "A imagem não mostra a peça 'capo', mas sim o painel do carro.",
+      "qualidade_imagem": "alta",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_15",
+      "aprovada": false,
+      "motivo": "A imagem não mostra claramente a porta traseira direita.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_16",
+      "aprovada": false,
+      "motivo": "A imagem não mostra a peça dianteira do carro.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_17",
+      "aprovada": false,
+      "motivo": "A imagem não mostra claramente o paralama traseiro direito.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_18",
+      "aprovada": true,
+      "motivo": "",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": true
+    },
+    {
+      "image_id": "FOTDEV_19",
+      "aprovada": false,
+      "motivo": "Imagem de baixa qualidade e não mostra claramente o capô.",
+      "qualidade_imagem": "baixa",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_2",
+      "aprovada": false,
+      "motivo": "A imagem não mostra a roda dianteira direita, apenas o pneu.",
+      "qualidade_imagem": "alta",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_20",
+      "aprovada": false,
+      "motivo": "A imagem não mostra a roda dianteira direita, apenas o pneu.",
+      "qualidade_imagem": "alta",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_3",
+      "aprovada": true,
+      "motivo": "",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": true
+    },
+    {
+      "image_id": "FOTDEV_4",
+      "aprovada": true,
+      "motivo": "Imagem utilizável para análise, apesar de ângulo não ideal.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": true
+    },
+    {
+      "image_id": "FOTDEV_5",
+      "aprovada": true,
+      "motivo": "",
+      "qualidade_imagem": "alta",
+      "corresponde_a_peca": true
+    },
+    {
+      "image_id": "FOTDEV_6",
+      "aprovada": true,
+      "motivo": "A imagem não mostra a traseira do carro, apenas a lateral e a roda.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_7",
+      "aprovada": false,
+      "motivo": "A imagem não mostra a roda dianteira direita, apenas o pneu.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_8",
+      "aprovada": false,
+      "motivo": "A imagem não mostra a peça traseira do carro.",
+      "qualidade_imagem": "baixa",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_9",
+      "aprovada": true,
+      "motivo": "",
+      "qualidade_imagem": "alta",
+      "corresponde_a_peca": true
+    }
+  ]
+}

@@ -1,0 +1,166 @@
+{
+  "case_id": "UAI8J51",
+  "assessments": [
+    {
+      "image_id": "FOTDEV_11",
+      "aprovada": true,
+      "motivo": "Imagem utilizável para análise, apesar de não mostrar a peça traseira de forma ideal.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_12",
+      "aprovada": true,
+      "motivo": "Imagem utilizável para análise, apesar de não mostrar a peça frontal completa.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_13",
+      "aprovada": true,
+      "motivo": "Imagem utilizável para análise, apesar de não mostrar a peça completa.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": true
+    },
+    {
+      "image_id": "FOTDEV_14",
+      "aprovada": true,
+      "motivo": "Imagem utilizável para análise, apesar de ângulo não ideal.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": true
+    },
+    {
+      "image_id": "FOTDEV_15",
+      "aprovada": true,
+      "motivo": "Imagem utilizável para análise, apesar de não mostrar a peça frontal de forma ideal.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": true
+    },
+    {
+      "image_id": "FOTDEV_16",
+      "aprovada": true,
+      "motivo": "Imagem utilizável para análise, apesar de não mostrar a peça inteira.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": true
+    },
+    {
+      "image_id": "FOTDEV_17",
+      "aprovada": false,
+      "motivo": "A imagem não mostra o capô, apenas o painel do carro.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_18",
+      "aprovada": true,
+      "motivo": "A imagem não mostra a peça dianteira do carro.",
+      "qualidade_imagem": "alta",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_19",
+      "aprovada": false,
+      "motivo": "A imagem não mostra a peça 'acessórios' e a qualidade é média.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_20",
+      "aprovada": false,
+      "motivo": "A imagem não mostra claramente a roda dianteira direita.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_27",
+      "aprovada": false,
+      "motivo": "A imagem não mostra claramente a roda dianteira direita.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_28",
+      "aprovada": false,
+      "motivo": "A imagem não mostra claramente a roda dianteira direita.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_29",
+      "aprovada": true,
+      "motivo": "Imagem utilizável para análise, apesar de algumas limitações.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": true
+    },
+    {
+      "image_id": "FOTDEV_30",
+      "aprovada": true,
+      "motivo": "Imagem utilizável para análise, apesar de não mostrar a peça traseira de forma clara.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_31",
+      "aprovada": true,
+      "motivo": "",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": true
+    },
+    {
+      "image_id": "FOTDEV_32",
+      "aprovada": false,
+      "motivo": "A imagem não mostra o capô, mas sim o motor do veículo.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_33",
+      "aprovada": false,
+      "motivo": "A imagem não mostra a peça 'tampa_porta_malas' e a qualidade é média.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_34",
+      "aprovada": true,
+      "motivo": "Imagem utilizável para análise, mostra parte do para-choque com avaria.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": true
+    },
+    {
+      "image_id": "FOTDEV_35",
+      "aprovada": false,
+      "motivo": "A imagem não mostra claramente a tampa do porta-malas.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_36",
+      "aprovada": false,
+      "motivo": "A imagem não mostra claramente a peça interior, apenas um documento em uma superfície.",
+      "qualidade_imagem": "alta",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_37",
+      "aprovada": true,
+      "motivo": "A imagem não mostra a traseira do carro, apenas o lado.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_38",
+      "aprovada": false,
+      "motivo": "A imagem não mostra o interior do veículo, apenas objetos sobre o assento.",
+      "qualidade_imagem": "alta",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_39",
+      "aprovada": true,
+      "motivo": "",
+      "qualidade_imagem": "alta",
+      "corresponde_a_peca": true
+    }
+  ]
+}

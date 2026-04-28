@@ -1,0 +1,229 @@
+{
+  "case_id": "SHL9D99",
+  "assessments": [
+    {
+      "image_id": "FOTDEV_10",
+      "aprovada": true,
+      "motivo": "Imagem utilizável para análise, apesar de ângulo não ideal.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": true
+    },
+    {
+      "image_id": "FOTDEV_11",
+      "aprovada": true,
+      "motivo": "A imagem não mostra a parte traseira do carro.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_12",
+      "aprovada": true,
+      "motivo": "Imagem utilizável para análise, apesar de ângulo não ideal.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": true
+    },
+    {
+      "image_id": "FOTDEV_13",
+      "aprovada": true,
+      "motivo": "Imagem utilizável para análise, apesar de não ser possível confirmar se é o teto.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_14",
+      "aprovada": true,
+      "motivo": "Imagem utilizável para análise, apesar de não mostrar a peça inteira.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": true
+    },
+    {
+      "image_id": "FOTDEV_15",
+      "aprovada": true,
+      "motivo": "Imagem utilizável para análise, apesar de não mostrar claramente o capô.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_16",
+      "aprovada": true,
+      "motivo": "",
+      "qualidade_imagem": "alta",
+      "corresponde_a_peca": true
+    },
+    {
+      "image_id": "FOTDEV_17",
+      "aprovada": true,
+      "motivo": "Checklist reportou avaria; mantendo para análise/orçamento.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": true
+    },
+    {
+      "image_id": "FOTDEV_18",
+      "aprovada": true,
+      "motivo": "",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": true
+    },
+    {
+      "image_id": "FOTDEV_19",
+      "aprovada": true,
+      "motivo": "Imagem utilizável para análise, apesar de não ser perfeita.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": true
+    },
+    {
+      "image_id": "FOTDEV_20",
+      "aprovada": true,
+      "motivo": "Imagem apresenta qualidade média e é utilizável para análise de avarias.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": true
+    },
+    {
+      "image_id": "FOTDEV_21",
+      "aprovada": true,
+      "motivo": "Imagem utilizável para análise, apesar de algumas limitações.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": true
+    },
+    {
+      "image_id": "FOTDEV_22",
+      "aprovada": true,
+      "motivo": "Imagem utilizável para análise, apesar de não mostrar a peça completa.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": true
+    },
+    {
+      "image_id": "FOTDEV_23",
+      "aprovada": true,
+      "motivo": "",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": true
+    },
+    {
+      "image_id": "FOTDEV_24",
+      "aprovada": true,
+      "motivo": "Imagem utilizável para análise, apesar de ângulo não ideal.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": true
+    },
+    {
+      "image_id": "FOTDEV_25",
+      "aprovada": true,
+      "motivo": "Imagem utilizável para análise, apesar de não mostrar a peça inteira.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_26",
+      "aprovada": true,
+      "motivo": "Imagem utilizável para análise de avaria, apesar de não mostrar a peça inteira.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": true
+    },
+    {
+      "image_id": "FOTDEV_27",
+      "aprovada": true,
+      "motivo": "A imagem não mostra a peça dianteira do carro, apenas uma parte lateral.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_28",
+      "aprovada": true,
+      "motivo": "",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": true
+    },
+    {
+      "image_id": "FOTDEV_29",
+      "aprovada": false,
+      "motivo": "A imagem não mostra a peça interior, mas sim um documento de habilitação.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_30",
+      "aprovada": true,
+      "motivo": "",
+      "qualidade_imagem": "alta",
+      "corresponde_a_peca": true
+    },
+    {
+      "image_id": "FOTDEV_31",
+      "aprovada": true,
+      "motivo": "",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": true
+    },
+    {
+      "image_id": "FOTDEV_32",
+      "aprovada": true,
+      "motivo": "A imagem tem qualidade média e mostra a roda dianteira direita.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": true
+    },
+    {
+      "image_id": "FOTDEV_33",
+      "aprovada": true,
+      "motivo": "",
+      "qualidade_imagem": "alta",
+      "corresponde_a_peca": true
+    },
+    {
+      "image_id": "FOTDEV_34",
+      "aprovada": true,
+      "motivo": "A imagem tem qualidade média e mostra a tampa do porta-malas com danos visíveis.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": true
+    },
+    {
+      "image_id": "FOTDEV_35",
+      "aprovada": true,
+      "motivo": "Imagem utilizável para análise, apesar de ângulo não ideal.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": true
+    },
+    {
+      "image_id": "FOTDEV_36",
+      "aprovada": false,
+      "motivo": "Imagem de qualidade baixa e não é possível identificar a peça.",
+      "qualidade_imagem": "baixa",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_37",
+      "aprovada": true,
+      "motivo": "Imagem utilizável para análise, apesar de não mostrar a peça inteira.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": true
+    },
+    {
+      "image_id": "FOTDEV_38",
+      "aprovada": false,
+      "motivo": "Imagem de baixa qualidade e não mostra claramente a tampa do porta-malas.",
+      "qualidade_imagem": "baixa",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_39",
+      "aprovada": true,
+      "motivo": "Imagem utilizável para análise, mostra parte do para-choque traseiro com avaria.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": true
+    },
+    {
+      "image_id": "FOTDEV_40",
+      "aprovada": true,
+      "motivo": "Checklist reportou avaria; mantendo para análise/orçamento.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": true
+    },
+    {
+      "image_id": "FOTDEV_9",
+      "aprovada": true,
+      "motivo": "",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": true
+    }
+  ]
+}

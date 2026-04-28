@@ -1,0 +1,158 @@
+{
+  "case_id": "TDQ0I34",
+  "images": [
+    {
+      "image_id": "FOTDEV_34",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\TDQ0I34\\Fotos\\FOTDEV_34.jpg",
+      "part_id": "interior",
+      "view": "media",
+      "confidence": 0.0,
+      "checklist_damage_reported": false
+    },
+    {
+      "image_id": "FOTDEV_35",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\TDQ0I34\\Fotos\\FOTDEV_35.jpg",
+      "part_id": "interior",
+      "view": "interior",
+      "confidence": 0.9,
+      "checklist_damage_reported": false
+    },
+    {
+      "image_id": "FOTDEV_36",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\TDQ0I34\\Fotos\\FOTDEV_36.jpg",
+      "part_id": "roda_dianteira_direita",
+      "view": "detalhe",
+      "confidence": 0.9,
+      "checklist_damage_reported": true
+    },
+    {
+      "image_id": "FOTDEV_37",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\TDQ0I34\\Fotos\\FOTDEV_37.jpg",
+      "part_id": "parachoque_traseiro",
+      "view": "media",
+      "confidence": 0.8,
+      "checklist_damage_reported": false
+    },
+    {
+      "image_id": "FOTDEV_38",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\TDQ0I34\\Fotos\\FOTDEV_38.jpg",
+      "part_id": "interior",
+      "view": "media",
+      "confidence": 0.9,
+      "checklist_damage_reported": false
+    },
+    {
+      "image_id": "FOTDEV_39",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\TDQ0I34\\Fotos\\FOTDEV_39.jpg",
+      "part_id": "interior",
+      "view": "interior",
+      "confidence": 0.9,
+      "checklist_damage_reported": false
+    },
+    {
+      "image_id": "FOTDEV_40",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\TDQ0I34\\Fotos\\FOTDEV_40.jpg",
+      "part_id": "roda_dianteira_direita",
+      "view": "detalhe",
+      "confidence": 0.9,
+      "checklist_damage_reported": true
+    },
+    {
+      "image_id": "FOTDEV_52",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\TDQ0I34\\Fotos\\FOTDEV_52.jpg",
+      "part_id": "tampa_porta_malas",
+      "view": "media",
+      "confidence": 0.8,
+      "checklist_damage_reported": false
+    },
+    {
+      "image_id": "FOTDEV_53",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\TDQ0I34\\Fotos\\FOTDEV_53.jpg",
+      "part_id": "interior",
+      "view": "media",
+      "confidence": 0.9,
+      "checklist_damage_reported": false
+    },
+    {
+      "image_id": "FOTDEV_54",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\TDQ0I34\\Fotos\\FOTDEV_54.jpg",
+      "part_id": "roda_traseira_direita",
+      "view": "media",
+      "confidence": 0.8,
+      "checklist_damage_reported": false
+    },
+    {
+      "image_id": "FOTDEV_55",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\TDQ0I34\\Fotos\\FOTDEV_55.jpg",
+      "part_id": "roda_traseira_esquerda",
+      "view": "media",
+      "confidence": 0.9,
+      "checklist_damage_reported": false
+    },
+    {
+      "image_id": "FOTDEV_56",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\TDQ0I34\\Fotos\\FOTDEV_56.jpg",
+      "part_id": "parachoque_traseiro",
+      "view": "media",
+      "confidence": 0.9,
+      "checklist_damage_reported": false
+    },
+    {
+      "image_id": "FOTDEV_57",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\TDQ0I34\\Fotos\\FOTDEV_57.jpg",
+      "part_id": "porta_traseira_direita",
+      "view": "media",
+      "confidence": 0.8,
+      "checklist_damage_reported": true
+    },
+    {
+      "image_id": "FOTDEV_58",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\TDQ0I34\\Fotos\\FOTDEV_58.jpg",
+      "part_id": "parachoque_dianteiro",
+      "view": "media",
+      "confidence": 0.8,
+      "checklist_damage_reported": false
+    },
+    {
+      "image_id": "FOTDEV_59",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\TDQ0I34\\Fotos\\FOTDEV_59.jpg",
+      "part_id": "roda_dianteira_direita",
+      "view": "media",
+      "confidence": 0.8,
+      "checklist_damage_reported": false
+    },
+    {
+      "image_id": "FOTDEV_60",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\TDQ0I34\\Fotos\\FOTDEV_60.jpg",
+      "part_id": "parachoque_dianteiro",
+      "view": "media",
+      "confidence": 0.9,
+      "checklist_damage_reported": false
+    },
+    {
+      "image_id": "FOTDEV_61",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\TDQ0I34\\Fotos\\FOTDEV_61.jpg",
+      "part_id": "roda_dianteira_direita",
+      "view": "detalhe",
+      "confidence": 0.9,
+      "checklist_damage_reported": false
+    },
+    {
+      "image_id": "FOTDEV_62",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\TDQ0I34\\Fotos\\FOTDEV_62.jpg",
+      "part_id": "capo",
+      "view": "interior",
+      "confidence": 0.8,
+      "checklist_damage_reported": false
+    },
+    {
+      "image_id": "FOTDEV_63",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\TDQ0I34\\Fotos\\FOTDEV_63.jpg",
+      "part_id": "roda_dianteira_direita",
+      "view": "detalhe",
+      "confidence": 0.9,
+      "checklist_damage_reported": true
+    }
+  ],
+  "checklist_summary": "Devolução do Veículo | Checklist Solicitação 2THVKK/40 A Localiza agradece sua conﬁança e permaneceremos sempre aqui, pra você. Você está recebendo este documento com as informações da vistoria feita no veículo que você nos devolveu. Lembrando que de acordo com o contrato, caso sejam identiﬁcados itens quebrados ou que estejam faltando no carro, falhas ou danos causados por acidentes ou mal uso do carro, serão analisados e poderão ser cobrados. Informações do carro Modelo T-CROSS 1.0 200 TSI 12V TOTAL FLEX 4P C/AR - AUTOMÁTICO Cor CINZA PLATINUM Placa TDQ0I34 Km 7897 Combustível 2/8 Blindagem NÃO Hora 09:32:00 Local BELO HORIZONTE | MG Detalhes do checklist DESCRIÇÃO ITEM Itens De Conferência Chave Code Itens De Conferência Cartão Code Itens De Conferência Controle Do Alarme Traseira Interior Kit Gnv Pneus/Roda/Calota Estepe - Medida Pneus/Roda/Calota Estepe - Marca Pneus/Roda/Calota Estepe - Profundidade Do Sulco - Twi Pneus/Roda/Calota Pneu Dianteiro Direito - Medida Pneus/Roda/Calota Pneu Dianteiro Direito - Marca REGISTRO Não Tem Não Tem Não Tem Não Tem Outros Outros 5 Outros Outros Pneus/Roda/Calota Pneu Dianteiro Direito - Profundidade Do Sulco - Twi 3 Pneus/Roda/Calota Pneu Traseiro Direito - Medida Pneus/Roda/Calota Pneu Traseiro Direito - Modelo Outros Outros Pneus/Roda/Calota Pneu Traseiro Direito - Profundidade Do Sulco - Twi 4 Pneus/Roda/Calota Pneu Traseiro Esquerdo - Medida Pneus/Roda/Calota Pneu Traseiro Esquerdo - Marca Outros Outros Pneus/Roda/Calota Pneu Traseiro Esquerdo - Profundidade Do Sulco - Twi 4 Pneus/Roda/Calota Pneu Dianteiro Esquerdo - Medida Pneus/Roda/Calota Pneu Dianteiro Esquerdo - Marca Outros Outros 1 de 6 DESCRIÇÃO ITEM REGISTRO Pneus/Roda/Calota Pneu Dianteiro Esquerdo - Profundidade Do Sulco - Twi 3 * Avaria: AVARIA ITENS INTERNOS E EXTERNOS: quebrado; amassado; descascado; oxidado; cortado; furado; manchado; risco com dano; descascado; mossas; piques; reparo defeituoso; trincado; inﬁltração; não funciona. AVARIA PNEUS: desgaste irregular; furado; bolha. Observações Adicionais 2 de 6 Observações realizadas por você Imagens DIANTEIRA DO CARRO INTERIOR ITENS DE CONFERÊNCIA 3 de 6 LATERAL DIREITA LATERAL ESQUERDA PNEUS/RODA/CALOTA 4 de 6 TRASEIRA TRASEIRA INTERIOR 5 de 6 Belo Horizonte, 2 de março de 2026 Responsável pela devolução 6 de 6"
+}

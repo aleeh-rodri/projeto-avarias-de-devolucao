@@ -1,0 +1,152 @@
+{
+  "case_id": "SHL9D97",
+  "assessments": [
+    {
+      "image_id": "FOTDEV_1",
+      "aprovada": false,
+      "motivo": "A imagem não mostra a roda dianteira direita, apenas o pneu.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_10",
+      "aprovada": false,
+      "motivo": "A imagem não mostra a peça interior claramente, apenas documentos em uma bolsa.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_11",
+      "aprovada": false,
+      "motivo": "A imagem não mostra a roda dianteira direita, mas sim o pneu.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_12",
+      "aprovada": false,
+      "motivo": "A imagem não mostra a roda dianteira direita, apenas o pneu.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_13",
+      "aprovada": true,
+      "motivo": "",
+      "qualidade_imagem": "alta",
+      "corresponde_a_peca": true
+    },
+    {
+      "image_id": "FOTDEV_14",
+      "aprovada": false,
+      "motivo": "A imagem não mostra claramente a roda dianteira direita.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_15",
+      "aprovada": true,
+      "motivo": "",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": true
+    },
+    {
+      "image_id": "FOTDEV_16",
+      "aprovada": true,
+      "motivo": "Imagem utilizável para análise, apesar de ângulo não ideal.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": true
+    },
+    {
+      "image_id": "FOTDEV_17",
+      "aprovada": true,
+      "motivo": "",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": true
+    },
+    {
+      "image_id": "FOTDEV_18",
+      "aprovada": false,
+      "motivo": "Imagem borrada e não é possível identificar a roda dianteira direita.",
+      "qualidade_imagem": "baixa",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_19",
+      "aprovada": false,
+      "motivo": "A imagem não mostra a peça 'acessórios' claramente.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_2",
+      "aprovada": false,
+      "motivo": "A imagem não mostra a peça interior, mas sim um documento de identidade.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_20",
+      "aprovada": true,
+      "motivo": "Imagem utilizável para análise, apesar de algumas limitações de iluminação e reflexo.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": true
+    },
+    {
+      "image_id": "FOTDEV_21",
+      "aprovada": true,
+      "motivo": "Imagem utilizável para análise, apesar de algumas limitações.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": true
+    },
+    {
+      "image_id": "FOTDEV_3",
+      "aprovada": true,
+      "motivo": "",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": true
+    },
+    {
+      "image_id": "FOTDEV_4",
+      "aprovada": true,
+      "motivo": "",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": true
+    },
+    {
+      "image_id": "FOTDEV_5",
+      "aprovada": false,
+      "motivo": "A imagem não mostra a porta dianteira direita, mas sim a lateral de uma caminhonete.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "FOTDEV_6",
+      "aprovada": true,
+      "motivo": "",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": true
+    },
+    {
+      "image_id": "FOTDEV_7",
+      "aprovada": true,
+      "motivo": "Checklist reportou avaria; mantendo para análise/orçamento.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": true
+    },
+    {
+      "image_id": "FOTDEV_8",
+      "aprovada": true,
+      "motivo": "Imagem utilizável para análise, apesar de algumas limitações na visibilidade.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": true
+    },
+    {
+      "image_id": "FOTDEV_9",
+      "aprovada": false,
+      "motivo": "A imagem não mostra claramente o paralama dianteiro direito.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": false
+    }
+  ]
+}

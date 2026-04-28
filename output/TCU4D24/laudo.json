@@ -1,0 +1,277 @@
+{
+  "case_id": "TCU4D24",
+  "triagem": {
+    "total_imagens": 43,
+    "imagens_aprovadas_qualidade": 33
+  },
+  "peritos": {
+    "perito_parachoque": {
+      "imagens_usadas": [
+        {
+          "image_id": "FOTDEV_57",
+          "part_id": "parachoque_dianteiro",
+          "view": "detalhe"
+        },
+        {
+          "image_id": "FOTDEV_32",
+          "part_id": "parachoque_traseiro",
+          "view": "detalhe"
+        },
+        {
+          "image_id": "FOTDEV_30",
+          "part_id": "parachoque_dianteiro",
+          "view": "media"
+        }
+      ],
+      "resultado": {
+        "nivel_dano": "leve",
+        "peca": "para-choques",
+        "itens": [
+          {
+            "nivel_dano": "leve",
+            "peca": "para-choque dianteiro",
+            "servicos": [
+              {
+                "descricao": "Pintura para-choque dianteiro",
+                "preco": 320.0
+              }
+            ],
+            "preco_total": 320.0,
+            "justificativa": "Dano leve. Obs: quebra com falta de material visível no canto direito | calibracao: moderado/grave sem suporte >=2 fotos; tratado como leve/pintura",
+            "fotos_analisadas": [
+              "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\TCU4D24\\Fotos\\FOTDEV_57.jpg",
+              "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\TCU4D24\\Fotos\\FOTDEV_30.jpg"
+            ]
+          }
+        ],
+        "servicos": [
+          {
+            "descricao": "Pintura para-choque dianteiro",
+            "preco": 320.0
+          }
+        ],
+        "preco_total": 320.0,
+        "justificativa": "para-choque dianteiro: leve (Dano leve. Obs: quebra com falta de material visível no canto direito | calibracao: moderado/grave sem suporte >=2 fotos; tratado como leve/pintura)",
+        "fotos_analisadas": [
+          "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\TCU4D24\\Fotos\\FOTDEV_57.jpg",
+          "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\TCU4D24\\Fotos\\FOTDEV_30.jpg"
+        ]
+      }
+    },
+    "perito_emblemas": {
+      "imagens_usadas": [
+        {
+          "image_id": "FOTDEV_32",
+          "part_id": "parachoque_traseiro",
+          "view": "detalhe"
+        },
+        {
+          "image_id": "FOTDEV_57",
+          "part_id": "parachoque_dianteiro",
+          "view": "detalhe"
+        },
+        {
+          "image_id": "FOTDEV_30",
+          "part_id": "parachoque_dianteiro",
+          "view": "media"
+        }
+      ],
+      "resultado": {
+        "nivel_dano": "reposicao",
+        "peca": "emblemas (dianteiro/traseiro)",
+        "servicos": [
+          {
+            "descricao": "REVISAR — Emblema traseiro faltando (reposição)",
+            "preco": 0.0
+          }
+        ],
+        "preco_total": 0.0,
+        "justificativa": "dianteiro: O emblema da montadora está visível e intacto na parte central da dianteira do veículo.; traseiro: O espaço onde o emblema deveria estar está visível, mas o emblema não está presente.",
+        "fotos_analisadas": [
+          "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\TCU4D24\\Fotos\\FOTDEV_30.jpg",
+          "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\TCU4D24\\Fotos\\FOTDEV_32.jpg"
+        ],
+        "force_include": true,
+        "needs_human_review": true,
+        "pecas_a_cotar": [
+          {
+            "descricao": "emblema traseiro",
+            "quantidade": 1,
+            "observacao": "Item faltante detectado visualmente; revisar cobrança e cotar peça se aplicável."
+          }
+        ]
+      }
+    },
+    "perito_lataria": {
+      "imagens_usadas": [
+        {
+          "image_id": "FOTDEV_52",
+          "part_id": "capo",
+          "view": "detalhe"
+        },
+        {
+          "image_id": "FOTDEV_21",
+          "part_id": "paralama_dianteiro_direito",
+          "view": "detalhe"
+        },
+        {
+          "image_id": "FOTDEV_49",
+          "part_id": "porta_traseira_direita",
+          "view": "detalhe"
+        }
+      ],
+      "resultado": {
+        "nivel_dano": "grave",
+        "peca": "lataria",
+        "itens": [
+          {
+            "nivel_dano": "moderado",
+            "peca": "capo nao_se_aplica",
+            "servicos": [
+              {
+                "descricao": "Recuperação e pintura capô",
+                "preco": 420.0
+              }
+            ],
+            "preco_total": 420.0,
+            "justificativa": "A peça apresenta um amassado evidente na superfície, com deformação visível, indicando a necessidade de repuxo.",
+            "fotos_analisadas": [
+              "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\TCU4D24\\Fotos\\FOTDEV_52.jpg"
+            ]
+          },
+          {
+            "nivel_dano": "grave",
+            "peca": "paralama dianteiro direito",
+            "servicos": [
+              {
+                "descricao": "Mão de obra troca do para-lama dianteiro direito",
+                "preco": 140.0
+              }
+            ],
+            "preco_total": 140.0,
+            "justificativa": "A peça esperada, o paralama dianteiro direito, apresenta uma ruptura na chapa, evidenciando um dano estrutural que compromete a integridade da peça.",
+            "fotos_analisadas": [
+              "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\TCU4D24\\Fotos\\FOTDEV_21.jpg"
+            ]
+          }
+        ],
+        "servicos": [
+          {
+            "descricao": "Recuperação e pintura capô",
+            "preco": 420.0
+          },
+          {
+            "descricao": "Mão de obra troca do para-lama dianteiro direito",
+            "preco": 140.0
+          }
+        ],
+        "preco_total": 560.0,
+        "justificativa": "capo nao_se_aplica: moderado (A peça apresenta um amassado evidente na superfície, com deformação visível, indicando a necessidade de repuxo.); paralama dianteiro direito: grave (A peça esperada, o paralama dianteiro direito, apresenta uma ruptura na chapa, evidenciando um dano estrutural que compromete a integridade da peça.)",
+        "fotos_analisadas": [
+          "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\TCU4D24\\Fotos\\FOTDEV_52.jpg",
+          "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\TCU4D24\\Fotos\\FOTDEV_21.jpg"
+        ]
+      }
+    },
+    "perito_vidros": {
+      "resultado": {
+        "erro": "nenhuma imagem elegivel"
+      }
+    },
+    "perito_pneus_rodas": {
+      "imagens_usadas": [
+        {
+          "image_id": "FOTDEV_31",
+          "part_id": "roda_dianteira_direita",
+          "view": "detalhe"
+        },
+        {
+          "image_id": "FOTDEV_33",
+          "part_id": "roda_dianteira_direita",
+          "view": "detalhe"
+        },
+        {
+          "image_id": "FOTDEV_51",
+          "part_id": "roda_dianteira_direita",
+          "view": "detalhe"
+        }
+      ],
+      "resultado": {
+        "nivel_dano": "sem_dano",
+        "peca": "roda liga leve",
+        "servicos": [],
+        "preco_total": 0,
+        "justificativa": "[DESCONSIDERADO POR CHECKLIST] A roda apresenta ralada leve na borda, sem deformação significativa ou trinca visível.",
+        "fotos_analisadas": [
+          "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\TCU4D24\\Fotos\\FOTDEV_31.jpg",
+          "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\TCU4D24\\Fotos\\FOTDEV_33.jpg",
+          "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\TCU4D24\\Fotos\\FOTDEV_51.jpg"
+        ]
+      }
+    },
+    "perito_interior": {
+      "imagens_usadas": [
+        {
+          "image_id": "FOTDEV_26",
+          "part_id": "interior",
+          "view": "interior"
+        },
+        {
+          "image_id": "FOTDEV_28",
+          "part_id": "interior",
+          "view": "interior"
+        }
+      ],
+      "resultado": {
+        "nivel_dano": "sem_dano",
+        "peca": "painel",
+        "servicos": [],
+        "preco_total": 0,
+        "justificativa": "[DESCONSIDERADO POR CHECKLIST] Sem danos identificados.",
+        "fotos_analisadas": [
+          "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\TCU4D24\\Fotos\\FOTDEV_26.jpg",
+          "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\TCU4D24\\Fotos\\FOTDEV_28.jpg"
+        ]
+      }
+    },
+    "perito_acessorios": {
+      "resultado": {
+        "erro": "nenhuma imagem elegivel"
+      }
+    }
+  },
+  "divergencias_checklist": [],
+  "cobrancas_checklist_fallback": [
+    {
+      "descricao": "CHECKLIST — Avaria reportada na peça 'porta_dianteira_direita' (REVISAR)",
+      "valor": 0,
+      "needs_human_review": true,
+      "origin": "checklist_fallback",
+      "part_id": "porta_dianteira_direita",
+      "fotos": [
+        "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\TCU4D24\\Fotos\\FOTDEV_63.jpg"
+      ]
+    },
+    {
+      "descricao": "CHECKLIST — Avaria reportada na peça 'porta_traseira_direita' (REVISAR)",
+      "valor": 0,
+      "needs_human_review": true,
+      "origin": "checklist_fallback",
+      "part_id": "porta_traseira_direita",
+      "fotos": [
+        "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\TCU4D24\\Fotos\\FOTDEV_37.jpg"
+      ]
+    },
+    {
+      "descricao": "CHECKLIST — Avaria reportada na peça 'roda_traseira_direita' (REVISAR)",
+      "valor": 0,
+      "needs_human_review": true,
+      "origin": "checklist_fallback",
+      "part_id": "roda_traseira_direita",
+      "fotos": [
+        "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\TCU4D24\\Fotos\\FOTDEV_24.jpg"
+      ]
+    }
+  ],
+  "preco_total_geral": 880.0
+}

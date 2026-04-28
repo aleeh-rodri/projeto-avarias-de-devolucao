@@ -1,0 +1,37 @@
+[
+  {
+    "desc": "Pintura para-choque dianteiro",
+    "amount": 320.0,
+    "source": "humano"
+  },
+  {
+    "desc": "Pintura para-choque dianteiro",
+    "amount": 320.0,
+    "source": "humano"
+  },
+  {
+    "desc": "Troca para-brisa dianteiro",
+    "amount": 936.74,
+    "source": "humano"
+  },
+  {
+    "desc": "Mão de obra troca do para-brisa",
+    "amount": 180.0,
+    "source": "humano"
+  },
+  {
+    "desc": "Pintura retrovisor esquerdo",
+    "amount": 150.0,
+    "source": "humano"
+  },
+  {
+    "desc": "Pintura porta dianteira esquerda",
+    "amount": 340.0,
+    "source": "humano"
+  },
+  {
+    "desc": "Recuperação e pintura da caixa de ar do lado esquerdo",
+    "amount": 370.0,
+    "source": "humano"
+  }
+]

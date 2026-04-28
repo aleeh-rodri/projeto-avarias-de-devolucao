@@ -1,0 +1,158 @@
+{
+  "case_id": "RUL3C16",
+  "images": [
+    {
+      "image_id": "FOTDEV_24",
+      "photo_path": "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\input\\RUL3C16\\Fotos\\FOTDEV_24.jpg",
+      "part_id": "interior",
+      "view": "media",
+      "confidence": 0.9,
+      "checklist_damage_reported": false
+    },
+    {
+      "image_id": "FOTDEV_25",
+      "photo_path": "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\input\\RUL3C16\\Fotos\\FOTDEV_25.jpg",
+      "part_id": "parachoque_traseiro",
+      "view": "media",
+      "confidence": 0.85,
+      "checklist_damage_reported": false
+    },
+    {
+      "image_id": "FOTDEV_26",
+      "photo_path": "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\input\\RUL3C16\\Fotos\\FOTDEV_26.jpg",
+      "part_id": "parachoque_dianteiro",
+      "view": "media",
+      "confidence": 0.9,
+      "checklist_damage_reported": false
+    },
+    {
+      "image_id": "FOTDEV_27",
+      "photo_path": "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\input\\RUL3C16\\Fotos\\FOTDEV_27.jpg",
+      "part_id": "interior",
+      "view": "media",
+      "confidence": 0.9,
+      "checklist_damage_reported": false
+    },
+    {
+      "image_id": "FOTDEV_28",
+      "photo_path": "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\input\\RUL3C16\\Fotos\\FOTDEV_28.jpg",
+      "part_id": "roda_dianteira_direita",
+      "view": "detalhe",
+      "confidence": 0.9,
+      "checklist_damage_reported": false
+    },
+    {
+      "image_id": "FOTDEV_29",
+      "photo_path": "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\input\\RUL3C16\\Fotos\\FOTDEV_29.jpg",
+      "part_id": "roda_dianteira_direita",
+      "view": "detalhe",
+      "confidence": 0.9,
+      "checklist_damage_reported": false
+    },
+    {
+      "image_id": "FOTDEV_30",
+      "photo_path": "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\input\\RUL3C16\\Fotos\\FOTDEV_30.jpg",
+      "part_id": "parachoque_traseiro",
+      "view": "media",
+      "confidence": 0.9,
+      "checklist_damage_reported": false
+    },
+    {
+      "image_id": "FOTDEV_31",
+      "photo_path": "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\input\\RUL3C16\\Fotos\\FOTDEV_31.jpg",
+      "part_id": "capo",
+      "view": "media",
+      "confidence": 0.8,
+      "checklist_damage_reported": false
+    },
+    {
+      "image_id": "FOTDEV_32",
+      "photo_path": "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\input\\RUL3C16\\Fotos\\FOTDEV_32.jpg",
+      "part_id": "roda_traseira_direita",
+      "view": "detalhe",
+      "confidence": 0.9,
+      "checklist_damage_reported": false
+    },
+    {
+      "image_id": "FOTDEV_33",
+      "photo_path": "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\input\\RUL3C16\\Fotos\\FOTDEV_33.jpg",
+      "part_id": "roda_dianteira_direita",
+      "view": "detalhe",
+      "confidence": 0.9,
+      "checklist_damage_reported": true
+    },
+    {
+      "image_id": "FOTDEV_34",
+      "photo_path": "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\input\\RUL3C16\\Fotos\\FOTDEV_34.jpg",
+      "part_id": "interior",
+      "view": "media",
+      "confidence": 0.8,
+      "checklist_damage_reported": false
+    },
+    {
+      "image_id": "FOTDEV_35",
+      "photo_path": "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\input\\RUL3C16\\Fotos\\FOTDEV_35.jpg",
+      "part_id": "parachoque_dianteiro",
+      "view": "media",
+      "confidence": 0.9,
+      "checklist_damage_reported": false
+    },
+    {
+      "image_id": "FOTDEV_36",
+      "photo_path": "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\input\\RUL3C16\\Fotos\\FOTDEV_36.jpg",
+      "part_id": "interior",
+      "view": "detalhe",
+      "confidence": 0.9,
+      "checklist_damage_reported": false
+    },
+    {
+      "image_id": "FOTDEV_37",
+      "photo_path": "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\input\\RUL3C16\\Fotos\\FOTDEV_37.jpg",
+      "part_id": "parachoque_dianteiro",
+      "view": "media",
+      "confidence": 0.9,
+      "checklist_damage_reported": false
+    },
+    {
+      "image_id": "FOTDEV_38",
+      "photo_path": "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\input\\RUL3C16\\Fotos\\FOTDEV_38.jpg",
+      "part_id": "porta_dianteira_direita",
+      "view": "media",
+      "confidence": 0.8,
+      "checklist_damage_reported": false
+    },
+    {
+      "image_id": "FOTDEV_39",
+      "photo_path": "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\input\\RUL3C16\\Fotos\\FOTDEV_39.jpg",
+      "part_id": "paralama_dianteiro_direito",
+      "view": "media",
+      "confidence": 0.8,
+      "checklist_damage_reported": false
+    },
+    {
+      "image_id": "FOTDEV_40",
+      "photo_path": "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\input\\RUL3C16\\Fotos\\FOTDEV_40.jpg",
+      "part_id": "tampa_porta_malas",
+      "view": "interior",
+      "confidence": 0.9,
+      "checklist_damage_reported": false
+    },
+    {
+      "image_id": "FOTDEV_41",
+      "photo_path": "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\input\\RUL3C16\\Fotos\\FOTDEV_41.jpg",
+      "part_id": "parachoque_traseiro",
+      "view": "media",
+      "confidence": 0.9,
+      "checklist_damage_reported": false
+    },
+    {
+      "image_id": "FOTDEV_42",
+      "photo_path": "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\input\\RUL3C16\\Fotos\\FOTDEV_42.jpg",
+      "part_id": "interior",
+      "view": "media",
+      "confidence": 0.9,
+      "checklist_damage_reported": false
+    }
+  ],
+  "checklist_summary": "Devolução do Veículo | Checklist Solicitação 2T4LIF/40 A Localiza agradece sua conﬁança e permaneceremos sempre aqui, pra você. Você está recebendo este documento com as informações da vistoria feita no veículo que você nos devolveu. Lembrando que de acordo com o contrato, caso sejam identiﬁcados itens quebrados ou que estejam faltando no carro, falhas ou danos causados por acidentes ou mal uso do carro, serão analisados e poderão ser cobrados. Informações do carro Modelo KWID ZEN 1.0 12V SCE FLEX 4P C/AR Cor BRANCO GLACIER Placa RUL3C16 Km 81477 Combustível 1/8 Blindagem NÃO Hora 11:27:00 Local BRASILIA | DF Detalhes do checklist DESCRIÇÃO ITEM REGISTRO Itens De Conferência Chave Reserva Itens De Conferência Cartão Code Lateral Esquerda Para-Barro Esquerdo Lateral Esquerda Vidro Vigia Traseira Esquerda Lateral Esquerda Insulﬁlm Vidro Vigia Traseira Esquerda Lateral Esquerda Friso/Borrachão Esquerda Traseira Maçaneta Externa Porta Traseira Interior Forro Tampa Traseiro Traseira Interior Assoalho Da Cabine Traseira Interior Alto Falante Traseira Interior Kit Gnv Lateral Direita Lateral Direita Lateral Direita Lateral Direita Para-Barro Direito Vidro Vigia Traseira Direita Insulﬁlm Vidro Vigia Traseira Direita Friso/Borrachao Direita Dianteira Do Carro Insulﬁlm Para-Brisa Teto Teto Friso/Borrachão Direito Friso/Borrachão Esquerdo Pneus/Roda/Calota Liga Leve 1 de 6 Não Tem Não Tem Não Tem Não Tem Não Tem Não Tem Não Tem Não Tem Não Tem Não Tem Não Tem Não Tem Não Tem Não Tem Não Tem Não Tem Não Tem Não Tem Não Tem DESCRIÇÃO ITEM Pneus/Roda/Calota Estepe - Medida Pneus/Roda/Calota Estepe - Marca Pneus/Roda/Calota Estepe - Profundidade Do Sulco - Twi Pneus/Roda/Calota Pneu Dianteiro Direito - Medida Pneus/Roda/Calota Pneu Dianteiro Direito - Marca REGISTRO Outros Continental 1 Outros Outros Pneus/Roda/Calota Pneu Dianteiro Direito - Profundidade Do Sulco - Twi 1 Pneus/Roda/Calota Pneu Traseiro Direito - Medida Pneus/Roda/Calota Pneu Traseiro Direito - Modelo Outros Continental Pneus/Roda/Calota Pneu Traseiro Direito - Profundidade Do Sulco - Twi 1 Pneus/Roda/Calota Pneu Traseiro Esquerdo - Medida Pneus/Roda/Calota Pneu Traseiro Esquerdo - Marca Outros Continental Pneus/Roda/Calota Pneu Traseiro Esquerdo - Profundidade Do Sulco - Twi 1 Pneus/Roda/Calota Pneu Dianteiro Esquerdo - Medida Pneus/Roda/Calota Pneu Dianteiro Esquerdo - Marca Outros Outros Pneus/Roda/Calota Pneu Dianteiro Esquerdo - Profundidade Do Sulco - Twi 1 * Avaria: AVARIA ITENS INTERNOS E EXTERNOS: quebrado; amassado; descascado; oxidado; cortado; furado; manchado; risco com dano; descascado; mossas; piques; reparo defeituoso; trincado; inﬁltração; não funciona. AVARIA PNEUS: desgaste irregular; furado; bolha. Observações Adicionais Observações realizadas por você Veículo possui chave reserva. Imagens DIANTEIRA DO CARRO 2 de 6 INTERIOR ITENS DE CONFERÊNCIA 3 de 6 LATERAL DIREITA LATERAL ESQUERDA PNEUS/RODA/CALOTA 4 de 6 TRASEIRA TRASEIRA INTERIOR 5 de 6 Brasilia, 26 de janeiro de 2026 R"
+}

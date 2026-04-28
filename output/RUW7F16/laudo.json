@@ -1,0 +1,158 @@
+{
+  "case_id": "RUW7F16",
+  "triagem": {
+    "total_imagens": 23,
+    "imagens_aprovadas_qualidade": 15
+  },
+  "peritos": {
+    "perito_parachoque": {
+      "imagens_usadas": [
+        {
+          "image_id": "FOTDEV_31",
+          "part_id": "parachoque_traseiro",
+          "view": "media"
+        }
+      ],
+      "resultado": {
+        "nivel_dano": "sem_dano",
+        "peca": "para-choques",
+        "itens": [],
+        "servicos": [],
+        "preco_total": 0,
+        "justificativa": "[DESCONSIDERADO POR CHECKLIST] traseiro: leve (risco superficial sem deformação)",
+        "fotos_analisadas": [
+          "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\RUW7F16\\Fotos\\FOTDEV_31.jpg"
+        ]
+      }
+    },
+    "perito_emblemas": {
+      "imagens_usadas": [
+        {
+          "image_id": "FOTDEV_31",
+          "part_id": "parachoque_traseiro",
+          "view": "media"
+        }
+      ],
+      "resultado": {
+        "nivel_dano": "reposicao",
+        "peca": "emblemas (dianteiro/traseiro)",
+        "servicos": [
+          {
+            "descricao": "REVISAR — Emblema traseiro faltando (reposição)",
+            "preco": 0.0
+          }
+        ],
+        "preco_total": 0.0,
+        "justificativa": "traseiro: Não há emblema visível na parte traseira do veículo, apenas a inscrição 'FIAT' em relevo.",
+        "fotos_analisadas": [
+          "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\RUW7F16\\Fotos\\FOTDEV_31.jpg"
+        ],
+        "force_include": true,
+        "needs_human_review": true,
+        "pecas_a_cotar": [
+          {
+            "descricao": "emblema traseiro",
+            "quantidade": 1,
+            "observacao": "Item faltante detectado visualmente; revisar cobrança e cotar peça se aplicável."
+          }
+        ]
+      }
+    },
+    "perito_lataria": {
+      "resultado": {
+        "erro": "nenhuma imagem elegivel"
+      }
+    },
+    "perito_vidros": {
+      "resultado": {
+        "erro": "nenhuma imagem elegivel"
+      }
+    },
+    "perito_pneus_rodas": {
+      "imagens_usadas": [
+        {
+          "image_id": "FOTDEV_30",
+          "part_id": "roda_traseira_direita",
+          "view": "detalhe"
+        },
+        {
+          "image_id": "FOTDEV_32",
+          "part_id": "roda_traseira_direita",
+          "view": "detalhe"
+        },
+        {
+          "image_id": "FOTDEV_33",
+          "part_id": "roda_traseira_direita",
+          "view": "detalhe"
+        }
+      ],
+      "resultado": {
+        "nivel_dano": "sem_dano",
+        "peca": "roda ferro",
+        "servicos": [],
+        "preco_total": 0.0,
+        "justificativa": "Sem danos identificados nas rodas.",
+        "fotos_analisadas": [
+          "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\RUW7F16\\Fotos\\FOTDEV_30.jpg",
+          "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\RUW7F16\\Fotos\\FOTDEV_32.jpg",
+          "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\RUW7F16\\Fotos\\FOTDEV_33.jpg"
+        ]
+      }
+    },
+    "perito_interior": {
+      "imagens_usadas": [
+        {
+          "image_id": "FOTDEV_24",
+          "part_id": "interior",
+          "view": "interior"
+        }
+      ],
+      "resultado": {
+        "nivel_dano": "sem_dano",
+        "peca": "interior",
+        "servicos": [],
+        "preco_total": 0,
+        "justificativa": "[DESCONSIDERADO POR CHECKLIST] Sem danos identificados.",
+        "fotos_analisadas": [
+          "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\RUW7F16\\Fotos\\FOTDEV_24.jpg"
+        ]
+      }
+    },
+    "perito_acessorios": {
+      "resultado": {
+        "erro": "nenhuma imagem elegivel"
+      }
+    }
+  },
+  "divergencias_checklist": [
+    {
+      "tipo": "checklist_vs_visao",
+      "perito": "perito_pneus_rodas",
+      "part_id": "roda_traseira_direita",
+      "mensagem": "Checklist marcou avaria para esta peça, mas o perito retornou nivel_dano='sem_dano'. Recomendado revisar manualmente.",
+      "image_ids": [
+        "FOTDEV_30",
+        "FOTDEV_32",
+        "FOTDEV_33"
+      ],
+      "photo_paths": [
+        "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\RUW7F16\\Fotos\\FOTDEV_30.jpg",
+        "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\RUW7F16\\Fotos\\FOTDEV_32.jpg",
+        "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\RUW7F16\\Fotos\\FOTDEV_33.jpg"
+      ]
+    }
+  ],
+  "cobrancas_checklist_fallback": [
+    {
+      "descricao": "CHECKLIST — Avaria reportada na peça 'roda_traseira_direita' (REVISAR)",
+      "valor": 0,
+      "needs_human_review": true,
+      "origin": "checklist_fallback",
+      "part_id": "roda_traseira_direita",
+      "fotos": [
+        "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\RUW7F16\\Fotos\\FOTDEV_30.jpg"
+      ]
+    }
+  ],
+  "preco_total_geral": 0.0
+}

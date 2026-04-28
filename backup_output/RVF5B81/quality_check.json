@@ -1,0 +1,194 @@
+{
+  "case_id": "RVF5B81",
+  "assessments": [
+    {
+      "image_id": "08a4fd63-2786-e163-3a3f-a76876374975-v1",
+      "aprovada": true,
+      "motivo": "Imagem utilizável para análise, apesar de não ser possível confirmar a correspondência exata da peça.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "11b07a8b-3940-ea61-ec75-b521ff04e277-v1",
+      "aprovada": true,
+      "motivo": "Imagem utilizável para análise, apesar de não mostrar claramente a porta traseira direita.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "14f9bdd1-2677-9b23-66ca-9886e2830e14-v1",
+      "aprovada": false,
+      "motivo": "A imagem não mostra a peça interior, mas sim o painel do carro.",
+      "qualidade_imagem": "alta",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "1a42b8bf-2cb0-a960-c9dd-21d2a280d0cf-v1",
+      "aprovada": true,
+      "motivo": "",
+      "qualidade_imagem": "alta",
+      "corresponde_a_peca": true
+    },
+    {
+      "image_id": "20be1268-9755-b5fa-67e4-f8747d2cae48-v1",
+      "aprovada": true,
+      "motivo": "Imagem utilizável para análise, apesar de não mostrar claramente a porta traseira direita.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "2c18fb8f-1d77-42eb-8cc4-de75a29a240e-v1",
+      "aprovada": true,
+      "motivo": "Imagem utilizável para análise, apesar de não mostrar claramente o teto.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "2cbfc614-5503-3efc-e4ec-def3883dca18-v1",
+      "aprovada": true,
+      "motivo": "Imagem utilizável para análise, apesar de não mostrar claramente a porta traseira direita.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "3f144f54-d9f6-e73a-7b12-3dd035f2a986-v1",
+      "aprovada": false,
+      "motivo": "Imagem borrada e não é possível identificar a peça.",
+      "qualidade_imagem": "baixa",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "3f6678cd-e259-3437-896c-b7583ff710cb-v1",
+      "aprovada": false,
+      "motivo": "A imagem não mostra a peça interior, mas sim um documento de habilitação.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "42a477f8-927f-3090-d356-970834fc2538-v1",
+      "aprovada": true,
+      "motivo": "Imagem utilizável para análise de avaria no parabrisa.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": true
+    },
+    {
+      "image_id": "462ebae4-e238-1543-4008-cda64f5ca530-v1",
+      "aprovada": true,
+      "motivo": "Imagem utilizável para análise, apesar de não ser possível confirmar a correspondência exata da peça.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "5258fd43-c233-47ec-24c8-a60b5067429a-v1",
+      "aprovada": false,
+      "motivo": "A imagem não mostra a roda dianteira esquerda, mas sim uma roda sobressalente.",
+      "qualidade_imagem": "alta",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "59b8a306-a69f-f9cd-f8fa-df8358b03c74-v1",
+      "aprovada": true,
+      "motivo": "Imagem utilizável para análise, apesar de não ser ideal.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": true
+    },
+    {
+      "image_id": "62046c98-42e7-7b48-b85b-53c5db3f1807-v1",
+      "aprovada": true,
+      "motivo": "Imagem utilizável para análise, apesar de reflexos e sujeira.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": true
+    },
+    {
+      "image_id": "63083d51-3494-6294-1657-c00508fa47b3-v1",
+      "aprovada": true,
+      "motivo": "Imagem utilizável para análise, apesar de não ser perfeitamente clara.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": true
+    },
+    {
+      "image_id": "799bb3a8-dc85-20a4-66a5-770887028509-v1",
+      "aprovada": false,
+      "motivo": "A imagem não mostra a roda dianteira direita, mas sim um pneu.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "7f17c85f-924e-a9d9-7b4d-4895e8ce1e3f-v1",
+      "aprovada": true,
+      "motivo": "Imagem utilizável para análise, apesar de não ser possível confirmar a correspondência exata da peça.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "80c393a6-097d-444e-eadc-df259622b741-v1",
+      "aprovada": true,
+      "motivo": "A imagem é utilizável para análise, apesar de não ser perfeitamente clara.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": true
+    },
+    {
+      "image_id": "83bf0b22-1261-65d8-0a96-0bd12d024384-v1",
+      "aprovada": true,
+      "motivo": "A imagem é utilizável para análise, apesar de não mostrar claramente o paralama dianteiro direito.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "99c3044f-5aaf-7ef7-5cf3-bc7e1cffae03-v1",
+      "aprovada": true,
+      "motivo": "Imagem utilizável para análise, apesar de não mostrar claramente a porta traseira direita.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "a19d29ce-8fd4-bcb2-479f-0a5c012cf6c7-v1",
+      "aprovada": true,
+      "motivo": "Imagem utilizável para análise, apesar de não ser possível confirmar a correspondência exata da peça.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "b5288a6f-32ce-b960-e128-60f4f5b9dff5-v1",
+      "aprovada": true,
+      "motivo": "Imagem utilizável para análise, apesar de não mostrar o capô de forma direta.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "c7b6d418-61cd-c97e-56ce-9dbf30460351-v1",
+      "aprovada": false,
+      "motivo": "Imagem borrada e não mostra a roda dianteira direita claramente.",
+      "qualidade_imagem": "baixa",
+      "corresponde_a_peca": false
+    },
+    {
+      "image_id": "cd11baf3-2624-516e-a0d9-80ecba726208-v1",
+      "aprovada": true,
+      "motivo": "Imagem utilizável para análise, apesar de algumas limitações.",
+      "qualidade_imagem": "media",
+      "corresponde_a_peca": true
+    },
+    {
+      "image_id": "cfbe1933-71eb-d641-c65b-35370cc017eb-v1",
+      "aprovada": true,
+      "motivo": "",
+      "qualidade_imagem": "alta",
+      "corresponde_a_peca": true
+    },
+    {
+      "image_id": "eba4cdc3-ff02-75f3-2df0-499b44743c7c-v1",
+      "aprovada": true,
+      "motivo": "",
+      "qualidade_imagem": "alta",
+      "corresponde_a_peca": true
+    },
+    {
+      "image_id": "f803039b-1973-88e4-875c-fc8344105bfb-v1",
+      "aprovada": false,
+      "motivo": "A imagem não mostra a roda dianteira direita, mas sim o pneu.",
+      "qualidade_imagem": "alta",
+      "corresponde_a_peca": false
+    }
+  ]
+}

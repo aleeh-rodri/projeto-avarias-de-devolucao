@@ -1,0 +1,293 @@
+{
+  "case_id": "RUY5J95",
+  "triagem": {
+    "total_imagens": 40,
+    "imagens_aprovadas_qualidade": 17
+  },
+  "peritos": {
+    "perito_parachoque": {
+      "imagens_usadas": [
+        {
+          "image_id": "d86918ca-e211-3eea-7cc5-6db75c0939cb-v1",
+          "part_id": "parachoque_dianteiro",
+          "view": "detalhe"
+        },
+        {
+          "image_id": "8ab15d52-3240-0309-8493-facd992137d5-v1",
+          "part_id": "parachoque_dianteiro",
+          "view": "detalhe"
+        }
+      ],
+      "resultado": {
+        "nivel_dano": "leve",
+        "peca": "para-choques",
+        "itens": [
+          {
+            "nivel_dano": "leve",
+            "peca": "para-choque dianteiro",
+            "servicos": [
+              {
+                "descricao": "Pintura para-choque dianteiro",
+                "preco": 320.0
+              },
+              {
+                "descricao": "Pintura para-choque dianteiro",
+                "preco": 320.0
+              }
+            ],
+            "preco_total": 640.0,
+            "justificativa": "Dano leve. Obs: trinca visível com deformação no plástico | calibracao: moderado/grave sem suporte >=2 fotos; tratado como leve/pintura",
+            "fotos_analisadas": [
+              "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\input\\RUY5J95\\fotos\\d86918ca-e211-3eea-7cc5-6db75c0939cb-v1.jpg",
+              "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\input\\RUY5J95\\fotos\\8ab15d52-3240-0309-8493-facd992137d5-v1.jpg"
+            ]
+          }
+        ],
+        "servicos": [
+          {
+            "descricao": "Pintura para-choque dianteiro",
+            "preco": 320.0
+          },
+          {
+            "descricao": "Pintura para-choque dianteiro",
+            "preco": 320.0
+          }
+        ],
+        "preco_total": 640.0,
+        "justificativa": "dianteiro: leve (trinca visível com deformação no plástico | calibracao: moderado/grave sem suporte >=2 fotos; tratado como leve/pintura)",
+        "fotos_analisadas": [
+          "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\input\\RUY5J95\\fotos\\d86918ca-e211-3eea-7cc5-6db75c0939cb-v1.jpg",
+          "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\input\\RUY5J95\\fotos\\8ab15d52-3240-0309-8493-facd992137d5-v1.jpg"
+        ]
+      }
+    },
+    "perito_lataria": {
+      "imagens_usadas": [
+        {
+          "image_id": "e1987460-3b81-9d40-a939-976f027b917a-v1",
+          "part_id": "retrovisor_direito",
+          "view": "detalhe"
+        },
+        {
+          "image_id": "f9c496b4-12e4-230f-20f4-4f0f24688885-v1",
+          "part_id": "retrovisor_esquerdo",
+          "view": "detalhe"
+        }
+      ],
+      "resultado": {
+        "nivel_dano": "leve",
+        "peca": "lataria",
+        "itens": [
+          {
+            "nivel_dano": "leve",
+            "peca": "retrovisor direito",
+            "servicos": [
+              {
+                "descricao": "Pintura retrovisor direito",
+                "preco": 150.0
+              }
+            ],
+            "preco_total": 150.0,
+            "justificativa": "Avaria visível na superfície do retrovisor direito, apresentando um amassado leve sem vinco marcado.",
+            "fotos_analisadas": [
+              "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\input\\RUY5J95\\fotos\\e1987460-3b81-9d40-a939-976f027b917a-v1.jpg"
+            ]
+          },
+          {
+            "nivel_dano": "leve",
+            "peca": "retrovisor esquerdo",
+            "servicos": [
+              {
+                "descricao": "Pintura retrovisor esquerdo",
+                "preco": 150.0
+              }
+            ],
+            "preco_total": 150.0,
+            "justificativa": "Avaria visível na pintura do retrovisor esquerdo, com riscos superficiais sem deformação.",
+            "fotos_analisadas": [
+              "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\input\\RUY5J95\\fotos\\f9c496b4-12e4-230f-20f4-4f0f24688885-v1.jpg"
+            ]
+          }
+        ],
+        "servicos": [
+          {
+            "descricao": "Pintura retrovisor direito",
+            "preco": 150.0
+          },
+          {
+            "descricao": "Pintura retrovisor esquerdo",
+            "preco": 150.0
+          }
+        ],
+        "preco_total": 300.0,
+        "justificativa": "retrovisor direito: leve (Avaria visível na superfície do retrovisor direito, apresentando um amassado leve sem vinco marcado.); retrovisor esquerdo: leve (Avaria visível na pintura do retrovisor esquerdo, com riscos superficiais sem deformação.)",
+        "fotos_analisadas": [
+          "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\input\\RUY5J95\\fotos\\e1987460-3b81-9d40-a939-976f027b917a-v1.jpg",
+          "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\input\\RUY5J95\\fotos\\f9c496b4-12e4-230f-20f4-4f0f24688885-v1.jpg"
+        ]
+      }
+    },
+    "perito_vidros": {
+      "imagens_usadas": [
+        {
+          "image_id": "4cf549cc-91bf-1b24-26d7-f8dad696b385-v1",
+          "part_id": "parabrisa",
+          "view": "detalhe"
+        },
+        {
+          "image_id": "a88ad3e0-5fee-b19a-18f6-b302b3e7bfa4-v1",
+          "part_id": "parabrisa",
+          "view": "detalhe"
+        }
+      ],
+      "resultado": {
+        "nivel_dano": "troca",
+        "peca": "parabrisa",
+        "servicos": [
+          {
+            "descricao": "Mão de obra troca do para-brisa",
+            "preco": 180.0
+          }
+        ],
+        "preco_total": 180.0,
+        "justificativa": "Avaria visível no para-brisa com trinca/estrela no campo de visão do motorista, o que torna a troca obrigatória.",
+        "fotos_analisadas": [
+          "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\input\\RUY5J95\\fotos\\4cf549cc-91bf-1b24-26d7-f8dad696b385-v1.jpg",
+          "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\input\\RUY5J95\\fotos\\a88ad3e0-5fee-b19a-18f6-b302b3e7bfa4-v1.jpg"
+        ],
+        "pecas_a_cotar": [
+          {
+            "descricao": "parabrisa",
+            "quantidade": 1,
+            "observacao": "Peça deve ser cotada à parte (informar valor manualmente)."
+          }
+        ]
+      }
+    },
+    "perito_pneus_rodas": {
+      "imagens_usadas": [
+        {
+          "image_id": "56f4a9bd-6de1-304f-7ced-f0d3b889430b-v1",
+          "part_id": "roda_dianteira_direita",
+          "view": "detalhe"
+        },
+        {
+          "image_id": "ccb2bd38-711c-9c43-467e-b0b9c51d12bb-v1",
+          "part_id": "roda_dianteira_esquerda",
+          "view": "detalhe"
+        },
+        {
+          "image_id": "eef786b8-b5fd-6e4b-2439-23cfc7578164-v1",
+          "part_id": "roda_dianteira_direita",
+          "view": "detalhe"
+        }
+      ],
+      "resultado": {
+        "nivel_dano": "grave",
+        "peca": "calota",
+        "servicos": [
+          {
+            "descricao": "Troca jogo de calotas",
+            "preco": 135.0
+          }
+        ],
+        "preco_total": 135.0,
+        "justificativa": "A calota apresenta quebra e falta de material na borda, o que justifica a troca.",
+        "fotos_analisadas": [
+          "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\input\\RUY5J95\\fotos\\56f4a9bd-6de1-304f-7ced-f0d3b889430b-v1.jpg",
+          "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\input\\RUY5J95\\fotos\\ccb2bd38-711c-9c43-467e-b0b9c51d12bb-v1.jpg",
+          "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\input\\RUY5J95\\fotos\\eef786b8-b5fd-6e4b-2439-23cfc7578164-v1.jpg"
+        ]
+      }
+    },
+    "perito_interior": {
+      "imagens_usadas": [
+        {
+          "image_id": "a771acf2-4fd6-4d80-ff92-031e66cc0470-v1",
+          "part_id": "interior",
+          "view": "detalhe"
+        },
+        {
+          "image_id": "ecab879c-18e9-ca22-90a3-fa06b4b632be-v1",
+          "part_id": "interior",
+          "view": "detalhe"
+        },
+        {
+          "image_id": "fdae2ecb-ea89-4f98-f5a0-04f6d81426d6-v1",
+          "part_id": "interior",
+          "view": "detalhe"
+        }
+      ],
+      "resultado": {
+        "nivel_dano": "sem_dano",
+        "peca": "banco",
+        "servicos": [],
+        "preco_total": 0.0,
+        "justificativa": "Checklist indica sem avarias internas; higienização não cobrada sem evidência clara.",
+        "fotos_analisadas": [
+          "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\input\\RUY5J95\\fotos\\a771acf2-4fd6-4d80-ff92-031e66cc0470-v1.jpg",
+          "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\input\\RUY5J95\\fotos\\ecab879c-18e9-ca22-90a3-fa06b4b632be-v1.jpg",
+          "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\input\\RUY5J95\\fotos\\fdae2ecb-ea89-4f98-f5a0-04f6d81426d6-v1.jpg"
+        ]
+      }
+    },
+    "perito_acessorios": {
+      "resultado": {
+        "erro": "nenhuma imagem elegivel"
+      }
+    }
+  },
+  "preco_total_geral": 1255.0,
+  "cobrancas_checklist_fallback": [
+    {
+      "descricao": "CHECKLIST — Avaria reportada na peça 'capo' (REVISAR)",
+      "valor": 0,
+      "needs_human_review": true,
+      "origin": "checklist_fallback",
+      "part_id": "capo",
+      "fotos": [
+        "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\input\\RUY5J95\\fotos\\83bf76a3-1f97-e150-c655-fc0f1b1d10ae-v1.jpg"
+      ]
+    },
+    {
+      "descricao": "CHECKLIST — Avaria reportada na peça 'parachoque_traseiro' (REVISAR)",
+      "valor": 0,
+      "needs_human_review": true,
+      "origin": "checklist_fallback",
+      "part_id": "parachoque_traseiro",
+      "fotos": [
+        "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\input\\RUY5J95\\fotos\\179e7233-d795-40ea-61f7-fdee64f2e5f3-v1.jpg"
+      ]
+    },
+    {
+      "descricao": "CHECKLIST — Avaria reportada na peça 'porta_dianteira_direita' (REVISAR)",
+      "valor": 0,
+      "needs_human_review": true,
+      "origin": "checklist_fallback",
+      "part_id": "porta_dianteira_direita",
+      "fotos": [
+        "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\input\\RUY5J95\\fotos\\9d94ee9d-38b3-1b1b-3e7c-a4a6672ce187-v1.jpg"
+      ]
+    },
+    {
+      "descricao": "CHECKLIST — Avaria reportada na peça 'roda_traseira_direita' (REVISAR)",
+      "valor": 0,
+      "needs_human_review": true,
+      "origin": "checklist_fallback",
+      "part_id": "roda_traseira_direita",
+      "fotos": [
+        "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\input\\RUY5J95\\fotos\\0a29ab70-6aa0-0f40-242d-c0f5e6df77ca-v1.jpg"
+      ]
+    },
+    {
+      "descricao": "CHECKLIST — Avaria reportada na peça 'roda_traseira_esquerda' (REVISAR)",
+      "valor": 0,
+      "needs_human_review": true,
+      "origin": "checklist_fallback",
+      "part_id": "roda_traseira_esquerda",
+      "fotos": [
+        "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\input\\RUY5J95\\fotos\\cd901354-3e9a-111d-6849-74938fbb4038-v1.jpg"
+      ]
+    }
+  ]
+}

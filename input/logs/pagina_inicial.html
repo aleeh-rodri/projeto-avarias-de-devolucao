@@ -1,0 +1,131 @@
+<html lang="en"><head>
+    <title>Visualizador GAD</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="/localiza/visualizadorGAD/Content/bootstrap.min.css" rel="stylesheet">
+    <link href="/localiza/visualizadorGAD/Content/Style.css" rel="stylesheet">
+    <link href="https://css.localiza.com/css/fontawesome/font-awesome.min.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+    
+    <div style="text-align: center; position: absolute; width: 100%; height: 0px; top: 0; margin: auto;z-index:9999">
+        <div id="alert-message-default" class="alert alert-message" style="width: auto; margin:0 30% 0 30%; display: none;">
+            <button type="button" class="close" aria-hidden="true">×</button>
+            <span id="text-message-default" style="text-align: center; width: auto;"></span>
+        </div>
+    </div>
+
+    <div id="myModal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- dialog body -->
+                <div class="modal-body">
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                    Deseja excluir esse arquivo?
+                </div>
+                <!-- dialog buttons -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success " id="confirmar">Confirma</button>
+                    <button type="button" class="btn btn-success" onclick="fecharModal();">Cancela</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="body-content body">
+        <style>
+    body {
+        overflow-y: scroll;
+    }
+</style>
+<form action="/localiza/visualizadorGAD/Consulta/Consulta/Consultar" area="Consulta" id="consultarForm" method="post" target="_blank">    <div class="navbar navbar-default">
+        <div class="navbar-header">
+            <div class="navbar-brand">Consulta de Documentos - Logística Operações</div>
+        </div>
+        <div class="navbar-form navbar-right">
+            <div class="checkbox">
+                <label for="PesquisarTodos">
+                    Pesquisar em Todos Documentos
+                </label>
+                <input id="PesquisarTodos" name="PesquisarTodos" type="checkbox" value="true"><input name="PesquisarTodos" type="hidden" value="false">
+            </div>
+            <input type="submit" value="Consultar" class="btn btn-success">
+        </div>
+    </div>
+    <div class="page-container">
+        <input type="hidden" name="chaveAcesso" id="chaveAcesso" value="caaa272f-2229-4165-8833-7c4637c91847">
+        <div class="page-content">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Informações do Documento</div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>SiglaDominio</label>
+                                        <input type="text" class="form-control " style="width:100%" disabled="" id="DescricaoDominio" value="Domínio referente a todo o processo de ativação e desativação do carro">
+                                        <input type="hidden" name="Metadados" id="MetadadosParametro">
+                                        <input type="hidden" name="SiglaDominio" id="SiglaDominio" value="LOOP">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>SiglaDocumento</label>
+                                        <select class="form-control" id="SiglaDocumentoSelect" name="SiglaDocumento" onchange="CarregarViewMetadados(this, '/localiza/visualizadorGAD/Consulta/Consulta/CarregarMetadados?ChaveAcesso=caaa272f-2229-4165-8833-7c4637c91847');" style="width:100%"><option value="">Selecione</option>
+<option value="FOTPVS">Foto do veículo de preparação para a venda para a Seminovos</option>
+<option value="RELDEV">Relatório de devolução do carro</option>
+<option value="FOTDEV">Fotos de devolução do carro ao executar o checklist</option>
+<option value="FOTPAR">Fotos de conferência de partes de carros zero GF</option>
+<option value="RELCON">Relatório de conferencia de carro zero GF</option>
+<option value="FOTCON">Fotos de avarias de conferencia de carro zero GF</option>
+<option value="FOTCHK">Fotos dos checklists realizados durante o processo de desativação dos veículos</option>
+<option value="RELENT">Processo responsável por entregar o carro ao cliente GF</option>
+<option value="FOTMEC">Fotos de avarias tiradas na etapa de check mecânico na desat</option>
+<option value="FOTPEC">Fotos das peças compradas automaticamente pelo aplicativo Agiliza</option>
+<option value="ASSDEV">Checklist realizado no momento que o cliente devolve o carro para a Localiza.</option>
+<option value="FOTPVQ">Foto de preparação de venda de check qualidade</option>
+<option value="FOTENT">Fotos de Entrega do carro</option>
+<option value="ASSENT">Assinatura do cliente ao entregar um carro</option>
+<option value="FOTAVA">Fotos de Avarias no contexto do Checkfácil Conferência.</option>
+<option value="FOTPVC">Fotos de avarias tiradas na primeira etapa de desativação do carro</option>
+</select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="ListaMetadados" class="row">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+    </div>
+
+    <script src="/localiza/visualizadorGAD/Scripts/jquery-1.9.1.min.js"></script>
+    <script src="/localiza/visualizadorGAD/Scripts/bootstrap.min.js"></script>
+    <script src="/localiza/visualizadorGAD/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="/localiza/visualizadorGAD/Scripts/app.js"></script>
+    
+
+    <script type="text/javascript">
+        var MaxRequestLength;
+        var TipoArquivosProibidos;
+        $(document).ready(function () {
+            var message = null;
+            var tipo = null;
+            MaxRequestLength = null;
+            TipoArquivosProibidos = null;
+            if (message != null) {
+                chamarMensagem(message, tipo);
+            }
+        });
+    </script>
+
+</body></html>

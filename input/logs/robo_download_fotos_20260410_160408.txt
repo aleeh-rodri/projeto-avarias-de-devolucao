@@ -1,0 +1,2033 @@
+2026-04-10 16:04:08,719 - INFO - ================================================================================
+2026-04-10 16:04:08,720 - INFO - INICIANDO ROBÔ DE DOWNLOAD DE FOTOS
+2026-04-10 16:04:08,721 - INFO - ================================================================================
+2026-04-10 16:04:08,721 - INFO - Lendo planilha de placas...
+2026-04-10 16:04:08,964 - INFO - ✓ Planilha lida com sucesso: 80 registros encontrados
+2026-04-10 16:04:08,965 - INFO - Configurando driver do navegador...
+2026-04-10 16:04:08,965 - INFO - Pasta de downloads temporária: C:\Users\464800\Downloads
+2026-04-10 16:04:10,720 - INFO - ✓ Driver configurado com sucesso
+2026-04-10 16:04:10,721 - INFO - Acessando sistema: https://wapps.localiza.com/localiza/visualizadorGAD/Consulta/Consulta/Index?u=1&chaveAcesso=caaa272f-2229-4165-8833-7c4637c91847&siglaDominio=LOOP
+2026-04-10 16:04:12,076 - INFO - ✓ Sistema acessado com sucesso
+2026-04-10 16:04:12,099 - INFO - HTML da página salvo em: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\logs\pagina_inicial.html
+2026-04-10 16:04:12,100 - INFO - Selecionando tipo de documento...
+2026-04-10 16:04:12,199 - INFO - ✓ Tipo de documento selecionado: FOTDEV
+2026-04-10 16:04:12,199 - INFO - Aguardando carregamento dos campos de metadados...
+2026-04-10 16:04:14,225 - INFO - ✓ Campos de metadados carregados
+2026-04-10 16:04:14,226 - INFO - 
+Iniciando processamento de 80 placa(s)...
+
+2026-04-10 16:04:14,227 - INFO - 
+============================================================
+2026-04-10 16:04:14,228 - INFO - Processando placa: RUW7F16
+2026-04-10 16:04:14,228 - INFO - ============================================================
+2026-04-10 16:04:14,228 - INFO - Inserindo placa no campo de busca...
+2026-04-10 16:04:14,243 - INFO - ✓ Campo placa encontrado
+2026-04-10 16:04:14,383 - INFO - ✓ Placa inserida
+2026-04-10 16:04:14,383 - INFO - Clicando em 'Consultar'...
+2026-04-10 16:04:14,400 - INFO - ✓ Botão consultar encontrado
+2026-04-10 16:04:16,523 - INFO - ✓ Consulta realizada
+2026-04-10 16:04:16,523 - INFO - Aguardando abertura do popup com fotos...
+2026-04-10 16:04:18,535 - INFO - ✓ Popup aberto
+2026-04-10 16:04:19,538 - INFO - ✓ Pasta criada: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\RUW7F16
+2026-04-10 16:04:19,545 - INFO - ✓ Download configurado para: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\RUW7F16
+2026-04-10 16:04:19,546 - INFO - Procurando botão 'Baixar Todos'...
+2026-04-10 16:04:19,608 - INFO - ✓ Botão 'Baixar Todos' encontrado
+2026-04-10 16:04:36,633 - INFO - ✓ Botão clicado
+2026-04-10 16:04:36,633 - INFO - Aguardando download...
+2026-04-10 16:04:41,635 - INFO - ✓ Arquivo ZIP detectado: Download.zip
+2026-04-10 16:04:44,107 - INFO - ✓ 48 arquivo(s) extraído(s) e organizados
+2026-04-10 16:04:44,112 - INFO - ✓ ZIP removido
+2026-04-10 16:04:44,114 - INFO - ✓ SUCESSO: 2 arquivo(s) na pasta RUW7F16
+2026-04-10 16:04:44,114 - INFO -   ✓ Fotos
+2026-04-10 16:04:44,114 - INFO -   ✓ PDF
+2026-04-10 16:04:44,170 - INFO - ✓ Popup fechado
+2026-04-10 16:04:44,174 - ERROR - Erro ao atualizar planilha: Invalid value 'sucesso' for dtype 'float64'
+2026-04-10 16:04:45,176 - INFO - 
+============================================================
+2026-04-10 16:04:45,176 - INFO - Processando placa: RMG8G80
+2026-04-10 16:04:45,177 - INFO - ============================================================
+2026-04-10 16:04:45,177 - INFO - Inserindo placa no campo de busca...
+2026-04-10 16:04:45,187 - INFO - ✓ Campo placa encontrado
+2026-04-10 16:04:45,308 - INFO - ✓ Placa inserida
+2026-04-10 16:04:45,309 - INFO - Clicando em 'Consultar'...
+2026-04-10 16:04:45,328 - INFO - ✓ Botão consultar encontrado
+2026-04-10 16:04:47,415 - INFO - ✓ Consulta realizada
+2026-04-10 16:04:47,415 - INFO - Aguardando abertura do popup com fotos...
+2026-04-10 16:04:49,425 - INFO - ✓ Popup aberto
+2026-04-10 16:04:50,427 - INFO - ✓ Pasta criada: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\RMG8G80
+2026-04-10 16:04:50,433 - INFO - ✓ Download configurado para: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\RMG8G80
+2026-04-10 16:04:50,434 - INFO - Procurando botão 'Baixar Todos'...
+2026-04-10 16:04:50,491 - INFO - ✓ Botão 'Baixar Todos' encontrado
+2026-04-10 16:04:50,577 - INFO - ✓ Botão clicado
+2026-04-10 16:04:50,577 - INFO - Aguardando download...
+2026-04-10 16:05:40,638 - ERROR - ❌ Timeout: Nenhum arquivo baixado após 45s
+2026-04-10 16:05:40,640 - ERROR - ❌ FALHA: Nenhum arquivo foi salvo na pasta RMG8G80
+2026-04-10 16:05:40,640 - ERROR - ✗ Erro ao processar placa RMG8G80: Download não concluído - pasta vazia
+2026-04-10 16:05:40,689 - ERROR - Erro ao atualizar planilha: Invalid value 'erro: Download não concluído - pasta vazia' for dtype 'float64'
+2026-04-10 16:05:41,691 - INFO - 
+============================================================
+2026-04-10 16:05:41,692 - INFO - Processando placa: RVI7D45
+2026-04-10 16:05:41,692 - INFO - ============================================================
+2026-04-10 16:05:41,692 - INFO - Inserindo placa no campo de busca...
+2026-04-10 16:05:41,704 - INFO - ✓ Campo placa encontrado
+2026-04-10 16:05:41,800 - INFO - ✓ Placa inserida
+2026-04-10 16:05:41,800 - INFO - Clicando em 'Consultar'...
+2026-04-10 16:05:41,812 - INFO - ✓ Botão consultar encontrado
+2026-04-10 16:05:43,915 - INFO - ✓ Consulta realizada
+2026-04-10 16:05:43,918 - INFO - Aguardando abertura do popup com fotos...
+2026-04-10 16:05:45,928 - INFO - ✓ Popup aberto
+2026-04-10 16:05:46,937 - INFO - ✓ Pasta criada: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\RVI7D45
+2026-04-10 16:05:46,942 - INFO - ✓ Download configurado para: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\RVI7D45
+2026-04-10 16:05:46,943 - INFO - Procurando botão 'Baixar Todos'...
+2026-04-10 16:05:46,991 - INFO - ✓ Botão 'Baixar Todos' encontrado
+2026-04-10 16:06:15,639 - INFO - ✓ Botão clicado
+2026-04-10 16:06:15,640 - INFO - Aguardando download...
+2026-04-10 16:06:20,642 - INFO - Download em andamento... (0s)
+2026-04-10 16:06:23,645 - INFO - ✓ Arquivo ZIP detectado: Download.zip
+2026-04-10 16:06:26,329 - INFO - ✓ 80 arquivo(s) extraído(s) e organizados
+2026-04-10 16:06:26,335 - INFO - ✓ ZIP removido
+2026-04-10 16:06:26,336 - INFO - ✓ SUCESSO: 2 arquivo(s) na pasta RVI7D45
+2026-04-10 16:06:26,337 - INFO -   ✓ Fotos
+2026-04-10 16:06:26,337 - INFO -   ✓ PDF
+2026-04-10 16:06:26,371 - INFO - ✓ Popup fechado
+2026-04-10 16:06:26,373 - ERROR - Erro ao atualizar planilha: Invalid value 'sucesso' for dtype 'float64'
+2026-04-10 16:06:27,374 - INFO - 
+============================================================
+2026-04-10 16:06:27,375 - INFO - Processando placa: SJA9C57
+2026-04-10 16:06:27,375 - INFO - ============================================================
+2026-04-10 16:06:27,376 - INFO - Inserindo placa no campo de busca...
+2026-04-10 16:06:27,389 - INFO - ✓ Campo placa encontrado
+2026-04-10 16:06:27,483 - INFO - ✓ Placa inserida
+2026-04-10 16:06:27,484 - INFO - Clicando em 'Consultar'...
+2026-04-10 16:06:27,494 - INFO - ✓ Botão consultar encontrado
+2026-04-10 16:06:29,590 - INFO - ✓ Consulta realizada
+2026-04-10 16:06:29,591 - INFO - Aguardando abertura do popup com fotos...
+2026-04-10 16:06:31,600 - INFO - ✓ Popup aberto
+2026-04-10 16:06:32,603 - INFO - ✓ Pasta criada: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\SJA9C57
+2026-04-10 16:06:32,610 - INFO - ✓ Download configurado para: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\SJA9C57
+2026-04-10 16:06:32,611 - INFO - Procurando botão 'Baixar Todos'...
+2026-04-10 16:06:32,666 - INFO - ✓ Botão 'Baixar Todos' encontrado
+2026-04-10 16:07:02,535 - INFO - ✓ Botão clicado
+2026-04-10 16:07:02,536 - INFO - Aguardando download...
+2026-04-10 16:07:07,538 - INFO - ✓ Arquivo ZIP detectado: Download.zip
+2026-04-10 16:07:10,005 - INFO - ✓ 55 arquivo(s) extraído(s) e organizados
+2026-04-10 16:07:10,010 - INFO - ✓ ZIP removido
+2026-04-10 16:07:10,011 - INFO - ✓ SUCESSO: 2 arquivo(s) na pasta SJA9C57
+2026-04-10 16:07:10,012 - INFO -   ✓ Fotos
+2026-04-10 16:07:10,012 - INFO -   ✓ PDF
+2026-04-10 16:07:10,090 - INFO - ✓ Popup fechado
+2026-04-10 16:07:10,092 - ERROR - Erro ao atualizar planilha: Invalid value 'sucesso' for dtype 'float64'
+2026-04-10 16:07:11,093 - INFO - 
+============================================================
+2026-04-10 16:07:11,094 - INFO - Processando placa: SYT3D86
+2026-04-10 16:07:11,094 - INFO - ============================================================
+2026-04-10 16:07:11,094 - INFO - Inserindo placa no campo de busca...
+2026-04-10 16:07:11,106 - INFO - ✓ Campo placa encontrado
+2026-04-10 16:07:11,210 - INFO - ✓ Placa inserida
+2026-04-10 16:07:11,211 - INFO - Clicando em 'Consultar'...
+2026-04-10 16:07:11,220 - INFO - ✓ Botão consultar encontrado
+2026-04-10 16:07:13,323 - INFO - ✓ Consulta realizada
+2026-04-10 16:07:13,324 - INFO - Aguardando abertura do popup com fotos...
+2026-04-10 16:07:15,333 - INFO - ✓ Popup aberto
+2026-04-10 16:07:16,335 - INFO - ✓ Pasta criada: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\SYT3D86
+2026-04-10 16:07:16,340 - INFO - ✓ Download configurado para: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\SYT3D86
+2026-04-10 16:07:16,340 - INFO - Procurando botão 'Baixar Todos'...
+2026-04-10 16:07:16,390 - INFO - ✓ Botão 'Baixar Todos' encontrado
+2026-04-10 16:07:46,166 - INFO - ✓ Botão clicado
+2026-04-10 16:07:46,166 - INFO - Aguardando download...
+2026-04-10 16:07:51,168 - INFO - Download em andamento... (0s)
+2026-04-10 16:07:54,172 - INFO - ✓ Arquivo ZIP detectado: Download.zip
+2026-04-10 16:07:56,952 - INFO - ✓ 83 arquivo(s) extraído(s) e organizados
+2026-04-10 16:07:56,961 - INFO - ✓ ZIP removido
+2026-04-10 16:07:56,962 - INFO - ✓ SUCESSO: 2 arquivo(s) na pasta SYT3D86
+2026-04-10 16:07:56,962 - INFO -   ✓ Fotos
+2026-04-10 16:07:56,962 - INFO -   ✓ PDF
+2026-04-10 16:07:57,029 - INFO - ✓ Popup fechado
+2026-04-10 16:07:57,031 - ERROR - Erro ao atualizar planilha: Invalid value 'sucesso' for dtype 'float64'
+2026-04-10 16:07:58,033 - INFO - 
+============================================================
+2026-04-10 16:07:58,034 - INFO - Processando placa: TCD4F26
+2026-04-10 16:07:58,034 - INFO - ============================================================
+2026-04-10 16:07:58,034 - INFO - Inserindo placa no campo de busca...
+2026-04-10 16:07:58,047 - INFO - ✓ Campo placa encontrado
+2026-04-10 16:07:58,143 - INFO - ✓ Placa inserida
+2026-04-10 16:07:58,143 - INFO - Clicando em 'Consultar'...
+2026-04-10 16:07:58,152 - INFO - ✓ Botão consultar encontrado
+2026-04-10 16:08:00,251 - INFO - ✓ Consulta realizada
+2026-04-10 16:08:00,251 - INFO - Aguardando abertura do popup com fotos...
+2026-04-10 16:08:02,259 - INFO - ✓ Popup aberto
+2026-04-10 16:08:03,260 - INFO - ✓ Pasta criada: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\TCD4F26
+2026-04-10 16:08:03,267 - INFO - ✓ Download configurado para: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\TCD4F26
+2026-04-10 16:08:03,267 - INFO - Procurando botão 'Baixar Todos'...
+2026-04-10 16:08:03,325 - INFO - ✓ Botão 'Baixar Todos' encontrado
+2026-04-10 16:08:27,243 - INFO - ✓ Botão clicado
+2026-04-10 16:08:27,244 - INFO - Aguardando download...
+2026-04-10 16:09:17,298 - ERROR - ❌ Timeout: Nenhum arquivo baixado após 45s
+2026-04-10 16:09:17,299 - ERROR - ❌ FALHA: Nenhum arquivo foi salvo na pasta TCD4F26
+2026-04-10 16:09:17,300 - ERROR - ✗ Erro ao processar placa TCD4F26: Download não concluído - pasta vazia
+2026-04-10 16:09:17,382 - ERROR - Erro ao atualizar planilha: Invalid value 'erro: Download não concluído - pasta vazia' for dtype 'float64'
+2026-04-10 16:09:18,383 - INFO - 
+============================================================
+2026-04-10 16:09:18,384 - INFO - Processando placa: TCD4F41
+2026-04-10 16:09:18,384 - INFO - ============================================================
+2026-04-10 16:09:18,385 - INFO - Inserindo placa no campo de busca...
+2026-04-10 16:09:18,399 - INFO - ✓ Campo placa encontrado
+2026-04-10 16:09:18,529 - INFO - ✓ Placa inserida
+2026-04-10 16:09:18,529 - INFO - Clicando em 'Consultar'...
+2026-04-10 16:09:18,543 - INFO - ✓ Botão consultar encontrado
+2026-04-10 16:09:20,712 - INFO - ✓ Consulta realizada
+2026-04-10 16:09:20,712 - INFO - Aguardando abertura do popup com fotos...
+2026-04-10 16:09:22,723 - INFO - ✓ Popup aberto
+2026-04-10 16:09:23,732 - INFO - ✓ Pasta criada: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\TCD4F41
+2026-04-10 16:09:23,760 - INFO - ✓ Download configurado para: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\TCD4F41
+2026-04-10 16:09:23,760 - INFO - Procurando botão 'Baixar Todos'...
+2026-04-10 16:09:23,841 - INFO - ✓ Botão 'Baixar Todos' encontrado
+2026-04-10 16:09:40,751 - INFO - ✓ Botão clicado
+2026-04-10 16:09:40,751 - INFO - Aguardando download...
+2026-04-10 16:09:45,753 - INFO - ✓ Arquivo ZIP detectado: Download.zip
+2026-04-10 16:09:48,254 - INFO - ✓ 53 arquivo(s) extraído(s) e organizados
+2026-04-10 16:09:48,259 - INFO - ✓ ZIP removido
+2026-04-10 16:09:48,260 - INFO - ✓ SUCESSO: 2 arquivo(s) na pasta TCD4F41
+2026-04-10 16:09:48,260 - INFO -   ✓ Fotos
+2026-04-10 16:09:48,261 - INFO -   ✓ PDF
+2026-04-10 16:09:48,318 - INFO - ✓ Popup fechado
+2026-04-10 16:09:48,321 - ERROR - Erro ao atualizar planilha: Invalid value 'sucesso' for dtype 'float64'
+2026-04-10 16:09:49,323 - INFO - 
+============================================================
+2026-04-10 16:09:49,333 - INFO - Processando placa: TCD4F48
+2026-04-10 16:09:49,336 - INFO - ============================================================
+2026-04-10 16:09:49,336 - INFO - Inserindo placa no campo de busca...
+2026-04-10 16:09:49,355 - INFO - ✓ Campo placa encontrado
+2026-04-10 16:09:49,517 - INFO - ✓ Placa inserida
+2026-04-10 16:09:49,518 - INFO - Clicando em 'Consultar'...
+2026-04-10 16:09:49,529 - INFO - ✓ Botão consultar encontrado
+2026-04-10 16:09:51,660 - INFO - ✓ Consulta realizada
+2026-04-10 16:09:51,660 - INFO - Aguardando abertura do popup com fotos...
+2026-04-10 16:09:53,670 - INFO - ✓ Popup aberto
+2026-04-10 16:09:54,673 - INFO - ✓ Pasta criada: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\TCD4F48
+2026-04-10 16:09:54,680 - INFO - ✓ Download configurado para: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\TCD4F48
+2026-04-10 16:09:54,680 - INFO - Procurando botão 'Baixar Todos'...
+2026-04-10 16:09:54,750 - INFO - ✓ Botão 'Baixar Todos' encontrado
+2026-04-10 16:10:19,557 - INFO - ✓ Botão clicado
+2026-04-10 16:10:19,557 - INFO - Aguardando download...
+2026-04-10 16:10:24,559 - INFO - ✓ Arquivo ZIP detectado: Download.zip
+2026-04-10 16:10:27,221 - INFO - ✓ 69 arquivo(s) extraído(s) e organizados
+2026-04-10 16:10:27,226 - INFO - ✓ ZIP removido
+2026-04-10 16:10:27,228 - INFO - ✓ SUCESSO: 2 arquivo(s) na pasta TCD4F48
+2026-04-10 16:10:27,228 - INFO -   ✓ Fotos
+2026-04-10 16:10:27,228 - INFO -   ✓ PDF
+2026-04-10 16:10:27,288 - INFO - ✓ Popup fechado
+2026-04-10 16:10:27,291 - ERROR - Erro ao atualizar planilha: Invalid value 'sucesso' for dtype 'float64'
+2026-04-10 16:10:28,292 - INFO - 
+============================================================
+2026-04-10 16:10:28,293 - INFO - Processando placa: RVW0A19
+2026-04-10 16:10:28,293 - INFO - ============================================================
+2026-04-10 16:10:28,293 - INFO - Inserindo placa no campo de busca...
+2026-04-10 16:10:28,307 - INFO - ✓ Campo placa encontrado
+2026-04-10 16:10:28,423 - INFO - ✓ Placa inserida
+2026-04-10 16:10:28,424 - INFO - Clicando em 'Consultar'...
+2026-04-10 16:10:28,436 - INFO - ✓ Botão consultar encontrado
+2026-04-10 16:10:30,560 - INFO - ✓ Consulta realizada
+2026-04-10 16:10:30,561 - INFO - Aguardando abertura do popup com fotos...
+2026-04-10 16:10:32,571 - INFO - ✓ Popup aberto
+2026-04-10 16:10:33,574 - INFO - ✓ Pasta criada: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\RVW0A19
+2026-04-10 16:10:33,580 - INFO - ✓ Download configurado para: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\RVW0A19
+2026-04-10 16:10:33,581 - INFO - Procurando botão 'Baixar Todos'...
+2026-04-10 16:10:33,659 - INFO - ✓ Botão 'Baixar Todos' encontrado
+2026-04-10 16:10:38,898 - INFO - ✓ Botão clicado
+2026-04-10 16:10:38,899 - INFO - Aguardando download...
+2026-04-10 16:11:28,954 - ERROR - ❌ Timeout: Nenhum arquivo baixado após 45s
+2026-04-10 16:11:28,955 - ERROR - ❌ FALHA: Nenhum arquivo foi salvo na pasta RVW0A19
+2026-04-10 16:11:28,956 - ERROR - ✗ Erro ao processar placa RVW0A19: Download não concluído - pasta vazia
+2026-04-10 16:11:29,024 - ERROR - Erro ao atualizar planilha: Invalid value 'erro: Download não concluído - pasta vazia' for dtype 'float64'
+2026-04-10 16:11:30,025 - INFO - 
+============================================================
+2026-04-10 16:11:30,027 - INFO - Processando placa: EVO3C11
+2026-04-10 16:11:30,027 - INFO - ============================================================
+2026-04-10 16:11:30,027 - INFO - Inserindo placa no campo de busca...
+2026-04-10 16:11:30,040 - INFO - ✓ Campo placa encontrado
+2026-04-10 16:11:30,159 - INFO - ✓ Placa inserida
+2026-04-10 16:11:30,160 - INFO - Clicando em 'Consultar'...
+2026-04-10 16:11:30,172 - INFO - ✓ Botão consultar encontrado
+2026-04-10 16:11:32,321 - INFO - ✓ Consulta realizada
+2026-04-10 16:11:32,322 - INFO - Aguardando abertura do popup com fotos...
+2026-04-10 16:11:34,333 - INFO - ✓ Popup aberto
+2026-04-10 16:11:35,334 - INFO - ✓ Pasta criada: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\EVO3C11
+2026-04-10 16:11:35,341 - INFO - ✓ Download configurado para: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\EVO3C11
+2026-04-10 16:11:35,341 - INFO - Procurando botão 'Baixar Todos'...
+2026-04-10 16:11:35,392 - INFO - ✓ Botão 'Baixar Todos' encontrado
+2026-04-10 16:11:42,613 - INFO - ✓ Botão clicado
+2026-04-10 16:11:42,613 - INFO - Aguardando download...
+2026-04-10 16:12:32,661 - ERROR - ❌ Timeout: Nenhum arquivo baixado após 45s
+2026-04-10 16:12:32,662 - ERROR - ❌ FALHA: Nenhum arquivo foi salvo na pasta EVO3C11
+2026-04-10 16:12:32,663 - ERROR - ✗ Erro ao processar placa EVO3C11: Download não concluído - pasta vazia
+2026-04-10 16:12:32,705 - ERROR - Erro ao atualizar planilha: Invalid value 'erro: Download não concluído - pasta vazia' for dtype 'float64'
+2026-04-10 16:12:33,706 - INFO - 
+============================================================
+2026-04-10 16:12:33,706 - INFO - Processando placa: GKC7J87
+2026-04-10 16:12:33,707 - INFO - ============================================================
+2026-04-10 16:12:33,707 - INFO - Inserindo placa no campo de busca...
+2026-04-10 16:12:33,720 - INFO - ✓ Campo placa encontrado
+2026-04-10 16:12:33,827 - INFO - ✓ Placa inserida
+2026-04-10 16:12:33,828 - INFO - Clicando em 'Consultar'...
+2026-04-10 16:12:33,840 - INFO - ✓ Botão consultar encontrado
+2026-04-10 16:12:35,955 - INFO - ✓ Consulta realizada
+2026-04-10 16:12:35,955 - INFO - Aguardando abertura do popup com fotos...
+2026-04-10 16:12:37,967 - INFO - ✓ Popup aberto
+2026-04-10 16:12:38,969 - INFO - ✓ Pasta criada: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\GKC7J87
+2026-04-10 16:12:38,977 - INFO - ✓ Download configurado para: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\GKC7J87
+2026-04-10 16:12:38,978 - INFO - Procurando botão 'Baixar Todos'...
+2026-04-10 16:12:39,045 - INFO - ✓ Botão 'Baixar Todos' encontrado
+2026-04-10 16:12:56,919 - INFO - ✓ Botão clicado
+2026-04-10 16:12:56,919 - INFO - Aguardando download...
+2026-04-10 16:13:01,919 - INFO - ✓ Arquivo ZIP detectado: Download.zip
+2026-04-10 16:13:04,381 - INFO - ✓ 53 arquivo(s) extraído(s) e organizados
+2026-04-10 16:13:04,385 - INFO - ✓ ZIP removido
+2026-04-10 16:13:04,385 - INFO - ✓ SUCESSO: 2 arquivo(s) na pasta GKC7J87
+2026-04-10 16:13:04,386 - INFO -   ✓ Fotos
+2026-04-10 16:13:04,386 - INFO -   ✓ PDF
+2026-04-10 16:13:04,460 - INFO - ✓ Popup fechado
+2026-04-10 16:13:04,461 - ERROR - Erro ao atualizar planilha: Invalid value 'sucesso' for dtype 'float64'
+2026-04-10 16:13:05,462 - INFO - 
+============================================================
+2026-04-10 16:13:05,463 - INFO - Processando placa: QXY9C35
+2026-04-10 16:13:05,463 - INFO - ============================================================
+2026-04-10 16:13:05,463 - INFO - Inserindo placa no campo de busca...
+2026-04-10 16:13:05,476 - INFO - ✓ Campo placa encontrado
+2026-04-10 16:13:05,588 - INFO - ✓ Placa inserida
+2026-04-10 16:13:05,588 - INFO - Clicando em 'Consultar'...
+2026-04-10 16:13:05,601 - INFO - ✓ Botão consultar encontrado
+2026-04-10 16:13:07,739 - INFO - ✓ Consulta realizada
+2026-04-10 16:13:07,739 - INFO - Aguardando abertura do popup com fotos...
+2026-04-10 16:13:09,749 - INFO - ✓ Popup aberto
+2026-04-10 16:13:10,752 - INFO - ✓ Pasta criada: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\QXY9C35
+2026-04-10 16:13:10,759 - INFO - ✓ Download configurado para: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\QXY9C35
+2026-04-10 16:13:10,759 - INFO - Procurando botão 'Baixar Todos'...
+2026-04-10 16:13:10,829 - INFO - ✓ Botão 'Baixar Todos' encontrado
+2026-04-10 16:13:41,752 - INFO - ✓ Botão clicado
+2026-04-10 16:13:41,752 - INFO - Aguardando download...
+2026-04-10 16:13:46,754 - INFO - ✓ Arquivo ZIP detectado: Download.zip
+2026-04-10 16:13:49,514 - INFO - ✓ 94 arquivo(s) extraído(s) e organizados
+2026-04-10 16:13:49,520 - INFO - ✓ ZIP removido
+2026-04-10 16:13:49,522 - INFO - ✓ SUCESSO: 2 arquivo(s) na pasta QXY9C35
+2026-04-10 16:13:49,522 - INFO -   ✓ Fotos
+2026-04-10 16:13:49,523 - INFO -   ✓ PDF
+2026-04-10 16:13:49,592 - INFO - ✓ Popup fechado
+2026-04-10 16:13:49,594 - ERROR - Erro ao atualizar planilha: Invalid value 'sucesso' for dtype 'float64'
+2026-04-10 16:13:50,596 - INFO - 
+============================================================
+2026-04-10 16:13:50,596 - INFO - Processando placa: RUF0D26
+2026-04-10 16:13:50,597 - INFO - ============================================================
+2026-04-10 16:13:50,597 - INFO - Inserindo placa no campo de busca...
+2026-04-10 16:13:50,608 - INFO - ✓ Campo placa encontrado
+2026-04-10 16:13:50,810 - INFO - ✓ Placa inserida
+2026-04-10 16:13:50,810 - INFO - Clicando em 'Consultar'...
+2026-04-10 16:13:50,822 - INFO - ✓ Botão consultar encontrado
+2026-04-10 16:13:52,985 - INFO - ✓ Consulta realizada
+2026-04-10 16:13:52,985 - INFO - Aguardando abertura do popup com fotos...
+2026-04-10 16:13:54,994 - INFO - ✓ Popup aberto
+2026-04-10 16:13:55,996 - INFO - ✓ Pasta criada: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\RUF0D26
+2026-04-10 16:13:56,040 - INFO - ✓ Download configurado para: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\RUF0D26
+2026-04-10 16:13:56,041 - INFO - Procurando botão 'Baixar Todos'...
+2026-04-10 16:13:56,125 - INFO - ✓ Botão 'Baixar Todos' encontrado
+2026-04-10 16:13:56,234 - INFO - ✓ Botão clicado
+2026-04-10 16:13:56,234 - INFO - Aguardando download...
+2026-04-10 16:14:46,277 - ERROR - ❌ Timeout: Nenhum arquivo baixado após 45s
+2026-04-10 16:14:46,278 - ERROR - ❌ FALHA: Nenhum arquivo foi salvo na pasta RUF0D26
+2026-04-10 16:14:46,279 - ERROR - ✗ Erro ao processar placa RUF0D26: Download não concluído - pasta vazia
+2026-04-10 16:14:46,346 - ERROR - Erro ao atualizar planilha: Invalid value 'erro: Download não concluído - pasta vazia' for dtype 'float64'
+2026-04-10 16:14:47,347 - INFO - 
+============================================================
+2026-04-10 16:14:47,347 - INFO - Processando placa: RVJ8D91
+2026-04-10 16:14:47,348 - INFO - ============================================================
+2026-04-10 16:14:47,348 - INFO - Inserindo placa no campo de busca...
+2026-04-10 16:14:47,359 - INFO - ✓ Campo placa encontrado
+2026-04-10 16:14:47,468 - INFO - ✓ Placa inserida
+2026-04-10 16:14:47,469 - INFO - Clicando em 'Consultar'...
+2026-04-10 16:14:47,480 - INFO - ✓ Botão consultar encontrado
+2026-04-10 16:14:49,605 - INFO - ✓ Consulta realizada
+2026-04-10 16:14:49,606 - INFO - Aguardando abertura do popup com fotos...
+2026-04-10 16:14:51,620 - INFO - ✓ Popup aberto
+2026-04-10 16:14:52,622 - INFO - ✓ Pasta criada: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\RVJ8D91
+2026-04-10 16:14:52,632 - INFO - ✓ Download configurado para: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\RVJ8D91
+2026-04-10 16:14:52,633 - INFO - Procurando botão 'Baixar Todos'...
+2026-04-10 16:14:52,709 - INFO - ✓ Botão 'Baixar Todos' encontrado
+2026-04-10 16:15:16,695 - INFO - ✓ Botão clicado
+2026-04-10 16:15:16,695 - INFO - Aguardando download...
+2026-04-10 16:15:21,695 - INFO - ✓ Arquivo ZIP detectado: Download.zip
+2026-04-10 16:15:24,331 - INFO - ✓ 71 arquivo(s) extraído(s) e organizados
+2026-04-10 16:15:24,336 - INFO - ✓ ZIP removido
+2026-04-10 16:15:24,338 - INFO - ✓ SUCESSO: 2 arquivo(s) na pasta RVJ8D91
+2026-04-10 16:15:24,338 - INFO -   ✓ Fotos
+2026-04-10 16:15:24,338 - INFO -   ✓ PDF
+2026-04-10 16:15:24,448 - INFO - ✓ Popup fechado
+2026-04-10 16:15:24,453 - ERROR - Erro ao atualizar planilha: Invalid value 'sucesso' for dtype 'float64'
+2026-04-10 16:15:25,455 - INFO - 
+============================================================
+2026-04-10 16:15:25,456 - INFO - Processando placa: SJF5J46
+2026-04-10 16:15:25,456 - INFO - ============================================================
+2026-04-10 16:15:25,456 - INFO - Inserindo placa no campo de busca...
+2026-04-10 16:15:25,467 - INFO - ✓ Campo placa encontrado
+2026-04-10 16:15:25,580 - INFO - ✓ Placa inserida
+2026-04-10 16:15:25,580 - INFO - Clicando em 'Consultar'...
+2026-04-10 16:15:25,591 - INFO - ✓ Botão consultar encontrado
+2026-04-10 16:15:27,728 - INFO - ✓ Consulta realizada
+2026-04-10 16:15:27,729 - INFO - Aguardando abertura do popup com fotos...
+2026-04-10 16:15:29,739 - INFO - ✓ Popup aberto
+2026-04-10 16:15:30,741 - INFO - ✓ Pasta criada: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\SJF5J46
+2026-04-10 16:15:30,748 - INFO - ✓ Download configurado para: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\SJF5J46
+2026-04-10 16:15:30,749 - INFO - Procurando botão 'Baixar Todos'...
+2026-04-10 16:15:30,818 - INFO - ✓ Botão 'Baixar Todos' encontrado
+2026-04-10 16:15:47,960 - INFO - ✓ Botão clicado
+2026-04-10 16:15:47,960 - INFO - Aguardando download...
+2026-04-10 16:16:38,002 - ERROR - ❌ Timeout: Nenhum arquivo baixado após 45s
+2026-04-10 16:16:38,003 - ERROR - ❌ FALHA: Nenhum arquivo foi salvo na pasta SJF5J46
+2026-04-10 16:16:38,004 - ERROR - ✗ Erro ao processar placa SJF5J46: Download não concluído - pasta vazia
+2026-04-10 16:16:38,058 - ERROR - Erro ao atualizar planilha: Invalid value 'erro: Download não concluído - pasta vazia' for dtype 'float64'
+2026-04-10 16:16:39,060 - INFO - 
+============================================================
+2026-04-10 16:16:39,061 - INFO - Processando placa: SVH1D50
+2026-04-10 16:16:39,061 - INFO - ============================================================
+2026-04-10 16:16:39,061 - INFO - Inserindo placa no campo de busca...
+2026-04-10 16:16:39,076 - INFO - ✓ Campo placa encontrado
+2026-04-10 16:16:39,197 - INFO - ✓ Placa inserida
+2026-04-10 16:16:39,198 - INFO - Clicando em 'Consultar'...
+2026-04-10 16:16:39,210 - INFO - ✓ Botão consultar encontrado
+2026-04-10 16:16:41,342 - INFO - ✓ Consulta realizada
+2026-04-10 16:16:41,342 - INFO - Aguardando abertura do popup com fotos...
+2026-04-10 16:16:43,352 - INFO - ✓ Popup aberto
+2026-04-10 16:16:44,354 - INFO - ✓ Pasta criada: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\SVH1D50
+2026-04-10 16:16:44,363 - INFO - ✓ Download configurado para: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\SVH1D50
+2026-04-10 16:16:44,363 - INFO - Procurando botão 'Baixar Todos'...
+2026-04-10 16:16:44,443 - INFO - ✓ Botão 'Baixar Todos' encontrado
+2026-04-10 16:17:09,432 - INFO - ✓ Botão clicado
+2026-04-10 16:17:09,432 - INFO - Aguardando download...
+2026-04-10 16:17:14,434 - INFO - ✓ Arquivo ZIP detectado: Download.zip
+2026-04-10 16:17:17,008 - INFO - ✓ 67 arquivo(s) extraído(s) e organizados
+2026-04-10 16:17:17,013 - INFO - ✓ ZIP removido
+2026-04-10 16:17:17,014 - INFO - ✓ SUCESSO: 2 arquivo(s) na pasta SVH1D50
+2026-04-10 16:17:17,014 - INFO -   ✓ Fotos
+2026-04-10 16:17:17,014 - INFO -   ✓ PDF
+2026-04-10 16:17:17,068 - INFO - ✓ Popup fechado
+2026-04-10 16:17:17,069 - ERROR - Erro ao atualizar planilha: Invalid value 'sucesso' for dtype 'float64'
+2026-04-10 16:17:18,070 - INFO - 
+============================================================
+2026-04-10 16:17:18,070 - INFO - Processando placa: SYT3D76
+2026-04-10 16:17:18,071 - INFO - ============================================================
+2026-04-10 16:17:18,071 - INFO - Inserindo placa no campo de busca...
+2026-04-10 16:17:18,083 - INFO - ✓ Campo placa encontrado
+2026-04-10 16:17:18,188 - INFO - ✓ Placa inserida
+2026-04-10 16:17:18,188 - INFO - Clicando em 'Consultar'...
+2026-04-10 16:17:18,199 - INFO - ✓ Botão consultar encontrado
+2026-04-10 16:17:20,331 - INFO - ✓ Consulta realizada
+2026-04-10 16:17:20,331 - INFO - Aguardando abertura do popup com fotos...
+2026-04-10 16:17:22,343 - INFO - ✓ Popup aberto
+2026-04-10 16:17:23,345 - INFO - ✓ Pasta criada: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\SYT3D76
+2026-04-10 16:17:23,353 - INFO - ✓ Download configurado para: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\SYT3D76
+2026-04-10 16:17:23,353 - INFO - Procurando botão 'Baixar Todos'...
+2026-04-10 16:17:23,433 - INFO - ✓ Botão 'Baixar Todos' encontrado
+2026-04-10 16:17:44,763 - INFO - ✓ Botão clicado
+2026-04-10 16:17:44,763 - INFO - Aguardando download...
+2026-04-10 16:17:49,764 - INFO - ✓ Arquivo ZIP detectado: Download.zip
+2026-04-10 16:17:52,360 - INFO - ✓ 66 arquivo(s) extraído(s) e organizados
+2026-04-10 16:17:52,364 - INFO - ✓ ZIP removido
+2026-04-10 16:17:52,365 - INFO - ✓ SUCESSO: 2 arquivo(s) na pasta SYT3D76
+2026-04-10 16:17:52,365 - INFO -   ✓ Fotos
+2026-04-10 16:17:52,365 - INFO -   ✓ PDF
+2026-04-10 16:17:52,432 - INFO - ✓ Popup fechado
+2026-04-10 16:17:52,433 - ERROR - Erro ao atualizar planilha: Invalid value 'sucesso' for dtype 'float64'
+2026-04-10 16:17:53,434 - INFO - 
+============================================================
+2026-04-10 16:17:53,435 - INFO - Processando placa: TCD4F27
+2026-04-10 16:17:53,435 - INFO - ============================================================
+2026-04-10 16:17:53,436 - INFO - Inserindo placa no campo de busca...
+2026-04-10 16:17:53,450 - INFO - ✓ Campo placa encontrado
+2026-04-10 16:17:53,570 - INFO - ✓ Placa inserida
+2026-04-10 16:17:53,570 - INFO - Clicando em 'Consultar'...
+2026-04-10 16:17:53,584 - INFO - ✓ Botão consultar encontrado
+2026-04-10 16:17:55,716 - INFO - ✓ Consulta realizada
+2026-04-10 16:17:55,716 - INFO - Aguardando abertura do popup com fotos...
+2026-04-10 16:17:57,727 - INFO - ✓ Popup aberto
+2026-04-10 16:17:58,730 - INFO - ✓ Pasta criada: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\TCD4F27
+2026-04-10 16:17:58,738 - INFO - ✓ Download configurado para: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\TCD4F27
+2026-04-10 16:17:58,738 - INFO - Procurando botão 'Baixar Todos'...
+2026-04-10 16:17:58,811 - INFO - ✓ Botão 'Baixar Todos' encontrado
+2026-04-10 16:18:28,430 - INFO - ✓ Botão clicado
+2026-04-10 16:18:28,430 - INFO - Aguardando download...
+2026-04-10 16:18:33,431 - INFO - ✓ Arquivo ZIP detectado: Download.zip
+2026-04-10 16:18:36,077 - INFO - ✓ 92 arquivo(s) extraído(s) e organizados
+2026-04-10 16:18:36,081 - INFO - ✓ ZIP removido
+2026-04-10 16:18:36,082 - INFO - ✓ SUCESSO: 2 arquivo(s) na pasta TCD4F27
+2026-04-10 16:18:36,082 - INFO -   ✓ Fotos
+2026-04-10 16:18:36,082 - INFO -   ✓ PDF
+2026-04-10 16:18:36,122 - INFO - ✓ Popup fechado
+2026-04-10 16:18:36,123 - ERROR - Erro ao atualizar planilha: Invalid value 'sucesso' for dtype 'float64'
+2026-04-10 16:18:37,124 - INFO - 
+============================================================
+2026-04-10 16:18:37,125 - INFO - Processando placa: TCD4F37
+2026-04-10 16:18:37,125 - INFO - ============================================================
+2026-04-10 16:18:37,125 - INFO - Inserindo placa no campo de busca...
+2026-04-10 16:18:37,136 - INFO - ✓ Campo placa encontrado
+2026-04-10 16:18:37,217 - INFO - ✓ Placa inserida
+2026-04-10 16:18:37,217 - INFO - Clicando em 'Consultar'...
+2026-04-10 16:18:37,226 - INFO - ✓ Botão consultar encontrado
+2026-04-10 16:18:39,330 - INFO - ✓ Consulta realizada
+2026-04-10 16:18:39,330 - INFO - Aguardando abertura do popup com fotos...
+2026-04-10 16:18:41,341 - INFO - ✓ Popup aberto
+2026-04-10 16:18:42,342 - INFO - ✓ Pasta criada: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\TCD4F37
+2026-04-10 16:18:42,351 - INFO - ✓ Download configurado para: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\TCD4F37
+2026-04-10 16:18:42,352 - INFO - Procurando botão 'Baixar Todos'...
+2026-04-10 16:18:42,449 - INFO - ✓ Botão 'Baixar Todos' encontrado
+2026-04-10 16:19:00,758 - INFO - ✓ Botão clicado
+2026-04-10 16:19:00,759 - INFO - Aguardando download...
+2026-04-10 16:19:50,800 - ERROR - ❌ Timeout: Nenhum arquivo baixado após 45s
+2026-04-10 16:19:50,802 - ERROR - ❌ FALHA: Nenhum arquivo foi salvo na pasta TCD4F37
+2026-04-10 16:19:50,802 - ERROR - ✗ Erro ao processar placa TCD4F37: Download não concluído - pasta vazia
+2026-04-10 16:19:50,840 - ERROR - Erro ao atualizar planilha: Invalid value 'erro: Download não concluído - pasta vazia' for dtype 'float64'
+2026-04-10 16:19:51,841 - INFO - 
+============================================================
+2026-04-10 16:19:51,842 - INFO - Processando placa: TED7C03
+2026-04-10 16:19:51,842 - INFO - ============================================================
+2026-04-10 16:19:51,842 - INFO - Inserindo placa no campo de busca...
+2026-04-10 16:19:51,855 - INFO - ✓ Campo placa encontrado
+2026-04-10 16:19:51,968 - INFO - ✓ Placa inserida
+2026-04-10 16:19:51,969 - INFO - Clicando em 'Consultar'...
+2026-04-10 16:19:51,981 - INFO - ✓ Botão consultar encontrado
+2026-04-10 16:19:54,110 - INFO - ✓ Consulta realizada
+2026-04-10 16:19:54,111 - INFO - Aguardando abertura do popup com fotos...
+2026-04-10 16:19:56,123 - INFO - ✓ Popup aberto
+2026-04-10 16:19:57,125 - INFO - ✓ Pasta criada: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\TED7C03
+2026-04-10 16:19:57,134 - INFO - ✓ Download configurado para: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\TED7C03
+2026-04-10 16:19:57,135 - INFO - Procurando botão 'Baixar Todos'...
+2026-04-10 16:19:57,209 - INFO - ✓ Botão 'Baixar Todos' encontrado
+2026-04-10 16:20:05,095 - INFO - ✓ Botão clicado
+2026-04-10 16:20:05,095 - INFO - Aguardando download...
+2026-04-10 16:20:10,096 - INFO - ✓ Arquivo ZIP detectado: Download.zip
+2026-04-10 16:20:12,350 - INFO - ✓ 22 arquivo(s) extraído(s) e organizados
+2026-04-10 16:20:12,354 - INFO - ✓ ZIP removido
+2026-04-10 16:20:12,355 - INFO - ✓ SUCESSO: 2 arquivo(s) na pasta TED7C03
+2026-04-10 16:20:12,355 - INFO -   ✓ Fotos
+2026-04-10 16:20:12,356 - INFO -   ✓ PDF
+2026-04-10 16:20:12,399 - INFO - ✓ Popup fechado
+2026-04-10 16:20:12,400 - ERROR - Erro ao atualizar planilha: Invalid value 'sucesso' for dtype 'float64'
+2026-04-10 16:20:13,401 - INFO - 
+============================================================
+2026-04-10 16:20:13,402 - INFO - Processando placa: SIQ0B79
+2026-04-10 16:20:13,402 - INFO - ============================================================
+2026-04-10 16:20:13,402 - INFO - Inserindo placa no campo de busca...
+2026-04-10 16:20:13,415 - INFO - ✓ Campo placa encontrado
+2026-04-10 16:20:13,530 - INFO - ✓ Placa inserida
+2026-04-10 16:20:13,530 - INFO - Clicando em 'Consultar'...
+2026-04-10 16:20:13,542 - INFO - ✓ Botão consultar encontrado
+2026-04-10 16:20:15,683 - INFO - ✓ Consulta realizada
+2026-04-10 16:20:15,683 - INFO - Aguardando abertura do popup com fotos...
+2026-04-10 16:20:17,696 - INFO - ✓ Popup aberto
+2026-04-10 16:20:18,698 - INFO - ✓ Pasta criada: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\SIQ0B79
+2026-04-10 16:20:18,706 - INFO - ✓ Download configurado para: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\SIQ0B79
+2026-04-10 16:20:18,706 - INFO - Procurando botão 'Baixar Todos'...
+2026-04-10 16:20:18,784 - INFO - ✓ Botão 'Baixar Todos' encontrado
+2026-04-10 16:20:20,392 - INFO - ✓ Botão clicado
+2026-04-10 16:20:20,392 - INFO - Aguardando download...
+2026-04-10 16:21:10,439 - ERROR - ❌ Timeout: Nenhum arquivo baixado após 45s
+2026-04-10 16:21:10,441 - ERROR - ❌ FALHA: Nenhum arquivo foi salvo na pasta SIQ0B79
+2026-04-10 16:21:10,441 - ERROR - ✗ Erro ao processar placa SIQ0B79: Download não concluído - pasta vazia
+2026-04-10 16:21:10,479 - ERROR - Erro ao atualizar planilha: Invalid value 'erro: Download não concluído - pasta vazia' for dtype 'float64'
+2026-04-10 16:21:11,481 - INFO - 
+============================================================
+2026-04-10 16:21:11,481 - INFO - Processando placa: EGG0J62
+2026-04-10 16:21:11,482 - INFO - ============================================================
+2026-04-10 16:21:11,482 - INFO - Inserindo placa no campo de busca...
+2026-04-10 16:21:11,496 - INFO - ✓ Campo placa encontrado
+2026-04-10 16:21:11,617 - INFO - ✓ Placa inserida
+2026-04-10 16:21:11,617 - INFO - Clicando em 'Consultar'...
+2026-04-10 16:21:11,629 - INFO - ✓ Botão consultar encontrado
+2026-04-10 16:21:13,759 - INFO - ✓ Consulta realizada
+2026-04-10 16:21:13,760 - INFO - Aguardando abertura do popup com fotos...
+2026-04-10 16:21:15,772 - INFO - ✓ Popup aberto
+2026-04-10 16:21:16,774 - INFO - ✓ Pasta criada: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\EGG0J62
+2026-04-10 16:21:16,783 - INFO - ✓ Download configurado para: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\EGG0J62
+2026-04-10 16:21:16,783 - INFO - Procurando botão 'Baixar Todos'...
+2026-04-10 16:21:16,856 - INFO - ✓ Botão 'Baixar Todos' encontrado
+2026-04-10 16:21:32,092 - INFO - ✓ Botão clicado
+2026-04-10 16:21:32,092 - INFO - Aguardando download...
+2026-04-10 16:22:22,137 - ERROR - ❌ Timeout: Nenhum arquivo baixado após 45s
+2026-04-10 16:22:22,139 - ERROR - ❌ FALHA: Nenhum arquivo foi salvo na pasta EGG0J62
+2026-04-10 16:22:22,140 - ERROR - ✗ Erro ao processar placa EGG0J62: Download não concluído - pasta vazia
+2026-04-10 16:22:22,178 - ERROR - Erro ao atualizar planilha: Invalid value 'erro: Download não concluído - pasta vazia' for dtype 'float64'
+2026-04-10 16:22:23,179 - INFO - 
+============================================================
+2026-04-10 16:22:23,180 - INFO - Processando placa: RUT5G74
+2026-04-10 16:22:23,180 - INFO - ============================================================
+2026-04-10 16:22:23,181 - INFO - Inserindo placa no campo de busca...
+2026-04-10 16:22:23,199 - INFO - ✓ Campo placa encontrado
+2026-04-10 16:22:23,345 - INFO - ✓ Placa inserida
+2026-04-10 16:22:23,346 - INFO - Clicando em 'Consultar'...
+2026-04-10 16:22:23,364 - INFO - ✓ Botão consultar encontrado
+2026-04-10 16:22:25,509 - INFO - ✓ Consulta realizada
+2026-04-10 16:22:25,510 - INFO - Aguardando abertura do popup com fotos...
+2026-04-10 16:22:27,519 - INFO - ✓ Popup aberto
+2026-04-10 16:22:28,522 - INFO - ✓ Pasta criada: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\RUT5G74
+2026-04-10 16:22:29,910 - INFO - ✓ Download configurado para: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\RUT5G74
+2026-04-10 16:22:29,911 - INFO - Procurando botão 'Baixar Todos'...
+2026-04-10 16:22:29,996 - INFO - ✓ Botão 'Baixar Todos' encontrado
+2026-04-10 16:22:35,719 - INFO - ✓ Botão clicado
+2026-04-10 16:22:35,719 - INFO - Aguardando download...
+2026-04-10 16:23:25,765 - ERROR - ❌ Timeout: Nenhum arquivo baixado após 45s
+2026-04-10 16:23:25,767 - ERROR - ❌ FALHA: Nenhum arquivo foi salvo na pasta RUT5G74
+2026-04-10 16:23:25,768 - ERROR - ✗ Erro ao processar placa RUT5G74: Download não concluído - pasta vazia
+2026-04-10 16:23:25,808 - ERROR - Erro ao atualizar planilha: Invalid value 'erro: Download não concluído - pasta vazia' for dtype 'float64'
+2026-04-10 16:23:26,809 - INFO - 
+============================================================
+2026-04-10 16:23:26,810 - INFO - Processando placa: EHZ6I16
+2026-04-10 16:23:26,810 - INFO - ============================================================
+2026-04-10 16:23:26,811 - INFO - Inserindo placa no campo de busca...
+2026-04-10 16:23:26,825 - INFO - ✓ Campo placa encontrado
+2026-04-10 16:23:26,941 - INFO - ✓ Placa inserida
+2026-04-10 16:23:26,942 - INFO - Clicando em 'Consultar'...
+2026-04-10 16:23:26,956 - INFO - ✓ Botão consultar encontrado
+2026-04-10 16:23:29,079 - INFO - ✓ Consulta realizada
+2026-04-10 16:23:29,080 - INFO - Aguardando abertura do popup com fotos...
+2026-04-10 16:23:31,095 - INFO - ✓ Popup aberto
+2026-04-10 16:23:32,098 - INFO - ✓ Pasta criada: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\EHZ6I16
+2026-04-10 16:23:32,105 - INFO - ✓ Download configurado para: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\EHZ6I16
+2026-04-10 16:23:32,106 - INFO - Procurando botão 'Baixar Todos'...
+2026-04-10 16:23:32,181 - INFO - ✓ Botão 'Baixar Todos' encontrado
+2026-04-10 16:23:46,688 - INFO - ✓ Botão clicado
+2026-04-10 16:23:46,688 - INFO - Aguardando download...
+2026-04-10 16:24:36,741 - ERROR - ❌ Timeout: Nenhum arquivo baixado após 45s
+2026-04-10 16:24:36,743 - ERROR - ❌ FALHA: Nenhum arquivo foi salvo na pasta EHZ6I16
+2026-04-10 16:24:36,744 - ERROR - ✗ Erro ao processar placa EHZ6I16: Download não concluído - pasta vazia
+2026-04-10 16:24:36,777 - ERROR - Erro ao atualizar planilha: Invalid value 'erro: Download não concluído - pasta vazia' for dtype 'float64'
+2026-04-10 16:24:37,779 - INFO - 
+============================================================
+2026-04-10 16:24:37,779 - INFO - Processando placa: RVS7C56
+2026-04-10 16:24:37,780 - INFO - ============================================================
+2026-04-10 16:24:37,780 - INFO - Inserindo placa no campo de busca...
+2026-04-10 16:24:37,794 - INFO - ✓ Campo placa encontrado
+2026-04-10 16:24:37,916 - INFO - ✓ Placa inserida
+2026-04-10 16:24:37,917 - INFO - Clicando em 'Consultar'...
+2026-04-10 16:24:37,928 - INFO - ✓ Botão consultar encontrado
+2026-04-10 16:24:40,056 - INFO - ✓ Consulta realizada
+2026-04-10 16:24:40,057 - INFO - Aguardando abertura do popup com fotos...
+2026-04-10 16:24:42,118 - INFO - ✓ Popup aberto
+2026-04-10 16:24:43,139 - INFO - ✓ Pasta criada: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\RVS7C56
+2026-04-10 16:24:43,145 - INFO - ✓ Download configurado para: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\RVS7C56
+2026-04-10 16:24:43,146 - INFO - Procurando botão 'Baixar Todos'...
+2026-04-10 16:24:43,221 - INFO - ✓ Botão 'Baixar Todos' encontrado
+2026-04-10 16:25:03,668 - INFO - ✓ Botão clicado
+2026-04-10 16:25:03,668 - INFO - Aguardando download...
+2026-04-10 16:25:08,670 - INFO - ✓ Arquivo ZIP detectado: Download.zip
+2026-04-10 16:25:11,119 - INFO - ✓ 50 arquivo(s) extraído(s) e organizados
+2026-04-10 16:25:11,124 - INFO - ✓ ZIP removido
+2026-04-10 16:25:11,124 - INFO - ✓ SUCESSO: 2 arquivo(s) na pasta RVS7C56
+2026-04-10 16:25:11,125 - INFO -   ✓ Fotos
+2026-04-10 16:25:11,125 - INFO -   ✓ PDF
+2026-04-10 16:25:11,165 - INFO - ✓ Popup fechado
+2026-04-10 16:25:11,166 - ERROR - Erro ao atualizar planilha: Invalid value 'sucesso' for dtype 'float64'
+2026-04-10 16:25:12,167 - INFO - 
+============================================================
+2026-04-10 16:25:12,168 - INFO - Processando placa: SHD8I22
+2026-04-10 16:25:12,168 - INFO - ============================================================
+2026-04-10 16:25:12,168 - INFO - Inserindo placa no campo de busca...
+2026-04-10 16:25:12,181 - INFO - ✓ Campo placa encontrado
+2026-04-10 16:25:12,299 - INFO - ✓ Placa inserida
+2026-04-10 16:25:12,300 - INFO - Clicando em 'Consultar'...
+2026-04-10 16:25:12,313 - INFO - ✓ Botão consultar encontrado
+2026-04-10 16:25:14,443 - INFO - ✓ Consulta realizada
+2026-04-10 16:25:14,444 - INFO - Aguardando abertura do popup com fotos...
+2026-04-10 16:25:16,455 - INFO - ✓ Popup aberto
+2026-04-10 16:25:17,458 - INFO - ✓ Pasta criada: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\SHD8I22
+2026-04-10 16:25:17,467 - INFO - ✓ Download configurado para: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\SHD8I22
+2026-04-10 16:25:17,468 - INFO - Procurando botão 'Baixar Todos'...
+2026-04-10 16:25:17,548 - INFO - ✓ Botão 'Baixar Todos' encontrado
+2026-04-10 16:25:50,438 - INFO - ✓ Botão clicado
+2026-04-10 16:25:50,438 - INFO - Aguardando download...
+2026-04-10 16:26:40,493 - ERROR - ❌ Timeout: Nenhum arquivo baixado após 45s
+2026-04-10 16:26:40,494 - ERROR - ❌ FALHA: Nenhum arquivo foi salvo na pasta SHD8I22
+2026-04-10 16:26:40,494 - ERROR - ✗ Erro ao processar placa SHD8I22: Download não concluído - pasta vazia
+2026-04-10 16:26:40,574 - ERROR - Erro ao atualizar planilha: Invalid value 'erro: Download não concluído - pasta vazia' for dtype 'float64'
+2026-04-10 16:26:41,577 - INFO - 
+============================================================
+2026-04-10 16:26:41,578 - INFO - Processando placa: SID2D75
+2026-04-10 16:26:41,578 - INFO - ============================================================
+2026-04-10 16:26:41,578 - INFO - Inserindo placa no campo de busca...
+2026-04-10 16:26:41,596 - INFO - ✓ Campo placa encontrado
+2026-04-10 16:26:41,757 - INFO - ✓ Placa inserida
+2026-04-10 16:26:41,758 - INFO - Clicando em 'Consultar'...
+2026-04-10 16:26:41,779 - INFO - ✓ Botão consultar encontrado
+2026-04-10 16:26:43,947 - INFO - ✓ Consulta realizada
+2026-04-10 16:26:43,948 - INFO - Aguardando abertura do popup com fotos...
+2026-04-10 16:26:45,958 - INFO - ✓ Popup aberto
+2026-04-10 16:26:46,961 - INFO - ✓ Pasta criada: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\SID2D75
+2026-04-10 16:26:46,971 - INFO - ✓ Download configurado para: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\SID2D75
+2026-04-10 16:26:46,971 - INFO - Procurando botão 'Baixar Todos'...
+2026-04-10 16:26:47,047 - INFO - ✓ Botão 'Baixar Todos' encontrado
+2026-04-10 16:27:17,702 - INFO - ✓ Botão clicado
+2026-04-10 16:27:17,703 - INFO - Aguardando download...
+2026-04-10 16:27:22,705 - INFO - Download em andamento... (0s)
+2026-04-10 16:27:23,706 - INFO - ✓ Arquivo ZIP detectado: Download.zip
+2026-04-10 16:27:26,451 - INFO - ✓ 82 arquivo(s) extraído(s) e organizados
+2026-04-10 16:27:26,455 - INFO - ✓ ZIP removido
+2026-04-10 16:27:26,457 - INFO - ✓ SUCESSO: 2 arquivo(s) na pasta SID2D75
+2026-04-10 16:27:26,457 - INFO -   ✓ Fotos
+2026-04-10 16:27:26,457 - INFO -   ✓ PDF
+2026-04-10 16:27:26,500 - INFO - ✓ Popup fechado
+2026-04-10 16:27:26,502 - ERROR - Erro ao atualizar planilha: Invalid value 'sucesso' for dtype 'float64'
+2026-04-10 16:27:27,503 - INFO - 
+============================================================
+2026-04-10 16:27:27,503 - INFO - Processando placa: SID2E00
+2026-04-10 16:27:27,504 - INFO - ============================================================
+2026-04-10 16:27:27,504 - INFO - Inserindo placa no campo de busca...
+2026-04-10 16:27:27,517 - INFO - ✓ Campo placa encontrado
+2026-04-10 16:27:27,638 - INFO - ✓ Placa inserida
+2026-04-10 16:27:27,639 - INFO - Clicando em 'Consultar'...
+2026-04-10 16:27:27,651 - INFO - ✓ Botão consultar encontrado
+2026-04-10 16:27:29,777 - INFO - ✓ Consulta realizada
+2026-04-10 16:27:29,778 - INFO - Aguardando abertura do popup com fotos...
+2026-04-10 16:27:31,789 - INFO - ✓ Popup aberto
+2026-04-10 16:27:32,791 - INFO - ✓ Pasta criada: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\SID2E00
+2026-04-10 16:27:32,799 - INFO - ✓ Download configurado para: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\SID2E00
+2026-04-10 16:27:32,799 - INFO - Procurando botão 'Baixar Todos'...
+2026-04-10 16:27:32,880 - INFO - ✓ Botão 'Baixar Todos' encontrado
+2026-04-10 16:27:53,444 - INFO - ✓ Botão clicado
+2026-04-10 16:27:53,445 - INFO - Aguardando download...
+2026-04-10 16:27:58,446 - INFO - ✓ Arquivo ZIP detectado: Download.zip
+2026-04-10 16:28:00,986 - INFO - ✓ 52 arquivo(s) extraído(s) e organizados
+2026-04-10 16:28:00,989 - INFO - ✓ ZIP removido
+2026-04-10 16:28:00,991 - INFO - ✓ SUCESSO: 2 arquivo(s) na pasta SID2E00
+2026-04-10 16:28:00,992 - INFO -   ✓ Fotos
+2026-04-10 16:28:00,992 - INFO -   ✓ PDF
+2026-04-10 16:28:01,063 - INFO - ✓ Popup fechado
+2026-04-10 16:28:01,065 - ERROR - Erro ao atualizar planilha: Invalid value 'sucesso' for dtype 'float64'
+2026-04-10 16:28:02,068 - INFO - 
+============================================================
+2026-04-10 16:28:02,068 - INFO - Processando placa: SID2E08
+2026-04-10 16:28:02,068 - INFO - ============================================================
+2026-04-10 16:28:02,069 - INFO - Inserindo placa no campo de busca...
+2026-04-10 16:28:02,084 - INFO - ✓ Campo placa encontrado
+2026-04-10 16:28:02,234 - INFO - ✓ Placa inserida
+2026-04-10 16:28:02,235 - INFO - Clicando em 'Consultar'...
+2026-04-10 16:28:02,246 - INFO - ✓ Botão consultar encontrado
+2026-04-10 16:28:04,371 - INFO - ✓ Consulta realizada
+2026-04-10 16:28:04,371 - INFO - Aguardando abertura do popup com fotos...
+2026-04-10 16:28:06,381 - INFO - ✓ Popup aberto
+2026-04-10 16:28:07,383 - INFO - ✓ Pasta criada: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\SID2E08
+2026-04-10 16:28:07,391 - INFO - ✓ Download configurado para: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\SID2E08
+2026-04-10 16:28:07,392 - INFO - Procurando botão 'Baixar Todos'...
+2026-04-10 16:28:07,466 - INFO - ✓ Botão 'Baixar Todos' encontrado
+2026-04-10 16:28:25,785 - INFO - ✓ Botão clicado
+2026-04-10 16:28:25,786 - INFO - Aguardando download...
+2026-04-10 16:28:30,786 - INFO - ✓ Arquivo ZIP detectado: Download.zip
+2026-04-10 16:28:33,308 - INFO - ✓ 54 arquivo(s) extraído(s) e organizados
+2026-04-10 16:28:33,312 - INFO - ✓ ZIP removido
+2026-04-10 16:28:33,313 - INFO - ✓ SUCESSO: 2 arquivo(s) na pasta SID2E08
+2026-04-10 16:28:33,314 - INFO -   ✓ Fotos
+2026-04-10 16:28:33,314 - INFO -   ✓ PDF
+2026-04-10 16:28:33,377 - INFO - ✓ Popup fechado
+2026-04-10 16:28:33,378 - ERROR - Erro ao atualizar planilha: Invalid value 'sucesso' for dtype 'float64'
+2026-04-10 16:28:34,380 - INFO - 
+============================================================
+2026-04-10 16:28:34,380 - INFO - Processando placa: SID2E22
+2026-04-10 16:28:34,381 - INFO - ============================================================
+2026-04-10 16:28:34,381 - INFO - Inserindo placa no campo de busca...
+2026-04-10 16:28:34,396 - INFO - ✓ Campo placa encontrado
+2026-04-10 16:28:34,514 - INFO - ✓ Placa inserida
+2026-04-10 16:28:34,514 - INFO - Clicando em 'Consultar'...
+2026-04-10 16:28:34,525 - INFO - ✓ Botão consultar encontrado
+2026-04-10 16:28:36,650 - INFO - ✓ Consulta realizada
+2026-04-10 16:28:36,650 - INFO - Aguardando abertura do popup com fotos...
+2026-04-10 16:28:38,661 - INFO - ✓ Popup aberto
+2026-04-10 16:28:39,662 - INFO - ✓ Pasta criada: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\SID2E22
+2026-04-10 16:28:39,671 - INFO - ✓ Download configurado para: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\SID2E22
+2026-04-10 16:28:39,671 - INFO - Procurando botão 'Baixar Todos'...
+2026-04-10 16:28:39,754 - INFO - ✓ Botão 'Baixar Todos' encontrado
+2026-04-10 16:29:11,434 - INFO - ✓ Botão clicado
+2026-04-10 16:29:11,435 - INFO - Aguardando download...
+2026-04-10 16:29:16,436 - INFO - ✓ Arquivo ZIP detectado: Download.zip
+2026-04-10 16:29:19,127 - INFO - ✓ 93 arquivo(s) extraído(s) e organizados
+2026-04-10 16:29:19,131 - INFO - ✓ ZIP removido
+2026-04-10 16:29:19,132 - INFO - ✓ SUCESSO: 2 arquivo(s) na pasta SID2E22
+2026-04-10 16:29:19,132 - INFO -   ✓ Fotos
+2026-04-10 16:29:19,132 - INFO -   ✓ PDF
+2026-04-10 16:29:19,176 - INFO - ✓ Popup fechado
+2026-04-10 16:29:19,177 - ERROR - Erro ao atualizar planilha: Invalid value 'sucesso' for dtype 'float64'
+2026-04-10 16:29:20,179 - INFO - 
+============================================================
+2026-04-10 16:29:20,179 - INFO - Processando placa: SID2E23
+2026-04-10 16:29:20,180 - INFO - ============================================================
+2026-04-10 16:29:20,180 - INFO - Inserindo placa no campo de busca...
+2026-04-10 16:29:20,194 - INFO - ✓ Campo placa encontrado
+2026-04-10 16:29:20,317 - INFO - ✓ Placa inserida
+2026-04-10 16:29:20,317 - INFO - Clicando em 'Consultar'...
+2026-04-10 16:29:20,328 - INFO - ✓ Botão consultar encontrado
+2026-04-10 16:29:22,464 - INFO - ✓ Consulta realizada
+2026-04-10 16:29:22,465 - INFO - Aguardando abertura do popup com fotos...
+2026-04-10 16:29:24,476 - INFO - ✓ Popup aberto
+2026-04-10 16:29:25,478 - INFO - ✓ Pasta criada: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\SID2E23
+2026-04-10 16:29:25,485 - INFO - ✓ Download configurado para: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\SID2E23
+2026-04-10 16:29:25,485 - INFO - Procurando botão 'Baixar Todos'...
+2026-04-10 16:29:25,559 - INFO - ✓ Botão 'Baixar Todos' encontrado
+2026-04-10 16:29:50,018 - INFO - ✓ Botão clicado
+2026-04-10 16:29:50,018 - INFO - Aguardando download...
+2026-04-10 16:30:40,076 - ERROR - ❌ Timeout: Nenhum arquivo baixado após 45s
+2026-04-10 16:30:40,077 - ERROR - ❌ FALHA: Nenhum arquivo foi salvo na pasta SID2E23
+2026-04-10 16:30:40,078 - ERROR - ✗ Erro ao processar placa SID2E23: Download não concluído - pasta vazia
+2026-04-10 16:30:40,130 - ERROR - Erro ao atualizar planilha: Invalid value 'erro: Download não concluído - pasta vazia' for dtype 'float64'
+2026-04-10 16:30:41,132 - INFO - 
+============================================================
+2026-04-10 16:30:41,132 - INFO - Processando placa: SYD8E64
+2026-04-10 16:30:41,133 - INFO - ============================================================
+2026-04-10 16:30:41,133 - INFO - Inserindo placa no campo de busca...
+2026-04-10 16:30:41,148 - INFO - ✓ Campo placa encontrado
+2026-04-10 16:30:41,276 - INFO - ✓ Placa inserida
+2026-04-10 16:30:41,276 - INFO - Clicando em 'Consultar'...
+2026-04-10 16:30:41,291 - INFO - ✓ Botão consultar encontrado
+2026-04-10 16:30:43,439 - INFO - ✓ Consulta realizada
+2026-04-10 16:30:43,440 - INFO - Aguardando abertura do popup com fotos...
+2026-04-10 16:30:45,451 - INFO - ✓ Popup aberto
+2026-04-10 16:30:46,453 - INFO - ✓ Pasta criada: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\SYD8E64
+2026-04-10 16:30:46,463 - INFO - ✓ Download configurado para: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\SYD8E64
+2026-04-10 16:30:46,464 - INFO - Procurando botão 'Baixar Todos'...
+2026-04-10 16:30:46,537 - INFO - ✓ Botão 'Baixar Todos' encontrado
+2026-04-10 16:31:14,544 - INFO - ✓ Botão clicado
+2026-04-10 16:31:14,545 - INFO - Aguardando download...
+2026-04-10 16:31:19,546 - INFO - Download em andamento... (0s)
+2026-04-10 16:31:21,548 - INFO - ✓ Arquivo ZIP detectado: Download.zip
+2026-04-10 16:31:24,292 - INFO - ✓ 76 arquivo(s) extraído(s) e organizados
+2026-04-10 16:31:24,297 - INFO - ✓ ZIP removido
+2026-04-10 16:31:24,298 - INFO - ✓ SUCESSO: 2 arquivo(s) na pasta SYD8E64
+2026-04-10 16:31:24,299 - INFO -   ✓ Fotos
+2026-04-10 16:31:24,299 - INFO -   ✓ PDF
+2026-04-10 16:31:24,358 - INFO - ✓ Popup fechado
+2026-04-10 16:31:24,359 - ERROR - Erro ao atualizar planilha: Invalid value 'sucesso' for dtype 'float64'
+2026-04-10 16:31:25,361 - INFO - 
+============================================================
+2026-04-10 16:31:25,361 - INFO - Processando placa: SYH4C59
+2026-04-10 16:31:25,362 - INFO - ============================================================
+2026-04-10 16:31:25,362 - INFO - Inserindo placa no campo de busca...
+2026-04-10 16:31:25,376 - INFO - ✓ Campo placa encontrado
+2026-04-10 16:31:25,491 - INFO - ✓ Placa inserida
+2026-04-10 16:31:25,491 - INFO - Clicando em 'Consultar'...
+2026-04-10 16:31:25,502 - INFO - ✓ Botão consultar encontrado
+2026-04-10 16:31:27,634 - INFO - ✓ Consulta realizada
+2026-04-10 16:31:27,634 - INFO - Aguardando abertura do popup com fotos...
+2026-04-10 16:31:29,643 - INFO - ✓ Popup aberto
+2026-04-10 16:31:30,645 - INFO - ✓ Pasta criada: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\SYH4C59
+2026-04-10 16:31:30,653 - INFO - ✓ Download configurado para: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\SYH4C59
+2026-04-10 16:31:30,653 - INFO - Procurando botão 'Baixar Todos'...
+2026-04-10 16:31:30,728 - INFO - ✓ Botão 'Baixar Todos' encontrado
+2026-04-10 16:31:39,338 - INFO - ✓ Botão clicado
+2026-04-10 16:31:39,339 - INFO - Aguardando download...
+2026-04-10 16:32:29,403 - ERROR - ❌ Timeout: Nenhum arquivo baixado após 45s
+2026-04-10 16:32:29,404 - ERROR - ❌ FALHA: Nenhum arquivo foi salvo na pasta SYH4C59
+2026-04-10 16:32:29,405 - ERROR - ✗ Erro ao processar placa SYH4C59: Download não concluído - pasta vazia
+2026-04-10 16:32:29,454 - ERROR - Erro ao atualizar planilha: Invalid value 'erro: Download não concluído - pasta vazia' for dtype 'float64'
+2026-04-10 16:32:30,455 - INFO - 
+============================================================
+2026-04-10 16:32:30,456 - INFO - Processando placa: SYI3B25
+2026-04-10 16:32:30,456 - INFO - ============================================================
+2026-04-10 16:32:30,456 - INFO - Inserindo placa no campo de busca...
+2026-04-10 16:32:30,469 - INFO - ✓ Campo placa encontrado
+2026-04-10 16:32:30,586 - INFO - ✓ Placa inserida
+2026-04-10 16:32:30,587 - INFO - Clicando em 'Consultar'...
+2026-04-10 16:32:30,599 - INFO - ✓ Botão consultar encontrado
+2026-04-10 16:32:32,740 - INFO - ✓ Consulta realizada
+2026-04-10 16:32:32,741 - INFO - Aguardando abertura do popup com fotos...
+2026-04-10 16:32:34,752 - INFO - ✓ Popup aberto
+2026-04-10 16:32:35,755 - INFO - ✓ Pasta criada: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\SYI3B25
+2026-04-10 16:32:35,763 - INFO - ✓ Download configurado para: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\SYI3B25
+2026-04-10 16:32:35,764 - INFO - Procurando botão 'Baixar Todos'...
+2026-04-10 16:32:35,836 - INFO - ✓ Botão 'Baixar Todos' encontrado
+2026-04-10 16:33:04,098 - INFO - ✓ Botão clicado
+2026-04-10 16:33:04,099 - INFO - Aguardando download...
+2026-04-10 16:33:09,100 - INFO - ✓ Arquivo ZIP detectado: Download.zip
+2026-04-10 16:33:11,799 - INFO - ✓ 83 arquivo(s) extraído(s) e organizados
+2026-04-10 16:33:11,804 - INFO - ✓ ZIP removido
+2026-04-10 16:33:11,805 - INFO - ✓ SUCESSO: 2 arquivo(s) na pasta SYI3B25
+2026-04-10 16:33:11,806 - INFO -   ✓ Fotos
+2026-04-10 16:33:11,806 - INFO -   ✓ PDF
+2026-04-10 16:33:11,865 - INFO - ✓ Popup fechado
+2026-04-10 16:33:11,868 - ERROR - Erro ao atualizar planilha: Invalid value 'sucesso' for dtype 'float64'
+2026-04-10 16:33:12,869 - INFO - 
+============================================================
+2026-04-10 16:33:12,870 - INFO - Processando placa: RNP7B99
+2026-04-10 16:33:12,871 - INFO - ============================================================
+2026-04-10 16:33:12,871 - INFO - Inserindo placa no campo de busca...
+2026-04-10 16:33:12,884 - INFO - ✓ Campo placa encontrado
+2026-04-10 16:33:12,999 - INFO - ✓ Placa inserida
+2026-04-10 16:33:13,000 - INFO - Clicando em 'Consultar'...
+2026-04-10 16:33:13,011 - INFO - ✓ Botão consultar encontrado
+2026-04-10 16:33:15,160 - INFO - ✓ Consulta realizada
+2026-04-10 16:33:15,160 - INFO - Aguardando abertura do popup com fotos...
+2026-04-10 16:33:17,172 - INFO - ✓ Popup aberto
+2026-04-10 16:33:18,174 - INFO - ✓ Pasta criada: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\RNP7B99
+2026-04-10 16:33:18,181 - INFO - ✓ Download configurado para: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\RNP7B99
+2026-04-10 16:33:18,182 - INFO - Procurando botão 'Baixar Todos'...
+2026-04-10 16:33:18,252 - INFO - ✓ Botão 'Baixar Todos' encontrado
+2026-04-10 16:33:42,918 - INFO - ✓ Botão clicado
+2026-04-10 16:33:42,918 - INFO - Aguardando download...
+2026-04-10 16:33:47,919 - INFO - ✓ Arquivo ZIP detectado: Download.zip
+2026-04-10 16:33:50,575 - INFO - ✓ 68 arquivo(s) extraído(s) e organizados
+2026-04-10 16:33:50,579 - INFO - ✓ ZIP removido
+2026-04-10 16:33:50,580 - INFO - ✓ SUCESSO: 2 arquivo(s) na pasta RNP7B99
+2026-04-10 16:33:50,581 - INFO -   ✓ Fotos
+2026-04-10 16:33:50,581 - INFO -   ✓ PDF
+2026-04-10 16:33:50,640 - INFO - ✓ Popup fechado
+2026-04-10 16:33:50,641 - ERROR - Erro ao atualizar planilha: Invalid value 'sucesso' for dtype 'float64'
+2026-04-10 16:33:51,643 - INFO - 
+============================================================
+2026-04-10 16:33:51,643 - INFO - Processando placa: RUK2J76
+2026-04-10 16:33:51,644 - INFO - ============================================================
+2026-04-10 16:33:51,644 - INFO - Inserindo placa no campo de busca...
+2026-04-10 16:33:51,656 - INFO - ✓ Campo placa encontrado
+2026-04-10 16:33:51,772 - INFO - ✓ Placa inserida
+2026-04-10 16:33:51,772 - INFO - Clicando em 'Consultar'...
+2026-04-10 16:33:51,784 - INFO - ✓ Botão consultar encontrado
+2026-04-10 16:33:53,915 - INFO - ✓ Consulta realizada
+2026-04-10 16:33:53,915 - INFO - Aguardando abertura do popup com fotos...
+2026-04-10 16:33:55,927 - INFO - ✓ Popup aberto
+2026-04-10 16:33:56,929 - INFO - ✓ Pasta criada: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\RUK2J76
+2026-04-10 16:33:56,937 - INFO - ✓ Download configurado para: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\RUK2J76
+2026-04-10 16:33:56,937 - INFO - Procurando botão 'Baixar Todos'...
+2026-04-10 16:33:57,011 - INFO - ✓ Botão 'Baixar Todos' encontrado
+2026-04-10 16:33:57,123 - INFO - ✓ Botão clicado
+2026-04-10 16:33:57,123 - INFO - Aguardando download...
+2026-04-10 16:34:47,183 - ERROR - ❌ Timeout: Nenhum arquivo baixado após 45s
+2026-04-10 16:34:47,184 - ERROR - ❌ FALHA: Nenhum arquivo foi salvo na pasta RUK2J76
+2026-04-10 16:34:47,184 - ERROR - ✗ Erro ao processar placa RUK2J76: Download não concluído - pasta vazia
+2026-04-10 16:34:47,240 - ERROR - Erro ao atualizar planilha: Invalid value 'erro: Download não concluído - pasta vazia' for dtype 'float64'
+2026-04-10 16:34:48,242 - INFO - 
+============================================================
+2026-04-10 16:34:48,242 - INFO - Processando placa: SHQ9E54
+2026-04-10 16:34:48,243 - INFO - ============================================================
+2026-04-10 16:34:48,243 - INFO - Inserindo placa no campo de busca...
+2026-04-10 16:34:48,257 - INFO - ✓ Campo placa encontrado
+2026-04-10 16:34:48,372 - INFO - ✓ Placa inserida
+2026-04-10 16:34:48,372 - INFO - Clicando em 'Consultar'...
+2026-04-10 16:34:48,386 - INFO - ✓ Botão consultar encontrado
+2026-04-10 16:34:50,524 - INFO - ✓ Consulta realizada
+2026-04-10 16:34:50,525 - INFO - Aguardando abertura do popup com fotos...
+2026-04-10 16:34:52,538 - INFO - ✓ Popup aberto
+2026-04-10 16:34:53,541 - INFO - ✓ Pasta criada: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\SHQ9E54
+2026-04-10 16:34:53,550 - INFO - ✓ Download configurado para: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\SHQ9E54
+2026-04-10 16:34:53,551 - INFO - Procurando botão 'Baixar Todos'...
+2026-04-10 16:34:53,643 - INFO - ✓ Botão 'Baixar Todos' encontrado
+2026-04-10 16:35:20,015 - INFO - ✓ Botão clicado
+2026-04-10 16:35:20,015 - INFO - Aguardando download...
+2026-04-10 16:35:25,016 - INFO - ✓ Arquivo ZIP detectado: Download.zip
+2026-04-10 16:35:27,628 - INFO - ✓ 69 arquivo(s) extraído(s) e organizados
+2026-04-10 16:35:27,632 - INFO - ✓ ZIP removido
+2026-04-10 16:35:27,633 - INFO - ✓ SUCESSO: 2 arquivo(s) na pasta SHQ9E54
+2026-04-10 16:35:27,633 - INFO -   ✓ Fotos
+2026-04-10 16:35:27,633 - INFO -   ✓ PDF
+2026-04-10 16:35:27,678 - INFO - ✓ Popup fechado
+2026-04-10 16:35:27,679 - ERROR - Erro ao atualizar planilha: Invalid value 'sucesso' for dtype 'float64'
+2026-04-10 16:35:28,680 - INFO - 
+============================================================
+2026-04-10 16:35:28,681 - INFO - Processando placa: SHZ7I49
+2026-04-10 16:35:28,681 - INFO - ============================================================
+2026-04-10 16:35:28,681 - INFO - Inserindo placa no campo de busca...
+2026-04-10 16:35:28,695 - INFO - ✓ Campo placa encontrado
+2026-04-10 16:35:28,815 - INFO - ✓ Placa inserida
+2026-04-10 16:35:28,816 - INFO - Clicando em 'Consultar'...
+2026-04-10 16:35:28,826 - INFO - ✓ Botão consultar encontrado
+2026-04-10 16:35:30,964 - INFO - ✓ Consulta realizada
+2026-04-10 16:35:30,964 - INFO - Aguardando abertura do popup com fotos...
+2026-04-10 16:35:32,976 - INFO - ✓ Popup aberto
+2026-04-10 16:35:33,978 - INFO - ✓ Pasta criada: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\SHZ7I49
+2026-04-10 16:35:33,985 - INFO - ✓ Download configurado para: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\SHZ7I49
+2026-04-10 16:35:33,985 - INFO - Procurando botão 'Baixar Todos'...
+2026-04-10 16:35:34,063 - INFO - ✓ Botão 'Baixar Todos' encontrado
+2026-04-10 16:35:56,760 - INFO - ✓ Botão clicado
+2026-04-10 16:35:56,760 - INFO - Aguardando download...
+2026-04-10 16:36:01,762 - INFO - Download em andamento... (0s)
+2026-04-10 16:36:03,764 - INFO - ✓ Arquivo ZIP detectado: Download.zip
+2026-04-10 16:36:06,385 - INFO - ✓ 62 arquivo(s) extraído(s) e organizados
+2026-04-10 16:36:06,456 - INFO - ✓ ZIP removido
+2026-04-10 16:36:06,458 - INFO - ✓ SUCESSO: 2 arquivo(s) na pasta SHZ7I49
+2026-04-10 16:36:06,458 - INFO -   ✓ Fotos
+2026-04-10 16:36:06,459 - INFO -   ✓ PDF
+2026-04-10 16:36:06,525 - INFO - ✓ Popup fechado
+2026-04-10 16:36:06,527 - ERROR - Erro ao atualizar planilha: Invalid value 'sucesso' for dtype 'float64'
+2026-04-10 16:36:07,529 - INFO - 
+============================================================
+2026-04-10 16:36:07,530 - INFO - Processando placa: SID2D76
+2026-04-10 16:36:07,530 - INFO - ============================================================
+2026-04-10 16:36:07,530 - INFO - Inserindo placa no campo de busca...
+2026-04-10 16:36:07,544 - INFO - ✓ Campo placa encontrado
+2026-04-10 16:36:07,659 - INFO - ✓ Placa inserida
+2026-04-10 16:36:07,659 - INFO - Clicando em 'Consultar'...
+2026-04-10 16:36:07,672 - INFO - ✓ Botão consultar encontrado
+2026-04-10 16:36:09,805 - INFO - ✓ Consulta realizada
+2026-04-10 16:36:09,806 - INFO - Aguardando abertura do popup com fotos...
+2026-04-10 16:36:11,817 - INFO - ✓ Popup aberto
+2026-04-10 16:36:12,820 - INFO - ✓ Pasta criada: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\SID2D76
+2026-04-10 16:36:12,828 - INFO - ✓ Download configurado para: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\SID2D76
+2026-04-10 16:36:12,829 - INFO - Procurando botão 'Baixar Todos'...
+2026-04-10 16:36:12,905 - INFO - ✓ Botão 'Baixar Todos' encontrado
+2026-04-10 16:36:36,313 - INFO - ✓ Botão clicado
+2026-04-10 16:36:36,313 - INFO - Aguardando download...
+2026-04-10 16:37:26,376 - ERROR - ❌ Timeout: Nenhum arquivo baixado após 45s
+2026-04-10 16:37:26,378 - ERROR - ❌ FALHA: Nenhum arquivo foi salvo na pasta SID2D76
+2026-04-10 16:37:26,379 - ERROR - ✗ Erro ao processar placa SID2D76: Download não concluído - pasta vazia
+2026-04-10 16:37:26,431 - ERROR - Erro ao atualizar planilha: Invalid value 'erro: Download não concluído - pasta vazia' for dtype 'float64'
+2026-04-10 16:37:27,432 - INFO - 
+============================================================
+2026-04-10 16:37:27,433 - INFO - Processando placa: SID2D96
+2026-04-10 16:37:27,433 - INFO - ============================================================
+2026-04-10 16:37:27,434 - INFO - Inserindo placa no campo de busca...
+2026-04-10 16:37:27,446 - INFO - ✓ Campo placa encontrado
+2026-04-10 16:37:27,561 - INFO - ✓ Placa inserida
+2026-04-10 16:37:27,562 - INFO - Clicando em 'Consultar'...
+2026-04-10 16:37:27,576 - INFO - ✓ Botão consultar encontrado
+2026-04-10 16:37:29,719 - INFO - ✓ Consulta realizada
+2026-04-10 16:37:29,719 - INFO - Aguardando abertura do popup com fotos...
+2026-04-10 16:37:31,731 - INFO - ✓ Popup aberto
+2026-04-10 16:37:32,735 - INFO - ✓ Pasta criada: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\SID2D96
+2026-04-10 16:37:32,744 - INFO - ✓ Download configurado para: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\SID2D96
+2026-04-10 16:37:32,745 - INFO - Procurando botão 'Baixar Todos'...
+2026-04-10 16:37:32,820 - INFO - ✓ Botão 'Baixar Todos' encontrado
+2026-04-10 16:38:01,482 - INFO - ✓ Botão clicado
+2026-04-10 16:38:01,483 - INFO - Aguardando download...
+2026-04-10 16:38:06,484 - INFO - ✓ Arquivo ZIP detectado: Download.zip
+2026-04-10 16:38:09,217 - INFO - ✓ 84 arquivo(s) extraído(s) e organizados
+2026-04-10 16:38:09,222 - INFO - ✓ ZIP removido
+2026-04-10 16:38:09,223 - INFO - ✓ SUCESSO: 2 arquivo(s) na pasta SID2D96
+2026-04-10 16:38:09,224 - INFO -   ✓ Fotos
+2026-04-10 16:38:09,224 - INFO -   ✓ PDF
+2026-04-10 16:38:09,269 - INFO - ✓ Popup fechado
+2026-04-10 16:38:09,270 - ERROR - Erro ao atualizar planilha: Invalid value 'sucesso' for dtype 'float64'
+2026-04-10 16:38:10,271 - INFO - 
+============================================================
+2026-04-10 16:38:10,271 - INFO - Processando placa: SID2D98
+2026-04-10 16:38:10,271 - INFO - ============================================================
+2026-04-10 16:38:10,272 - INFO - Inserindo placa no campo de busca...
+2026-04-10 16:38:10,283 - INFO - ✓ Campo placa encontrado
+2026-04-10 16:38:10,400 - INFO - ✓ Placa inserida
+2026-04-10 16:38:10,401 - INFO - Clicando em 'Consultar'...
+2026-04-10 16:38:10,413 - INFO - ✓ Botão consultar encontrado
+2026-04-10 16:38:12,563 - INFO - ✓ Consulta realizada
+2026-04-10 16:38:12,564 - INFO - Aguardando abertura do popup com fotos...
+2026-04-10 16:38:14,576 - INFO - ✓ Popup aberto
+2026-04-10 16:38:15,578 - INFO - ✓ Pasta criada: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\SID2D98
+2026-04-10 16:38:15,587 - INFO - ✓ Download configurado para: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\SID2D98
+2026-04-10 16:38:15,587 - INFO - Procurando botão 'Baixar Todos'...
+2026-04-10 16:38:15,662 - INFO - ✓ Botão 'Baixar Todos' encontrado
+2026-04-10 16:38:42,348 - INFO - ✓ Botão clicado
+2026-04-10 16:38:42,348 - INFO - Aguardando download...
+2026-04-10 16:38:47,350 - INFO - Download em andamento... (0s)
+2026-04-10 16:38:49,352 - INFO - ✓ Arquivo ZIP detectado: Download.zip
+2026-04-10 16:38:51,993 - INFO - ✓ 76 arquivo(s) extraído(s) e organizados
+2026-04-10 16:38:51,998 - INFO - ✓ ZIP removido
+2026-04-10 16:38:51,999 - INFO - ✓ SUCESSO: 2 arquivo(s) na pasta SID2D98
+2026-04-10 16:38:51,999 - INFO -   ✓ Fotos
+2026-04-10 16:38:52,000 - INFO -   ✓ PDF
+2026-04-10 16:38:52,042 - INFO - ✓ Popup fechado
+2026-04-10 16:38:52,043 - ERROR - Erro ao atualizar planilha: Invalid value 'sucesso' for dtype 'float64'
+2026-04-10 16:38:53,044 - INFO - 
+============================================================
+2026-04-10 16:38:53,045 - INFO - Processando placa: SID2E10
+2026-04-10 16:38:53,045 - INFO - ============================================================
+2026-04-10 16:38:53,046 - INFO - Inserindo placa no campo de busca...
+2026-04-10 16:38:53,058 - INFO - ✓ Campo placa encontrado
+2026-04-10 16:38:53,170 - INFO - ✓ Placa inserida
+2026-04-10 16:38:53,170 - INFO - Clicando em 'Consultar'...
+2026-04-10 16:38:53,184 - INFO - ✓ Botão consultar encontrado
+2026-04-10 16:38:55,320 - INFO - ✓ Consulta realizada
+2026-04-10 16:38:55,321 - INFO - Aguardando abertura do popup com fotos...
+2026-04-10 16:38:57,332 - INFO - ✓ Popup aberto
+2026-04-10 16:38:58,334 - INFO - ✓ Pasta criada: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\SID2E10
+2026-04-10 16:38:58,343 - INFO - ✓ Download configurado para: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\SID2E10
+2026-04-10 16:38:58,344 - INFO - Procurando botão 'Baixar Todos'...
+2026-04-10 16:38:58,422 - INFO - ✓ Botão 'Baixar Todos' encontrado
+2026-04-10 16:39:18,812 - INFO - ✓ Botão clicado
+2026-04-10 16:39:18,812 - INFO - Aguardando download...
+2026-04-10 16:39:23,814 - INFO - ✓ Arquivo ZIP detectado: Download.zip
+2026-04-10 16:39:26,468 - INFO - ✓ 63 arquivo(s) extraído(s) e organizados
+2026-04-10 16:39:26,473 - INFO - ✓ ZIP removido
+2026-04-10 16:39:26,474 - INFO - ✓ SUCESSO: 2 arquivo(s) na pasta SID2E10
+2026-04-10 16:39:26,474 - INFO -   ✓ Fotos
+2026-04-10 16:39:26,475 - INFO -   ✓ PDF
+2026-04-10 16:39:26,537 - INFO - ✓ Popup fechado
+2026-04-10 16:39:26,540 - ERROR - Erro ao atualizar planilha: Invalid value 'sucesso' for dtype 'float64'
+2026-04-10 16:39:27,541 - INFO - 
+============================================================
+2026-04-10 16:39:27,542 - INFO - Processando placa: SID2E16
+2026-04-10 16:39:27,542 - INFO - ============================================================
+2026-04-10 16:39:27,542 - INFO - Inserindo placa no campo de busca...
+2026-04-10 16:39:27,556 - INFO - ✓ Campo placa encontrado
+2026-04-10 16:39:27,671 - INFO - ✓ Placa inserida
+2026-04-10 16:39:27,671 - INFO - Clicando em 'Consultar'...
+2026-04-10 16:39:27,685 - INFO - ✓ Botão consultar encontrado
+2026-04-10 16:39:29,817 - INFO - ✓ Consulta realizada
+2026-04-10 16:39:29,818 - INFO - Aguardando abertura do popup com fotos...
+2026-04-10 16:39:31,828 - INFO - ✓ Popup aberto
+2026-04-10 16:39:32,830 - INFO - ✓ Pasta criada: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\SID2E16
+2026-04-10 16:39:32,838 - INFO - ✓ Download configurado para: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\SID2E16
+2026-04-10 16:39:32,839 - INFO - Procurando botão 'Baixar Todos'...
+2026-04-10 16:39:32,917 - INFO - ✓ Botão 'Baixar Todos' encontrado
+2026-04-10 16:39:37,737 - INFO - ✓ Botão clicado
+2026-04-10 16:39:37,738 - INFO - Aguardando download...
+2026-04-10 16:40:27,801 - ERROR - ❌ Timeout: Nenhum arquivo baixado após 45s
+2026-04-10 16:40:27,802 - ERROR - ❌ FALHA: Nenhum arquivo foi salvo na pasta SID2E16
+2026-04-10 16:40:27,803 - ERROR - ✗ Erro ao processar placa SID2E16: Download não concluído - pasta vazia
+2026-04-10 16:40:27,874 - ERROR - Erro ao atualizar planilha: Invalid value 'erro: Download não concluído - pasta vazia' for dtype 'float64'
+2026-04-10 16:40:28,876 - INFO - 
+============================================================
+2026-04-10 16:40:28,877 - INFO - Processando placa: SID2E17
+2026-04-10 16:40:28,877 - INFO - ============================================================
+2026-04-10 16:40:28,878 - INFO - Inserindo placa no campo de busca...
+2026-04-10 16:40:28,891 - INFO - ✓ Campo placa encontrado
+2026-04-10 16:40:29,008 - INFO - ✓ Placa inserida
+2026-04-10 16:40:29,009 - INFO - Clicando em 'Consultar'...
+2026-04-10 16:40:29,022 - INFO - ✓ Botão consultar encontrado
+2026-04-10 16:40:31,161 - INFO - ✓ Consulta realizada
+2026-04-10 16:40:31,162 - INFO - Aguardando abertura do popup com fotos...
+2026-04-10 16:40:33,175 - INFO - ✓ Popup aberto
+2026-04-10 16:40:34,178 - INFO - ✓ Pasta criada: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\SID2E17
+2026-04-10 16:40:34,187 - INFO - ✓ Download configurado para: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\SID2E17
+2026-04-10 16:40:34,188 - INFO - Procurando botão 'Baixar Todos'...
+2026-04-10 16:40:34,265 - INFO - ✓ Botão 'Baixar Todos' encontrado
+2026-04-10 16:40:52,984 - INFO - ✓ Botão clicado
+2026-04-10 16:40:52,984 - INFO - Aguardando download...
+2026-04-10 16:41:43,049 - ERROR - ❌ Timeout: Nenhum arquivo baixado após 45s
+2026-04-10 16:41:43,051 - ERROR - ❌ FALHA: Nenhum arquivo foi salvo na pasta SID2E17
+2026-04-10 16:41:43,051 - ERROR - ✗ Erro ao processar placa SID2E17: Download não concluído - pasta vazia
+2026-04-10 16:41:43,105 - ERROR - Erro ao atualizar planilha: Invalid value 'erro: Download não concluído - pasta vazia' for dtype 'float64'
+2026-04-10 16:41:44,107 - INFO - 
+============================================================
+2026-04-10 16:41:44,108 - INFO - Processando placa: SJD3D91
+2026-04-10 16:41:44,109 - INFO - ============================================================
+2026-04-10 16:41:44,109 - INFO - Inserindo placa no campo de busca...
+2026-04-10 16:41:44,122 - INFO - ✓ Campo placa encontrado
+2026-04-10 16:41:44,238 - INFO - ✓ Placa inserida
+2026-04-10 16:41:44,238 - INFO - Clicando em 'Consultar'...
+2026-04-10 16:41:44,252 - INFO - ✓ Botão consultar encontrado
+2026-04-10 16:41:46,390 - INFO - ✓ Consulta realizada
+2026-04-10 16:41:46,391 - INFO - Aguardando abertura do popup com fotos...
+2026-04-10 16:41:48,404 - INFO - ✓ Popup aberto
+2026-04-10 16:41:49,406 - INFO - ✓ Pasta criada: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\SJD3D91
+2026-04-10 16:41:49,416 - INFO - ✓ Download configurado para: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\SJD3D91
+2026-04-10 16:41:49,417 - INFO - Procurando botão 'Baixar Todos'...
+2026-04-10 16:41:49,492 - INFO - ✓ Botão 'Baixar Todos' encontrado
+2026-04-10 16:42:12,843 - INFO - ✓ Botão clicado
+2026-04-10 16:42:12,844 - INFO - Aguardando download...
+2026-04-10 16:42:17,849 - INFO - ✓ Arquivo ZIP detectado: Download.zip
+2026-04-10 16:42:20,441 - INFO - ✓ 66 arquivo(s) extraído(s) e organizados
+2026-04-10 16:42:20,444 - INFO - ✓ ZIP removido
+2026-04-10 16:42:20,446 - INFO - ✓ SUCESSO: 2 arquivo(s) na pasta SJD3D91
+2026-04-10 16:42:20,446 - INFO -   ✓ Fotos
+2026-04-10 16:42:20,446 - INFO -   ✓ PDF
+2026-04-10 16:42:20,492 - INFO - ✓ Popup fechado
+2026-04-10 16:42:20,494 - ERROR - Erro ao atualizar planilha: Invalid value 'sucesso' for dtype 'float64'
+2026-04-10 16:42:21,498 - INFO - 
+============================================================
+2026-04-10 16:42:21,499 - INFO - Processando placa: SYC9I34
+2026-04-10 16:42:21,503 - INFO - ============================================================
+2026-04-10 16:42:21,511 - INFO - Inserindo placa no campo de busca...
+2026-04-10 16:42:21,526 - INFO - ✓ Campo placa encontrado
+2026-04-10 16:42:21,650 - INFO - ✓ Placa inserida
+2026-04-10 16:42:21,650 - INFO - Clicando em 'Consultar'...
+2026-04-10 16:42:21,664 - INFO - ✓ Botão consultar encontrado
+2026-04-10 16:42:23,871 - INFO - ✓ Consulta realizada
+2026-04-10 16:42:23,872 - INFO - Aguardando abertura do popup com fotos...
+2026-04-10 16:42:25,899 - INFO - ✓ Popup aberto
+2026-04-10 16:42:26,901 - INFO - ✓ Pasta criada: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\SYC9I34
+2026-04-10 16:42:26,911 - INFO - ✓ Download configurado para: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\SYC9I34
+2026-04-10 16:42:26,912 - INFO - Procurando botão 'Baixar Todos'...
+2026-04-10 16:42:27,017 - INFO - ✓ Botão 'Baixar Todos' encontrado
+2026-04-10 16:43:01,521 - INFO - ✓ Botão clicado
+2026-04-10 16:43:01,521 - INFO - Aguardando download...
+2026-04-10 16:43:06,522 - INFO - Download em andamento... (0s)
+2026-04-10 16:43:10,526 - INFO - ✓ Arquivo ZIP detectado: Download.zip
+2026-04-10 16:43:13,362 - INFO - ✓ 100 arquivo(s) extraído(s) e organizados
+2026-04-10 16:43:13,368 - INFO - ✓ ZIP removido
+2026-04-10 16:43:13,369 - INFO - ✓ SUCESSO: 2 arquivo(s) na pasta SYC9I34
+2026-04-10 16:43:13,369 - INFO -   ✓ Fotos
+2026-04-10 16:43:13,369 - INFO -   ✓ PDF
+2026-04-10 16:43:13,416 - INFO - ✓ Popup fechado
+2026-04-10 16:43:13,417 - ERROR - Erro ao atualizar planilha: Invalid value 'sucesso' for dtype 'float64'
+2026-04-10 16:43:14,418 - INFO - 
+============================================================
+2026-04-10 16:43:14,419 - INFO - Processando placa: SYD4G14
+2026-04-10 16:43:14,419 - INFO - ============================================================
+2026-04-10 16:43:14,419 - INFO - Inserindo placa no campo de busca...
+2026-04-10 16:43:14,430 - INFO - ✓ Campo placa encontrado
+2026-04-10 16:43:14,536 - INFO - ✓ Placa inserida
+2026-04-10 16:43:14,537 - INFO - Clicando em 'Consultar'...
+2026-04-10 16:43:14,547 - INFO - ✓ Botão consultar encontrado
+2026-04-10 16:43:16,693 - INFO - ✓ Consulta realizada
+2026-04-10 16:43:16,694 - INFO - Aguardando abertura do popup com fotos...
+2026-04-10 16:43:18,704 - INFO - ✓ Popup aberto
+2026-04-10 16:43:19,707 - INFO - ✓ Pasta criada: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\SYD4G14
+2026-04-10 16:43:19,713 - INFO - ✓ Download configurado para: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\SYD4G14
+2026-04-10 16:43:19,713 - INFO - Procurando botão 'Baixar Todos'...
+2026-04-10 16:43:19,780 - INFO - ✓ Botão 'Baixar Todos' encontrado
+2026-04-10 16:43:25,074 - INFO - ✓ Botão clicado
+2026-04-10 16:43:25,075 - INFO - Aguardando download...
+2026-04-10 16:44:15,179 - ERROR - ❌ Timeout: Nenhum arquivo baixado após 45s
+2026-04-10 16:44:15,180 - ERROR - ❌ FALHA: Nenhum arquivo foi salvo na pasta SYD4G14
+2026-04-10 16:44:15,180 - ERROR - ✗ Erro ao processar placa SYD4G14: Download não concluído - pasta vazia
+2026-04-10 16:44:15,228 - ERROR - Erro ao atualizar planilha: Invalid value 'erro: Download não concluído - pasta vazia' for dtype 'float64'
+2026-04-10 16:44:16,229 - INFO - 
+============================================================
+2026-04-10 16:44:16,230 - INFO - Processando placa: QXW8F67
+2026-04-10 16:44:16,231 - INFO - ============================================================
+2026-04-10 16:44:16,231 - INFO - Inserindo placa no campo de busca...
+2026-04-10 16:44:16,245 - INFO - ✓ Campo placa encontrado
+2026-04-10 16:44:16,351 - INFO - ✓ Placa inserida
+2026-04-10 16:44:16,351 - INFO - Clicando em 'Consultar'...
+2026-04-10 16:44:16,361 - INFO - ✓ Botão consultar encontrado
+2026-04-10 16:44:18,478 - INFO - ✓ Consulta realizada
+2026-04-10 16:44:18,479 - INFO - Aguardando abertura do popup com fotos...
+2026-04-10 16:44:20,494 - INFO - ✓ Popup aberto
+2026-04-10 16:44:21,496 - INFO - ✓ Pasta criada: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\QXW8F67
+2026-04-10 16:44:21,503 - INFO - ✓ Download configurado para: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\QXW8F67
+2026-04-10 16:44:21,503 - INFO - Procurando botão 'Baixar Todos'...
+2026-04-10 16:44:21,575 - INFO - ✓ Botão 'Baixar Todos' encontrado
+2026-04-10 16:44:58,227 - INFO - ✓ Botão clicado
+2026-04-10 16:44:58,227 - INFO - Aguardando download...
+2026-04-10 16:45:03,228 - INFO - Download em andamento... (0s)
+2026-04-10 16:45:07,234 - INFO - ✓ Arquivo ZIP detectado: Download.zip
+2026-04-10 16:45:10,094 - INFO - ✓ 110 arquivo(s) extraído(s) e organizados
+2026-04-10 16:45:10,104 - INFO - ✓ ZIP removido
+2026-04-10 16:45:10,106 - INFO - ✓ SUCESSO: 2 arquivo(s) na pasta QXW8F67
+2026-04-10 16:45:10,106 - INFO -   ✓ Fotos
+2026-04-10 16:45:10,107 - INFO -   ✓ PDF
+2026-04-10 16:45:10,189 - INFO - ✓ Popup fechado
+2026-04-10 16:45:10,191 - ERROR - Erro ao atualizar planilha: Invalid value 'sucesso' for dtype 'float64'
+2026-04-10 16:45:11,193 - INFO - 
+============================================================
+2026-04-10 16:45:11,195 - INFO - Processando placa: SIW4C21
+2026-04-10 16:45:11,196 - INFO - ============================================================
+2026-04-10 16:45:11,197 - INFO - Inserindo placa no campo de busca...
+2026-04-10 16:45:11,222 - INFO - ✓ Campo placa encontrado
+2026-04-10 16:45:11,383 - INFO - ✓ Placa inserida
+2026-04-10 16:45:11,383 - INFO - Clicando em 'Consultar'...
+2026-04-10 16:45:11,396 - INFO - ✓ Botão consultar encontrado
+2026-04-10 16:45:13,640 - INFO - ✓ Consulta realizada
+2026-04-10 16:45:13,647 - INFO - Aguardando abertura do popup com fotos...
+2026-04-10 16:45:15,661 - INFO - ✓ Popup aberto
+2026-04-10 16:45:16,665 - INFO - ✓ Pasta criada: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\SIW4C21
+2026-04-10 16:45:16,673 - INFO - ✓ Download configurado para: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\SIW4C21
+2026-04-10 16:45:16,673 - INFO - Procurando botão 'Baixar Todos'...
+2026-04-10 16:45:16,760 - INFO - ✓ Botão 'Baixar Todos' encontrado
+2026-04-10 16:45:49,544 - INFO - ✓ Botão clicado
+2026-04-10 16:45:49,544 - INFO - Aguardando download...
+2026-04-10 16:45:54,545 - INFO - Download em andamento... (0s)
+2026-04-10 16:45:55,546 - INFO - ✓ Arquivo ZIP detectado: Download.zip
+2026-04-10 16:45:58,398 - INFO - ✓ 103 arquivo(s) extraído(s) e organizados
+2026-04-10 16:45:58,402 - INFO - ✓ ZIP removido
+2026-04-10 16:45:58,403 - INFO - ✓ SUCESSO: 2 arquivo(s) na pasta SIW4C21
+2026-04-10 16:45:58,403 - INFO -   ✓ Fotos
+2026-04-10 16:45:58,404 - INFO -   ✓ PDF
+2026-04-10 16:45:58,463 - INFO - ✓ Popup fechado
+2026-04-10 16:45:58,465 - ERROR - Erro ao atualizar planilha: Invalid value 'sucesso' for dtype 'float64'
+2026-04-10 16:45:59,466 - INFO - 
+============================================================
+2026-04-10 16:45:59,466 - INFO - Processando placa: SYE6G48
+2026-04-10 16:45:59,467 - INFO - ============================================================
+2026-04-10 16:45:59,467 - INFO - Inserindo placa no campo de busca...
+2026-04-10 16:45:59,480 - INFO - ✓ Campo placa encontrado
+2026-04-10 16:45:59,609 - INFO - ✓ Placa inserida
+2026-04-10 16:45:59,610 - INFO - Clicando em 'Consultar'...
+2026-04-10 16:45:59,622 - INFO - ✓ Botão consultar encontrado
+2026-04-10 16:46:01,807 - INFO - ✓ Consulta realizada
+2026-04-10 16:46:01,810 - INFO - Aguardando abertura do popup com fotos...
+2026-04-10 16:46:03,835 - INFO - ✓ Popup aberto
+2026-04-10 16:46:04,839 - INFO - ✓ Pasta criada: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\SYE6G48
+2026-04-10 16:46:04,853 - INFO - ✓ Download configurado para: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\SYE6G48
+2026-04-10 16:46:04,854 - INFO - Procurando botão 'Baixar Todos'...
+2026-04-10 16:46:04,939 - INFO - ✓ Botão 'Baixar Todos' encontrado
+2026-04-10 16:46:44,790 - INFO - ✓ Botão clicado
+2026-04-10 16:46:44,790 - INFO - Aguardando download...
+2026-04-10 16:46:49,791 - INFO - Download em andamento... (0s)
+2026-04-10 16:46:54,797 - INFO - Download em andamento... (5s)
+2026-04-10 16:46:57,800 - INFO - ✓ Arquivo ZIP detectado: Download.zip
+2026-04-10 16:47:01,317 - INFO - ✓ 110 arquivo(s) extraído(s) e organizados
+2026-04-10 16:47:01,325 - INFO - ✓ ZIP removido
+2026-04-10 16:47:01,326 - INFO - ✓ SUCESSO: 2 arquivo(s) na pasta SYE6G48
+2026-04-10 16:47:01,327 - INFO -   ✓ Fotos
+2026-04-10 16:47:01,327 - INFO -   ✓ PDF
+2026-04-10 16:47:01,384 - INFO - ✓ Popup fechado
+2026-04-10 16:47:01,386 - ERROR - Erro ao atualizar planilha: Invalid value 'sucesso' for dtype 'float64'
+2026-04-10 16:47:02,387 - INFO - 
+============================================================
+2026-04-10 16:47:02,388 - INFO - Processando placa: TCF7C83
+2026-04-10 16:47:02,388 - INFO - ============================================================
+2026-04-10 16:47:02,388 - INFO - Inserindo placa no campo de busca...
+2026-04-10 16:47:02,400 - INFO - ✓ Campo placa encontrado
+2026-04-10 16:47:02,520 - INFO - ✓ Placa inserida
+2026-04-10 16:47:02,520 - INFO - Clicando em 'Consultar'...
+2026-04-10 16:47:02,532 - INFO - ✓ Botão consultar encontrado
+2026-04-10 16:47:04,666 - INFO - ✓ Consulta realizada
+2026-04-10 16:47:04,667 - INFO - Aguardando abertura do popup com fotos...
+2026-04-10 16:47:06,683 - INFO - ✓ Popup aberto
+2026-04-10 16:47:07,685 - INFO - ✓ Pasta criada: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\TCF7C83
+2026-04-10 16:47:07,695 - INFO - ✓ Download configurado para: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\TCF7C83
+2026-04-10 16:47:07,696 - INFO - Procurando botão 'Baixar Todos'...
+2026-04-10 16:47:07,783 - INFO - ✓ Botão 'Baixar Todos' encontrado
+2026-04-10 16:47:31,093 - INFO - ✓ Botão clicado
+2026-04-10 16:47:31,094 - INFO - Aguardando download...
+2026-04-10 16:48:21,134 - ERROR - ❌ Timeout: Nenhum arquivo baixado após 45s
+2026-04-10 16:48:21,135 - ERROR - ❌ FALHA: Nenhum arquivo foi salvo na pasta TCF7C83
+2026-04-10 16:48:21,136 - ERROR - ✗ Erro ao processar placa TCF7C83: Download não concluído - pasta vazia
+2026-04-10 16:48:21,215 - ERROR - Erro ao atualizar planilha: Invalid value 'erro: Download não concluído - pasta vazia' for dtype 'float64'
+2026-04-10 16:48:22,216 - INFO - 
+============================================================
+2026-04-10 16:48:22,217 - INFO - Processando placa: SSW3J75
+2026-04-10 16:48:22,217 - INFO - ============================================================
+2026-04-10 16:48:22,217 - INFO - Inserindo placa no campo de busca...
+2026-04-10 16:48:22,229 - INFO - ✓ Campo placa encontrado
+2026-04-10 16:48:22,354 - INFO - ✓ Placa inserida
+2026-04-10 16:48:22,354 - INFO - Clicando em 'Consultar'...
+2026-04-10 16:48:22,367 - INFO - ✓ Botão consultar encontrado
+2026-04-10 16:48:24,504 - INFO - ✓ Consulta realizada
+2026-04-10 16:48:24,504 - INFO - Aguardando abertura do popup com fotos...
+2026-04-10 16:48:26,519 - INFO - ✓ Popup aberto
+2026-04-10 16:48:27,522 - INFO - ✓ Pasta criada: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\SSW3J75
+2026-04-10 16:48:29,593 - INFO - ✓ Download configurado para: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\SSW3J75
+2026-04-10 16:48:29,593 - INFO - Procurando botão 'Baixar Todos'...
+2026-04-10 16:48:29,681 - INFO - ✓ Botão 'Baixar Todos' encontrado
+2026-04-10 16:48:35,160 - INFO - ✓ Botão clicado
+2026-04-10 16:48:35,161 - INFO - Aguardando download...
+2026-04-10 16:49:25,207 - ERROR - ❌ Timeout: Nenhum arquivo baixado após 45s
+2026-04-10 16:49:25,208 - ERROR - ❌ FALHA: Nenhum arquivo foi salvo na pasta SSW3J75
+2026-04-10 16:49:25,209 - ERROR - ✗ Erro ao processar placa SSW3J75: Download não concluído - pasta vazia
+2026-04-10 16:49:25,275 - ERROR - Erro ao atualizar planilha: Invalid value 'erro: Download não concluído - pasta vazia' for dtype 'float64'
+2026-04-10 16:49:26,276 - INFO - 
+============================================================
+2026-04-10 16:49:26,278 - INFO - Processando placa: SYB8H60
+2026-04-10 16:49:26,279 - INFO - ============================================================
+2026-04-10 16:49:26,279 - INFO - Inserindo placa no campo de busca...
+2026-04-10 16:49:26,296 - INFO - ✓ Campo placa encontrado
+2026-04-10 16:49:26,495 - INFO - ✓ Placa inserida
+2026-04-10 16:49:26,498 - INFO - Clicando em 'Consultar'...
+2026-04-10 16:49:26,519 - INFO - ✓ Botão consultar encontrado
+2026-04-10 16:49:28,778 - INFO - ✓ Consulta realizada
+2026-04-10 16:49:28,779 - INFO - Aguardando abertura do popup com fotos...
+2026-04-10 16:49:30,790 - INFO - ✓ Popup aberto
+2026-04-10 16:49:31,796 - INFO - ✓ Pasta criada: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\SYB8H60
+2026-04-10 16:49:31,807 - INFO - ✓ Download configurado para: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\SYB8H60
+2026-04-10 16:49:31,808 - INFO - Procurando botão 'Baixar Todos'...
+2026-04-10 16:49:31,909 - INFO - ✓ Botão 'Baixar Todos' encontrado
+2026-04-10 16:49:46,262 - INFO - ✓ Botão clicado
+2026-04-10 16:49:46,263 - INFO - Aguardando download...
+2026-04-10 16:50:36,366 - ERROR - ❌ Timeout: Nenhum arquivo baixado após 45s
+2026-04-10 16:50:36,374 - ERROR - ❌ FALHA: Nenhum arquivo foi salvo na pasta SYB8H60
+2026-04-10 16:50:36,376 - ERROR - ✗ Erro ao processar placa SYB8H60: Download não concluído - pasta vazia
+2026-04-10 16:50:36,450 - ERROR - Erro ao atualizar planilha: Invalid value 'erro: Download não concluído - pasta vazia' for dtype 'float64'
+2026-04-10 16:50:37,455 - INFO - 
+============================================================
+2026-04-10 16:50:37,494 - INFO - Processando placa: TCU4D24
+2026-04-10 16:50:37,517 - INFO - ============================================================
+2026-04-10 16:50:37,540 - INFO - Inserindo placa no campo de busca...
+2026-04-10 16:50:37,597 - INFO - ✓ Campo placa encontrado
+2026-04-10 16:50:38,122 - INFO - ✓ Placa inserida
+2026-04-10 16:50:38,126 - INFO - Clicando em 'Consultar'...
+2026-04-10 16:50:38,141 - INFO - ✓ Botão consultar encontrado
+2026-04-10 16:50:40,393 - INFO - ✓ Consulta realizada
+2026-04-10 16:50:40,394 - INFO - Aguardando abertura do popup com fotos...
+2026-04-10 16:50:42,432 - INFO - ✓ Popup aberto
+2026-04-10 16:50:43,435 - INFO - ✓ Pasta criada: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\TCU4D24
+2026-04-10 16:50:44,465 - INFO - ✓ Download configurado para: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\TCU4D24
+2026-04-10 16:50:44,468 - INFO - Procurando botão 'Baixar Todos'...
+2026-04-10 16:50:44,582 - INFO - ✓ Botão 'Baixar Todos' encontrado
+2026-04-10 16:51:10,314 - INFO - ✓ Botão clicado
+2026-04-10 16:51:10,315 - INFO - Aguardando download...
+2026-04-10 16:51:15,316 - INFO - Download em andamento... (0s)
+2026-04-10 16:51:20,323 - INFO - Download em andamento... (5s)
+2026-04-10 16:51:25,343 - INFO - Download em andamento... (10s)
+2026-04-10 16:51:30,353 - INFO - ✓ Arquivo ZIP detectado: Download.zip
+2026-04-10 16:51:33,383 - INFO - ✓ 69 arquivo(s) extraído(s) e organizados
+2026-04-10 16:51:33,409 - INFO - ✓ ZIP removido
+2026-04-10 16:51:33,410 - INFO - ✓ SUCESSO: 2 arquivo(s) na pasta TCU4D24
+2026-04-10 16:51:33,410 - INFO -   ✓ Fotos
+2026-04-10 16:51:33,410 - INFO -   ✓ PDF
+2026-04-10 16:51:33,471 - INFO - ✓ Popup fechado
+2026-04-10 16:51:33,472 - ERROR - Erro ao atualizar planilha: Invalid value 'sucesso' for dtype 'float64'
+2026-04-10 16:51:34,473 - INFO - 
+============================================================
+2026-04-10 16:51:34,474 - INFO - Processando placa: SUP6H50
+2026-04-10 16:51:34,474 - INFO - ============================================================
+2026-04-10 16:51:34,474 - INFO - Inserindo placa no campo de busca...
+2026-04-10 16:51:34,489 - INFO - ✓ Campo placa encontrado
+2026-04-10 16:51:34,607 - INFO - ✓ Placa inserida
+2026-04-10 16:51:34,607 - INFO - Clicando em 'Consultar'...
+2026-04-10 16:51:34,620 - INFO - ✓ Botão consultar encontrado
+2026-04-10 16:51:36,860 - INFO - ✓ Consulta realizada
+2026-04-10 16:51:36,868 - INFO - Aguardando abertura do popup com fotos...
+2026-04-10 16:51:38,882 - INFO - ✓ Popup aberto
+2026-04-10 16:51:39,884 - INFO - ✓ Pasta criada: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\SUP6H50
+2026-04-10 16:51:39,894 - INFO - ✓ Download configurado para: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\SUP6H50
+2026-04-10 16:51:39,895 - INFO - Procurando botão 'Baixar Todos'...
+2026-04-10 16:51:40,027 - INFO - ✓ Botão 'Baixar Todos' encontrado
+2026-04-10 16:51:43,940 - INFO - ✓ Botão clicado
+2026-04-10 16:51:43,940 - INFO - Aguardando download...
+2026-04-10 16:52:34,001 - ERROR - ❌ Timeout: Nenhum arquivo baixado após 45s
+2026-04-10 16:52:34,002 - ERROR - ❌ FALHA: Nenhum arquivo foi salvo na pasta SUP6H50
+2026-04-10 16:52:34,002 - ERROR - ✗ Erro ao processar placa SUP6H50: Download não concluído - pasta vazia
+2026-04-10 16:52:34,076 - ERROR - Erro ao atualizar planilha: Invalid value 'erro: Download não concluído - pasta vazia' for dtype 'float64'
+2026-04-10 16:52:35,077 - INFO - 
+============================================================
+2026-04-10 16:52:35,077 - INFO - Processando placa: SYD5B26
+2026-04-10 16:52:35,078 - INFO - ============================================================
+2026-04-10 16:52:35,078 - INFO - Inserindo placa no campo de busca...
+2026-04-10 16:52:35,088 - INFO - ✓ Campo placa encontrado
+2026-04-10 16:52:35,192 - INFO - ✓ Placa inserida
+2026-04-10 16:52:35,192 - INFO - Clicando em 'Consultar'...
+2026-04-10 16:52:35,202 - INFO - ✓ Botão consultar encontrado
+2026-04-10 16:52:37,337 - INFO - ✓ Consulta realizada
+2026-04-10 16:52:37,343 - INFO - Aguardando abertura do popup com fotos...
+2026-04-10 16:52:39,419 - INFO - ✓ Popup aberto
+2026-04-10 16:52:40,422 - INFO - ✓ Pasta criada: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\SYD5B26
+2026-04-10 16:52:40,440 - INFO - ✓ Download configurado para: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\SYD5B26
+2026-04-10 16:52:40,441 - INFO - Procurando botão 'Baixar Todos'...
+2026-04-10 16:52:40,579 - INFO - ✓ Botão 'Baixar Todos' encontrado
+2026-04-10 16:52:53,649 - INFO - ✓ Botão clicado
+2026-04-10 16:52:53,650 - INFO - Aguardando download...
+2026-04-10 16:53:43,692 - ERROR - ❌ Timeout: Nenhum arquivo baixado após 45s
+2026-04-10 16:53:43,692 - ERROR - ❌ FALHA: Nenhum arquivo foi salvo na pasta SYD5B26
+2026-04-10 16:53:43,693 - ERROR - ✗ Erro ao processar placa SYD5B26: Download não concluído - pasta vazia
+2026-04-10 16:53:43,758 - ERROR - Erro ao atualizar planilha: Invalid value 'erro: Download não concluído - pasta vazia' for dtype 'float64'
+2026-04-10 16:53:44,759 - INFO - 
+============================================================
+2026-04-10 16:53:44,759 - INFO - Processando placa: TCP8F88
+2026-04-10 16:53:44,760 - INFO - ============================================================
+2026-04-10 16:53:44,760 - INFO - Inserindo placa no campo de busca...
+2026-04-10 16:53:44,770 - INFO - ✓ Campo placa encontrado
+2026-04-10 16:53:44,873 - INFO - ✓ Placa inserida
+2026-04-10 16:53:44,873 - INFO - Clicando em 'Consultar'...
+2026-04-10 16:53:44,885 - INFO - ✓ Botão consultar encontrado
+2026-04-10 16:53:47,032 - INFO - ✓ Consulta realizada
+2026-04-10 16:53:47,033 - INFO - Aguardando abertura do popup com fotos...
+2026-04-10 16:53:49,044 - INFO - ✓ Popup aberto
+2026-04-10 16:53:50,050 - INFO - ✓ Pasta criada: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\TCP8F88
+2026-04-10 16:53:50,057 - INFO - ✓ Download configurado para: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\TCP8F88
+2026-04-10 16:53:50,058 - INFO - Procurando botão 'Baixar Todos'...
+2026-04-10 16:53:50,158 - INFO - ✓ Botão 'Baixar Todos' encontrado
+2026-04-10 16:54:12,908 - INFO - ✓ Botão clicado
+2026-04-10 16:54:12,909 - INFO - Aguardando download...
+2026-04-10 16:55:02,952 - ERROR - ❌ Timeout: Nenhum arquivo baixado após 45s
+2026-04-10 16:55:02,954 - ERROR - ❌ FALHA: Nenhum arquivo foi salvo na pasta TCP8F88
+2026-04-10 16:55:02,954 - ERROR - ✗ Erro ao processar placa TCP8F88: Download não concluído - pasta vazia
+2026-04-10 16:55:03,021 - ERROR - Erro ao atualizar planilha: Invalid value 'erro: Download não concluído - pasta vazia' for dtype 'float64'
+2026-04-10 16:55:04,022 - INFO - 
+============================================================
+2026-04-10 16:55:04,023 - INFO - Processando placa: TDQ0I34
+2026-04-10 16:55:04,023 - INFO - ============================================================
+2026-04-10 16:55:04,023 - INFO - Inserindo placa no campo de busca...
+2026-04-10 16:55:04,034 - INFO - ✓ Campo placa encontrado
+2026-04-10 16:55:04,134 - INFO - ✓ Placa inserida
+2026-04-10 16:55:04,135 - INFO - Clicando em 'Consultar'...
+2026-04-10 16:55:04,146 - INFO - ✓ Botão consultar encontrado
+2026-04-10 16:55:06,270 - INFO - ✓ Consulta realizada
+2026-04-10 16:55:06,272 - INFO - Aguardando abertura do popup com fotos...
+2026-04-10 16:55:08,285 - INFO - ✓ Popup aberto
+2026-04-10 16:55:09,287 - INFO - ✓ Pasta criada: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\TDQ0I34
+2026-04-10 16:55:09,296 - INFO - ✓ Download configurado para: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\TDQ0I34
+2026-04-10 16:55:09,296 - INFO - Procurando botão 'Baixar Todos'...
+2026-04-10 16:55:09,374 - INFO - ✓ Botão 'Baixar Todos' encontrado
+2026-04-10 16:55:33,664 - INFO - ✓ Botão clicado
+2026-04-10 16:55:33,665 - INFO - Aguardando download...
+2026-04-10 16:55:38,666 - INFO - Download em andamento... (0s)
+2026-04-10 16:55:39,668 - INFO - ✓ Arquivo ZIP detectado: Download.zip
+2026-04-10 16:55:42,190 - INFO - ✓ 65 arquivo(s) extraído(s) e organizados
+2026-04-10 16:55:42,194 - INFO - ✓ ZIP removido
+2026-04-10 16:55:42,195 - INFO - ✓ SUCESSO: 2 arquivo(s) na pasta TDQ0I34
+2026-04-10 16:55:42,196 - INFO -   ✓ Fotos
+2026-04-10 16:55:42,196 - INFO -   ✓ PDF
+2026-04-10 16:55:42,241 - INFO - ✓ Popup fechado
+2026-04-10 16:55:42,243 - ERROR - Erro ao atualizar planilha: Invalid value 'sucesso' for dtype 'float64'
+2026-04-10 16:55:43,244 - INFO - 
+============================================================
+2026-04-10 16:55:43,244 - INFO - Processando placa: TDZ9C58
+2026-04-10 16:55:43,245 - INFO - ============================================================
+2026-04-10 16:55:43,245 - INFO - Inserindo placa no campo de busca...
+2026-04-10 16:55:43,257 - INFO - ✓ Campo placa encontrado
+2026-04-10 16:55:43,371 - INFO - ✓ Placa inserida
+2026-04-10 16:55:43,372 - INFO - Clicando em 'Consultar'...
+2026-04-10 16:55:43,384 - INFO - ✓ Botão consultar encontrado
+2026-04-10 16:55:45,565 - INFO - ✓ Consulta realizada
+2026-04-10 16:55:45,565 - INFO - Aguardando abertura do popup com fotos...
+2026-04-10 16:55:47,581 - INFO - ✓ Popup aberto
+2026-04-10 16:55:48,583 - INFO - ✓ Pasta criada: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\TDZ9C58
+2026-04-10 16:55:48,590 - INFO - ✓ Download configurado para: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\TDZ9C58
+2026-04-10 16:55:48,591 - INFO - Procurando botão 'Baixar Todos'...
+2026-04-10 16:55:48,665 - INFO - ✓ Botão 'Baixar Todos' encontrado
+2026-04-10 16:56:30,732 - INFO - ✓ Botão clicado
+2026-04-10 16:56:30,733 - INFO - Aguardando download...
+2026-04-10 16:56:35,734 - INFO - Download em andamento... (0s)
+2026-04-10 16:56:40,739 - INFO - Download em andamento... (5s)
+2026-04-10 16:56:45,744 - INFO - Download em andamento... (10s)
+2026-04-10 16:56:47,746 - INFO - ✓ Arquivo ZIP detectado: Download.zip
+2026-04-10 16:56:50,837 - INFO - ✓ 100 arquivo(s) extraído(s) e organizados
+2026-04-10 16:56:51,200 - INFO - ✓ ZIP removido
+2026-04-10 16:56:51,201 - INFO - ✓ SUCESSO: 2 arquivo(s) na pasta TDZ9C58
+2026-04-10 16:56:51,202 - INFO -   ✓ Fotos
+2026-04-10 16:56:51,204 - INFO -   ✓ PDF
+2026-04-10 16:56:51,275 - INFO - ✓ Popup fechado
+2026-04-10 16:56:51,276 - ERROR - Erro ao atualizar planilha: Invalid value 'sucesso' for dtype 'float64'
+2026-04-10 16:56:52,277 - INFO - 
+============================================================
+2026-04-10 16:56:52,278 - INFO - Processando placa: ECU8I02
+2026-04-10 16:56:52,278 - INFO - ============================================================
+2026-04-10 16:56:52,278 - INFO - Inserindo placa no campo de busca...
+2026-04-10 16:56:52,292 - INFO - ✓ Campo placa encontrado
+2026-04-10 16:56:52,406 - INFO - ✓ Placa inserida
+2026-04-10 16:56:52,407 - INFO - Clicando em 'Consultar'...
+2026-04-10 16:56:52,417 - INFO - ✓ Botão consultar encontrado
+2026-04-10 16:56:54,571 - INFO - ✓ Consulta realizada
+2026-04-10 16:56:54,576 - INFO - Aguardando abertura do popup com fotos...
+2026-04-10 16:56:56,586 - INFO - ✓ Popup aberto
+2026-04-10 16:56:57,588 - INFO - ✓ Pasta criada: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\ECU8I02
+2026-04-10 16:56:57,600 - INFO - ✓ Download configurado para: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\ECU8I02
+2026-04-10 16:56:57,600 - INFO - Procurando botão 'Baixar Todos'...
+2026-04-10 16:56:57,691 - INFO - ✓ Botão 'Baixar Todos' encontrado
+2026-04-10 16:57:33,051 - INFO - ✓ Botão clicado
+2026-04-10 16:57:33,052 - INFO - Aguardando download...
+2026-04-10 16:57:38,054 - INFO - Download em andamento... (0s)
+2026-04-10 16:57:40,056 - INFO - ✓ Arquivo ZIP detectado: Download.zip
+2026-04-10 16:57:42,837 - INFO - ✓ 97 arquivo(s) extraído(s) e organizados
+2026-04-10 16:57:42,841 - INFO - ✓ ZIP removido
+2026-04-10 16:57:42,843 - INFO - ✓ SUCESSO: 2 arquivo(s) na pasta ECU8I02
+2026-04-10 16:57:42,843 - INFO -   ✓ Fotos
+2026-04-10 16:57:42,844 - INFO -   ✓ PDF
+2026-04-10 16:57:42,892 - INFO - ✓ Popup fechado
+2026-04-10 16:57:42,894 - ERROR - Erro ao atualizar planilha: Invalid value 'sucesso' for dtype 'float64'
+2026-04-10 16:57:43,896 - INFO - 
+============================================================
+2026-04-10 16:57:43,896 - INFO - Processando placa: EYY0J41
+2026-04-10 16:57:43,897 - INFO - ============================================================
+2026-04-10 16:57:43,897 - INFO - Inserindo placa no campo de busca...
+2026-04-10 16:57:43,910 - INFO - ✓ Campo placa encontrado
+2026-04-10 16:57:44,045 - INFO - ✓ Placa inserida
+2026-04-10 16:57:44,046 - INFO - Clicando em 'Consultar'...
+2026-04-10 16:57:44,069 - INFO - ✓ Botão consultar encontrado
+2026-04-10 16:57:46,240 - INFO - ✓ Consulta realizada
+2026-04-10 16:57:46,241 - INFO - Aguardando abertura do popup com fotos...
+2026-04-10 16:57:48,251 - INFO - ✓ Popup aberto
+2026-04-10 16:57:49,253 - INFO - ✓ Pasta criada: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\EYY0J41
+2026-04-10 16:57:49,262 - INFO - ✓ Download configurado para: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\EYY0J41
+2026-04-10 16:57:49,262 - INFO - Procurando botão 'Baixar Todos'...
+2026-04-10 16:57:49,336 - INFO - ✓ Botão 'Baixar Todos' encontrado
+2026-04-10 16:58:10,748 - INFO - ✓ Botão clicado
+2026-04-10 16:58:10,749 - INFO - Aguardando download...
+2026-04-10 16:58:15,750 - INFO - Download em andamento... (0s)
+2026-04-10 16:58:16,751 - INFO - ✓ Arquivo ZIP detectado: Download.zip
+2026-04-10 16:58:19,251 - INFO - ✓ 60 arquivo(s) extraído(s) e organizados
+2026-04-10 16:58:19,340 - INFO - ✓ ZIP removido
+2026-04-10 16:58:19,341 - INFO - ✓ SUCESSO: 2 arquivo(s) na pasta EYY0J41
+2026-04-10 16:58:19,341 - INFO -   ✓ Fotos
+2026-04-10 16:58:19,342 - INFO -   ✓ PDF
+2026-04-10 16:58:19,390 - INFO - ✓ Popup fechado
+2026-04-10 16:58:19,392 - ERROR - Erro ao atualizar planilha: Invalid value 'sucesso' for dtype 'float64'
+2026-04-10 16:58:20,393 - INFO - 
+============================================================
+2026-04-10 16:58:20,394 - INFO - Processando placa: OPP7B80
+2026-04-10 16:58:20,395 - INFO - ============================================================
+2026-04-10 16:58:20,395 - INFO - Inserindo placa no campo de busca...
+2026-04-10 16:58:20,415 - INFO - ✓ Campo placa encontrado
+2026-04-10 16:58:20,549 - INFO - ✓ Placa inserida
+2026-04-10 16:58:20,549 - INFO - Clicando em 'Consultar'...
+2026-04-10 16:58:20,562 - INFO - ✓ Botão consultar encontrado
+2026-04-10 16:58:22,769 - INFO - ✓ Consulta realizada
+2026-04-10 16:58:22,769 - INFO - Aguardando abertura do popup com fotos...
+2026-04-10 16:58:24,780 - INFO - ✓ Popup aberto
+2026-04-10 16:58:25,781 - INFO - ✓ Pasta criada: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\OPP7B80
+2026-04-10 16:58:25,789 - INFO - ✓ Download configurado para: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\OPP7B80
+2026-04-10 16:58:25,789 - INFO - Procurando botão 'Baixar Todos'...
+2026-04-10 16:58:25,859 - INFO - ✓ Botão 'Baixar Todos' encontrado
+2026-04-10 16:58:30,681 - INFO - ✓ Botão clicado
+2026-04-10 16:58:30,682 - INFO - Aguardando download...
+2026-04-10 16:59:20,733 - ERROR - ❌ Timeout: Nenhum arquivo baixado após 45s
+2026-04-10 16:59:20,734 - ERROR - ❌ FALHA: Nenhum arquivo foi salvo na pasta OPP7B80
+2026-04-10 16:59:20,735 - ERROR - ✗ Erro ao processar placa OPP7B80: Download não concluído - pasta vazia
+2026-04-10 16:59:20,811 - ERROR - Erro ao atualizar planilha: Invalid value 'erro: Download não concluído - pasta vazia' for dtype 'float64'
+2026-04-10 16:59:21,813 - INFO - 
+============================================================
+2026-04-10 16:59:21,813 - INFO - Processando placa: RTL9I39
+2026-04-10 16:59:21,813 - INFO - ============================================================
+2026-04-10 16:59:21,813 - INFO - Inserindo placa no campo de busca...
+2026-04-10 16:59:21,825 - INFO - ✓ Campo placa encontrado
+2026-04-10 16:59:21,935 - INFO - ✓ Placa inserida
+2026-04-10 16:59:21,935 - INFO - Clicando em 'Consultar'...
+2026-04-10 16:59:21,947 - INFO - ✓ Botão consultar encontrado
+2026-04-10 16:59:24,092 - INFO - ✓ Consulta realizada
+2026-04-10 16:59:24,092 - INFO - Aguardando abertura do popup com fotos...
+2026-04-10 16:59:26,102 - INFO - ✓ Popup aberto
+2026-04-10 16:59:27,104 - INFO - ✓ Pasta criada: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\RTL9I39
+2026-04-10 16:59:27,112 - INFO - ✓ Download configurado para: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\RTL9I39
+2026-04-10 16:59:27,113 - INFO - Procurando botão 'Baixar Todos'...
+2026-04-10 16:59:27,187 - INFO - ✓ Botão 'Baixar Todos' encontrado
+2026-04-10 16:59:53,051 - INFO - ✓ Botão clicado
+2026-04-10 16:59:53,052 - INFO - Aguardando download...
+2026-04-10 16:59:58,053 - INFO - Download em andamento... (0s)
+2026-04-10 17:00:00,067 - INFO - ✓ Arquivo ZIP detectado: Download.zip
+2026-04-10 17:00:02,683 - INFO - ✓ 67 arquivo(s) extraído(s) e organizados
+2026-04-10 17:00:02,688 - INFO - ✓ ZIP removido
+2026-04-10 17:00:02,689 - INFO - ✓ SUCESSO: 2 arquivo(s) na pasta RTL9I39
+2026-04-10 17:00:02,689 - INFO -   ✓ Fotos
+2026-04-10 17:00:02,689 - INFO -   ✓ PDF
+2026-04-10 17:00:02,736 - INFO - ✓ Popup fechado
+2026-04-10 17:00:02,740 - ERROR - Erro ao atualizar planilha: Invalid value 'sucesso' for dtype 'float64'
+2026-04-10 17:00:03,742 - INFO - 
+============================================================
+2026-04-10 17:00:03,743 - INFO - Processando placa: RVO5G18
+2026-04-10 17:00:03,743 - INFO - ============================================================
+2026-04-10 17:00:03,743 - INFO - Inserindo placa no campo de busca...
+2026-04-10 17:00:03,755 - INFO - ✓ Campo placa encontrado
+2026-04-10 17:00:03,910 - INFO - ✓ Placa inserida
+2026-04-10 17:00:03,913 - INFO - Clicando em 'Consultar'...
+2026-04-10 17:00:03,927 - INFO - ✓ Botão consultar encontrado
+2026-04-10 17:00:06,066 - INFO - ✓ Consulta realizada
+2026-04-10 17:00:06,067 - INFO - Aguardando abertura do popup com fotos...
+2026-04-10 17:00:08,077 - INFO - ✓ Popup aberto
+2026-04-10 17:00:09,080 - INFO - ✓ Pasta criada: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\RVO5G18
+2026-04-10 17:00:09,087 - INFO - ✓ Download configurado para: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\RVO5G18
+2026-04-10 17:00:09,088 - INFO - Procurando botão 'Baixar Todos'...
+2026-04-10 17:00:09,156 - INFO - ✓ Botão 'Baixar Todos' encontrado
+2026-04-10 17:00:40,065 - INFO - ✓ Botão clicado
+2026-04-10 17:00:40,065 - INFO - Aguardando download...
+2026-04-10 17:00:45,067 - INFO - Download em andamento... (0s)
+2026-04-10 17:00:49,071 - INFO - ✓ Arquivo ZIP detectado: Download.zip
+2026-04-10 17:00:51,766 - INFO - ✓ 78 arquivo(s) extraído(s) e organizados
+2026-04-10 17:00:52,067 - INFO - ✓ ZIP removido
+2026-04-10 17:00:52,068 - INFO - ✓ SUCESSO: 2 arquivo(s) na pasta RVO5G18
+2026-04-10 17:00:52,068 - INFO -   ✓ Fotos
+2026-04-10 17:00:52,069 - INFO -   ✓ PDF
+2026-04-10 17:00:52,130 - INFO - ✓ Popup fechado
+2026-04-10 17:00:52,135 - ERROR - Erro ao atualizar planilha: Invalid value 'sucesso' for dtype 'float64'
+2026-04-10 17:00:53,138 - INFO - 
+============================================================
+2026-04-10 17:00:53,139 - INFO - Processando placa: RVZ4F58
+2026-04-10 17:00:53,139 - INFO - ============================================================
+2026-04-10 17:00:53,139 - INFO - Inserindo placa no campo de busca...
+2026-04-10 17:00:53,153 - INFO - ✓ Campo placa encontrado
+2026-04-10 17:00:53,304 - INFO - ✓ Placa inserida
+2026-04-10 17:00:53,305 - INFO - Clicando em 'Consultar'...
+2026-04-10 17:00:53,319 - INFO - ✓ Botão consultar encontrado
+2026-04-10 17:00:55,501 - INFO - ✓ Consulta realizada
+2026-04-10 17:00:55,503 - INFO - Aguardando abertura do popup com fotos...
+2026-04-10 17:00:57,574 - INFO - ✓ Popup aberto
+2026-04-10 17:00:58,583 - INFO - ✓ Pasta criada: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\RVZ4F58
+2026-04-10 17:00:58,605 - INFO - ✓ Download configurado para: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\RVZ4F58
+2026-04-10 17:00:58,606 - INFO - Procurando botão 'Baixar Todos'...
+2026-04-10 17:00:58,715 - INFO - ✓ Botão 'Baixar Todos' encontrado
+2026-04-10 17:01:21,803 - INFO - ✓ Botão clicado
+2026-04-10 17:01:21,804 - INFO - Aguardando download...
+2026-04-10 17:01:26,805 - INFO - ✓ Arquivo ZIP detectado: Download.zip
+2026-04-10 17:01:29,173 - INFO - ✓ 53 arquivo(s) extraído(s) e organizados
+2026-04-10 17:01:29,176 - INFO - ✓ ZIP removido
+2026-04-10 17:01:29,176 - INFO - ✓ SUCESSO: 2 arquivo(s) na pasta RVZ4F58
+2026-04-10 17:01:29,176 - INFO -   ✓ Fotos
+2026-04-10 17:01:29,177 - INFO -   ✓ PDF
+2026-04-10 17:01:29,219 - INFO - ✓ Popup fechado
+2026-04-10 17:01:29,220 - ERROR - Erro ao atualizar planilha: Invalid value 'sucesso' for dtype 'float64'
+2026-04-10 17:01:30,222 - INFO - 
+============================================================
+2026-04-10 17:01:30,222 - INFO - Processando placa: SHD6E64
+2026-04-10 17:01:30,223 - INFO - ============================================================
+2026-04-10 17:01:30,223 - INFO - Inserindo placa no campo de busca...
+2026-04-10 17:01:30,234 - INFO - ✓ Campo placa encontrado
+2026-04-10 17:01:30,341 - INFO - ✓ Placa inserida
+2026-04-10 17:01:30,341 - INFO - Clicando em 'Consultar'...
+2026-04-10 17:01:30,352 - INFO - ✓ Botão consultar encontrado
+2026-04-10 17:01:32,489 - INFO - ✓ Consulta realizada
+2026-04-10 17:01:32,501 - INFO - Aguardando abertura do popup com fotos...
+2026-04-10 17:01:34,522 - INFO - ✓ Popup aberto
+2026-04-10 17:01:35,524 - INFO - ✓ Pasta criada: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\SHD6E64
+2026-04-10 17:01:35,532 - INFO - ✓ Download configurado para: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\SHD6E64
+2026-04-10 17:01:35,532 - INFO - Procurando botão 'Baixar Todos'...
+2026-04-10 17:01:35,610 - INFO - ✓ Botão 'Baixar Todos' encontrado
+2026-04-10 17:01:57,855 - INFO - ✓ Botão clicado
+2026-04-10 17:01:57,855 - INFO - Aguardando download...
+2026-04-10 17:02:02,856 - INFO - ✓ Arquivo ZIP detectado: Download.zip
+2026-04-10 17:02:05,347 - INFO - ✓ 55 arquivo(s) extraído(s) e organizados
+2026-04-10 17:02:05,353 - INFO - ✓ ZIP removido
+2026-04-10 17:02:05,354 - INFO - ✓ SUCESSO: 2 arquivo(s) na pasta SHD6E64
+2026-04-10 17:02:05,354 - INFO -   ✓ Fotos
+2026-04-10 17:02:05,355 - INFO -   ✓ PDF
+2026-04-10 17:02:05,425 - INFO - ✓ Popup fechado
+2026-04-10 17:02:05,426 - ERROR - Erro ao atualizar planilha: Invalid value 'sucesso' for dtype 'float64'
+2026-04-10 17:02:06,428 - INFO - 
+============================================================
+2026-04-10 17:02:06,429 - INFO - Processando placa: SHJ8A93
+2026-04-10 17:02:06,429 - INFO - ============================================================
+2026-04-10 17:02:06,429 - INFO - Inserindo placa no campo de busca...
+2026-04-10 17:02:06,444 - INFO - ✓ Campo placa encontrado
+2026-04-10 17:02:06,561 - INFO - ✓ Placa inserida
+2026-04-10 17:02:06,562 - INFO - Clicando em 'Consultar'...
+2026-04-10 17:02:06,573 - INFO - ✓ Botão consultar encontrado
+2026-04-10 17:02:08,721 - INFO - ✓ Consulta realizada
+2026-04-10 17:02:08,722 - INFO - Aguardando abertura do popup com fotos...
+2026-04-10 17:02:10,740 - INFO - ✓ Popup aberto
+2026-04-10 17:02:11,742 - INFO - ✓ Pasta criada: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\SHJ8A93
+2026-04-10 17:02:11,749 - INFO - ✓ Download configurado para: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\SHJ8A93
+2026-04-10 17:02:11,749 - INFO - Procurando botão 'Baixar Todos'...
+2026-04-10 17:02:11,836 - INFO - ✓ Botão 'Baixar Todos' encontrado
+2026-04-10 17:02:38,210 - INFO - ✓ Botão clicado
+2026-04-10 17:02:38,210 - INFO - Aguardando download...
+2026-04-10 17:02:43,210 - INFO - Download em andamento... (0s)
+2026-04-10 17:02:44,212 - INFO - ✓ Arquivo ZIP detectado: Download.zip
+2026-04-10 17:02:46,739 - INFO - ✓ 65 arquivo(s) extraído(s) e organizados
+2026-04-10 17:02:46,744 - INFO - ✓ ZIP removido
+2026-04-10 17:02:46,746 - INFO - ✓ SUCESSO: 2 arquivo(s) na pasta SHJ8A93
+2026-04-10 17:02:46,747 - INFO -   ✓ Fotos
+2026-04-10 17:02:46,747 - INFO -   ✓ PDF
+2026-04-10 17:02:46,792 - INFO - ✓ Popup fechado
+2026-04-10 17:02:46,794 - ERROR - Erro ao atualizar planilha: Invalid value 'sucesso' for dtype 'float64'
+2026-04-10 17:02:47,796 - INFO - 
+============================================================
+2026-04-10 17:02:47,796 - INFO - Processando placa: SHO7F90
+2026-04-10 17:02:47,797 - INFO - ============================================================
+2026-04-10 17:02:47,797 - INFO - Inserindo placa no campo de busca...
+2026-04-10 17:02:47,814 - INFO - ✓ Campo placa encontrado
+2026-04-10 17:02:47,936 - INFO - ✓ Placa inserida
+2026-04-10 17:02:47,937 - INFO - Clicando em 'Consultar'...
+2026-04-10 17:02:47,947 - INFO - ✓ Botão consultar encontrado
+2026-04-10 17:02:50,104 - INFO - ✓ Consulta realizada
+2026-04-10 17:02:50,105 - INFO - Aguardando abertura do popup com fotos...
+2026-04-10 17:02:52,114 - INFO - ✓ Popup aberto
+2026-04-10 17:02:53,117 - INFO - ✓ Pasta criada: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\SHO7F90
+2026-04-10 17:02:53,126 - INFO - ✓ Download configurado para: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\SHO7F90
+2026-04-10 17:02:53,126 - INFO - Procurando botão 'Baixar Todos'...
+2026-04-10 17:02:53,203 - INFO - ✓ Botão 'Baixar Todos' encontrado
+2026-04-10 17:03:24,086 - INFO - ✓ Botão clicado
+2026-04-10 17:03:24,087 - INFO - Aguardando download...
+2026-04-10 17:03:29,088 - INFO - ✓ Arquivo ZIP detectado: Download.zip
+2026-04-10 17:03:31,699 - INFO - ✓ 76 arquivo(s) extraído(s) e organizados
+2026-04-10 17:03:31,703 - INFO - ✓ ZIP removido
+2026-04-10 17:03:31,704 - INFO - ✓ SUCESSO: 2 arquivo(s) na pasta SHO7F90
+2026-04-10 17:03:31,704 - INFO -   ✓ Fotos
+2026-04-10 17:03:31,704 - INFO -   ✓ PDF
+2026-04-10 17:03:31,751 - INFO - ✓ Popup fechado
+2026-04-10 17:03:31,752 - ERROR - Erro ao atualizar planilha: Invalid value 'sucesso' for dtype 'float64'
+2026-04-10 17:03:32,754 - INFO - 
+============================================================
+2026-04-10 17:03:32,754 - INFO - Processando placa: SIX3G65
+2026-04-10 17:03:32,754 - INFO - ============================================================
+2026-04-10 17:03:32,754 - INFO - Inserindo placa no campo de busca...
+2026-04-10 17:03:32,765 - INFO - ✓ Campo placa encontrado
+2026-04-10 17:03:32,880 - INFO - ✓ Placa inserida
+2026-04-10 17:03:32,881 - INFO - Clicando em 'Consultar'...
+2026-04-10 17:03:32,896 - INFO - ✓ Botão consultar encontrado
+2026-04-10 17:03:35,060 - INFO - ✓ Consulta realizada
+2026-04-10 17:03:35,064 - INFO - Aguardando abertura do popup com fotos...
+2026-04-10 17:03:37,095 - INFO - ✓ Popup aberto
+2026-04-10 17:03:38,097 - INFO - ✓ Pasta criada: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\SIX3G65
+2026-04-10 17:03:38,104 - INFO - ✓ Download configurado para: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\SIX3G65
+2026-04-10 17:03:38,105 - INFO - Procurando botão 'Baixar Todos'...
+2026-04-10 17:03:38,184 - INFO - ✓ Botão 'Baixar Todos' encontrado
+2026-04-10 17:04:21,585 - INFO - ✓ Botão clicado
+2026-04-10 17:04:21,597 - INFO - Aguardando download...
+2026-04-10 17:04:26,597 - INFO - Download em andamento... (0s)
+2026-04-10 17:04:28,600 - INFO - ✓ Arquivo ZIP detectado: Download.zip
+2026-04-10 17:04:31,430 - INFO - ✓ 109 arquivo(s) extraído(s) e organizados
+2026-04-10 17:04:31,435 - INFO - ✓ ZIP removido
+2026-04-10 17:04:31,436 - INFO - ✓ SUCESSO: 2 arquivo(s) na pasta SIX3G65
+2026-04-10 17:04:31,436 - INFO -   ✓ Fotos
+2026-04-10 17:04:31,437 - INFO -   ✓ PDF
+2026-04-10 17:04:31,490 - INFO - ✓ Popup fechado
+2026-04-10 17:04:31,492 - ERROR - Erro ao atualizar planilha: Invalid value 'sucesso' for dtype 'float64'
+2026-04-10 17:04:32,494 - INFO - 
+============================================================
+2026-04-10 17:04:32,494 - INFO - Processando placa: SJF4A97
+2026-04-10 17:04:32,494 - INFO - ============================================================
+2026-04-10 17:04:32,495 - INFO - Inserindo placa no campo de busca...
+2026-04-10 17:04:32,506 - INFO - ✓ Campo placa encontrado
+2026-04-10 17:04:32,621 - INFO - ✓ Placa inserida
+2026-04-10 17:04:32,622 - INFO - Clicando em 'Consultar'...
+2026-04-10 17:04:32,633 - INFO - ✓ Botão consultar encontrado
+2026-04-10 17:04:34,780 - INFO - ✓ Consulta realizada
+2026-04-10 17:04:34,783 - INFO - Aguardando abertura do popup com fotos...
+2026-04-10 17:04:36,795 - INFO - ✓ Popup aberto
+2026-04-10 17:04:37,797 - INFO - ✓ Pasta criada: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\SJF4A97
+2026-04-10 17:04:37,804 - INFO - ✓ Download configurado para: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\SJF4A97
+2026-04-10 17:04:37,805 - INFO - Procurando botão 'Baixar Todos'...
+2026-04-10 17:04:37,882 - INFO - ✓ Botão 'Baixar Todos' encontrado
+2026-04-10 17:05:04,508 - INFO - ✓ Botão clicado
+2026-04-10 17:05:04,509 - INFO - Aguardando download...
+2026-04-10 17:05:09,510 - INFO - Download em andamento... (0s)
+2026-04-10 17:05:11,512 - INFO - ✓ Arquivo ZIP detectado: Download.zip
+2026-04-10 17:05:14,065 - INFO - ✓ 66 arquivo(s) extraído(s) e organizados
+2026-04-10 17:05:14,285 - INFO - ✓ ZIP removido
+2026-04-10 17:05:14,286 - INFO - ✓ SUCESSO: 2 arquivo(s) na pasta SJF4A97
+2026-04-10 17:05:14,287 - INFO -   ✓ Fotos
+2026-04-10 17:05:14,287 - INFO -   ✓ PDF
+2026-04-10 17:05:14,334 - INFO - ✓ Popup fechado
+2026-04-10 17:05:14,336 - ERROR - Erro ao atualizar planilha: Invalid value 'sucesso' for dtype 'float64'
+2026-04-10 17:05:15,337 - INFO - 
+============================================================
+2026-04-10 17:05:15,338 - INFO - Processando placa: SSU0J20
+2026-04-10 17:05:15,338 - INFO - ============================================================
+2026-04-10 17:05:15,338 - INFO - Inserindo placa no campo de busca...
+2026-04-10 17:05:15,360 - INFO - ✓ Campo placa encontrado
+2026-04-10 17:05:15,489 - INFO - ✓ Placa inserida
+2026-04-10 17:05:15,490 - INFO - Clicando em 'Consultar'...
+2026-04-10 17:05:15,502 - INFO - ✓ Botão consultar encontrado
+2026-04-10 17:05:17,659 - INFO - ✓ Consulta realizada
+2026-04-10 17:05:17,666 - INFO - Aguardando abertura do popup com fotos...
+2026-04-10 17:05:19,686 - INFO - ✓ Popup aberto
+2026-04-10 17:05:20,688 - INFO - ✓ Pasta criada: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\SSU0J20
+2026-04-10 17:05:20,696 - INFO - ✓ Download configurado para: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\SSU0J20
+2026-04-10 17:05:20,696 - INFO - Procurando botão 'Baixar Todos'...
+2026-04-10 17:05:20,771 - INFO - ✓ Botão 'Baixar Todos' encontrado
+2026-04-10 17:05:54,767 - INFO - ✓ Botão clicado
+2026-04-10 17:05:54,767 - INFO - Aguardando download...
+2026-04-10 17:05:59,768 - INFO - Download em andamento... (0s)
+2026-04-10 17:06:02,771 - INFO - ✓ Arquivo ZIP detectado: Download.zip
+2026-04-10 17:06:05,478 - INFO - ✓ 84 arquivo(s) extraído(s) e organizados
+2026-04-10 17:06:05,484 - INFO - ✓ ZIP removido
+2026-04-10 17:06:05,485 - INFO - ✓ SUCESSO: 2 arquivo(s) na pasta SSU0J20
+2026-04-10 17:06:05,485 - INFO -   ✓ Fotos
+2026-04-10 17:06:05,485 - INFO -   ✓ PDF
+2026-04-10 17:06:05,541 - INFO - ✓ Popup fechado
+2026-04-10 17:06:05,542 - ERROR - Erro ao atualizar planilha: Invalid value 'sucesso' for dtype 'float64'
+2026-04-10 17:06:06,544 - INFO - 
+============================================================
+2026-04-10 17:06:06,544 - INFO - Processando placa: STL1G37
+2026-04-10 17:06:06,545 - INFO - ============================================================
+2026-04-10 17:06:06,545 - INFO - Inserindo placa no campo de busca...
+2026-04-10 17:06:06,562 - INFO - ✓ Campo placa encontrado
+2026-04-10 17:06:06,676 - INFO - ✓ Placa inserida
+2026-04-10 17:06:06,677 - INFO - Clicando em 'Consultar'...
+2026-04-10 17:06:06,688 - INFO - ✓ Botão consultar encontrado
+2026-04-10 17:06:08,825 - INFO - ✓ Consulta realizada
+2026-04-10 17:06:08,826 - INFO - Aguardando abertura do popup com fotos...
+2026-04-10 17:06:10,845 - INFO - ✓ Popup aberto
+2026-04-10 17:06:11,847 - INFO - ✓ Pasta criada: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\STL1G37
+2026-04-10 17:06:11,854 - INFO - ✓ Download configurado para: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\STL1G37
+2026-04-10 17:06:11,854 - INFO - Procurando botão 'Baixar Todos'...
+2026-04-10 17:06:11,937 - INFO - ✓ Botão 'Baixar Todos' encontrado
+2026-04-10 17:06:55,309 - INFO - ✓ Botão clicado
+2026-04-10 17:06:55,309 - INFO - Aguardando download...
+2026-04-10 17:07:00,310 - INFO - Download em andamento... (0s)
+2026-04-10 17:07:02,313 - INFO - ✓ Arquivo ZIP detectado: Download.zip
+2026-04-10 17:07:05,024 - INFO - ✓ 82 arquivo(s) extraído(s) e organizados
+2026-04-10 17:07:05,030 - INFO - ✓ ZIP removido
+2026-04-10 17:07:05,031 - INFO - ✓ SUCESSO: 2 arquivo(s) na pasta STL1G37
+2026-04-10 17:07:05,031 - INFO -   ✓ Fotos
+2026-04-10 17:07:05,031 - INFO -   ✓ PDF
+2026-04-10 17:07:05,090 - INFO - ✓ Popup fechado
+2026-04-10 17:07:05,092 - ERROR - Erro ao atualizar planilha: Invalid value 'sucesso' for dtype 'float64'
+2026-04-10 17:07:06,094 - INFO - 
+============================================================
+2026-04-10 17:07:06,094 - INFO - Processando placa: SUE1E30
+2026-04-10 17:07:06,095 - INFO - ============================================================
+2026-04-10 17:07:06,095 - INFO - Inserindo placa no campo de busca...
+2026-04-10 17:07:06,108 - INFO - ✓ Campo placa encontrado
+2026-04-10 17:07:06,218 - INFO - ✓ Placa inserida
+2026-04-10 17:07:06,218 - INFO - Clicando em 'Consultar'...
+2026-04-10 17:07:06,230 - INFO - ✓ Botão consultar encontrado
+2026-04-10 17:07:08,376 - INFO - ✓ Consulta realizada
+2026-04-10 17:07:08,376 - INFO - Aguardando abertura do popup com fotos...
+2026-04-10 17:07:10,497 - INFO - ✓ Popup aberto
+2026-04-10 17:07:11,499 - INFO - ✓ Pasta criada: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\SUE1E30
+2026-04-10 17:07:11,508 - INFO - ✓ Download configurado para: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\SUE1E30
+2026-04-10 17:07:11,508 - INFO - Procurando botão 'Baixar Todos'...
+2026-04-10 17:07:11,583 - INFO - ✓ Botão 'Baixar Todos' encontrado
+2026-04-10 17:07:28,542 - INFO - ✓ Botão clicado
+2026-04-10 17:07:28,542 - INFO - Aguardando download...
+2026-04-10 17:08:18,593 - ERROR - ❌ Timeout: Nenhum arquivo baixado após 45s
+2026-04-10 17:08:18,593 - ERROR - ❌ FALHA: Nenhum arquivo foi salvo na pasta SUE1E30
+2026-04-10 17:08:18,594 - ERROR - ✗ Erro ao processar placa SUE1E30: Download não concluído - pasta vazia
+2026-04-10 17:08:18,643 - ERROR - Erro ao atualizar planilha: Invalid value 'erro: Download não concluído - pasta vazia' for dtype 'float64'
+2026-04-10 17:08:19,645 - INFO - 
+============================================================
+2026-04-10 17:08:19,645 - INFO - Processando placa: SVP7I21
+2026-04-10 17:08:19,646 - INFO - ============================================================
+2026-04-10 17:08:19,646 - INFO - Inserindo placa no campo de busca...
+2026-04-10 17:08:19,658 - INFO - ✓ Campo placa encontrado
+2026-04-10 17:08:19,775 - INFO - ✓ Placa inserida
+2026-04-10 17:08:19,776 - INFO - Clicando em 'Consultar'...
+2026-04-10 17:08:19,787 - INFO - ✓ Botão consultar encontrado
+2026-04-10 17:08:21,907 - INFO - ✓ Consulta realizada
+2026-04-10 17:08:21,911 - INFO - Aguardando abertura do popup com fotos...
+2026-04-10 17:08:23,920 - INFO - ✓ Popup aberto
+2026-04-10 17:08:24,923 - INFO - ✓ Pasta criada: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\SVP7I21
+2026-04-10 17:08:24,931 - INFO - ✓ Download configurado para: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\SVP7I21
+2026-04-10 17:08:24,931 - INFO - Procurando botão 'Baixar Todos'...
+2026-04-10 17:08:24,999 - INFO - ✓ Botão 'Baixar Todos' encontrado
+2026-04-10 17:08:51,502 - INFO - ✓ Botão clicado
+2026-04-10 17:08:51,502 - INFO - Aguardando download...
+2026-04-10 17:08:56,503 - INFO - Download em andamento... (0s)
+2026-04-10 17:08:59,506 - INFO - ✓ Arquivo ZIP detectado: Download.zip
+2026-04-10 17:09:02,109 - INFO - ✓ 64 arquivo(s) extraído(s) e organizados
+2026-04-10 17:09:02,587 - INFO - ✓ ZIP removido
+2026-04-10 17:09:02,588 - INFO - ✓ SUCESSO: 2 arquivo(s) na pasta SVP7I21
+2026-04-10 17:09:02,588 - INFO -   ✓ Fotos
+2026-04-10 17:09:02,589 - INFO -   ✓ PDF
+2026-04-10 17:09:02,655 - INFO - ✓ Popup fechado
+2026-04-10 17:09:02,657 - ERROR - Erro ao atualizar planilha: Invalid value 'sucesso' for dtype 'float64'
+2026-04-10 17:09:03,661 - INFO - 
+============================================================
+2026-04-10 17:09:03,666 - INFO - Processando placa: SYH9J51
+2026-04-10 17:09:03,667 - INFO - ============================================================
+2026-04-10 17:09:03,670 - INFO - Inserindo placa no campo de busca...
+2026-04-10 17:09:03,688 - INFO - ✓ Campo placa encontrado
+2026-04-10 17:09:03,879 - INFO - ✓ Placa inserida
+2026-04-10 17:09:03,879 - INFO - Clicando em 'Consultar'...
+2026-04-10 17:09:03,895 - INFO - ✓ Botão consultar encontrado
+2026-04-10 17:09:06,160 - INFO - ✓ Consulta realizada
+2026-04-10 17:09:06,163 - INFO - Aguardando abertura do popup com fotos...
+2026-04-10 17:09:08,175 - INFO - ✓ Popup aberto
+2026-04-10 17:09:09,177 - INFO - ✓ Pasta criada: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\SYH9J51
+2026-04-10 17:09:09,185 - INFO - ✓ Download configurado para: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\SYH9J51
+2026-04-10 17:09:09,185 - INFO - Procurando botão 'Baixar Todos'...
+2026-04-10 17:09:09,263 - INFO - ✓ Botão 'Baixar Todos' encontrado
+2026-04-10 17:09:42,028 - INFO - ✓ Botão clicado
+2026-04-10 17:09:42,028 - INFO - Aguardando download...
+2026-04-10 17:09:47,029 - INFO - Download em andamento... (0s)
+2026-04-10 17:09:49,031 - INFO - ✓ Arquivo ZIP detectado: Download.zip
+2026-04-10 17:09:51,741 - INFO - ✓ 88 arquivo(s) extraído(s) e organizados
+2026-04-10 17:09:51,746 - INFO - ✓ ZIP removido
+2026-04-10 17:09:51,748 - INFO - ✓ SUCESSO: 2 arquivo(s) na pasta SYH9J51
+2026-04-10 17:09:51,748 - INFO -   ✓ Fotos
+2026-04-10 17:09:51,748 - INFO -   ✓ PDF
+2026-04-10 17:09:51,797 - INFO - ✓ Popup fechado
+2026-04-10 17:09:51,798 - ERROR - Erro ao atualizar planilha: Invalid value 'sucesso' for dtype 'float64'
+2026-04-10 17:09:52,799 - INFO - 
+============================================================
+2026-04-10 17:09:52,800 - INFO - Processando placa: SYI3A07
+2026-04-10 17:09:52,800 - INFO - ============================================================
+2026-04-10 17:09:52,800 - INFO - Inserindo placa no campo de busca...
+2026-04-10 17:09:52,814 - INFO - ✓ Campo placa encontrado
+2026-04-10 17:09:53,014 - INFO - ✓ Placa inserida
+2026-04-10 17:09:53,016 - INFO - Clicando em 'Consultar'...
+2026-04-10 17:09:53,031 - INFO - ✓ Botão consultar encontrado
+2026-04-10 17:09:55,240 - INFO - ✓ Consulta realizada
+2026-04-10 17:09:55,249 - INFO - Aguardando abertura do popup com fotos...
+2026-04-10 17:09:57,261 - INFO - ✓ Popup aberto
+2026-04-10 17:09:58,263 - INFO - ✓ Pasta criada: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\SYI3A07
+2026-04-10 17:09:58,270 - INFO - ✓ Download configurado para: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\SYI3A07
+2026-04-10 17:09:58,271 - INFO - Procurando botão 'Baixar Todos'...
+2026-04-10 17:09:58,349 - INFO - ✓ Botão 'Baixar Todos' encontrado
+2026-04-10 17:10:32,619 - INFO - ✓ Botão clicado
+2026-04-10 17:10:32,620 - INFO - Aguardando download...
+2026-04-10 17:10:37,622 - INFO - Download em andamento... (0s)
+2026-04-10 17:10:39,624 - INFO - ✓ Arquivo ZIP detectado: Download.zip
+2026-04-10 17:10:42,458 - INFO - ✓ 87 arquivo(s) extraído(s) e organizados
+2026-04-10 17:10:42,467 - INFO - ✓ ZIP removido
+2026-04-10 17:10:42,470 - INFO - ✓ SUCESSO: 2 arquivo(s) na pasta SYI3A07
+2026-04-10 17:10:42,470 - INFO -   ✓ Fotos
+2026-04-10 17:10:42,471 - INFO -   ✓ PDF
+2026-04-10 17:10:42,540 - INFO - ✓ Popup fechado
+2026-04-10 17:10:42,543 - ERROR - Erro ao atualizar planilha: Invalid value 'sucesso' for dtype 'float64'
+2026-04-10 17:10:43,545 - INFO - 
+============================================================
+2026-04-10 17:10:43,545 - INFO - Processando placa: SYL5E65
+2026-04-10 17:10:43,546 - INFO - ============================================================
+2026-04-10 17:10:43,546 - INFO - Inserindo placa no campo de busca...
+2026-04-10 17:10:43,558 - INFO - ✓ Campo placa encontrado
+2026-04-10 17:10:43,688 - INFO - ✓ Placa inserida
+2026-04-10 17:10:43,689 - INFO - Clicando em 'Consultar'...
+2026-04-10 17:10:43,704 - INFO - ✓ Botão consultar encontrado
+2026-04-10 17:10:45,885 - INFO - ✓ Consulta realizada
+2026-04-10 17:10:45,888 - INFO - Aguardando abertura do popup com fotos...
+2026-04-10 17:10:47,905 - INFO - ✓ Popup aberto
+2026-04-10 17:10:48,909 - INFO - ✓ Pasta criada: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\SYL5E65
+2026-04-10 17:10:48,920 - INFO - ✓ Download configurado para: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\SYL5E65
+2026-04-10 17:10:48,921 - INFO - Procurando botão 'Baixar Todos'...
+2026-04-10 17:10:49,009 - INFO - ✓ Botão 'Baixar Todos' encontrado
+2026-04-10 17:11:33,302 - INFO - ✓ Botão clicado
+2026-04-10 17:11:33,302 - INFO - Aguardando download...
+2026-04-10 17:11:38,303 - INFO - Download em andamento... (0s)
+2026-04-10 17:11:43,309 - INFO - ✓ Arquivo ZIP detectado: Download.zip
+2026-04-10 17:11:46,105 - INFO - ✓ 117 arquivo(s) extraído(s) e organizados
+2026-04-10 17:11:46,112 - INFO - ✓ ZIP removido
+2026-04-10 17:11:46,113 - INFO - ✓ SUCESSO: 2 arquivo(s) na pasta SYL5E65
+2026-04-10 17:11:46,113 - INFO -   ✓ Fotos
+2026-04-10 17:11:46,113 - INFO -   ✓ PDF
+2026-04-10 17:11:46,180 - INFO - ✓ Popup fechado
+2026-04-10 17:11:46,182 - ERROR - Erro ao atualizar planilha: Invalid value 'sucesso' for dtype 'float64'
+2026-04-10 17:11:47,184 - INFO - 
+============================================================
+2026-04-10 17:11:47,184 - INFO - Processando placa: TDU0C89
+2026-04-10 17:11:47,185 - INFO - ============================================================
+2026-04-10 17:11:47,185 - INFO - Inserindo placa no campo de busca...
+2026-04-10 17:11:47,196 - INFO - ✓ Campo placa encontrado
+2026-04-10 17:11:47,296 - INFO - ✓ Placa inserida
+2026-04-10 17:11:47,296 - INFO - Clicando em 'Consultar'...
+2026-04-10 17:11:47,307 - INFO - ✓ Botão consultar encontrado
+2026-04-10 17:11:49,445 - INFO - ✓ Consulta realizada
+2026-04-10 17:11:49,445 - INFO - Aguardando abertura do popup com fotos...
+2026-04-10 17:11:51,457 - INFO - ✓ Popup aberto
+2026-04-10 17:11:52,460 - INFO - ✓ Pasta criada: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\TDU0C89
+2026-04-10 17:11:52,468 - INFO - ✓ Download configurado para: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\TDU0C89
+2026-04-10 17:11:52,469 - INFO - Procurando botão 'Baixar Todos'...
+2026-04-10 17:11:52,540 - INFO - ✓ Botão 'Baixar Todos' encontrado
+2026-04-10 17:11:58,191 - INFO - ✓ Botão clicado
+2026-04-10 17:11:58,210 - INFO - Aguardando download...
+2026-04-10 17:12:48,315 - ERROR - ❌ Timeout: Nenhum arquivo baixado após 45s
+2026-04-10 17:12:48,316 - ERROR - ❌ FALHA: Nenhum arquivo foi salvo na pasta TDU0C89
+2026-04-10 17:12:48,317 - ERROR - ✗ Erro ao processar placa TDU0C89: Download não concluído - pasta vazia
+2026-04-10 17:12:48,357 - ERROR - Erro ao atualizar planilha: Invalid value 'erro: Download não concluído - pasta vazia' for dtype 'float64'
+2026-04-10 17:12:49,358 - INFO - 
+============================================================
+2026-04-10 17:12:49,358 - INFO - Processando placa: SYG2J90
+2026-04-10 17:12:49,359 - INFO - ============================================================
+2026-04-10 17:12:49,359 - INFO - Inserindo placa no campo de busca...
+2026-04-10 17:12:49,369 - INFO - ✓ Campo placa encontrado
+2026-04-10 17:12:49,464 - INFO - ✓ Placa inserida
+2026-04-10 17:12:49,464 - INFO - Clicando em 'Consultar'...
+2026-04-10 17:12:49,476 - INFO - ✓ Botão consultar encontrado
+2026-04-10 17:12:51,617 - INFO - ✓ Consulta realizada
+2026-04-10 17:12:51,617 - INFO - Aguardando abertura do popup com fotos...
+2026-04-10 17:12:53,627 - INFO - ✓ Popup aberto
+2026-04-10 17:12:54,629 - INFO - ✓ Pasta criada: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\SYG2J90
+2026-04-10 17:12:54,637 - INFO - ✓ Download configurado para: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\SYG2J90
+2026-04-10 17:12:54,638 - INFO - Procurando botão 'Baixar Todos'...
+2026-04-10 17:12:54,701 - INFO - ✓ Botão 'Baixar Todos' encontrado
+2026-04-10 17:13:22,273 - INFO - ✓ Botão clicado
+2026-04-10 17:13:22,274 - INFO - Aguardando download...
+2026-04-10 17:13:27,275 - INFO - Download em andamento... (0s)
+2026-04-10 17:13:30,279 - INFO - ✓ Arquivo ZIP detectado: Download.zip
+2026-04-10 17:13:32,945 - INFO - ✓ 78 arquivo(s) extraído(s) e organizados
+2026-04-10 17:13:32,951 - INFO - ✓ ZIP removido
+2026-04-10 17:13:32,952 - INFO - ✓ SUCESSO: 2 arquivo(s) na pasta SYG2J90
+2026-04-10 17:13:32,953 - INFO -   ✓ Fotos
+2026-04-10 17:13:32,953 - INFO -   ✓ PDF
+2026-04-10 17:13:33,039 - INFO - ✓ Popup fechado
+2026-04-10 17:13:33,043 - ERROR - Erro ao atualizar planilha: Invalid value 'sucesso' for dtype 'float64'
+2026-04-10 17:13:34,044 - INFO - 
+============================================================
+2026-04-10 17:13:34,045 - INFO - Processando placa: TEB7H76
+2026-04-10 17:13:34,045 - INFO - ============================================================
+2026-04-10 17:13:34,045 - INFO - Inserindo placa no campo de busca...
+2026-04-10 17:13:34,059 - INFO - ✓ Campo placa encontrado
+2026-04-10 17:13:34,179 - INFO - ✓ Placa inserida
+2026-04-10 17:13:34,180 - INFO - Clicando em 'Consultar'...
+2026-04-10 17:13:34,191 - INFO - ✓ Botão consultar encontrado
+2026-04-10 17:13:36,350 - INFO - ✓ Consulta realizada
+2026-04-10 17:13:36,350 - INFO - Aguardando abertura do popup com fotos...
+2026-04-10 17:13:38,359 - INFO - ✓ Popup aberto
+2026-04-10 17:13:39,360 - INFO - ✓ Pasta criada: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\TEB7H76
+2026-04-10 17:13:39,367 - INFO - ✓ Download configurado para: C:\Users\464800\OneDrive - Localiza\Documentos\script_robo_baixar_foto_orcamento\TEB7H76
+2026-04-10 17:13:39,367 - INFO - Procurando botão 'Baixar Todos'...
+2026-04-10 17:13:39,429 - INFO - ✓ Botão 'Baixar Todos' encontrado
+2026-04-10 17:13:53,639 - INFO - ✓ Botão clicado
+2026-04-10 17:13:53,640 - INFO - Aguardando download...
+2026-04-10 17:13:58,641 - INFO - Download em andamento... (0s)
+2026-04-10 17:13:59,642 - INFO - ✓ Arquivo ZIP detectado: Download.zip
+2026-04-10 17:14:01,951 - INFO - ✓ 37 arquivo(s) extraído(s) e organizados
+2026-04-10 17:14:02,025 - INFO - ✓ ZIP removido
+2026-04-10 17:14:02,026 - INFO - ✓ SUCESSO: 2 arquivo(s) na pasta TEB7H76
+2026-04-10 17:14:02,026 - INFO -   ✓ Fotos
+2026-04-10 17:14:02,027 - INFO -   ✓ PDF
+2026-04-10 17:14:02,069 - INFO - ✓ Popup fechado
+2026-04-10 17:14:02,071 - ERROR - Erro ao atualizar planilha: Invalid value 'sucesso' for dtype 'float64'
+2026-04-10 17:14:03,072 - INFO - 
+================================================================================
+2026-04-10 17:14:03,072 - INFO - PROCESSAMENTO CONCLUÍDO
+2026-04-10 17:14:03,072 - INFO - ================================================================================
+2026-04-10 17:14:03,073 - INFO - Total de placas processadas: 80
+2026-04-10 17:14:03,073 - INFO - Sucessos: 52
+2026-04-10 17:14:03,073 - INFO - Erros: 28
+2026-04-10 17:14:03,074 - INFO - Taxa de sucesso: 65.00%
+2026-04-10 17:14:03,074 - INFO - ================================================================================
+2026-04-10 17:14:03,074 - INFO - 
+Fechando navegador...
+2026-04-10 17:14:06,150 - INFO - ✓ Navegador fechado
+2026-04-10 17:14:06,151 - INFO - 
+Robô finalizado.

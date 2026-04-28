@@ -1,0 +1,241 @@
+{
+  "case_id": "SHU5E86",
+  "triagem": {
+    "total_imagens": 26,
+    "imagens_aprovadas_qualidade": 21
+  },
+  "peritos": {
+    "perito_parachoque": {
+      "imagens_usadas": [
+        {
+          "image_id": "FOTDEV_42",
+          "part_id": "parachoque_dianteiro",
+          "view": "detalhe"
+        },
+        {
+          "image_id": "FOTDEV_38",
+          "part_id": "parachoque_traseiro",
+          "view": "media"
+        },
+        {
+          "image_id": "FOTDEV_47",
+          "part_id": "parachoque_dianteiro",
+          "view": "media"
+        }
+      ],
+      "resultado": {
+        "nivel_dano": "leve",
+        "peca": "para-choques",
+        "itens": [
+          {
+            "nivel_dano": "leve",
+            "peca": "para-choque dianteiro",
+            "servicos": [
+              {
+                "descricao": "Pintura para-choque dianteiro",
+                "preco": 320.0
+              }
+            ],
+            "preco_total": 320.0,
+            "justificativa": "Dano leve. Obs: arranhões profundos com sulco evidente na parte inferior | calibracao: moderado/grave sem suporte >=2 fotos; tratado como leve/pintura",
+            "fotos_analisadas": [
+              "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\input\\SHU5E86\\Fotos\\FOTDEV_42.jpg",
+              "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\input\\SHU5E86\\Fotos\\FOTDEV_47.jpg"
+            ]
+          }
+        ],
+        "servicos": [
+          {
+            "descricao": "Pintura para-choque dianteiro",
+            "preco": 320.0
+          }
+        ],
+        "preco_total": 320.0,
+        "justificativa": "para-choque dianteiro: leve (Dano leve. Obs: arranhões profundos com sulco evidente na parte inferior | calibracao: moderado/grave sem suporte >=2 fotos; tratado como leve/pintura)",
+        "fotos_analisadas": [
+          "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\input\\SHU5E86\\Fotos\\FOTDEV_42.jpg",
+          "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\input\\SHU5E86\\Fotos\\FOTDEV_47.jpg"
+        ]
+      }
+    },
+    "perito_emblemas": {
+      "imagens_usadas": [
+        {
+          "image_id": "FOTDEV_42",
+          "part_id": "parachoque_dianteiro",
+          "view": "detalhe"
+        },
+        {
+          "image_id": "FOTDEV_38",
+          "part_id": "parachoque_traseiro",
+          "view": "media"
+        },
+        {
+          "image_id": "FOTDEV_47",
+          "part_id": "parachoque_dianteiro",
+          "view": "media"
+        }
+      ],
+      "resultado": {
+        "nivel_dano": "sem_dano",
+        "peca": "emblemas (dianteiro/traseiro)",
+        "servicos": [],
+        "preco_total": 0.0,
+        "justificativa": "dianteiro: O emblema da montadora está visível e intacto na parte frontal do veículo.; traseiro: O emblema da montadora está visível e intacto na parte traseira do veículo.",
+        "fotos_analisadas": [
+          "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\input\\SHU5E86\\Fotos\\FOTDEV_47.jpg",
+          "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\input\\SHU5E86\\Fotos\\FOTDEV_38.jpg"
+        ]
+      }
+    },
+    "perito_lataria": {
+      "imagens_usadas": [
+        {
+          "image_id": "FOTDEV_35",
+          "part_id": "porta_dianteira_esquerda",
+          "view": "media"
+        },
+        {
+          "image_id": "FOTDEV_27",
+          "part_id": "paralama_dianteiro_esquerdo",
+          "view": "media"
+        },
+        {
+          "image_id": "FOTDEV_31",
+          "part_id": "porta_traseira_esquerda",
+          "view": "media"
+        }
+      ],
+      "resultado": {
+        "nivel_dano": "grave",
+        "peca": "lataria",
+        "itens": [
+          {
+            "nivel_dano": "grave",
+            "peca": "paralama dianteiro esquerdo",
+            "servicos": [
+              {
+                "descricao": "Mão de obra troca do para-lama dianteiro esquerdo",
+                "preco": 140.0
+              }
+            ],
+            "preco_total": 140.0,
+            "justificativa": "A peça esperada, o paralama dianteiro esquerdo, apresenta uma trinca visível na chapa, indicando comprometimento estrutural. A deformação é evidente, sugerindo a necessidade de reparo significativo.",
+            "fotos_analisadas": [
+              "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\input\\SHU5E86\\Fotos\\FOTDEV_27.jpg"
+            ]
+          },
+          {
+            "nivel_dano": "grave",
+            "peca": "porta dianteira esquerdo",
+            "servicos": [
+              {
+                "descricao": "Mão de obra troca da porta dianteira esquerda",
+                "preco": 140.0
+              }
+            ],
+            "preco_total": 140.0,
+            "justificativa": "A peça apresenta uma trinca visível na chapa, indicando uma ruptura na estrutura, o que compromete a integridade da porta.",
+            "fotos_analisadas": [
+              "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\input\\SHU5E86\\Fotos\\FOTDEV_35.jpg"
+            ]
+          }
+        ],
+        "servicos": [
+          {
+            "descricao": "Mão de obra troca do para-lama dianteiro esquerdo",
+            "preco": 140.0
+          },
+          {
+            "descricao": "Mão de obra troca da porta dianteira esquerda",
+            "preco": 140.0
+          }
+        ],
+        "preco_total": 280.0,
+        "justificativa": "paralama dianteiro esquerdo: grave (A peça esperada, o paralama dianteiro esquerdo, apresenta uma trinca visível na chapa, indicando comprometimento estrutural. A deformação é evidente, sugerindo a necessidade de reparo significativo.); porta dianteira esquerdo: grave (A peça apresenta uma trinca visível na chapa, indicando uma ruptura na estrutura, o que compromete a integridade da porta.)",
+        "fotos_analisadas": [
+          "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\input\\SHU5E86\\Fotos\\FOTDEV_27.jpg",
+          "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\input\\SHU5E86\\Fotos\\FOTDEV_35.jpg"
+        ]
+      }
+    },
+    "perito_vidros": {
+      "resultado": {
+        "erro": "nenhuma imagem elegivel"
+      }
+    },
+    "perito_pneus_rodas": {
+      "imagens_usadas": [
+        {
+          "image_id": "FOTDEV_30",
+          "part_id": "roda_dianteira_esquerda",
+          "view": "detalhe"
+        },
+        {
+          "image_id": "FOTDEV_41",
+          "part_id": "roda_dianteira_direita",
+          "view": "detalhe"
+        },
+        {
+          "image_id": "FOTDEV_44",
+          "part_id": "roda_dianteira_direita",
+          "view": "detalhe"
+        }
+      ],
+      "resultado": {
+        "nivel_dano": "sem_dano",
+        "peca": "roda liga leve",
+        "servicos": [],
+        "preco_total": 0,
+        "justificativa": "[DESCONSIDERADO POR CHECKLIST] A roda de liga leve apresenta ralada de guia extensa, mas não há amassados ou trincas evidentes. O dano é reparável.",
+        "fotos_analisadas": [
+          "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\input\\SHU5E86\\Fotos\\FOTDEV_30.jpg",
+          "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\input\\SHU5E86\\Fotos\\FOTDEV_41.jpg",
+          "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\input\\SHU5E86\\Fotos\\FOTDEV_44.jpg"
+        ]
+      }
+    },
+    "perito_interior": {
+      "imagens_usadas": [
+        {
+          "image_id": "FOTDEV_25",
+          "part_id": "interior",
+          "view": "interior"
+        }
+      ],
+      "resultado": {
+        "nivel_dano": "sem_dano",
+        "peca": "interior",
+        "servicos": [],
+        "preco_total": 0,
+        "justificativa": "[DESCONSIDERADO POR CHECKLIST] Sem danos identificados.",
+        "fotos_analisadas": [
+          "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\input\\SHU5E86\\Fotos\\FOTDEV_25.jpg"
+        ]
+      }
+    },
+    "perito_acessorios": {
+      "resultado": {
+        "erro": "nenhuma imagem elegivel"
+      }
+    }
+  },
+  "divergencias_checklist": [
+    {
+      "tipo": "checklist_vs_visao",
+      "perito": "perito_emblemas",
+      "part_id": "parachoque_dianteiro",
+      "mensagem": "Checklist marcou avaria para esta peça, mas o perito retornou nivel_dano='sem_dano'. Recomendado revisar manualmente.",
+      "image_ids": [
+        "FOTDEV_42",
+        "FOTDEV_47"
+      ],
+      "photo_paths": [
+        "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\input\\SHU5E86\\Fotos\\FOTDEV_42.jpg",
+        "C:\\Users\\144796\\OneDrive - Localiza\\Documentos\\Projetos VSCode\\Agente avarias de devolucao v2\\AGENTE_AVARIAS_DEVOLUCAO\\input\\SHU5E86\\Fotos\\FOTDEV_47.jpg"
+      ]
+    }
+  ],
+  "cobrancas_checklist_fallback": [],
+  "preco_total_geral": 600.0
+}

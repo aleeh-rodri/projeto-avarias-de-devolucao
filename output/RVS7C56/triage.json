@@ -1,0 +1,158 @@
+{
+  "case_id": "RVS7C56",
+  "images": [
+    {
+      "image_id": "FOTDEV_30",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\RVS7C56\\Fotos\\FOTDEV_30.jpg",
+      "part_id": "parachoque_dianteiro",
+      "view": "media",
+      "confidence": 0.85,
+      "checklist_damage_reported": false
+    },
+    {
+      "image_id": "FOTDEV_31",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\RVS7C56\\Fotos\\FOTDEV_31.jpg",
+      "part_id": "roda_traseira_direita",
+      "view": "media",
+      "confidence": 0.8,
+      "checklist_damage_reported": false
+    },
+    {
+      "image_id": "FOTDEV_32",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\RVS7C56\\Fotos\\FOTDEV_32.jpg",
+      "part_id": "porta_traseira_direita",
+      "view": "media",
+      "confidence": 0.85,
+      "checklist_damage_reported": false
+    },
+    {
+      "image_id": "FOTDEV_33",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\RVS7C56\\Fotos\\FOTDEV_33.jpg",
+      "part_id": "capo",
+      "view": "media",
+      "confidence": 0.8,
+      "checklist_damage_reported": false
+    },
+    {
+      "image_id": "FOTDEV_34",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\RVS7C56\\Fotos\\FOTDEV_34.jpg",
+      "part_id": "parachoque_dianteiro",
+      "view": "media",
+      "confidence": 0.9,
+      "checklist_damage_reported": false
+    },
+    {
+      "image_id": "FOTDEV_35",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\RVS7C56\\Fotos\\FOTDEV_35.jpg",
+      "part_id": "roda_traseira_direita",
+      "view": "media",
+      "confidence": 0.8,
+      "checklist_damage_reported": false
+    },
+    {
+      "image_id": "FOTDEV_36",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\RVS7C56\\Fotos\\FOTDEV_36.jpg",
+      "part_id": "interior",
+      "view": "media",
+      "confidence": 0.0,
+      "checklist_damage_reported": false
+    },
+    {
+      "image_id": "FOTDEV_37",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\RVS7C56\\Fotos\\FOTDEV_37.jpg",
+      "part_id": "acessorios",
+      "view": "interior",
+      "confidence": 0.9,
+      "checklist_damage_reported": false
+    },
+    {
+      "image_id": "FOTDEV_38",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\RVS7C56\\Fotos\\FOTDEV_38.jpg",
+      "part_id": "interior",
+      "view": "media",
+      "confidence": 0.8,
+      "checklist_damage_reported": false
+    },
+    {
+      "image_id": "FOTDEV_39",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\RVS7C56\\Fotos\\FOTDEV_39.jpg",
+      "part_id": "parachoque_dianteiro",
+      "view": "media",
+      "confidence": 0.85,
+      "checklist_damage_reported": false
+    },
+    {
+      "image_id": "FOTDEV_40",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\RVS7C56\\Fotos\\FOTDEV_40.jpg",
+      "part_id": "parachoque_traseiro",
+      "view": "media",
+      "confidence": 0.9,
+      "checklist_damage_reported": false
+    },
+    {
+      "image_id": "FOTDEV_41",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\RVS7C56\\Fotos\\FOTDEV_41.jpg",
+      "part_id": "parachoque_traseiro",
+      "view": "media",
+      "confidence": 0.85,
+      "checklist_damage_reported": false
+    },
+    {
+      "image_id": "FOTDEV_42",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\RVS7C56\\Fotos\\FOTDEV_42.jpg",
+      "part_id": "parachoque_traseiro",
+      "view": "media",
+      "confidence": 0.85,
+      "checklist_damage_reported": false
+    },
+    {
+      "image_id": "FOTDEV_43",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\RVS7C56\\Fotos\\FOTDEV_43.jpg",
+      "part_id": "retrovisor_direito",
+      "view": "media",
+      "confidence": 0.68,
+      "checklist_damage_reported": false
+    },
+    {
+      "image_id": "FOTDEV_44",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\RVS7C56\\Fotos\\FOTDEV_44.jpg",
+      "part_id": "interior",
+      "view": "media",
+      "confidence": 0.9,
+      "checklist_damage_reported": false
+    },
+    {
+      "image_id": "FOTDEV_45",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\RVS7C56\\Fotos\\FOTDEV_45.jpg",
+      "part_id": "interior",
+      "view": "media",
+      "confidence": 0.9,
+      "checklist_damage_reported": false
+    },
+    {
+      "image_id": "FOTDEV_46",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\RVS7C56\\Fotos\\FOTDEV_46.jpg",
+      "part_id": "roda_dianteira_direita",
+      "view": "detalhe",
+      "confidence": 0.9,
+      "checklist_damage_reported": false
+    },
+    {
+      "image_id": "FOTDEV_47",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\RVS7C56\\Fotos\\FOTDEV_47.jpg",
+      "part_id": "roda_dianteira_direita",
+      "view": "media",
+      "confidence": 0.9,
+      "checklist_damage_reported": false
+    },
+    {
+      "image_id": "FOTDEV_48",
+      "photo_path": "C:\\Users\\464800\\Localiza\\Caio Albanese - AGENTE_AVARIAS_DEVOLUCAO\\input\\RVS7C56\\Fotos\\FOTDEV_48.jpg",
+      "part_id": "roda_dianteira_direita",
+      "view": "media",
+      "confidence": 0.9,
+      "checklist_damage_reported": false
+    }
+  ],
+  "checklist_summary": "Devolução do Veículo | Checklist Solicitação 2TH9E1/40 A Localiza agradece sua conﬁança e permaneceremos sempre aqui, pra você. Você está recebendo este documento com as informações da vistoria feita no veículo que você nos devolveu. Lembrando que de acordo com o contrato, caso sejam identiﬁcados itens quebrados ou que estejam faltando no carro, falhas ou danos causados por acidentes ou mal uso do carro, serão analisados e poderão ser cobrados. Informações do carro Modelo KWID ZEN 1.0 12V SCE FLEX 4P C/AR Cor BRANCO Placa RVS7C56 Km 81873 Combustível 2/8 Blindagem NÃO Hora 11:43:00 Local SETE LAGOAS | MG Detalhes do checklist DESCRIÇÃO ITEM REGISTRO Itens De Conferência Chave Code Itens De Conferência Cartão Code Interior Tapete Carpete Lateral Esquerda Vidro Vigia Traseira Esquerda Lateral Esquerda Insulﬁlm Vidro Vigia Traseira Esquerda Lateral Esquerda Friso/Borrachão Esquerda Traseira Traseira Break Light Maçaneta Externa Porta Traseira Interior Bagagito Traseira Interior Corda Bagagito Traseira Interior Suporte Bagagito Dianteira Direita Traseira Interior Suporte Bagagito Dianteira Esquerda Traseira Interior Kit Gnv Lateral Direita Lateral Direita Lateral Direita Teto Teto Vidro Vigia Traseira Direita Insulﬁlm Vidro Vigia Traseira Direita Friso/Borrachao Direita Friso/Borrachão Direito Friso/Borrachão Esquerdo Pneus/Roda/Calota Liga Leve 1 de 5 Não Tem Não Tem Não Tem Não Tem Não Tem Não Tem Não Tem Não Tem Não Tem Não Tem Não Tem Não Tem Não Tem Não Tem Não Tem Não Tem Não Tem Não Tem Não Tem DESCRIÇÃO ITEM Pneus/Roda/Calota Estepe - Medida Pneus/Roda/Calota Estepe - Marca Pneus/Roda/Calota Estepe - Profundidade Do Sulco - Twi Pneus/Roda/Calota Pneu Dianteiro Direito - Medida REGISTRO Outros Continental 2 Outros Pneus/Roda/Calota Pneu Dianteiro Direito - Marca Continental Pneus/Roda/Calota Pneu Dianteiro Direito - Profundidade Do Sulco - Twi 3 Pneus/Roda/Calota Pneu Traseiro Direito - Medida Pneus/Roda/Calota Pneu Traseiro Direito - Modelo Outros Continental Pneus/Roda/Calota Pneu Traseiro Direito - Profundidade Do Sulco - Twi 3 Pneus/Roda/Calota Pneu Traseiro Esquerdo - Medida Pneus/Roda/Calota Pneu Traseiro Esquerdo - Marca Outros Continental Pneus/Roda/Calota Pneu Traseiro Esquerdo - Profundidade Do Sulco - Twi 3 Pneus/Roda/Calota Pneu Dianteiro Esquerdo - Medida Pneus/Roda/Calota Pneu Dianteiro Esquerdo - Marca Outros Continental Pneus/Roda/Calota Pneu Dianteiro Esquerdo - Profundidade Do Sulco - Twi 3 * Avaria: AVARIA ITENS INTERNOS E EXTERNOS: quebrado; amassado; descascado; oxidado; cortado; furado; manchado; risco com dano; descascado; mossas; piques; reparo defeituoso; trincado; inﬁltração; não funciona. AVARIA PNEUS: desgaste irregular; furado; bolha. Observações Adicionais Observações realizadas por você Imagens DIANTEIRA DO CARRO 2 de 5 INTERIOR ITENS DE CONFERÊNCIA LATERAL DIREITA 3 de 5 LATERAL ESQUERDA PNEUS/RODA/CALOTA 4 de 5 TRASEIRA TRASEIRA INTERIOR Sete Lagoas, 24 de fevereiro de 2026 Responsável pela devolução 5 de 5"
+}
