@@ -10,75 +10,84 @@ from pathlib import Path
 from typing import Any
 
 PROMPT_CONTAR_IMAGENS_CHECKLIST = """
-Voce e um analisador visual especializado em leitura de paginas com grupos de miniaturas.
+Você é um analisador visual especializado em contagem de miniaturas organizadas em grade.
+
+PADRÃO ESPERADO DA IMAGEM
+A imagem terá:
+1) um único título;
+2) abaixo dele, um único bloco visual com miniaturas/fotos;
+3) esse bloco é organizado como uma grade com uma ou mais linhas e uma ou mais colunas.
 
 TAREFA
-Observe a pagina inteira e execute estas etapas:
-1) identifique todos os grupos VISIVELMENTE presentes na pagina;
-2) para cada grupo visivel, identifique o titulo imediatamente acima dele;
-3) se um grupo visivel nao tiver titulo imediatamente acima, use exatamente "sem_titulo";
-4) conte quantas miniaturas/fotos existem em cada grupo;
-5) informe o total geral de miniaturas da pagina.
+Conte quantas miniaturas/fotos visíveis existem dentro do único bloco abaixo do título.
 
-DEFINICAO DE GRUPO
-- Um grupo e um conjunto visual de miniaturas/fotos que aparecem organizadas juntas na pagina.
-- Um titulo sozinho NAO cria um grupo.
-- So existe grupo quando houver miniaturas/fotos visiveis associadas a ele.
-- Se um titulo aparecer na pagina, mas as miniaturas desse titulo nao estiverem visiveis, NAO inclua esse titulo como grupo.
+OBJETIVO
+Sua tarefa não é interpretar o conteúdo das imagens.
+Sua tarefa é somente identificar a estrutura visual da grade e contar as miniaturas corretamente.
 
-REGRA DE ASSOCIACAO TITULO -> GRUPO
-- O titulo do grupo deve ser o texto imediatamente acima do conjunto de miniaturas visiveis.
-- Use o titulo apenas se houver miniaturas claramente visiveis logo abaixo dele.
-- Nao associe miniaturas de um grupo ao titulo seguinte que aparece mais abaixo na pagina.
-- Nao crie grupo para um titulo que aparece no final da pagina sem miniaturas visiveis correspondentes.
+MÉTODO OBRIGATÓRIO
+Siga exatamente estes passos antes de responder:
+1) identifique o bloco único de miniaturas abaixo do título;
+2) determine quantas linhas visíveis existem dentro desse bloco;
+3) em cada linha, conte quantas miniaturas distintas existem da esquerda para a direita;
+4) registre a contagem por linha;
+5) some todas as linhas para obter o total final;
+6) faça uma checagem final para confirmar que nenhuma linha foi ignorada e que nenhuma miniatura foi contada duas vezes.
 
-O QUE DEVE SER CONTADO
-- Conte 1 para cada miniatura/foto individual visivel.
-- Considere miniatura/foto qualquer bloco retangular ou quadrado com conteudo visual proprio.
-- Conte miniaturas no topo da pagina, no meio ou no final, desde que estejam visiveis.
-- Se varias miniaturas estiverem na mesma secao visual, conte cada uma separadamente.
+REGRA PRINCIPAL
+- Considere que todas as miniaturas localizadas dentro do mesmo bloco/container abaixo do título pertencem ao mesmo grupo.
+- O grupo continua até o final do bloco/container visível.
+- Não pare a contagem na primeira ou na segunda linha.
+- Você deve contar todas as linhas visíveis do bloco.
+- Cada miniatura deve ser contada uma única vez.
 
-O QUE NAO DEVE SER CONTADO
-- titulos, textos, subtitulos, rodape, numeracao da pagina;
-- linhas, margens, molduras, containers e fundos vazios;
-- espacos em branco;
-- um titulo sem miniaturas visiveis abaixo dele;
-- a mesma miniatura mais de uma vez.
+COMO RECONHECER UMA MINIATURA
+- Conte como miniatura/foto qualquer bloco retangular ou quadrado com conteúdo visual próprio.
+- As miniaturas normalmente aparecem separadas por espaços brancos/margens entre elas.
+- Use esses espaços visuais para separar uma miniatura da outra.
+- Não junte duas miniaturas em uma só.
+- Não divida uma miniatura em duas.
 
-REGRAS OBRIGATORIAS DE CONTAGEM
-- Cada miniatura deve pertencer a UM UNICO grupo.
-- Nenhuma miniatura pode ser contada em dois grupos.
-- Faca a varredura da pagina de cima para baixo e da esquerda para a direita.
-- Ao final, some as quantidades dos grupos.
-- O valor de "quantidade_imagens_total" DEVE ser exatamente igual a soma das quantidades de todos os grupos.
-- Se a soma dos grupos nao bater com o total, a resposta esta errada e deve ser corrigida antes de responder.
+REGRAS DE CONTAGEM
+- Conte apenas miniaturas realmente visíveis dentro do bloco.
+- Se uma miniatura estiver parcialmente cortada, conte apenas se ainda for claramente uma miniatura visível.
+- Não é necessário identificar o conteúdo da miniatura.
+- Não é necessário identificar se é lateral direita ou esquerda.
 
-REGRAS DE CONFIANCA
+NÃO CONTE
+- o título;
+- textos;
+- número da página;
+- molduras sem conteúdo;
+- espaços vazios;
+- fundo da página;
+- o container como se fosse uma imagem.
+
+REGRAS DE CONSISTÊNCIA
+- O valor "quantidade_imagens" deve ser exatamente a soma dos valores em "contagem_por_linha".
+- Se a soma não bater, a resposta está errada e deve ser corrigida antes de responder.
+- Se você não tiver certeza sobre o número de linhas ou o número de miniaturas em alguma linha, reduza a confidence.
+
+REGRAS DE CONFIANÇA
 - Use confidence alta apenas se:
-  1) todos os grupos visiveis estiverem claros;
-  2) cada miniatura estiver alocada em um unico grupo;
-  3) a soma dos grupos bater exatamente com o total.
-- Se houver qualquer ambiguidade de titulo, de limite de grupo ou de contagem, reduza a confidence.
+  1) todas as linhas visíveis do bloco foram identificadas;
+  2) a quantidade de miniaturas em cada linha ficou clara;
+  3) a soma das linhas bate exatamente com o total.
+- Se houver qualquer dúvida sobre a grade, a confidence não deve ser alta.
 
-RETORNE SOMENTE JSON VALIDO:
+RETORNE SOMENTE JSON VÁLIDO:
 {
-  "quantidade_imagens_total": 0,
-  "grupos": [
-    {
-      "ordem_visual": 1,
-      "classificacao_grupo": "",
-      "titulo": "",
-      "quantidade_imagens": 0
-    }
-  ],
+  "quantidade_imagens": 0,
+  "numero_de_linhas": 0,
+  "contagem_por_linha": [0],
   "confidence": 0.0,
-  "justificativa": "liste os grupos efetivamente visiveis, em ordem visual, e confirme que a soma dos grupos bate com o total"
+  "justificativa": "explique brevemente quantas linhas visíveis foram identificadas, quantas miniaturas havia em cada linha e como a soma levou ao total"
 }
 """
 
 @dataclass(frozen=True)
 class PageTestResult:
-    page_number_1based: int
+    page_number_1based: int | None
     rendered_image_path: str
     raw_response: str
     parsed_response: dict[str, Any] | None
@@ -157,6 +166,45 @@ def _parse_json_response(raw: str) -> dict[str, Any] | None:
     return parsed
 
 
+def _run_llm_on_image(
+    *,
+    image_path: Path,
+    out_json: Path,
+    call_llm_with_image: Any,
+    page_number_1based: int | None,
+) -> PageTestResult:
+    raw_response = ""
+    parsed_response: dict[str, Any] | None = None
+    error: str | None = None
+
+    try:
+        raw_response = call_llm_with_image(
+            prompt=PROMPT_CONTAR_IMAGENS_CHECKLIST,
+            image_path=str(image_path),
+            temperature=0,
+            max_tokens=500,
+        )
+        parsed_response = _parse_json_response(raw_response)
+        if parsed_response is None:
+            error = "Resposta nao veio em JSON valido."
+    except Exception as exc:  # noqa: BLE001
+        error = f"Falha ao chamar o LLM: {type(exc).__name__}: {exc}"
+
+    if page_number_1based is None:
+        audit_image_path = out_json.parent / image_path.name
+    else:
+        audit_image_path = out_json.parent / f"checklist_page_{page_number_1based}.png"
+    audit_image_path.write_bytes(image_path.read_bytes())
+
+    return PageTestResult(
+        page_number_1based=page_number_1based,
+        rendered_image_path=str(audit_image_path),
+        raw_response=raw_response,
+        parsed_response=parsed_response,
+        error=error,
+    )
+
+
 def run_test(checklist_pdf: Path, pages: list[int], project_root: Path, out_json: Path) -> dict[str, Any]:
     _add_src_to_path(project_root)
 
@@ -170,34 +218,12 @@ def run_test(checklist_pdf: Path, pages: list[int], project_root: Path, out_json
 
         for page_number in pages:
             rendered_path = _render_pdf_page(checklist_pdf, page_number, tmp_dir)
-            raw_response = ""
-            parsed_response: dict[str, Any] | None = None
-            error: str | None = None
-
-            try:
-                raw_response = call_llm_with_image(
-                    prompt=PROMPT_CONTAR_IMAGENS_CHECKLIST,
-                    image_path=str(rendered_path),
-                    temperature=0,
-                    max_tokens=500,
-                )
-                parsed_response = _parse_json_response(raw_response)
-                if parsed_response is None:
-                    error = "Resposta nao veio em JSON valido."
-            except Exception as exc:  # noqa: BLE001
-                error = f"Falha ao chamar o LLM: {type(exc).__name__}: {exc}"
-
-            # Copia a imagem renderizada para perto do JSON final para facilitar auditoria.
-            audit_image_path = out_json.parent / f"checklist_page_{page_number}.png"
-            audit_image_path.write_bytes(rendered_path.read_bytes())
-
             results.append(
-                PageTestResult(
+                _run_llm_on_image(
+                    image_path=rendered_path,
+                    out_json=out_json,
+                    call_llm_with_image=call_llm_with_image,
                     page_number_1based=page_number,
-                    rendered_image_path=str(audit_image_path),
-                    raw_response=raw_response,
-                    parsed_response=parsed_response,
-                    error=error,
                 )
             )
 
@@ -221,6 +247,38 @@ def run_test(checklist_pdf: Path, pages: list[int], project_root: Path, out_json
     return payload
 
 
+def run_test_from_image(image_path: Path, project_root: Path, out_json: Path) -> dict[str, Any]:
+    _add_src_to_path(project_root)
+
+    from core.llm_gate_client import call_llm_with_image  # type: ignore
+
+    out_json.parent.mkdir(parents=True, exist_ok=True)
+
+    result = _run_llm_on_image(
+        image_path=image_path,
+        out_json=out_json,
+        call_llm_with_image=call_llm_with_image,
+        page_number_1based=None,
+    )
+
+    payload = {
+        "input_image": str(image_path),
+        "prompt": PROMPT_CONTAR_IMAGENS_CHECKLIST,
+        "results": [
+            {
+                "page_number_1based": result.page_number_1based,
+                "rendered_image_path": result.rendered_image_path,
+                "raw_response": result.raw_response,
+                "parsed_response": result.parsed_response,
+                "error": result.error,
+            }
+        ],
+    }
+
+    out_json.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
+    return payload
+
+
 def _parse_pages(value: str) -> list[int]:
     out: list[int] = []
     for token in (value or "").split(","):
@@ -235,9 +293,15 @@ def _parse_pages(value: str) -> list[int]:
 
 def main() -> int:
     parser = argparse.ArgumentParser(
-        description="Testa se o LLM consegue identificar titulo de cada grupo de imagens e contar miniaturas por grupo em paginas do checklist PDF."
+        description="Testa se o LLM consegue contar miniaturas/fotos em um recorte com um unico titulo e um unico grupo."
     )
-    parser.add_argument("--checklist", required=True, help="Caminho para o checklist PDF")
+    parser.add_argument("--checklist", required=False, default=None, help="Caminho para o checklist PDF")
+    parser.add_argument(
+        "--image",
+        required=False,
+        default=None,
+        help="Caminho para uma imagem unica (ex.: recorte gerado pelo teste_recorte_laterais_pdf)",
+    )
     parser.add_argument(
         "--pages",
         default="3,4",
@@ -250,21 +314,10 @@ def main() -> int:
     )
     parser.add_argument(
         "--out",
-        default="./saida_teste_contar_imagens_checklist_grupos.json",
+        default="./saida_teste_contar_imagens_checklist.json",
         help="Arquivo JSON de saida",
     )
     args = parser.parse_args()
-
-    checklist_pdf = Path(args.checklist).expanduser().resolve()
-    if not checklist_pdf.exists():
-        print(f"ERRO: checklist nao encontrado: {checklist_pdf}")
-        return 1
-
-    try:
-        pages = _parse_pages(args.pages)
-    except Exception as exc:  # noqa: BLE001
-        print(f"ERRO em --pages: {exc}")
-        return 1
 
     try:
         project_root = _resolve_project_root(args.project_root)
@@ -274,33 +327,66 @@ def main() -> int:
 
     out_json = Path(args.out).expanduser().resolve()
 
-    try:
-        payload = run_test(
-            checklist_pdf=checklist_pdf,
-            pages=pages,
-            project_root=project_root,
-            out_json=out_json,
-        )
-    except Exception as exc:  # noqa: BLE001
-        print(f"ERRO durante o teste: {type(exc).__name__}: {exc}")
-        return 1
+    image_arg = (args.image or "").strip()
+    checklist_arg = (args.checklist or "").strip()
 
-    print("OK: teste concluido")
-    print(f"Checklist: {payload['checklist_pdf']}")
-    print(f"Paginas testadas: {payload['pages_tested']}")
+    if image_arg:
+        image_path = Path(image_arg).expanduser().resolve()
+        if not image_path.exists():
+            print(f"ERRO: imagem nao encontrada: {image_path}")
+            return 1
+        try:
+            payload = run_test_from_image(
+                image_path=image_path,
+                project_root=project_root,
+                out_json=out_json,
+            )
+        except Exception as exc:  # noqa: BLE001
+            print(f"ERRO durante o teste: {type(exc).__name__}: {exc}")
+            return 1
+        print("OK: teste concluido")
+        print(f"Imagem de entrada: {payload['input_image']}")
+    else:
+        if not checklist_arg:
+            print("ERRO: informe --checklist ou --image.")
+            return 1
+        checklist_pdf = Path(checklist_arg).expanduser().resolve()
+        if not checklist_pdf.exists():
+            print(f"ERRO: checklist nao encontrado: {checklist_pdf}")
+            return 1
+
+        try:
+            pages = _parse_pages(args.pages)
+        except Exception as exc:  # noqa: BLE001
+            print(f"ERRO em --pages: {exc}")
+            return 1
+
+        try:
+            payload = run_test(
+                checklist_pdf=checklist_pdf,
+                pages=pages,
+                project_root=project_root,
+                out_json=out_json,
+            )
+        except Exception as exc:  # noqa: BLE001
+            print(f"ERRO durante o teste: {type(exc).__name__}: {exc}")
+            return 1
+        print("OK: teste concluido")
+        print(f"Checklist: {payload['checklist_pdf']}")
+        print(f"Paginas testadas: {payload['pages_tested']}")
+
     print(f"Saida JSON: {out_json}")
     for item in payload.get("results", []):
         page = item.get("page_number_1based")
         parsed = item.get("parsed_response") or {}
-        qtd_total = parsed.get("quantidade_imagens_total") if isinstance(parsed, dict) else None
-        grupos = parsed.get("grupos") if isinstance(parsed, dict) else None
-        qtd_grupos = len(grupos) if isinstance(grupos, list) else None
+        qtd = parsed.get("quantidade_imagens") if isinstance(parsed, dict) else None
+        if qtd is None and isinstance(parsed, dict):
+            qtd = parsed.get("quantidade_imagens_total")
         err = item.get("error")
-        print(f"- Pagina {page}: quantidade_imagens_total={qtd_total} grupos={qtd_grupos} erro={err}")
+        print(f"- Pagina {page}: quantidade_imagens={qtd} erro={err}")
 
     return 0
 
 
 if __name__ == "__main__":
     raise SystemExit(main())
-
