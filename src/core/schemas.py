@@ -16,14 +16,14 @@ PART_IDS: list[str] = [
 	"capo",
 	"teto",
 	"tampa_porta_malas",
-	"porta_dianteira_esquerda",
-	"porta_dianteira_direita",
-	"porta_traseira_esquerda",
-	"porta_traseira_direita",
-	"paralama_dianteiro_esquerdo",
-	"paralama_dianteiro_direito",
-	"paralama_traseiro_esquerdo",
-	"paralama_traseiro_direito",
+	"porta_dianteira",
+
+	"porta_traseira",
+	
+	"paralama_dianteiro",
+	
+	"paralama_traseiro",
+	
 	"retrovisor_esquerdo",
 	"retrovisor_direito",
 	"parabrisa",
