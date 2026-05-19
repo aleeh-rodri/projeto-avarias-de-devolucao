@@ -198,12 +198,11 @@ def call_llm_with_reference_images(
 	*,
 	prompt: str,
 	main_image_path: str,
-	right_reference_path: str,
-	left_reference_path: str,
+	reference_image_path: str,
 	temperature: float = 0,
 	max_tokens: int = 400,
 ) -> str:
-	"""Chama o LLM Gate (v2/chat/completions) com prompt + imagem principal + duas referências."""
+	"""Chama o LLM Gate (v2/chat/completions) com prompt + imagem principal + uma referência."""
 	cfg = _get_config()
 	if cfg.verify_ssl is False:
 		suppress = os.getenv("LLM_GATE_SUPPRESS_INSECURE_WARNING", "true").strip().lower() not in ("0", "false", "no")
@@ -211,12 +210,10 @@ def call_llm_with_reference_images(
 			urllib3.disable_warnings(InsecureRequestWarning)
 
 	main_img_bytes, main_mime = _read_image_bytes_auto_orient(main_image_path)
-	right_img_bytes, right_mime = _read_image_bytes_auto_orient(right_reference_path)
-	left_img_bytes, left_mime = _read_image_bytes_auto_orient(left_reference_path)
+	ref_img_bytes, ref_mime = _read_image_bytes_auto_orient(reference_image_path)
 
 	main_img_b64 = base64.b64encode(main_img_bytes).decode("utf-8")
-	right_img_b64 = base64.b64encode(right_img_bytes).decode("utf-8")
-	left_img_b64 = base64.b64encode(left_img_bytes).decode("utf-8")
+	ref_img_b64 = base64.b64encode(ref_img_bytes).decode("utf-8")
 
 	url = f"{cfg.base_url}{cfg.route}"
 	payload: dict[str, Any] = {
@@ -232,11 +229,7 @@ def call_llm_with_reference_images(
 					},
 					{
 						"type": "image_url",
-						"image_url": {"url": f"data:{right_mime};base64,{right_img_b64}"},
-					},
-					{
-						"type": "image_url",
-						"image_url": {"url": f"data:{left_mime};base64,{left_img_b64}"},
+						"image_url": {"url": f"data:{ref_mime};base64,{ref_img_b64}"},
 					},
 				],
 			}

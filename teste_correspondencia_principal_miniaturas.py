@@ -44,7 +44,6 @@ REGRAS DA SAIDA
 - Se status for "nao_identificado", use indice_miniatura_correspondente como null e indices_correspondentes como [].
 """
 
-
 @dataclass(frozen=True)
 class TestResult:
     raw_response: str
@@ -133,9 +132,21 @@ def run_test_from_image(image_path: Path, project_root: Path, out_json: Path) ->
     result = _run_llm_on_image(image_path=image_path, call_llm_with_image=call_llm_with_image)
 
     parsed = result.parsed_response or {}
-    status = parsed.get("status") if isinstance(parsed, dict) else None
-    if status not in {"OK", "nao_identificado"}:
+    status_raw = parsed.get("status") if isinstance(parsed, dict) else None
+    mesma_foto_exata = parsed.get("mesma_foto_exata") if isinstance(parsed, dict) else None
+    indices = parsed.get("indices_correspondentes") if isinstance(parsed, dict) else None
+
+    indices_validos = isinstance(indices, list) and any(
+        isinstance(i, int) and i >= 0 for i in indices
+    )
+    ok_estrito = status_raw == "OK" and mesma_foto_exata is True and indices_validos
+
+    if status_raw not in {"OK", "nao_identificado"}:
         status = "erro"
+    elif ok_estrito:
+        status = "OK"
+    else:
+        status = "nao_identificado"
 
     payload = {
         "input_image": str(image_path),
