@@ -16,12 +16,16 @@ PART_IDS: list[str] = [
 	"capo",
 	"teto",
 	"tampa_porta_malas",
+	"porta_dianteira",
 	"porta_dianteira_esquerda",
 	"porta_dianteira_direita",
+	"porta_traseira",
 	"porta_traseira_esquerda",
 	"porta_traseira_direita",
+	"paralama_dianteiro",
 	"paralama_dianteiro_esquerdo",
 	"paralama_dianteiro_direito",
+	"paralama_traseiro",
 	"paralama_traseiro_esquerdo",
 	"paralama_traseiro_direito",
 	"retrovisor_esquerdo",
@@ -92,4 +96,3 @@ class ExpertConsolidatedOutput(BaseModel):
     preco_total: float | str
     justificativa: str | None = None
     fotos_analisadas: list[str] = Field(default_factory=list)
-

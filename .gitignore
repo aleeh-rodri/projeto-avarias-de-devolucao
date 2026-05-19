@@ -1,1 +1,6 @@
 .env
+# Pastas de testes e arquivos temporários
+backup_input/
+backup_output/
+input/
+output/

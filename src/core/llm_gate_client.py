@@ -193,3 +193,91 @@ def call_llm_with_image(
 	except Exception as e:  # noqa: BLE001
 		raise RuntimeError(f"Resposta inesperada do LLM Gate: {data}") from e
 
+
+def call_llm_with_reference_images(
+	*,
+	prompt: str,
+	main_image_path: str,
+	reference_image_path: str,
+	temperature: float = 0,
+	max_tokens: int = 400,
+) -> str:
+	"""Chama o LLM Gate (v2/chat/completions) com prompt + imagem principal + uma referência."""
+	cfg = _get_config()
+	if cfg.verify_ssl is False:
+		suppress = os.getenv("LLM_GATE_SUPPRESS_INSECURE_WARNING", "true").strip().lower() not in ("0", "false", "no")
+		if suppress:
+			urllib3.disable_warnings(InsecureRequestWarning)
+
+	main_img_bytes, main_mime = _read_image_bytes_auto_orient(main_image_path)
+	ref_img_bytes, ref_mime = _read_image_bytes_auto_orient(reference_image_path)
+
+	main_img_b64 = base64.b64encode(main_img_bytes).decode("utf-8")
+	ref_img_b64 = base64.b64encode(ref_img_bytes).decode("utf-8")
+
+	url = f"{cfg.base_url}{cfg.route}"
+	payload: dict[str, Any] = {
+		"model": cfg.model,
+		"messages": [
+			{
+				"role": "user",
+				"content": [
+					{"type": "text", "text": prompt},
+					{
+						"type": "image_url",
+						"image_url": {"url": f"data:{main_mime};base64,{main_img_b64}"},
+					},
+					{
+						"type": "image_url",
+						"image_url": {"url": f"data:{ref_mime};base64,{ref_img_b64}"},
+					},
+				],
+			}
+		],
+		"max_tokens": max_tokens,
+		"temperature": temperature,
+		"response_format": {"type": "text"},
+	}
+
+	headers: dict[str, str] = {
+		"Content-Type": "application/json",
+		"X-Correlation-Id": str(uuid.uuid4()),
+	}
+
+	auth_variants = [
+		{"api_key": cfg.api_key},
+		{"API_KEY": cfg.api_key},
+		{"X-API-Key": cfg.api_key},
+	]
+	if cfg.x_user_id:
+		headers["X-User-Id"] = cfg.x_user_id
+	if cfg.client_id:
+		headers["client_id"] = cfg.client_id
+
+	last_exc: Exception | None = None
+	for add_headers in auth_variants:
+		merged = dict(headers)
+		merged.update(add_headers)
+		try:
+			resp = requests.post(
+				url,
+				json=payload,
+				headers=merged,
+				timeout=cfg.timeout_s,
+				verify=cfg.verify_ssl,
+			)
+			if resp.status_code != 200:
+				print(f"DEBUG: Status {resp.status_code} - body: {resp.text}")
+			resp.raise_for_status()
+			data = resp.json()
+			break
+		except Exception as e:  # noqa: BLE001
+			last_exc = e
+	else:
+		raise last_exc  # type: ignore[misc]
+
+	try:
+		return data["choices"][0]["message"]["content"]
+	except Exception as e:  # noqa: BLE001
+		raise RuntimeError(f"Resposta inesperada do LLM Gate: {data}") from e
+
