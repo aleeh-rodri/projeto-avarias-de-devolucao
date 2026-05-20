@@ -384,6 +384,11 @@ class ExcelAgent:
         # Peças que já viraram cobrança (a partir do triage_meta nas linhas atuais)
         charged_parts: set[str] = set()
         for s in current_servicos or []:
+            explicit_part_id = str(s.get("part_id") or "").strip() if isinstance(s, dict) else ""
+            if explicit_part_id:
+                charged_parts.add(explicit_part_id)
+                continue
+
             tm = s.get("triage_meta") if isinstance(s, dict) else None
             part_id = str((tm or {}).get("part_id") or "").strip()
             if part_id:
@@ -406,6 +411,7 @@ class ExcelAgent:
                     "triage_meta": triage_meta,
                     "force_include": True,
                     "origin": "checklist_fallback_excel",
+                    "part_id": part_id,
                 }
             )
 
@@ -607,10 +613,13 @@ class ExcelAgent:
                     "fotos": fotos_line,
                     "triage_meta": triage_meta,
                     "force_include": True,
+                    "part_id": str(fb.get("part_id") or "").strip(),
                 })
 
-        # Compatibilidade: se o laudo não tiver fallback, calcula usando triage.json.
-        if (not isinstance(fallback, list) or not fallback) and has_triage:
+        # Complementa fallbacks usando o checklist PDF como fonte principal.
+        # Se não houver PDF/checklist_part_ids, usa o fallback antigo baseado na triagem.
+        should_compute_fallback = bool(checklist_part_ids) or ((not isinstance(fallback, list) or not fallback) and has_triage)
+        if should_compute_fallback:
             computed_fb = self._compute_checklist_fallback_lines(
                 laudo_path=laudo_path,
                 case_id=pdf_info.get("placa"),

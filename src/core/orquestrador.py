@@ -7,6 +7,7 @@ from pathlib import Path
 from typing import Any
 
 from core.config import config as global_config
+from core.pdf_utils import extract_reldev_avaria_part_ids
 from core.schemas import TriageOutput, QualityOutput
 from agents.triage_agent import run_triage
 from agents.quality_agent import run_quality_check
@@ -323,8 +324,11 @@ def _apply_billing_policy_to_result(
     return resultado
 
 
-def _parts_with_checklist_damage(triage_out: TriageOutput) -> set[str]:
-    out: set[str] = set()
+def _parts_with_checklist_damage(
+    triage_out: TriageOutput,
+    checklist_part_ids: set[str] | None = None,
+) -> set[str]:
+    out: set[str] = set(checklist_part_ids or [])
     for img in (triage_out.images or []):
         if img.checklist_damage_reported is True and img.part_id:
             out.add(str(img.part_id).strip())
@@ -377,13 +381,14 @@ def _build_checklist_fallback_charges(
     triage_out: TriageOutput,
     triage_idx: dict[str, dict[str, Any]],
     resultados_peritos: dict[str, Any],
+    checklist_part_ids: set[str] | None = None,
 ) -> list[dict[str, Any]]:
     """Gera cobranças 'fallback' quando o checklist marcou avaria, mas nenhum serviço foi gerado.
 
     Importante: como o checklist atual é um sinal binário por peça (checklist_damage_reported),
     o fallback é por part_id e sempre sai com needs_human_review=True.
     """
-    checklist_parts = _parts_with_checklist_damage(triage_out)
+    checklist_parts = _parts_with_checklist_damage(triage_out, checklist_part_ids=checklist_part_ids)
     if not checklist_parts:
         return []
 
@@ -396,8 +401,6 @@ def _build_checklist_fallback_charges(
     best_photo_by_part: dict[str, str] = {}
     best_conf_by_part: dict[str, float] = {}
     for img in (triage_out.images or []):
-        if img.checklist_damage_reported is not True:
-            continue
         part_id = str(img.part_id or "").strip()
         if not part_id or part_id not in checklist_parts:
             continue
@@ -721,11 +724,19 @@ def rodar_orquestrador(
     divergencias_checklist = _build_checklist_divergencias(triage_idx, resultados_peritos) if has_triage else []
 
     cobrancas_checklist_fallback: list[dict[str, Any]] = []
-    if has_triage:
+    checklist_part_ids: set[str] | None = None
+    if checklist_path and os.path.exists(checklist_path):
+        try:
+            checklist_part_ids = extract_reldev_avaria_part_ids(checklist_path)
+        except Exception:
+            checklist_part_ids = None
+
+    if has_triage or checklist_part_ids:
         cobrancas_checklist_fallback = _build_checklist_fallback_charges(
             triage_out,
             triage_idx,
             resultados_peritos,
+            checklist_part_ids=checklist_part_ids,
         )
 
     laudo = {
