@@ -1,5 +1,11 @@
+# Cache Python
+__pycache__/
+*.pyc
+
+# Variáveis de ambiente
 .env
-# Pastas de testes e arquivos temporários
+
+# Pastas de testes
 backup_input/
 backup_output/
 input/
