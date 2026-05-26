@@ -19,6 +19,8 @@ from agents.peritos.perito_interior import ConfigPeritoInterior, PeritoInterior
 from agents.peritos.perito_acessorios import ConfigPeritoAcessorios, PeritoAcessorios
 from agents.peritos.perito_emblemas import ConfigPeritoEmblemas, PeritoEmblemas
 
+from core.vehicle_metadata import get_vehicle_wheel_type
+
 
 # =========================
 # CONFIG
@@ -596,6 +598,8 @@ def rodar_orquestrador(
     preco_total_geral = 0.0
     any_sob_consulta = False
 
+    wheel_type = get_vehicle_wheel_type(case_id)
+
     progress_enabled = os.getenv("AGENTE_PROGRESS", "1").strip().lower() not in ("0", "false", "no")
     total_peritos = len(mapeamento_peritos)
 
@@ -670,6 +674,7 @@ def rodar_orquestrador(
                     image_paths=image_paths, 
                     checklist_summary=triage_out.checklist_summary,
                     imagens_usadas=imagens_usadas,
+                    wheel_type=wheel_type,
                 )
                 
                 resultados_peritos[f"perito_{nome_perito}"] = {
