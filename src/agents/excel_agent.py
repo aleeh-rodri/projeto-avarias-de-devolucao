@@ -384,6 +384,11 @@ class ExcelAgent:
         # Peças que já viraram cobrança (a partir do triage_meta nas linhas atuais)
         charged_parts: set[str] = set()
         for s in current_servicos or []:
+            explicit_part_id = str(s.get("part_id") or "").strip() if isinstance(s, dict) else ""
+            if explicit_part_id:
+                charged_parts.add(explicit_part_id)
+                continue
+
             tm = s.get("triage_meta") if isinstance(s, dict) else None
             part_id = str((tm or {}).get("part_id") or "").strip()
             if part_id:
@@ -406,6 +411,7 @@ class ExcelAgent:
                     "triage_meta": triage_meta,
                     "force_include": True,
                     "origin": "checklist_fallback_excel",
+                    "part_id": part_id,
                 }
             )
 
@@ -510,7 +516,6 @@ class ExcelAgent:
         
         all_servicos: list[dict[str, Any]] = []
         all_pecas_a_cotar: list[dict[str, Any]] = []
-        sem_dano_parts = self._parts_with_sem_dano_from_laudo(laudo_data)
         for perito_name, perito_data in laudo_data.get("peritos", {}).items():
             resultado = perito_data.get("resultado", {})
             perito_force_include = bool(resultado.get("force_include") is True) if isinstance(resultado, dict) else False
@@ -593,16 +598,6 @@ class ExcelAgent:
                 if not isinstance(fb, dict):
                     continue
 
-                fb_part_id = str(fb.get("part_id") or "").strip()
-                # Se um perito analisou e concluiu SEM DANO para essa peça,
-                # não exibimos o fallback do checklist no Excel.
-                try:
-                    fb_valor = float(fb.get("valor") or 0)
-                except Exception:
-                    fb_valor = 0.0
-                if fb_part_id and fb_part_id in sem_dano_parts and fb_valor == 0:
-                    continue
-
                 fotos_fb = fb.get("fotos", [])
                 fotos_line: list[str] = []
                 if isinstance(fotos_fb, list) and fotos_fb:
@@ -618,10 +613,13 @@ class ExcelAgent:
                     "fotos": fotos_line,
                     "triage_meta": triage_meta,
                     "force_include": True,
+                    "part_id": str(fb.get("part_id") or "").strip(),
                 })
 
-        # Compatibilidade: se o laudo não tiver fallback, calcula usando triage.json.
-        if (not isinstance(fallback, list) or not fallback) and has_triage:
+        # Complementa fallbacks usando o checklist PDF como fonte principal.
+        # Se não houver PDF/checklist_part_ids, usa o fallback antigo baseado na triagem.
+        should_compute_fallback = bool(checklist_part_ids) or ((not isinstance(fallback, list) or not fallback) and has_triage)
+        if should_compute_fallback:
             computed_fb = self._compute_checklist_fallback_lines(
                 laudo_path=laudo_path,
                 case_id=pdf_info.get("placa"),
@@ -633,11 +631,6 @@ class ExcelAgent:
             # Garantir prefixo CHECKLIST no modo compatibilidade também
             for s in computed_fb:
                 if not isinstance(s, dict):
-                    continue
-                tm = s.get("triage_meta") if isinstance(s, dict) else None
-                part_id = str((tm or {}).get("part_id") or "").strip()
-                if part_id and part_id in sem_dano_parts:
-                    # Mesma regra: não exibir fallback se houve conclusão sem dano.
                     continue
                 s["descricao"] = self._format_descricao_origem(str(s.get("descricao") or ""), origem="checklist")
                 all_servicos.append(s)
@@ -690,9 +683,6 @@ class ExcelAgent:
 
         # Registrar peças a cotar no final (sem impactar o total de serviços)
         if all_pecas_a_cotar:
-            current_row += 1
-            ws_orcamento.cell(row=current_row, column=4, value="PEÇAS A COTAR (preencher valor manualmente)")
-            current_row += 1
             for p in all_pecas_a_cotar:
                 ws_orcamento.cell(row=current_row, column=2, value=item_num)
                 ws_orcamento.cell(row=current_row, column=3, value="Peças (cotação manual)")

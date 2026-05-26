@@ -10,7 +10,7 @@ load_dotenv(_PROJECT_DIR / ".env")
 class Config:
     # API Keys e URLs
     LLM_GATE_URL = os.getenv("LLM_GATE_URL", "http://localhost:8000/v1/chat/completions")
-    LLM_GATE_API_KEY = os.getenv("LLM_GATE_API_KEY", "sk-dummy")
+    LLM_GATE_API_KEY = os.getenv("LLM_GATE_API_KEY") or os.getenv("API_KEY") or ""
     
     # Caminhos padrão
     BASE_DIR = Path(__file__).parent.parent.parent

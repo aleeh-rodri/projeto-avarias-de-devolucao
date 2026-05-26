@@ -7,6 +7,11 @@ from pathlib import Path
 
 from pdfminer.high_level import extract_text
 
+from core.schemas import PART_IDS
+
+
+KNOWN_PART_IDS = set(PART_IDS)
+
 
 def extract_checklist_text(pdf_path: str, *, normalize_whitespace: bool = True) -> str:
     """Extrai texto do PDF do checklist.
@@ -255,6 +260,6 @@ def extract_reldev_avaria_part_ids(pdf_path: str | Path) -> set[str]:
         if _norm(r.registro) != "avaria":
             continue
         part_id = _map_checklist_row_to_part_id(r.descricao, r.item)
-        if part_id:
+        if part_id and part_id in KNOWN_PART_IDS:
             out.add(part_id)
     return out

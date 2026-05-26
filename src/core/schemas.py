@@ -40,6 +40,19 @@ PART_IDS: list[str] = [
 	"acessorios",
 ]
 
+# Peças que podem existir no checklist/Excel,
+# mesmo que ainda não tenham perito automático.
+CHECKLIST_PART_IDS: list[str] = sorted(set(PART_IDS + [
+    "grade_dianteira",
+    "tampa_traseira",
+    "lanterna_traseira_esquerda",
+    "lanterna_traseira_direita",
+    "farol_dianteiro_esquerdo",
+    "farol_dianteiro_direito",
+    "friso_lateral",
+    "moldura",
+]))
+
 class TriageImage(BaseModel):
     image_id: str
     photo_path: str

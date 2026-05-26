@@ -15,6 +15,7 @@ from __future__ import annotations
 import base64
 import io
 import os
+import time
 import uuid
 from dataclasses import dataclass
 from pathlib import Path
@@ -105,6 +106,22 @@ def _read_image_bytes_auto_orient(image_path: str) -> tuple[bytes, str]:
 		return (Path(image_path).read_bytes(), mime)
 
 
+def _has_gateway_error(resp: requests.Response, status_code: str) -> bool:
+	try:
+		body = resp.json()
+	except ValueError:
+		return False
+
+	error_details = body.get("errorDetails")
+	if not isinstance(error_details, list):
+		return False
+
+	return any(
+		isinstance(item, dict) and item.get("statusCode") == status_code
+		for item in error_details
+	)
+
+
 def call_llm_with_image(
 	*,
 	prompt: str,
@@ -169,21 +186,36 @@ def call_llm_with_image(
 	for add_headers in auth_variants:
 		merged = dict(headers)
 		merged.update(add_headers)
-		try:
-			resp = requests.post(
-				url,
-				json=payload,
-				headers=merged,
-				timeout=cfg.timeout_s,
-				verify=cfg.verify_ssl,
-			)
-			if resp.status_code != 200:
-				print(f"DEBUG: Status {resp.status_code} - body: {resp.text}")
-			resp.raise_for_status()
-			data = resp.json()
-			break
-		except Exception as e:  # noqa: BLE001
-			last_exc = e
+		# O LLM Gate/infra pode responder ERR_MID_004 de forma intermitente
+		# mesmo quando o header `api_key` foi enviado. Repetimos apenas a
+		# variante canonica antes de tentar headers alternativos.
+		attempts = 3 if "api_key" in add_headers else 1
+		for attempt in range(attempts):
+			try:
+				resp = requests.post(
+					url,
+					json=payload,
+					headers=merged,
+					timeout=cfg.timeout_s,
+					verify=cfg.verify_ssl,
+				)
+				if resp.status_code != 200:
+					print(f"DEBUG: Status {resp.status_code} - body: {resp.text}")
+				if (
+					attempt + 1 < attempts
+					and resp.status_code == 400
+					and _has_gateway_error(resp, "ERR_MID_004")
+				):
+					time.sleep(0.5 * (attempt + 1))
+					continue
+				resp.raise_for_status()
+				data = resp.json()
+				break
+			except Exception as e:  # noqa: BLE001
+				last_exc = e
+		else:
+			continue
+		break
 	else:
 		# se todas falharem, sobe a última
 		raise last_exc  # type: ignore[misc]
@@ -258,21 +290,33 @@ def call_llm_with_reference_images(
 	for add_headers in auth_variants:
 		merged = dict(headers)
 		merged.update(add_headers)
-		try:
-			resp = requests.post(
-				url,
-				json=payload,
-				headers=merged,
-				timeout=cfg.timeout_s,
-				verify=cfg.verify_ssl,
-			)
-			if resp.status_code != 200:
-				print(f"DEBUG: Status {resp.status_code} - body: {resp.text}")
-			resp.raise_for_status()
-			data = resp.json()
-			break
-		except Exception as e:  # noqa: BLE001
-			last_exc = e
+		attempts = 3 if "api_key" in add_headers else 1
+		for attempt in range(attempts):
+			try:
+				resp = requests.post(
+					url,
+					json=payload,
+					headers=merged,
+					timeout=cfg.timeout_s,
+					verify=cfg.verify_ssl,
+				)
+				if resp.status_code != 200:
+					print(f"DEBUG: Status {resp.status_code} - body: {resp.text}")
+				if (
+					attempt + 1 < attempts
+					and resp.status_code == 400
+					and _has_gateway_error(resp, "ERR_MID_004")
+				):
+					time.sleep(0.5 * (attempt + 1))
+					continue
+				resp.raise_for_status()
+				data = resp.json()
+				break
+			except Exception as e:  # noqa: BLE001
+				last_exc = e
+		else:
+			continue
+		break
 	else:
 		raise last_exc  # type: ignore[misc]
 
