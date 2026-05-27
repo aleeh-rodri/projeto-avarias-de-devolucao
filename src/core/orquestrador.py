@@ -19,12 +19,14 @@ from agents.peritos.perito_interior import ConfigPeritoInterior, PeritoInterior
 from agents.peritos.perito_acessorios import ConfigPeritoAcessorios, PeritoAcessorios
 from agents.peritos.perito_emblemas import ConfigPeritoEmblemas, PeritoEmblemas
 
-from core.vehicle_metadata import get_vehicle_wheel_type
-
+from core.vehicle_metadata import VehicleMetadataCache
 
 # =========================
 # CONFIG
 # =========================
+BASE_DIR = global_config.BASE_DIR
+
+
 @dataclass(frozen=True)
 class ConfigOrquestrador:
     caminho_lpu_xlsx: str = global_config.LPU_DEFAULT_PATH
@@ -598,7 +600,11 @@ def rodar_orquestrador(
     preco_total_geral = 0.0
     any_sob_consulta = False
 
-    wheel_type = get_vehicle_wheel_type(case_id)
+    metadata_cache = VehicleMetadataCache(
+        BASE_DIR / "input" / "vehicle_metadata_cache.xlsx"
+    )
+    vehicle_metadata = metadata_cache.get_vehicle_metadata(case_id)
+    wheel_type = vehicle_metadata.get("wheel_type", "desconhecido")
 
     progress_enabled = os.getenv("AGENTE_PROGRESS", "1").strip().lower() not in ("0", "false", "no")
     total_peritos = len(mapeamento_peritos)
