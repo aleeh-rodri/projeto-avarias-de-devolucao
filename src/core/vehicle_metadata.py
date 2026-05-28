@@ -87,6 +87,9 @@ class VehicleMetadataCache:
                 out[placa] = {
                     "wheel_raw": wheel_raw,
                     "wheel_type": str(row[header_map["wheel_type"]] or "desconhecido").strip(),
+                    "template_type": str(row[header_map.get("template_type", "")] or "GF").strip().upper()
+                    if "template_type" in header_map
+                    else "GF",
                 }
 
             return out
@@ -108,7 +111,9 @@ class VehicleMetadataCache:
         item = self._cache.get(placa_norm)
 
         if not item:
-            return {"wheel_type": "desconhecido"}
+            return {"wheel_type": "desconhecido",
+                    "template_type": "GF",
+                    }
 
         return dict(item)
 
