@@ -605,6 +605,7 @@ def rodar_orquestrador(
     )
     vehicle_metadata = metadata_cache.get_vehicle_metadata(case_id)
     wheel_type = vehicle_metadata.get("wheel_type", "desconhecido")
+    print(wheel_type)
 
     progress_enabled = os.getenv("AGENTE_PROGRESS", "1").strip().lower() not in ("0", "false", "no")
     total_peritos = len(mapeamento_peritos)
