@@ -18,6 +18,7 @@ class PeritoPneusRodas(BasePerito):
 
     def run(self, image_paths: list[str], **kwargs) -> dict[str, Any]:
         checklist_summary = kwargs.get("checklist_summary", "Nenhuma observação no checklist.")
+        wheel_type = kwargs.get("wheel_type", "desconhecido")
 
         imagens_usadas = kwargs.get("imagens_usadas")
 
@@ -38,61 +39,72 @@ class PeritoPneusRodas(BasePerito):
             if pids and len(set(pids)) == 1:
                 expected_part_id = pids[0]
 
-        # Heurística importante: no checklist deste caso aparece "Liga Leve Não Tem".
-        # Isso reduz falsos positivos de "roda de liga leve" (e evita cobrar reparo de liga leve indevidamente).
-        chk_norm = (checklist_summary or "").lower().replace(" ", "")
-        liga_leve_nao_tem = "ligalevenãotem" in chk_norm or "ligalevenaotem" in chk_norm
-
-        # Checklist também costuma indicar explicitamente calotas / jogo de calotas.
-        chk_norm_ws = (checklist_summary or "").lower()
-        menciona_calota = ("calota" in chk_norm_ws) or ("calotas" in chk_norm_ws) or ("jogo de calota" in chk_norm_ws) or ("jogo de calotas" in chk_norm_ws)
+        wheel_type_norm = (wheel_type or "desconhecido").strip().lower()
+        if wheel_type_norm == "liga_leve":
+            wheel_type_prompt = "roda de liga leve"
+            expected_peca_by_wheel_type = "roda liga leve"
+        elif wheel_type_norm == "ferro":
+            wheel_type_prompt = "roda de ferro"
+            expected_peca_by_wheel_type = "roda ferro"
+        else:
+            wheel_type_prompt = "desconhecido"
+            expected_peca_by_wheel_type = "roda"
         
         prompt = f"""
-Você é um PERITO TÉCNICO ESPECIALISTA EM RODAS, PNEUS E CALOTAS.
+Voce e um PERITO TECNICO ESPECIALISTA EM RODAS, PNEUS E CALOTAS.
 
 OBJETIVO
-- Identificar avarias visíveis e classificar tecnicamente a peça (calota, roda de ferro, roda de liga leve).
-- Decidir ação: reparo (padrão) vs troca (quando fizer sentido técnico/prático).
-- Retornar APENAS JSON válido (sem Markdown, sem texto extra).
+- O tipo de roda ja foi identificado pelo sistema. Nao tente inferir ou alterar esse tipo pela imagem.
+- Analise apenas existencia de dano visivel, severidade e acao tecnica.
+- Decidir acao: reparo (padrao) vs troca (quando fizer sentido tecnico/pratico).
+- Retornar APENAS JSON valido (sem Markdown, sem texto extra).
 
-CONTEXTO DO CHECKLIST (use como pista; evidência visual tem prioridade):
+TIPO DE RODA IDENTIFICADO PELO SISTEMA:
+{wheel_type_prompt}
+
+CONTEXTO DO CHECKLIST (use como pista; evidencia visual tem prioridade):
 {checklist_summary}
 
-DEFINIÇÕES TÉCNICAS
-- Ralada/ralado de guia: desgaste/arranhão na borda/face da roda.
-- Amassado: deformação no aro.
-- Trinca: ruptura/fissura no aro (risco de segurança).
+DEFINICOES TECNICAS
+- Ralada/ralado de guia: desgaste/arranhao na borda/face da roda.
+- Amassado: deformacao no aro.
+- Trinca: ruptura/fissura no aro (risco de seguranca).
 - Quebra de calota: lasca/falta de material, travas rompidas.
 
-CRITÉRIOS (determinísticos)
+REGRAS SOBRE PECA
+- Se o tipo informado for "roda de liga leve", a peca deve ser "roda liga leve". Nao retorne calota.
+- Se o tipo informado for "roda de ferro", a peca padrao deve ser "roda ferro".
+- Calota so existe em roda de ferro. Retorne "calota" apenas se o tipo informado for "roda de ferro" e o dano visivel estiver claramente na calota.
+
+CRITERIOS TECNICOS
 1) calota:
-    - qualquer quebra, falta de material, trinca ou risco profundo -> ação "troca".
+    - qualquer quebra, falta de material, trinca ou risco profundo -> acao "troca".
     - risco leve superficial pode ser classificado como leve; ainda assim, se a calota estiver danificada, prefira "troca".
 
 2) roda de liga leve:
-    - ralada de guia/arranhões -> ação "reparo".
-    - amassado no aro ou trinca -> nível "grave" e ação "reparo" ou "troca" (se a trinca for clara, prefira "troca").
+    - ralada de guia/arranhoes -> acao "reparo".
+    - amassado no aro ou trinca -> nivel "grave" e acao "reparo" ou "troca" (se a trinca for clara, prefira "troca").
 
 3) roda de ferro:
-    - amassado -> "reparo" quando parecer corrigível.
+    - amassado -> "reparo" quando parecer corrigivel.
     - trinca evidente -> "troca".
 
 SEVERIDADE
-- sem_dano: nada evidente OU foto não permite avaliar.
-- leve: marca superficial/ralado leve sem deformação.
-- moderado: ralada profunda extensa ou deformação leve.
-- grave: deformação clara do aro, trinca, quebra (calota) ou risco de segurança.
+- sem_dano: nada evidente OU foto nao permite avaliar.
+- leve: marca superficial/ralado leve sem deformacao.
+- moderado: ralada profunda extensa ou deformacao leve.
+- grave: deformacao clara do aro, trinca, quebra (calota) ou risco de seguranca.
 
 ANTI-EXCESSO
-- Não confunda sujeira com dano.
-- Se não der para identificar o tipo de peça com segurança, escolha o mais provável e descreva a dúvida na justificativa.
+- Nao confunda sujeira com dano.
+- Nao classifique como dano quando a evidencia visual for insuficiente.
 
 RETORNE APENAS ESTE JSON:
 {{
   "peca": "roda liga leve|roda ferro|calota",
   "nivel_dano": "sem_dano|leve|moderado|grave",
   "acao": "reparo|troca",
-  "justificativa": "descrição técnica objetiva baseada na evidência visual e checklist como contexto"
+  "justificativa": "descricao tecnica objetiva baseada na evidencia visual e checklist como contexto"
 }}
 """
         try:
@@ -103,15 +115,20 @@ RETORNE APENAS ESTE JSON:
                 if raw.startswith("json"): raw = raw[4:]
             res = json.loads(raw.strip())
             
-            peca = res.get('peca', 'roda')
+            peca = res.get('peca', expected_peca_by_wheel_type)
             acao = res.get('acao', 'reparo')
 
-            # Se checklist diz que não tem liga leve, força a peça para calota (conservador).
             peca_norm = (peca or "").lower()
-            if (liga_leve_nao_tem and "liga" in peca_norm) or menciona_calota:
-                peca = "calota"
-                acao = "troca"
-                peca_norm = "calota"
+            if wheel_type_norm == "liga_leve":
+                peca = "roda liga leve"
+                peca_norm = "roda liga leve"
+            elif wheel_type_norm == "ferro":
+                if "calota" in peca_norm:
+                    peca = "calota"
+                    peca_norm = "calota"
+                else:
+                    peca = "roda ferro"
+                    peca_norm = "roda ferro"
 
             # Calota: não faz sentido "reparo" na prática; força troca.
             if "calota" in peca_norm and acao == "reparo":
