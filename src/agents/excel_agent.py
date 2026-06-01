@@ -461,6 +461,22 @@ class ExcelAgent:
         return conf > float(extra_conf_threshold)
 
     def generate_report(self, laudo_path, output_path, pdf_path=None, *, checklist_only: bool = True, extra_conf_threshold: float = 0.9):
+        """Gera o relatório Excel a partir do laudo.json.
+
+        Layout atual esperado na aba Orçamento_Padrão:
+        - C18: cliente (preencher "xxx")
+        - C19: contrato (preencher "xxx")
+        - C20: placa
+        - C21: modelo
+        - E19: total geral (fórmula do template)
+        - Avarias: B32:F65
+        - Total avarias: F67 (fórmula do template)
+        - Peças/Mão de obra: B73:F106
+        - Total peças: F109 (fórmula do template)
+
+        Observação: a coluna C das tabelas já possui fórmula no template.
+        Por isso, o código só preenche B, D, E e F.
+        """
         with open(laudo_path, 'r', encoding='utf-8') as f:
             laudo_data = json.load(f)
 
@@ -483,43 +499,68 @@ class ExcelAgent:
                 "ignore",
                 message=r"Conditional Formatting extension is not supported and will be removed",
                 category=UserWarning,
-                module=r"openpyxl\\..*",
+                module=r"openpyxl\..*",
             )
             wb = load_workbook(self.template_path)
-        
-        # Extrair dados do PDF se existir
+
+        # Extrair dados do PDF se existir.
+        # Cliente/contrato ficam fixos como "xxx" por enquanto, conforme definição atual.
         pdf_info = {
-            "cliente": "xxxx",
-            "contrato": "xxxx",
+            "cliente": "xxx",
+            "contrato": "xxx",
             "modelo": "xxxx",
             "cor": "xxxx",
             "placa": laudo_data.get("case_id", "xxxx")
         }
         if pdf_path and os.path.exists(pdf_path):
-            pdf_info.update(self.extract_info_from_pdf(pdf_path))
+            extracted_info = self.extract_info_from_pdf(pdf_path)
+            pdf_info["modelo"] = extracted_info.get("modelo") or pdf_info["modelo"]
+            pdf_info["cor"] = extracted_info.get("cor") or pdf_info["cor"]
+            pdf_info["placa"] = extracted_info.get("placa") or pdf_info["placa"]
 
+        # =========================
         # 1. Aba Orçamento_Padrão
+        # =========================
         ws_orcamento = wb["Orçamento_Padrão"]
 
-        # Limpa linhas de exemplo/sobra do template antes de preencher.
-        # (Ex.: 'avaria 1/2' com 320,00 que não devem aparecer em casos sem dano.)
-        self._clear_orcamento_itens(ws_orcamento, start_row=24, end_row=180)
+        AVARIAS_START_ROW = 32
+        AVARIAS_END_ROW = 65
+        PECAS_START_ROW = 73
+        PECAS_END_ROW = 106
 
-        ws_orcamento["C10"] = pdf_info["placa"]
-        ws_orcamento["C11"] = pdf_info["modelo"]
-        ws_orcamento["C12"] = pdf_info["cor"]
+        def _clear_budget_section(start_row: int, end_row: int) -> None:
+            """Limpa B/D/E/F preservando C, pois C tem fórmula no template."""
+            for r in range(int(start_row), int(end_row) + 1):
+                ws_orcamento.cell(row=r, column=2).value = None  # Num. item
+                ws_orcamento.cell(row=r, column=4).value = None  # Descrição
+                ws_orcamento.cell(row=r, column=5).value = None  # Qtd.
+                ws_orcamento.cell(row=r, column=6).value = None  # Valor
 
-        # Tabela de itens
-        start_row = 24
-        current_row = start_row
-        item_num = 1
-        
+        _clear_budget_section(AVARIAS_START_ROW, AVARIAS_END_ROW)
+        _clear_budget_section(PECAS_START_ROW, PECAS_END_ROW)
+
+        # Cabeçalho do novo template
+        ws_orcamento["C18"] = "xxx"
+        ws_orcamento["C19"] = "xxx"
+        ws_orcamento["C20"] = pdf_info["placa"]
+        ws_orcamento["C21"] = pdf_info["modelo"]
+
+        # Mantém E19/F67/F109 com as fórmulas do template.
+        # Não sobrescrever fórmulas aqui.
+
         all_servicos: list[dict[str, Any]] = []
         all_pecas_a_cotar: list[dict[str, Any]] = []
+
         for perito_name, perito_data in laudo_data.get("peritos", {}).items():
+            if not isinstance(perito_data, dict):
+                continue
+
             resultado = perito_data.get("resultado", {})
-            perito_force_include = bool(resultado.get("force_include") is True) if isinstance(resultado, dict) else False
-            perito_needs_human_review = bool(resultado.get("needs_human_review") is True) if isinstance(resultado, dict) else False
+            if not isinstance(resultado, dict):
+                continue
+
+            perito_force_include = bool(resultado.get("force_include") is True)
+            perito_needs_human_review = bool(resultado.get("needs_human_review") is True)
             # Heurística de origem: só rotular como AGENTE_IA quando for linha "manual/revisão"
             # (ex.: force_include/needs_human_review). Serviços normais do LPU ficam sem rótulo.
             perito_origem = "agente_ia" if (perito_force_include or perito_needs_human_review) else None
@@ -528,12 +569,21 @@ class ExcelAgent:
             itens = resultado.get("itens")
             if isinstance(itens, list) and itens:
                 for it in itens:
-                    fotos_it = it.get("fotos_analisadas", []) if isinstance(it, dict) else []
-                    servicos_it = (it.get("servicos", []) if isinstance(it, dict) else [])
+                    if not isinstance(it, dict):
+                        continue
+
+                    fotos_it = it.get("fotos_analisadas", [])
+                    servicos_it = it.get("servicos", [])
+                    if not isinstance(servicos_it, list):
+                        continue
+
                     for svc_idx, svc in enumerate(servicos_it):
+                        if not isinstance(svc, dict):
+                            continue
+
                         # IMPORTANT: o template suporta 1 foto por linha.
-                        # Se um item tem múltiplos serviços (ex.: pintura duplicada por 2 avarias)
-                        # e também múltiplas fotos, pareia cada serviço com a foto do mesmo índice.
+                        # Se um item tem múltiplos serviços e também múltiplas fotos,
+                        # pareia cada serviço com a foto do mesmo índice.
                         fotos_line: list[str] = []
                         if isinstance(fotos_it, list) and fotos_it:
                             if svc_idx < len(fotos_it):
@@ -549,44 +599,58 @@ class ExcelAgent:
                         all_servicos.append({
                             "descricao": self._format_descricao_origem(svc.get("descricao", ""), origem=perito_origem),
                             "valor": svc.get("preco", 0),
+                            "qtd": 1,
                             "fotos": fotos_line,
                             "triage_meta": triage_meta,
                             "force_include": perito_force_include,
                         })
             else:
                 servicos = resultado.get("servicos", [])
-                for svc in servicos:
-                    fotos_res = resultado.get("fotos_analisadas", [])
-                    fotos_line = [fotos_res[0]] if isinstance(fotos_res, list) and fotos_res else []
-                    triage_meta = self._triage_meta_for_photo(triage_index, fotos_line[0] if fotos_line else None)
-                    all_servicos.append({
-                        "descricao": self._format_descricao_origem(svc.get("descricao", ""), origem=perito_origem),
-                        "valor": svc.get("preco", 0),
-                        "fotos": fotos_line,
+                if isinstance(servicos, list):
+                    for svc in servicos:
+                        if not isinstance(svc, dict):
+                            continue
+                        fotos_res = resultado.get("fotos_analisadas", [])
+                        fotos_line = [fotos_res[0]] if isinstance(fotos_res, list) and fotos_res else []
+                        triage_meta = self._triage_meta_for_photo(triage_index, fotos_line[0] if fotos_line else None)
+                        all_servicos.append({
+                            "descricao": self._format_descricao_origem(svc.get("descricao", ""), origem=perito_origem),
+                            "valor": svc.get("preco", 0),
+                            "qtd": 1,
+                            "fotos": fotos_line,
+                            "triage_meta": triage_meta,
+                            "force_include": perito_force_include,
+                        })
+
+            pecas = resultado.get("pecas_a_cotar", [])
+            if isinstance(pecas, list):
+                for p in pecas:
+                    if not isinstance(p, dict):
+                        continue
+
+                    desc = p.get("descricao", "")
+                    obs = p.get("observacao", "")
+                    qtd = p.get("quantidade", 1)
+                    if not desc:
+                        continue
+
+                    full_desc = f"PEÇA (cotação manual): {desc}"
+                    if obs:
+                        full_desc += f" — {obs}"
+
+                    fotos_p = (resultado.get("fotos_analisadas", []) or [])
+                    triage_meta = self._triage_meta_for_photo(
+                        triage_index,
+                        fotos_p[0] if isinstance(fotos_p, list) and fotos_p else None,
+                    )
+                    all_pecas_a_cotar.append({
+                        "descricao": full_desc,
+                        "valor": 0,  # valor da peça será preenchido manualmente
+                        "qtd": qtd if isinstance(qtd, int) else 1,
+                        "fotos": fotos_p,
                         "triage_meta": triage_meta,
                         "force_include": perito_force_include,
                     })
-
-            pecas = resultado.get("pecas_a_cotar", [])
-            for p in pecas or []:
-                desc = p.get("descricao", "")
-                obs = p.get("observacao", "")
-                qtd = p.get("quantidade", 1)
-                if not desc:
-                    continue
-                full_desc = f"PEÇA (cotação manual): {desc}"
-                if obs:
-                    full_desc += f" — {obs}"
-                fotos_p = (resultado.get("fotos_analisadas", []) or [])
-                triage_meta = self._triage_meta_for_photo(triage_index, fotos_p[0] if isinstance(fotos_p, list) and fotos_p else None)
-                all_pecas_a_cotar.append({
-                    "descricao": full_desc,
-                    "valor": 0,  # valor da peça será preenchido manualmente
-                    "qtd": qtd if isinstance(qtd, int) else 1,
-                    "fotos": fotos_p,
-                    "triage_meta": triage_meta,
-                    "force_include": perito_force_include,
-                })
 
         # =========================================================
         # Fallback do checklist: quando o checklist marcou avaria, mas nenhum serviço foi gerado.
@@ -610,6 +674,7 @@ class ExcelAgent:
                         origem="checklist",
                     ),
                     "valor": fb.get("valor", 0),
+                    "qtd": 1,
                     "fotos": fotos_line,
                     "triage_meta": triage_meta,
                     "force_include": True,
@@ -633,14 +698,13 @@ class ExcelAgent:
                 if not isinstance(s, dict):
                     continue
                 s["descricao"] = self._format_descricao_origem(str(s.get("descricao") or ""), origem="checklist")
+                if "qtd" not in s:
+                    s["qtd"] = 1
                 all_servicos.append(s)
 
         # =========================================================
         # FILTRO: cobrar somente o que estiver no checklist.
         # Exceção: quando confiança da triagem > extra_conf_threshold.
-        #
-        # Observação: o sinal de checklist vem do triage.json (checklist_damage_reported).
-        # Se triage.json não existir, mantém comportamento anterior (não filtra).
         # =========================================================
         if has_triage:
             all_servicos = [
@@ -672,80 +736,128 @@ class ExcelAgent:
                 )
             ]
 
-        for svc in all_servicos:
-            ws_orcamento.cell(row=current_row, column=2, value=item_num)
-            ws_orcamento.cell(row=current_row, column=3, value="Avarias de Devolução")
-            ws_orcamento.cell(row=current_row, column=4, value=svc["descricao"])
-            ws_orcamento.cell(row=current_row, column=5, value=1)
-            ws_orcamento.cell(row=current_row, column=6, value=svc["valor"])
-            current_row += 1
-            item_num += 1
+        def _is_mao_de_obra(item: dict[str, Any]) -> bool:
+            desc = str(item.get("descricao") or "").strip().lower()
+            desc_norm = (
+                desc.replace("ã", "a")
+                .replace("á", "a")
+                .replace("à", "a")
+                .replace("â", "a")
+                .replace("é", "e")
+                .replace("ê", "e")
+                .replace("í", "i")
+                .replace("ó", "o")
+                .replace("ô", "o")
+                .replace("ú", "u")
+                .replace("ç", "c")
+            )
+            return "mao de obra" in desc_norm or "m.o" in desc_norm or "mo " in f"{desc_norm} "
 
-        # Registrar peças a cotar no final (sem impactar o total de serviços)
-        if all_pecas_a_cotar:
-            for p in all_pecas_a_cotar:
-                ws_orcamento.cell(row=current_row, column=2, value=item_num)
-                ws_orcamento.cell(row=current_row, column=3, value="Peças (cotação manual)")
-                ws_orcamento.cell(row=current_row, column=4, value=p["descricao"])
-                ws_orcamento.cell(row=current_row, column=5, value=p.get("qtd", 1))
-                ws_orcamento.cell(row=current_row, column=6, value=p.get("valor", 0))
-                current_row += 1
+        # Nova regra:
+        # - Avarias: serviços normais, exceto mão de obra.
+        # - Peças a cotar: peças a cotar + qualquer serviço identificado como mão de obra.
+        avarias_items: list[dict[str, Any]] = []
+        pecas_mao_obra_items: list[dict[str, Any]] = []
+
+        for svc in all_servicos:
+            if _is_mao_de_obra(svc):
+                pecas_mao_obra_items.append(svc)
+            else:
+                avarias_items.append(svc)
+
+        pecas_mao_obra_items.extend(all_pecas_a_cotar)
+
+        def _write_budget_rows(items: list[dict[str, Any]], *, start_row: int, end_row: int, item_num_start: int) -> int:
+            row = int(start_row)
+            item_num = int(item_num_start)
+            overflow = 0
+
+            for item in items:
+                if row > int(end_row):
+                    overflow += 1
+                    continue
+
+                ws_orcamento.cell(row=row, column=2, value=item_num)
+                # Coluna C preservada: fórmula do template.
+                ws_orcamento.cell(row=row, column=4, value=item.get("descricao", ""))
+                ws_orcamento.cell(row=row, column=5, value=item.get("qtd", 1))
+                ws_orcamento.cell(row=row, column=6, value=item.get("valor", 0))
+
+                row += 1
                 item_num += 1
 
-        # Garantir as fórmulas-chave do template mesmo após a limpeza/preenchimento das linhas.
-        ws_orcamento["F59"] = "=SUM(F24:F57)"
-        ws_orcamento["E11"] = "=F59"
+            if overflow:
+                print(
+                    f"Aviso: {overflow} item(ns) excederam o limite de linhas do template "
+                    f"({start_row}:{end_row}) e não foram escritos no orçamento."
+                )
 
+            return item_num
+
+        next_item_num = _write_budget_rows(
+            avarias_items,
+            start_row=AVARIAS_START_ROW,
+            end_row=AVARIAS_END_ROW,
+            item_num_start=1,
+        )
+        _write_budget_rows(
+            pecas_mao_obra_items,
+            start_row=PECAS_START_ROW,
+            end_row=PECAS_END_ROW,
+            item_num_start=next_item_num,
+        )
+
+        # =========================
         # 2. Aba Detalhamento_Avarias
+        # =========================
         ws_detalhe = wb["Detalhamento_Avarias"]
-        ws_detalhe["C7"] = pdf_info["cliente"]
-        ws_detalhe["C8"] = pdf_info["contrato"]
-        ws_detalhe["C10"] = pdf_info["placa"]
-        ws_detalhe["C11"] = pdf_info["modelo"]
-        ws_detalhe["C12"] = pdf_info["cor"]
-        
-        # Soma somente valores numéricos (linhas de revisão/checklist podem ter valor 0 ou string)
-        valor_total = sum((v for v in (svc.get("valor") for svc in all_servicos) if isinstance(v, (int, float))))
-        ws_detalhe["K11"] = valor_total
+        ws_detalhe["C7"] = "xxx"
+        ws_detalhe["C8"] = "xxx"
+        # ws_detalhe["C10"] = pdf_info["placa"]
+        # ws_detalhe["C11"] = pdf_info["modelo"]
+        # ws_detalhe["C12"] = pdf_info["cor"]
 
-        # Detalhamento de cada avaria (serviços) + peças a cotar (no final)
-        detail_items = list(all_servicos) + list(all_pecas_a_cotar)
-        current_detail_row = 16
+        DETAIL_FIRST_ITEM_ROW = 14
+        DETAIL_BLOCK_ROWS = 16
+        DETAIL_IMAGE_OFFSET = 2
+
+        detail_items = list(avarias_items) + list(pecas_mao_obra_items)
+
         for idx, svc in enumerate(detail_items):
-            row_desc = current_detail_row + (idx * 16)
-            row_img = row_desc + 1
-            
-            # A partir do 3º item, copiar o BLOCO inteiro do 2º item (linhas 32-47)
-            # para preservar o layout (inclui células verdes e merges).
-            if idx >= 2:
-                self._copy_block_formatting(ws_detalhe, 32, row_desc, block_rows=16, max_col=12)
+            header_row = DETAIL_FIRST_ITEM_ROW + (idx * DETAIL_BLOCK_ROWS)
+            image_row = header_row + DETAIL_IMAGE_OFFSET
 
-            # Número da avaria à esquerda da descrição (coluna B no template)
-            ws_detalhe.cell(row=row_desc, column=2, value=idx + 1)
+            raw_photo = svc["fotos"][0] if (
+                isinstance(svc.get("fotos"), list) and svc["fotos"]
+            ) else None
 
-            ws_detalhe.cell(row=row_desc, column=3, value=svc["descricao"])
-            ws_detalhe.cell(row=row_desc, column=11, value=svc["valor"])
-            
-            # Inserir primeira foto se houver
-            raw_photo = svc["fotos"][0] if (isinstance(svc.get("fotos"), list) and svc["fotos"]) else None
-            img_path = self._resolve_photo_path(raw_photo, case_id=pdf_info.get("placa"), laudo_path=laudo_path)
+            img_path = self._resolve_photo_path(
+                raw_photo,
+                case_id=pdf_info.get("placa"),
+                laudo_path=laudo_path,
+            )
+
             if img_path and os.path.exists(img_path):
-                
                 try:
                     temp_img_path = f"temp_img_{idx}_{pdf_info['placa']}.png"
                     self._prepare_image_for_excel(img_path, temp_img_path, base_height=300)
 
                     img = OpenpyxlImage(temp_img_path)
-                    ws_detalhe.add_image(img, f"B{row_img}")
+                    ws_detalhe.add_image(img, f"B{image_row}")
                 except Exception as e:
                     print(f"Erro ao inserir imagem: {e}")
 
-            # Se o template tiver blocos pré-criados (ex.: Avaria 2), limpa os que não foram usados
-            # para evitar que apareçam valores do template.
-            self._clear_unused_detalhamento_blocks(ws_detalhe, used_blocks=len(detail_items), first_block_row=16, block_rows=16)
-            
+        # Se o template tiver blocos pré-criados (ex.: Avaria 2), limpa os que não foram usados
+        # para evitar que apareçam valores do template.
+        # self._clear_unused_detalhamento_blocks(
+        #     ws_detalhe,
+        #     used_blocks=len(detail_items),
+        #     first_block_row=16,
+        #     block_rows=16,
+        # )
+
         wb.save(output_path)
-        
+
         # Limpeza
         for idx in range(len(detail_items)):
             temp_path = f"temp_img_{idx}_{pdf_info['placa']}.png"

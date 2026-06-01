@@ -3,7 +3,6 @@ import subprocess
 import sys
 from typing import Iterable
 
-from core.template_resolver import ExcelTemplateResolver
 
 # =========================
 # RESOLUÇÃO DE PATH
@@ -18,7 +17,7 @@ if str(SRC_DIR) not in sys.path:
 from core.orquestrador import rodar_orquestrador, ConfigOrquestrador
 from agents.excel_agent import ExcelAgent
 from core.input_resolver import resolve_checklist_pdf, resolve_fotos_dir
-
+from core.template_resolver import ExcelTemplateResolver
  
 
 
