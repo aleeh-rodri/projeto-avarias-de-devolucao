@@ -3,6 +3,7 @@ import subprocess
 import sys
 from typing import Iterable
 
+
 # =========================
 # RESOLUÇÃO DE PATH
 # =========================
@@ -16,7 +17,7 @@ if str(SRC_DIR) not in sys.path:
 from core.orquestrador import rodar_orquestrador, ConfigOrquestrador
 from agents.excel_agent import ExcelAgent
 from core.input_resolver import resolve_checklist_pdf, resolve_fotos_dir
-
+from core.template_resolver import ExcelTemplateResolver
  
 
 
@@ -90,11 +91,13 @@ def executar_processo_completo(placa: str):
     try:
         config = ConfigOrquestrador()
 
+        template_resolver = ExcelTemplateResolver(metadata_xlsx_path=BASE_DIR / "input" / "vehicle_metadata_cache.xlsx", templates_dir=BASE_DIR)
+
         case_dir = BASE_DIR / "input" / placa
         fotos_dir = resolve_fotos_dir(case_dir)
         output_dir = BASE_DIR / "output" / placa
         checklist_pdf = resolve_checklist_pdf(case_dir)
-        template_xlsx = BASE_DIR / "template_excel_padrao.xlsx"
+        template_xlsx = template_resolver.resolve_template_path(placa)
         output_xlsx = output_dir / f"{placa}.xlsx"
 
         if not case_dir.exists():
