@@ -1,6 +1,7 @@
 import json
 import os
 import re
+import unicodedata
 import warnings
 from pathlib import Path
 from openpyxl import load_workbook
@@ -9,13 +10,16 @@ from openpyxl.drawing.image import Image as OpenpyxlImage
 from copy import copy
 from PIL import Image as PILImage
 from PIL import ImageOps
-from core.pdf_utils import extract_checklist_text, extract_reldev_avaria_part_ids
+from core.config import config as global_config
+from core.lpu import find_services, load_lpu_items
+from core.pdf_utils import extract_checklist_text, extract_reldev_avaria_part_ids, extract_reldev_chave_reserva_nao_tem
 
 class ExcelAgent:
-    def __init__(self, template_path):
+    def __init__(self, template_path, lpu_path: str | Path | None = None):
         self.template_path = Path(template_path)
         if not self.template_path.exists():
             raise FileNotFoundError(f"Template não encontrado: {template_path}")
+        self.lpu_path = Path(lpu_path or global_config.LPU_DEFAULT_PATH)
 
     def _clear_orcamento_itens(self, ws, *, start_row: int = 24, end_row: int = 180) -> None:
         """Limpa a tabela de itens no template (descrição/qtd/valor).
@@ -141,6 +145,66 @@ class ExcelAgent:
             return f"AGENTE_IA-avaria - {base}" if base else "AGENTE_IA-avaria -"
 
         return descricao
+
+    def _norm_match_text(self, text: str) -> str:
+        text = unicodedata.normalize("NFKD", str(text or "").lower())
+        text = "".join(c for c in text if not unicodedata.combining(c))
+        text = re.sub(r"[^\w\s-]", " ", text)
+        text = text.replace("-", " ")
+        return re.sub(r"\s+", " ", text).strip()
+
+    def _is_chave_reserva_desc(self, descricao: str) -> bool:
+        d = self._norm_match_text(descricao)
+        return "chave" in d and "reserva" in d
+
+    def _has_chave_reserva_charge(self, items: list[dict[str, Any]]) -> bool:
+        for item in items or []:
+            if not isinstance(item, dict):
+                continue
+            if self._is_chave_reserva_desc(str(item.get("descricao") or "")):
+                return True
+        return False
+
+    def _build_chave_reserva_charge_from_lpu(self) -> dict[str, Any]:
+        try:
+            lpu_items = load_lpu_items(self.lpu_path)
+            matches = find_services(
+                lpu_items,
+                ["chave", "reserva"],
+                fuzzy=False,
+                modo_restrito=True,
+                allow_global_fallback=True,
+            )
+            if not matches:
+                matches = find_services(
+                    lpu_items,
+                    ["chave reserva"],
+                    fuzzy=True,
+                    modo_restrito=False,
+                    allow_global_fallback=True,
+                )
+            matches = [it for it in matches if self._is_chave_reserva_desc(it.descricao)]
+        except Exception as exc:
+            print(f"Aviso: nao foi possivel ler a LPU para Chave reserva: {exc}")
+            matches = []
+
+        if matches:
+            descricao = matches[0].descricao
+            valor = matches[0].preco
+        else:
+            descricao = "Chave reserva (valor nao encontrado na LPU)"
+            valor = 0
+
+        return {
+            "descricao": descricao,
+            "valor": valor,
+            "qtd": 1,
+            "fotos": [],
+            "triage_meta": None,
+            "force_include": True,
+            "origin": "checklist_chave_reserva_nao_tem",
+            "part_id": "chave_reserva",
+        }
 
     def _parts_with_sem_dano_from_laudo(self, laudo_data: dict[str, Any]) -> set[str]:
         """Retorna part_ids onde algum perito concluiu `sem_dano` usando imagens dessa peça.
@@ -486,11 +550,16 @@ class ExcelAgent:
 
         # Fonte de verdade do checklist (quando o PDF do RELDEV estiver disponível)
         checklist_part_ids: set[str] | None = None
+        chave_reserva_nao_tem = False
         if pdf_path and os.path.exists(pdf_path):
             try:
                 checklist_part_ids = extract_reldev_avaria_part_ids(pdf_path)
             except Exception:
                 checklist_part_ids = None
+            try:
+                chave_reserva_nao_tem = extract_reldev_chave_reserva_nao_tem(pdf_path)
+            except Exception:
+                chave_reserva_nao_tem = False
 
         # O template pode conter extensões de formatação condicional que o openpyxl
         # não suporta (ele remove ao carregar). Isso é esperado e não deve poluir o log.
@@ -651,6 +720,9 @@ class ExcelAgent:
                         "triage_meta": triage_meta,
                         "force_include": perito_force_include,
                     })
+
+        if chave_reserva_nao_tem and not self._has_chave_reserva_charge(all_servicos + all_pecas_a_cotar):
+            all_servicos.append(self._build_chave_reserva_charge_from_lpu())
 
         # =========================================================
         # Fallback do checklist: quando o checklist marcou avaria, mas nenhum serviço foi gerado.

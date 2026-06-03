@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import os
 import re
+import unicodedata
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -44,6 +45,18 @@ _RE_SPACES = re.compile(r"\s+")
 
 def _norm(s: str) -> str:
     return _RE_SPACES.sub(" ", (s or "").strip().lower())
+
+
+def _norm_ascii(s: str) -> str:
+    text = unicodedata.normalize("NFKD", _norm(s))
+    return "".join(c for c in text if not unicodedata.combining(c))
+
+
+def _registro_indica_nao_tem(registro: str) -> bool:
+    r = _norm_ascii(registro)
+    compact = r.replace(" ", "")
+    compact_clean = re.sub(r"[^a-z0-9]", "", compact)
+    return "naotem" in compact_clean or "notem" in compact_clean
 
 
 def _map_checklist_row_to_part_id(descricao: str, item: str) -> str | None:
@@ -263,3 +276,13 @@ def extract_reldev_avaria_part_ids(pdf_path: str | Path) -> set[str]:
         if part_id and part_id in KNOWN_PART_IDS:
             out.add(part_id)
     return out
+
+
+def extract_reldev_chave_reserva_nao_tem(pdf_path: str | Path) -> bool:
+    """Retorna True quando o RELDEV marca Chave Reserva como "Não tem"."""
+    rows = extract_reldev_rows(pdf_path)
+    for r in rows:
+        combined = _norm_ascii(f"{r.descricao} {r.item}")
+        if "chave" in combined and "reserva" in combined and _registro_indica_nao_tem(r.registro):
+            return True
+    return False
