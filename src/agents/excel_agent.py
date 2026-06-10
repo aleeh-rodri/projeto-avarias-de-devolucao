@@ -9,7 +9,7 @@ from openpyxl.drawing.image import Image as OpenpyxlImage
 from copy import copy
 from PIL import Image as PILImage
 from PIL import ImageOps
-from core.pdf_utils import extract_checklist_text, extract_reldev_avaria_part_ids
+from core.pdf_utils import extract_checklist_text, extract_reldev_avaria_items
 
 class ExcelAgent:
     def __init__(self, template_path):
@@ -333,6 +333,7 @@ class ExcelAgent:
         triage_index: dict[str, dict[str, Any]],
         current_servicos: list[dict[str, Any]],
         checklist_part_ids: set[str] | None,
+        checklist_avaria_items: list[Any] | None = None,
     ) -> list[dict[str, Any]]:
         """Cria linhas de revisão humana para peças marcadas no checklist que não viraram cobrança.
 
@@ -344,13 +345,57 @@ class ExcelAgent:
         best_photo_by_part: dict[str, str] = {}
         best_conf_by_part: dict[str, float] = {}
 
-        checklist_parts: set[str] = set(checklist_part_ids or [])
+        checklist_entries: list[dict[str, Any]] = []
+        seen_known_parts: set[str] = set()
+
+        if checklist_avaria_items:
+            for idx, item in enumerate(checklist_avaria_items):
+                part_id = str(getattr(item, "part_id", "") or "").strip()
+                raw_label = str(getattr(item, "raw_label", "") or "").strip()
+                page = getattr(item, "page", None)
+
+                if part_id:
+                    if part_id in seen_known_parts:
+                        continue
+                    seen_known_parts.add(part_id)
+                    checklist_entries.append(
+                        {
+                            "key": f"part:{part_id}",
+                            "part_id": part_id,
+                            "label": part_id,
+                            "raw_label": raw_label,
+                        }
+                    )
+                    continue
+
+                if not raw_label:
+                    continue
+                checklist_entries.append(
+                    {
+                        "key": f"raw:{page or 0}:{idx}",
+                        "part_id": "",
+                        "label": raw_label,
+                        "raw_label": raw_label,
+                    }
+                )
+
+        elif checklist_part_ids:
+            for part_id in sorted(set(checklist_part_ids or [])):
+                checklist_entries.append(
+                    {
+                        "key": f"part:{part_id}",
+                        "part_id": part_id,
+                        "label": part_id,
+                        "raw_label": part_id,
+                    }
+                )
 
         # Se não temos checklist_part_ids, cai para o comportamento antigo baseado no triage.json.
-        if not checklist_parts:
+        if not checklist_entries:
             if not triage_raw or not isinstance(triage_raw.get("images"), list):
                 return []
 
+            checklist_parts: set[str] = set()
             for img in triage_raw.get("images", []) or []:
                 if not isinstance(img, dict):
                     continue
@@ -361,8 +406,24 @@ class ExcelAgent:
                     continue
                 checklist_parts.add(part_id)
 
-        if not checklist_parts:
+            for part_id in sorted(checklist_parts):
+                checklist_entries.append(
+                    {
+                        "key": f"part:{part_id}",
+                        "part_id": part_id,
+                        "label": part_id,
+                        "raw_label": part_id,
+                    }
+                )
+
+        if not checklist_entries:
             return []
+
+        checklist_parts = {
+            str(entry.get("part_id") or "").strip()
+            for entry in checklist_entries
+            if entry.get("part_id")
+        }
 
         # Escolhe a melhor foto por peça (se houver triage)
         if triage_raw and isinstance(triage_raw.get("images"), list):
@@ -394,18 +455,24 @@ class ExcelAgent:
             if part_id:
                 charged_parts.add(part_id)
 
-        missing_parts = sorted([p for p in checklist_parts if p not in charged_parts])
-        if not missing_parts:
+        missing_entries = [
+            entry
+            for entry in checklist_entries
+            if not entry.get("part_id") or str(entry.get("part_id") or "").strip() not in charged_parts
+        ]
+        if not missing_entries:
             return []
 
         out: list[dict[str, Any]] = []
-        for part_id in missing_parts:
+        for entry in missing_entries:
+            part_id = str(entry.get("part_id") or "").strip()
+            label = str(entry.get("label") or entry.get("raw_label") or part_id or "item sem part_id").strip()
             raw_photo = best_photo_by_part.get(part_id) or None
             resolved = self._resolve_photo_path(raw_photo, case_id=case_id, laudo_path=laudo_path)
             triage_meta = self._triage_meta_for_photo(triage_index, resolved or raw_photo)
             out.append(
                 {
-                    "descricao": f"CHECKLIST — Avaria reportada na peça '{part_id}' (REVISAR)",
+                    "descricao": f"Avaria reportada na peca '{label}' (REVISAR)",
                     "valor": 0,
                     "fotos": [resolved] if resolved else ([raw_photo] if raw_photo else []),
                     "triage_meta": triage_meta,
@@ -486,9 +553,15 @@ class ExcelAgent:
 
         # Fonte de verdade do checklist (quando o PDF do RELDEV estiver disponível)
         checklist_part_ids: set[str] | None = None
+        checklist_avaria_items: list[Any] | None = None
         if pdf_path and os.path.exists(pdf_path):
             try:
-                checklist_part_ids = extract_reldev_avaria_part_ids(pdf_path)
+                checklist_avaria_items = extract_reldev_avaria_items(pdf_path)
+                checklist_part_ids = {
+                    str(item.part_id).strip()
+                    for item in checklist_avaria_items
+                    if getattr(item, "part_id", None)
+                }
             except Exception:
                 checklist_part_ids = None
 
@@ -683,7 +756,7 @@ class ExcelAgent:
 
         # Complementa fallbacks usando o checklist PDF como fonte principal.
         # Se não houver PDF/checklist_part_ids, usa o fallback antigo baseado na triagem.
-        should_compute_fallback = bool(checklist_part_ids) or ((not isinstance(fallback, list) or not fallback) and has_triage)
+        should_compute_fallback = bool(checklist_avaria_items) or bool(checklist_part_ids) or ((not isinstance(fallback, list) or not fallback) and has_triage)
         if should_compute_fallback:
             computed_fb = self._compute_checklist_fallback_lines(
                 laudo_path=laudo_path,
@@ -692,6 +765,7 @@ class ExcelAgent:
                 triage_index=triage_index,
                 current_servicos=all_servicos,
                 checklist_part_ids=checklist_part_ids,
+                checklist_avaria_items=checklist_avaria_items,
             )
             # Garantir prefixo CHECKLIST no modo compatibilidade também
             for s in computed_fb:

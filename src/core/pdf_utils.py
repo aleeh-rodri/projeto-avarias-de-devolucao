@@ -39,6 +39,15 @@ class ChecklistRow:
     page: int
 
 
+@dataclass(frozen=True)
+class ChecklistAvariaItem:
+    descricao: str
+    item: str
+    raw_label: str
+    part_id: str | None
+    page: int
+
+
 _RE_SPACES = re.compile(r"\s+")
 
 
@@ -123,6 +132,14 @@ def _map_checklist_row_to_part_id(descricao: str, item: str) -> str | None:
         return None
 
     return None
+
+
+def _raw_checklist_label(descricao: str, item: str) -> str:
+    desc = (descricao or "").strip()
+    it = (item or "").strip()
+    if desc and it:
+        return f"{desc} - {it}"
+    return desc or it
 
 
 def extract_reldev_rows(pdf_path: str | Path) -> list[ChecklistRow]:
@@ -249,17 +266,35 @@ def extract_reldev_rows(pdf_path: str | Path) -> list[ChecklistRow]:
     return out
 
 
+def extract_reldev_avaria_items(pdf_path: str | Path) -> list[ChecklistAvariaItem]:
+    """Extrai todas as linhas marcadas como AVARIA no RELDEV."""
+    rows = extract_reldev_rows(pdf_path)
+    out: list[ChecklistAvariaItem] = []
+    for r in rows:
+        if _norm(r.registro) != "avaria":
+            continue
+        part_id = _map_checklist_row_to_part_id(r.descricao, r.item)
+        if part_id and part_id not in KNOWN_PART_IDS:
+            part_id = None
+        out.append(
+            ChecklistAvariaItem(
+                descricao=r.descricao,
+                item=r.item,
+                raw_label=_raw_checklist_label(r.descricao, r.item),
+                part_id=part_id,
+                page=r.page,
+            )
+        )
+    return out
+
+
 def extract_reldev_avaria_part_ids(pdf_path: str | Path) -> set[str]:
     """Extrai um conjunto de part_ids marcados como AVARIA no RELDEV.
 
     Retorna set vazio se não conseguir extrair com confiança.
     """
-    rows = extract_reldev_rows(pdf_path)
     out: set[str] = set()
-    for r in rows:
-        if _norm(r.registro) != "avaria":
-            continue
-        part_id = _map_checklist_row_to_part_id(r.descricao, r.item)
-        if part_id and part_id in KNOWN_PART_IDS:
-            out.add(part_id)
+    for item in extract_reldev_avaria_items(pdf_path):
+        if item.part_id:
+            out.add(item.part_id)
     return out
