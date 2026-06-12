@@ -61,6 +61,21 @@ class TriageImage(BaseModel):
     confidence: float
     checklist_damage_reported: bool | None = Field(None, description="Indica se o checklist aponta avaria para esta peça")
 
+    # Novo: origem determinística do part_id
+    part_id_source: str | None = None
+
+    # Novo: primeiro número depois de FOTDEV_
+    photo_part_code: str | None = None
+
+    # Novo: descrição textual da planilha, se existir
+    expected_part_description: str | None = None
+
+    # Novo: resultado bruto/estruturado da validação do LLM
+    llm_part_validation: dict[str, Any] | None = None
+
+    # Novo: quando LLM indicar divergência forte
+    needs_human_review: bool = False
+
 class TriageOutput(BaseModel):
     case_id: str
     images: list[TriageImage]

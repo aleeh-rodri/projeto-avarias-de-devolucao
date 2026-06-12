@@ -9,62 +9,72 @@ from core.schemas import QualityAssessment, QualityOutput, TriageImage
 
 
 def build_quality_prompt(part_id: str, checklist_damage_reported: bool | None = None) -> str:
-    # Retrovisores: o lado (esquerdo/direito) é fácil de errar na triagem.
-    # Para qualidade, o que importa é se a foto mostra um retrovisor com nitidez suficiente.
+    # Keep part context for diagnostic output, but approval is based on image usability.
     expected_label = part_id
     if (part_id or "").strip().lower().startswith("retrovisor_"):
         expected_label = "retrovisor (qualquer lado)"
 
-    # Para-choques: fotos da frente/traseira costumam mostrar grade/logo/placa/lanternas,
-    # e o LLM pode errar o "mismatch" se o rótulo for literal demais.
-    # Aqui ampliamos o rótulo esperado para reduzir falso negativo de correspondência.
     pid = (part_id or "").strip().lower()
     if pid == "parachoque_dianteiro":
-        expected_label = "dianteira do carro (para-choque/grade/logo frontal/faróis)"
+        expected_label = "dianteira do carro (para-choque/grade/logo frontal/farois)"
     elif pid == "parachoque_traseiro":
         expected_label = "traseira do carro (para-choque/placa traseira/lanternas)"
 
     checklist_hint = ""
     if checklist_damage_reported is True:
         checklist_hint = (
-            "\nCONTEXTO EXTRA: o CHECKLIST reportou avaria para esta peça. "
-            "Se a foto for minimamente utilizável para análise/orçamento, NÃO reprove por excesso de rigor.\n"
+            "\nCONTEXTO EXTRA: o checklist reportou avaria para esta peca. "
+            "Se a foto for minimamente utilizavel para analise/orcamento, mantenha qualidade media ou alta.\n"
         )
 
     return f"""
-Você é um AGENTE DE QUALIDADE DE IMAGENS AUTOMOTIVAS.
+Voce e um AGENTE DE QUALIDADE DE IMAGENS AUTOMOTIVAS.
 
-Sua tarefa é avaliar se a imagem fornecida tem qualidade suficiente para uma perícia técnica e se ela realmente mostra a peça indicada.
+Sua tarefa principal e avaliar se a imagem tem qualidade visual suficiente para uma pericia tecnica.
+A peca esperada ja veio de uma planilha externa e foi validada em uma etapa anterior.
 
-Peça esperada: {expected_label}
+Peca esperada: {expected_label}
 {checklist_hint}
 
-Critérios de Avaliação:
-1. Qualidade da Imagem:
-   - "baixa": Muito escura, borrada, reflexos excessivos que impedem ver danos, ou muito longe.
-   - "media": Visível, mas com algumas limitações (ex: leve reflexo, ângulo não ideal).
-   - "alta": Nitidez perfeita, boa iluminação, ângulo ideal para perícia.
+Criterios de avaliacao:
+1. Qualidade da imagem:
+   - "baixa": muito escura, borrada, reflexos excessivos que impedem ver danos, ou muito longe.
+   - "media": visivel, mas com algumas limitacoes, como leve reflexo ou angulo nao ideal.
+   - "alta": nitida, boa iluminacao e angulo util para pericia.
 
-2. Correspondência:
-    - A imagem realmente mostra a peça "{expected_label}"?
+2. Correspondencia:
+   - Informe `corresponde_a_peca` como diagnostico visual.
+   - Nao reprove a foto apenas por duvida de correspondencia com a peca.
+   - Divergencia forte de peca e tratada pela triagem via `needs_human_review`, nao por este agente.
 
-3. Decisão (Aprovação):
-     - Regra padrão: Aprovada se Qualidade for "media" ou "alta" E corresponder à peça.
-     - EXCEÇÃO (quando o checklist reportou avaria):
-             - Aprovada se a foto for utilizável para análise/orçamento (qualidade "media" ou "alta"),
-                 mesmo que haja dúvida de correspondência exata da peça.
-             - Reprove apenas se a foto for claramente inútil (qualidade "baixa" por estar ilegível) OU não mostrar nada relacionado.
+3. Decisao de aprovacao:
+   - Aprovada se a qualidade for "media" ou "alta".
+   - Reprovada se a qualidade for "baixa".
 
-Formato de saída:
-RETORNE SOMENTE JSON VÁLIDO (sem texto extra e sem blocos ```):
+Formato de saida:
+RETORNE SOMENTE JSON VALIDO (sem texto extra e sem blocos ```):
 
 {{
   "aprovada": true|false,
-  "motivo": "breve explicação se reprovada",
+  "motivo": "breve explicacao se reprovada",
   "qualidade_imagem": "baixa|media|alta",
   "corresponde_a_peca": true|false
 }}
 """
+
+
+def _clean_json_fences(raw: str) -> str:
+    raw = (raw or "").strip()
+    if raw.startswith("```"):
+        raw = raw.replace("```json", "").replace("```", "").strip()
+    return raw
+
+
+def _normalize_quality(value: object) -> str:
+    qualidade = str(value or "").strip().lower()
+    if qualidade not in {"baixa", "media", "alta"}:
+        return "baixa"
+    return qualidade
 
 
 def run_quality_check(case_id: str, triage_images: list[TriageImage], output_dir: str) -> dict[str, Any]:
@@ -77,29 +87,23 @@ def run_quality_check(case_id: str, triage_images: list[TriageImage], output_dir
     for idx, img in enumerate(triage_images, start=1):
         if progress_enabled:
             print(f"[quality] {idx}/{total} {img.image_id} ({img.part_id})", flush=True)
-        prompt = build_quality_prompt(img.part_id, img.checklist_damage_reported)
-        raw = call_llm_with_image(prompt=prompt, image_path=img.photo_path)
 
-        # limpa possíveis fences ```json
-        raw = raw.strip()
-        if raw.startswith("```"):
-            raw = raw.replace("```json", "").replace("```", "").strip()
+        prompt = build_quality_prompt(img.part_id, img.checklist_damage_reported)
+        raw = _clean_json_fences(call_llm_with_image(prompt=prompt, image_path=img.photo_path))
 
         try:
             result_dict = json.loads(raw)
 
-            aprovada = bool(result_dict["aprovada"])
-            qualidade_imagem = result_dict["qualidade_imagem"]
-            corresponde_a_peca = bool(result_dict["corresponde_a_peca"])
+            qualidade_imagem = _normalize_quality(result_dict.get("qualidade_imagem"))
+            corresponde_a_peca = bool(result_dict.get("corresponde_a_peca"))
             motivo = result_dict.get("motivo")
 
-            # Flexibilização: se checklist sinalizou avaria, não deixe a qualidade derrubar
-            # fotos potencialmente úteis para orçamento por "mismatch" de peça.
-            if img.checklist_damage_reported is True:
-                if qualidade_imagem in {"media", "alta"}:
-                    aprovada = True
-                    if (motivo or "").strip() == "":
-                        motivo = "Checklist reportou avaria; mantendo para análise/orçamento."
+            # Compatibility disagreement is handled by triage (`needs_human_review`).
+            # Quality approval only decides whether the image is usable for an expert.
+            aprovada = qualidade_imagem in {"media", "alta"}
+
+            if aprovada and (motivo or "").strip() == "":
+                motivo = None
 
             assessment = QualityAssessment(
                 image_id=img.image_id,
@@ -111,14 +115,17 @@ def run_quality_check(case_id: str, triage_images: list[TriageImage], output_dir
             assessments.append(assessment)
         except Exception as e:
             print(f"Erro ao avaliar qualidade da imagem {img.image_id}: {e}")
-            # Se o checklist reportou avaria, não descarte a foto por falha de parsing do LLM.
+            # Se o checklist reportou avaria, nao descarte a foto por falha de parsing do LLM.
             if img.checklist_damage_reported is True:
                 assessments.append(
                     QualityAssessment(
                         image_id=img.image_id,
                         aprovada=True,
-                        motivo="Falha ao interpretar JSON do quality check; checklist reportou avaria; mantendo para análise/orçamento.",
-                        qualidade_imagem="baixa",
+                        motivo=(
+                            "Falha ao interpretar JSON do quality check; "
+                            "checklist reportou avaria; mantendo para analise/orcamento."
+                        ),
+                        qualidade_imagem="media",
                         corresponde_a_peca=False,
                     )
                 )

@@ -15,7 +15,7 @@ if SRC_DIR != os.getcwd():
 from agents.triage_agent import run_triage
 from core.input_resolver import resolve_checklist_pdf, resolve_fotos_dir
 
-PLACA = "RUY5J95"
+PLACA = "CVC8E59"
 BASE_DIR = os.path.dirname(SRC_DIR)
 
 # O checklist fica dentro da pasta PDF e contém "RELDEV" no nome
