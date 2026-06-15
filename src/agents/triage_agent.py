@@ -441,7 +441,7 @@ def _extract_lateral_references_once(checklist_path: str, output_dir: str) -> La
 
 
 def _checklist_damage_for_part(part_id: str, checklist_part_ids: set[str] | None) -> bool | None:
-    if not checklist_part_ids:
+    if checklist_part_ids is None:
         return None
 
     pid = (part_id or "").strip().lower()
@@ -475,8 +475,10 @@ def run_triage(case_id: str, fotos_dir: str, output_dir: str, checklist_path: st
         except Exception:
             checklist_part_ids = None
 
-        # Contexto enxuto para o LLM: só lista peças marcadas como avaria
-        if checklist_part_ids:
+        # Contexto enxuto para o LLM: só lista peças marcadas como avaria.
+        # Quando o set está vazio, o RELDEV foi lido e não há avarias; não use o
+        # texto bruto, pois a legenda "* Avaria:" pode induzir falso positivo.
+        if checklist_part_ids is not None:
             checklist_text = "\n".join(sorted(checklist_part_ids))
         else:
             # fallback compatível: mantém o texto bruto (normalizado) apenas para logging
@@ -545,7 +547,7 @@ def run_triage(case_id: str, fotos_dir: str, output_dir: str, checklist_path: st
                     base_confidence = max(global_config.CONFIANCA_MINIMA, base_confidence * 0.85)
 
             # Define checklist_damage_reported de forma determinística quando possível.
-            if checklist_part_ids is not None and checklist_part_ids:
+            if checklist_part_ids is not None:
                 checklist_damage_reported = _checklist_damage_for_part(part_id, checklist_part_ids)
             else:
                 checklist_damage_reported = result_dict.get("checklist_damage_reported")
