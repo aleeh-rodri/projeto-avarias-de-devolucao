@@ -4,10 +4,14 @@ import json
 import os
 from dataclasses import dataclass
 
+from pathlib import Path
+from typing import Any
+
 from core.config import config as global_config
 from core.llm_gate_client import call_llm_with_image, call_llm_with_reference_images
-from core.schemas import PART_IDS, TriageImage, TriageOutput
+from core.schemas import CHECKLIST_PART_IDS, PART_IDS, TriageImage, TriageOutput
 from core.pdf_utils import extract_reldev_avaria_part_ids, extract_checklist_text
+from core.photo_part_metadata import PhotoPartMetadataCache, extract_photo_part_code
 
 
 LATERALIZABLE_BASE_PART_IDS = {
@@ -27,6 +31,29 @@ try:
 except ValueError:
     LATERAL_SIDE_SCORE_MIN = 0.72
 
+try:
+    PART_VALIDATION_MIN_CONFIDENCE = float(
+        os.getenv(
+            "AGENTE_TRIAGE_PART_VALIDATION_MIN_CONF",
+            os.getenv("AGENTE_TRIAGE_PART_VALIDATION_HIGH_CONF", "0.75"),
+        )
+    )
+except ValueError:
+    PART_VALIDATION_MIN_CONFIDENCE = 0.75
+
+try:
+    PART_VALIDATION_AUTOCORRECT_MIN_CONFIDENCE = float(
+        os.getenv("AGENTE_TRIAGE_PART_AUTOCORRECT_MIN_CONF", "0.9")
+    )
+except ValueError:
+    PART_VALIDATION_AUTOCORRECT_MIN_CONFIDENCE = 0.9
+
+PHOTO_PART_MAPPING_XLSX = Path(
+    os.getenv(
+        "AGENTE_PHOTO_PART_MAPPING_XLSX",
+        str(global_config.BASE_DIR / "input" / "photo_part_mapping.xlsx"),
+    )
+)
 
 @dataclass(frozen=True)
 class LateralReferencePaths:
@@ -240,6 +267,89 @@ FORMATO:
 }
 """
 
+def _validation_target_for_part(expected_part_id: str, expected_description: str | None) -> tuple[str, str]:
+    part_id = str(expected_part_id or "").strip()
+    description = str(expected_description or "").strip()
+    if part_id.lower() == "acessorios" and description:
+        return (description, "expected_part_description")
+    return (part_id, "part_id")
+
+
+def build_part_validation_prompt(
+    *,
+    expected_part_id: str,
+    expected_description: str | None = None,
+    checklist_text: str = "",
+) -> str:
+    validation_target, validation_target_source = _validation_target_for_part(
+        expected_part_id,
+        expected_description,
+    )
+
+    expected_description_block = ""
+    if expected_description:
+        description_role = (
+            "ALVO PRINCIPAL PARA ACESSORIOS"
+            if validation_target_source == "expected_part_description"
+            else "APENAS COMO CONTEXTO"
+        )
+        expected_description_block = f"\nDESCRICAO DA PLANILHA ({description_role}): {expected_description}\n"
+
+    checklist_block = ""
+    if checklist_text:
+        checklist_block = f"\nCONTEXTO DO CHECKLIST, APENAS COMO APOIO:\n{checklist_text}\n"
+
+    return f"""
+Voce e um VALIDADOR DE COMPATIBILIDADE ENTRE FOTO E PECA ESPERADA.
+
+A peca esperada ja foi definida por uma planilha externa do sistema.
+Sua tarefa NAO e escolher livremente a peca do carro.
+Sua tarefa e verificar se a imagem parece compativel com a peca esperada.
+
+PECA ESPERADA:
+{validation_target}
+
+ORIGEM DA PECA ESPERADA:
+{validation_target_source}
+
+PART_ID CANONICO DA PLANILHA:
+{expected_part_id}
+{expected_description_block}
+{checklist_block}
+
+REGRAS IMPORTANTES
+- Considere a PECA ESPERADA acima como a fonte oficial para a validacao visual.
+- Regra especial: quando o part_id for "acessorios" e houver descricao da planilha, compare a foto com a descricao da planilha.
+- Para os demais part_ids, a descricao da planilha e apenas contexto auxiliar; nao use a descricao como alvo principal da comparacao.
+- Sua tarefa e validar a peca da planilha e, se houver divergencia clara, sugerir o part_id correto.
+- O sistema so podera usar o part_id sugerido quando a divergencia tiver confianca muito alta.
+- So diga que NAO corresponde se houver evidencia visual clara de que a foto mostra outra peca ou outro item.
+- Nao marque divergencia por enquadramento parcial, zoom, reflexo ou imagem dificil.
+- Se a foto estiver ruim, ambigua ou cortada, prefira "incerto", nao "divergente".
+- Se a foto mostrar a peca esperada, mesmo parcialmente, responda como compativel.
+- Se a foto mostrar claramente outra peca, informe o part_id sugerido.
+- O part_id sugerido deve ser um dos valores validos abaixo.
+
+PART_IDS VALIDOS:
+{sorted(set(PART_IDS) | set(CHECKLIST_PART_IDS))}
+
+ESCALA DE CONFIANCA
+- 0.90 a 1.00: muito seguro
+- 0.75 a 0.89: seguro
+- 0.60 a 0.74: moderado
+- abaixo de 0.60: incerto
+
+RETORNE SOMENTE JSON VALIDO, sem markdown:
+
+{{
+  "corresponde_peca_esperada": true,
+  "status": "compativel|divergente|incerto",
+  "part_id_sugerido": null,
+  "confidence": 0.0,
+  "justificativa": "explicacao objetiva baseada na imagem"
+}}
+"""
+
 
 def _clean_json_fences(raw: str) -> str:
     raw = (raw or "").strip()
@@ -247,6 +357,77 @@ def _clean_json_fences(raw: str) -> str:
         raw = raw.replace("```json", "").replace("```", "").strip()
     return raw
 
+def _validate_part_with_llm(
+    *,
+    image_path: str,
+    expected_part_id: str,
+    expected_description: str | None,
+    checklist_text: str,
+) -> dict[str, Any]:
+    validation_target, validation_target_source = _validation_target_for_part(
+        expected_part_id,
+        expected_description,
+    )
+    prompt = build_part_validation_prompt(
+        expected_part_id=expected_part_id,
+        expected_description=expected_description,
+        checklist_text=checklist_text,
+    )
+
+    raw = call_llm_with_image(
+        prompt=prompt,
+        image_path=image_path,
+        temperature=0,
+        max_tokens=500,
+    )
+    raw = _clean_json_fences(raw)
+
+    try:
+        d = json.loads(raw)
+    except Exception:
+        return {
+            "status": "erro",
+            "corresponde_peca_esperada": None,
+            "part_id_sugerido": None,
+            "confidence": 0.0,
+            "justificativa": "Falha ao interpretar JSON da validação LLM.",
+            "validation_target": validation_target,
+            "validation_target_source": validation_target_source,
+            "raw_response": raw,
+        }
+
+    status = str(d.get("status") or "").strip().lower()
+    if status not in {"compativel", "divergente", "incerto"}:
+        status = "incerto"
+
+    try:
+        confidence = float(d.get("confidence") or 0.0)
+    except Exception:
+        confidence = 0.0
+
+    confidence = max(0.0, min(confidence, 1.0))
+
+    suggested = d.get("part_id_sugerido")
+    if suggested is not None:
+        suggested = str(suggested or "").strip().lower() or None
+
+    valid_ids = set(PART_IDS) | set(CHECKLIST_PART_IDS)
+    if suggested and suggested not in valid_ids:
+        suggested = None
+
+    corresponde = d.get("corresponde_peca_esperada")
+    if corresponde is not True and corresponde is not False:
+        corresponde = None
+
+    return {
+        "status": status,
+        "corresponde_peca_esperada": corresponde,
+        "part_id_sugerido": suggested,
+        "confidence": confidence,
+        "justificativa": str(d.get("justificativa") or "").strip(),
+        "validation_target": validation_target,
+        "validation_target_source": validation_target_source,
+    }
 
 def _infer_retrovisor_side(image_path: str) -> tuple[str, float]:
     """Retorna (lado, confidence) onde lado ∈ {esquerdo, direito, incerto}."""
@@ -495,6 +676,8 @@ def run_triage(case_id: str, fotos_dir: str, output_dir: str, checklist_path: st
     ]
     total = len(photo_files)
 
+    photo_part_cache = PhotoPartMetadataCache(PHOTO_PART_MAPPING_XLSX)
+
     for idx, fname in enumerate(photo_files, start=1):
 
         image_path = os.path.join(fotos_dir, fname)
@@ -503,54 +686,70 @@ def run_triage(case_id: str, fotos_dir: str, output_dir: str, checklist_path: st
         if progress_enabled:
             print(f"[triage] {idx}/{total} {image_id}", flush=True)
 
-        raw = call_llm_with_image(prompt=build_prompt(checklist_text), image_path=image_path)
-        raw = _clean_json_fences(raw)
-
         try:
-            result_dict = json.loads(raw)
-            part_id = str(result_dict["part_id"])
-            view = str(result_dict["view"])
-            base_confidence = float(result_dict["confidence"])
+            photo_part_code = extract_photo_part_code(fname)
+            if not photo_part_code:
+                print(f"[triage] Nome inválido, não foi possível extrair id_foto: {fname}")
+                continue
 
-            # Portas e para-lamas: a triagem base identifica a peca; o lado vem do
-            # matching visual contra as laterais direita/esquerda recortadas do checklist.
-            base_lateral_part_id = _base_lateral_part_id(part_id)
-            if base_lateral_part_id:
-                part_id = base_lateral_part_id
-                if lateral_references is not None:
-                    side_decision = _infer_lateral_side(image_path, base_lateral_part_id, lateral_references)
-                    if side_decision.lado in {"direita", "esquerda"}:
-                        part_id = _build_lateralized_part_id(base_lateral_part_id, side_decision.lado)
-                        if side_decision.reason.startswith("fallback_"):
-                            # Fallback lateraliza para nao quebrar o fluxo dos peritos,
-                            # mas preserva a incerteza com uma pequena penalizacao.
-                            base_confidence = min(base_confidence, base_confidence * 0.85)
-                        else:
-                            base_confidence = min(base_confidence, side_decision.confidence)
-                    else:
-                        # Mantem a peca base e sinaliza a incerteza reduzindo a confianca.
-                        base_confidence = min(base_confidence, base_confidence * 0.85)
-            # Retrovisor: refina o lado com uma micro-inferência dedicada.
-            # Importante: não derrubar a confiança abaixo do threshold do orquestrador,
-            # senão as fotos de retrovisor são descartadas antes do perito.
-            if part_id.strip().lower().startswith("retrovisor_"):
-                lado, lado_conf = _infer_retrovisor_side(image_path)
-                if lado in {"esquerdo", "direito"}:
-                    part_id = f"retrovisor_{lado}"
-                    # Usa a confiança do classificador de lado como limite superior,
-                    # mas mantém ao menos a confiança mínima do pipeline.
-                    cap = lado_conf if lado_conf > 0 else base_confidence
-                    base_confidence = min(base_confidence, max(cap, global_config.CONFIANCA_MINIMA))
-                else:
-                    # incerto: mantém o part_id original, mas reduz levemente a confiança
-                    # sem cair abaixo da confiança mínima.
-                    base_confidence = max(global_config.CONFIANCA_MINIMA, base_confidence * 0.85)
+            mapping = photo_part_cache.get(photo_part_code)
+            if not mapping:
+                print(
+                    f"[triage] id_foto '{photo_part_code}' não encontrado "
+                    f"na planilha de mapeamento: {PHOTO_PART_MAPPING_XLSX}"
+                )
+                continue
 
-            # Define checklist_damage_reported de forma determinística quando possível.
+            original_part_id = str(mapping["part_id"]).strip().lower()
+            part_id = original_part_id
+            expected_description = str(mapping.get("description") or "").strip() or None
+
+            # Validacao LLM: audita compatibilidade e pode sugerir correcao segura.
+            llm_validation = _validate_part_with_llm(
+                image_path=image_path,
+                expected_part_id=part_id,
+                expected_description=expected_description,
+                checklist_text=checklist_text,
+            )
+
+            validation_status = str(llm_validation.get("status") or "").strip().lower()
+            validation_conf = _clamp01(llm_validation.get("confidence", 0.0))
+            suggested_part_id = str(llm_validation.get("part_id_sugerido") or "").strip().lower() or None
+
+            should_autocorrect_part_id = (
+                validation_status == "divergente"
+                and suggested_part_id is not None
+                and validation_conf > PART_VALIDATION_AUTOCORRECT_MIN_CONFIDENCE
+            )
+
+            part_id_source = "photo_part_mapping_xlsx"
+            if should_autocorrect_part_id:
+                part_id = suggested_part_id
+                part_id_source = "llm_part_validation_autocorrect"
+                llm_validation["part_id_original"] = original_part_id
+                llm_validation["part_id_autocorrigido"] = part_id
+
+            needs_human_review = (
+                validation_status == "divergente"
+                and validation_conf >= PART_VALIDATION_MIN_CONFIDENCE
+                and not should_autocorrect_part_id
+            )
+
+            # IMPORTANTE:
+            # confidence representa a fonte usada para o part_id final.
+            base_confidence = validation_conf if should_autocorrect_part_id else 1.0
+
+            # Se a imagem tem divergência, reduzimos a confiança para não ir ao perito
+            # caso o orquestrador ainda não filtre needs_human_review.
+            if needs_human_review:
+                base_confidence = 0.0
+
+            view = "media"
+
             if checklist_part_ids is not None:
                 checklist_damage_reported = _checklist_damage_for_part(part_id, checklist_part_ids)
             else:
-                checklist_damage_reported = result_dict.get("checklist_damage_reported")
+                checklist_damage_reported = None
 
             triage_img = TriageImage(
                 image_id=image_id,
@@ -559,41 +758,47 @@ def run_triage(case_id: str, fotos_dir: str, output_dir: str, checklist_path: st
                 view=view,
                 confidence=round(base_confidence, 4),
                 checklist_damage_reported=checklist_damage_reported,
+                part_id_source=part_id_source,
+                photo_part_code=photo_part_code,
+                expected_part_description=expected_description,
+                llm_part_validation=llm_validation,
+                needs_human_review=needs_human_review,
             )
             images_out.append(triage_img)
+
         except Exception as e:
             print(f"Erro ao processar imagem {fname}: {e}")
             continue
 
     # Pós-processamento: se houver múltiplos retrovisores e todos ficaram no mesmo lado,
     # força diversidade (E/D) com confiança reduzida, evitando colapso do pipeline.
-    retro_idxs = [i for i, img in enumerate(images_out) if (img.part_id or "").startswith("retrovisor_")]
-    if len(retro_idxs) >= 2:
-        sides = {str(images_out[i].part_id).strip().lower() for i in retro_idxs}
-        if sides.issubset({"retrovisor_esquerdo"}) or sides.issubset({"retrovisor_direito"}):
-            # Ordena por confiança desc para manter o "mais provável" como está.
-            ordered = sorted(retro_idxs, key=lambda i: float(images_out[i].confidence), reverse=True)
-            first_side = str(images_out[ordered[0]].part_id).strip().lower()
-            if first_side not in {"retrovisor_esquerdo", "retrovisor_direito"}:
-                first_side = "retrovisor_direito"
-            opposite = "retrovisor_esquerdo" if first_side == "retrovisor_direito" else "retrovisor_direito"
+    # retro_idxs = [i for i, img in enumerate(images_out) if (img.part_id or "").startswith("retrovisor_")]
+    # if len(retro_idxs) >= 2:
+    #     sides = {str(images_out[i].part_id).strip().lower() for i in retro_idxs}
+    #     if sides.issubset({"retrovisor_esquerdo"}) or sides.issubset({"retrovisor_direito"}):
+    #         # Ordena por confiança desc para manter o "mais provável" como está.
+    #         ordered = sorted(retro_idxs, key=lambda i: float(images_out[i].confidence), reverse=True)
+    #         first_side = str(images_out[ordered[0]].part_id).strip().lower()
+    #         if first_side not in {"retrovisor_esquerdo", "retrovisor_direito"}:
+    #             first_side = "retrovisor_direito"
+    #         opposite = "retrovisor_esquerdo" if first_side == "retrovisor_direito" else "retrovisor_direito"
 
-            for j, idx in enumerate(ordered[1:], start=1):
-                forced_side = opposite if (j % 2 == 1) else first_side
-                current = images_out[idx]
-                # re-cria o objeto para manter compatibilidade com pydantic/dataclass
-                forced_conf = max(
-                    global_config.CONFIANCA_MINIMA,
-                    min(float(current.confidence), global_config.CONFIANCA_MINIMA + 0.01),
-                )
-                images_out[idx] = TriageImage(
-                    image_id=current.image_id,
-                    photo_path=current.photo_path,
-                    part_id=forced_side,
-                    view=current.view,
-                    confidence=round(forced_conf, 4),
-                    checklist_damage_reported=current.checklist_damage_reported,
-                )
+    #         for j, idx in enumerate(ordered[1:], start=1):
+    #             forced_side = opposite if (j % 2 == 1) else first_side
+    #             current = images_out[idx]
+    #             # re-cria o objeto para manter compatibilidade com pydantic/dataclass
+    #             forced_conf = max(
+    #                 global_config.CONFIANCA_MINIMA,
+    #                 min(float(current.confidence), global_config.CONFIANCA_MINIMA + 0.01),
+    #             )
+    #             images_out[idx] = TriageImage(
+    #                 image_id=current.image_id,
+    #                 photo_path=current.photo_path,
+    #                 part_id=forced_side,
+    #                 view=current.view,
+    #                 confidence=round(forced_conf, 4),
+    #                 checklist_damage_reported=current.checklist_damage_reported,
+    #             )
 
     output = TriageOutput(
         case_id=case_id, 

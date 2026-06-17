@@ -52,9 +52,12 @@ def _triage_index(triage_out: TriageOutput) -> dict[str, dict[str, Any]]:
             "photo_path": img.photo_path,
             "confidence": float(img.confidence),
             "checklist_damage_reported": img.checklist_damage_reported,
+            "needs_human_review": bool(getattr(img, "needs_human_review", False)),
+            "llm_part_validation": getattr(img, "llm_part_validation", None),
+            "photo_part_code": getattr(img, "photo_part_code", None),
+            "part_id_source": getattr(img, "part_id_source", None),
         }
     return idx
-
 
 def _build_checklist_divergencias(
     triage_idx: dict[str, dict[str, Any]],
@@ -545,7 +548,13 @@ def rodar_orquestrador(
     quality_out = QualityOutput(**quality_raw)
 
     aprovadas_ids = {a.image_id for a in quality_out.assessments if a.aprovada}
-    imagens_filtradas = [img for img in triage_out.images if img.image_id in aprovadas_ids]
+
+    imagens_filtradas = [
+        img
+        for img in triage_out.images
+        if img.image_id in aprovadas_ids
+        and not bool(getattr(img, "needs_human_review", False))
+    ]
 
     # 3) Mapeamento de Peritos
     mapeamento_peritos = {
