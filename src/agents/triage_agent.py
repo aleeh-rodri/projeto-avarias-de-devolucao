@@ -41,6 +41,13 @@ try:
 except ValueError:
     PART_VALIDATION_MIN_CONFIDENCE = 0.75
 
+try:
+    PART_VALIDATION_AUTOCORRECT_MIN_CONFIDENCE = float(
+        os.getenv("AGENTE_TRIAGE_PART_AUTOCORRECT_MIN_CONF", "0.9")
+    )
+except ValueError:
+    PART_VALIDATION_AUTOCORRECT_MIN_CONFIDENCE = 0.9
+
 PHOTO_PART_MAPPING_XLSX = Path(
     os.getenv(
         "AGENTE_PHOTO_PART_MAPPING_XLSX",
@@ -314,7 +321,8 @@ REGRAS IMPORTANTES
 - Considere a PECA ESPERADA acima como a fonte oficial para a validacao visual.
 - Regra especial: quando o part_id for "acessorios" e houver descricao da planilha, compare a foto com a descricao da planilha.
 - Para os demais part_ids, a descricao da planilha e apenas contexto auxiliar; nao use a descricao como alvo principal da comparacao.
-- O part_id da planilha nao deve ser trocado automaticamente.
+- Sua tarefa e validar a peca da planilha e, se houver divergencia clara, sugerir o part_id correto.
+- O sistema so podera usar o part_id sugerido quando a divergencia tiver confianca muito alta.
 - So diga que NAO corresponde se houver evidencia visual clara de que a foto mostra outra peca ou outro item.
 - Nao marque divergencia por enquadramento parcial, zoom, reflexo ou imagem dificil.
 - Se a foto estiver ruim, ambigua ou cortada, prefira "incerto", nao "divergente".
@@ -692,10 +700,11 @@ def run_triage(case_id: str, fotos_dir: str, output_dir: str, checklist_path: st
                 )
                 continue
 
-            part_id = str(mapping["part_id"]).strip().lower()
+            original_part_id = str(mapping["part_id"]).strip().lower()
+            part_id = original_part_id
             expected_description = str(mapping.get("description") or "").strip() or None
 
-            # Validação LLM: não troca part_id, só audita compatibilidade.
+            # Validacao LLM: audita compatibilidade e pode sugerir correcao segura.
             llm_validation = _validate_part_with_llm(
                 image_path=image_path,
                 expected_part_id=part_id,
@@ -705,16 +714,30 @@ def run_triage(case_id: str, fotos_dir: str, output_dir: str, checklist_path: st
 
             validation_status = str(llm_validation.get("status") or "").strip().lower()
             validation_conf = _clamp01(llm_validation.get("confidence", 0.0))
+            suggested_part_id = str(llm_validation.get("part_id_sugerido") or "").strip().lower() or None
+
+            should_autocorrect_part_id = (
+                validation_status == "divergente"
+                and suggested_part_id is not None
+                and validation_conf > PART_VALIDATION_AUTOCORRECT_MIN_CONFIDENCE
+            )
+
+            part_id_source = "photo_part_mapping_xlsx"
+            if should_autocorrect_part_id:
+                part_id = suggested_part_id
+                part_id_source = "llm_part_validation_autocorrect"
+                llm_validation["part_id_original"] = original_part_id
+                llm_validation["part_id_autocorrigido"] = part_id
 
             needs_human_review = (
                 validation_status == "divergente"
                 and validation_conf >= PART_VALIDATION_MIN_CONFIDENCE
+                and not should_autocorrect_part_id
             )
 
             # IMPORTANTE:
-            # confidence aqui representa confiança do metadado/planilha,
-            # não confiança visual do LLM.
-            base_confidence = 1.0
+            # confidence representa a fonte usada para o part_id final.
+            base_confidence = validation_conf if should_autocorrect_part_id else 1.0
 
             # Se a imagem tem divergência, reduzimos a confiança para não ir ao perito
             # caso o orquestrador ainda não filtre needs_human_review.
@@ -731,11 +754,11 @@ def run_triage(case_id: str, fotos_dir: str, output_dir: str, checklist_path: st
             triage_img = TriageImage(
                 image_id=image_id,
                 photo_path=image_path,
-                part_id=part_id,  # sempre da planilha
+                part_id=part_id,
                 view=view,
                 confidence=round(base_confidence, 4),
                 checklist_damage_reported=checklist_damage_reported,
-                part_id_source="photo_part_mapping_xlsx",
+                part_id_source=part_id_source,
                 photo_part_code=photo_part_code,
                 expected_part_description=expected_description,
                 llm_part_validation=llm_validation,
