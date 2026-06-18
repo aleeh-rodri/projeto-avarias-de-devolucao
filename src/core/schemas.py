@@ -43,18 +43,19 @@ PART_IDS: list[str] = [
     "farol_direito",
     "lanterna_esquerda",
     "lanterna_direita",
-    "parabarro_esquerdo",
-    "parabarro_direito",
+    "parabarro_esquerdo", #adicionado
+    "parabarro_direito", #adicionado
+    "paralama_esquerdo", #adicionado
+    "paralama_direito", #adicionado
+    "motor",
 ]
 
 # Peças que podem existir no checklist/Excel,
 # mesmo que ainda não tenham perito automático.
 CHECKLIST_PART_IDS: list[str] = sorted(set(PART_IDS + [
-    "paralama_esquerdo",
-    "paralama_direito",
     "traseira",
     "dianteira",
-    "motor",
+    "grade_dianteira",
     "lateral_esquerda",
     "lateral_direita",
 ]))
