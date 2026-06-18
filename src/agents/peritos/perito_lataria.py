@@ -91,7 +91,7 @@ CONTEXTO DO CHECKLIST (use como pista; a evidência visual tem prioridade):
 {expected_block}
 
 PEÇAS ALVO (somente estas):
-- Portas, Capô, Teto, Laterais, Para-lamas, Caixa de Ar, Colunas, Tampa/Porta-malas, Retrovisores.
+- Portas, Capô, Teto, Laterais, Para-lamas, Para-barro, Caixa de Ar, Colunas, Tampa/Porta-malas, Retrovisores.
 
 DEFINIÇÕES TÉCNICAS (o que é avaria)
 - Arranhão/Risco: marca linear na pintura (pode ter transferência de tinta).
