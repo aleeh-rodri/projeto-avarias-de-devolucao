@@ -36,6 +36,12 @@ class PeritoLataria(BasePerito):
                 return ("teto", "nao_se_aplica")
             if pid == "tampa_porta_malas":
                 return ("tampa porta-malas", "nao_se_aplica")
+            if pid == "parabarro_esquerdo":
+                return ("para-barro", "esquerdo")
+
+            if pid == "parabarro_direito":
+                return ("para-barro", "direito")
+            
             if pid.startswith("retrovisor_"):
                 # Não force o lado: triagem pode errar esquerdo/direito.
                 # O modelo deve inferir o lado pela imagem quando possível.
@@ -197,6 +203,28 @@ RETORNE SOMENTE ESTE JSON:
             elif "tampa" in peca_norm and ("malas" in peca_norm or "porta" in peca_norm):
                 kws = ["tampa", "porta", "malas", acao]
 
+            elif "para-barro" in peca_norm or "parabarro" in peca_norm or "para barro" in peca_norm:
+                kws = ["para", "barro", acao]
+
+                if lado_norm == "esquerdo":
+                    kws.append("esquerdo")
+                elif lado_norm == "direito":
+                    kws.append("direito")
+
+            if selected and ("para-barro" in peca_norm or "parabarro" in peca_norm or "para barro" in peca_norm):
+                if lado_norm == "esquerdo":
+                    filtered = [
+                        s for s in selected
+                        if "esquerd" in (s.descricao or "").lower()
+                    ]
+                    selected = filtered or selected
+                elif lado_norm == "direito":
+                    filtered = [
+                        s for s in selected
+                        if "direit" in (s.descricao or "").lower()
+                    ]
+                    selected = filtered or selected
+
             return kws
 
         def _select_lpu_services_for_part(peca_detectada: str, lado: str, nivel: str) -> list[LpuItem]:
@@ -308,6 +336,9 @@ RETORNE SOMENTE ESTE JSON:
                 "porta" in peca_norm
                 or "retrovisor" in peca_norm
                 or "paralama" in peca_norm
+                or "para-barro" in peca_norm
+                or "parabarro" in peca_norm
+                or "para barro" in peca_norm
                 or ("caixa" in peca_norm and "ar" in peca_norm)
             ):
                 filtered = [
