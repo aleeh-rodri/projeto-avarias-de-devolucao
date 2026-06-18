@@ -7,7 +7,7 @@ from pathlib import Path
 from typing import Any
 
 from core.config import config as global_config
-from core.pdf_utils import extract_reldev_avaria_part_ids
+from core.pdf_utils import extract_reldev_avaria_part_ids, extract_reldev_chave_reserva_nao_tem
 from core.schemas import TriageOutput, QualityOutput
 from agents.triage_agent import run_triage
 from agents.quality_agent import run_quality_check
@@ -25,6 +25,7 @@ from core.vehicle_metadata import VehicleMetadataCache
 # CONFIG
 # =========================
 BASE_DIR = global_config.BASE_DIR
+KEY_RESERVE_PHOTO_CODES = {"7", "8", "174"}
 
 
 @dataclass(frozen=True)
@@ -58,6 +59,15 @@ def _triage_index(triage_out: TriageOutput) -> dict[str, dict[str, Any]]:
             "part_id_source": getattr(img, "part_id_source", None),
         }
     return idx
+
+
+def _is_key_reserve_photo(img: Any) -> bool:
+    code = str(getattr(img, "photo_part_code", "") or "").strip()
+    if code in KEY_RESERVE_PHOTO_CODES:
+        return True
+
+    desc = str(getattr(img, "expected_part_description", "") or "").strip().lower()
+    return "chave" in desc and ("reserva" in desc or "titular" in desc or "original" in desc)
 
 def _build_checklist_divergencias(
     triage_idx: dict[str, dict[str, Any]],
@@ -547,6 +557,13 @@ def rodar_orquestrador(
     )
     quality_out = QualityOutput(**quality_raw)
 
+    chave_reserva_nao_tem = False
+    if checklist_path and os.path.exists(checklist_path):
+        try:
+            chave_reserva_nao_tem = extract_reldev_chave_reserva_nao_tem(checklist_path)
+        except Exception:
+            chave_reserva_nao_tem = False
+
     aprovadas_ids = {a.image_id for a in quality_out.assessments if a.aprovada}
 
     imagens_filtradas = [
@@ -670,6 +687,27 @@ def rodar_orquestrador(
                 max_itens=config.max_fotos_por_peca,
             )
 
+        if nome_perito == "acessorios" and chave_reserva_nao_tem:
+            key_registros = [
+                img.model_dump()
+                for img in (triage_out.images or [])
+                if _is_key_reserve_photo(img)
+                and not bool(getattr(img, "needs_human_review", False))
+            ]
+            if key_registros:
+                key_melhores = _escolher_melhores_imagens(
+                    key_registros,
+                    preferir_view=config.preferir_view,
+                    max_itens=config.max_fotos_por_peca,
+                )
+                seen_ids = {str(r.get("image_id") or "") for r in key_melhores}
+                complementares = [
+                    r
+                    for r in melhores
+                    if str(r.get("image_id") or "") not in seen_ids
+                ]
+                melhores = (key_melhores + complementares)[: config.max_fotos_por_peca]
+
         if melhores:
             image_paths = []
             imagens_usadas = []
@@ -690,6 +728,7 @@ def rodar_orquestrador(
                     image_paths=image_paths, 
                     checklist_summary=triage_out.checklist_summary,
                     imagens_usadas=imagens_usadas,
+                    chave_reserva_nao_tem=chave_reserva_nao_tem,
                     wheel_type=wheel_type,
                 )
                 
@@ -764,7 +803,8 @@ def rodar_orquestrador(
         "case_id": case_id,
         "triagem": {
             "total_imagens": len(triage_out.images),
-            "imagens_aprovadas_qualidade": len(imagens_filtradas)
+            "imagens_aprovadas_qualidade": len(imagens_filtradas),
+            "chave_reserva_nao_tem": chave_reserva_nao_tem,
         },
         "peritos": resultados_peritos,
         "divergencias_checklist": divergencias_checklist,
