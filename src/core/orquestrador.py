@@ -591,8 +591,10 @@ def rodar_orquestrador(
                 "porta_dianteira", "porta_dianteira_esquerda", "porta_dianteira_direita",
                 "porta_traseira", "porta_traseira_esquerda", "porta_traseira_direita",
                 "paralama_dianteiro", "paralama_dianteiro_esquerdo", "paralama_dianteiro_direito",
-                "paralama_traseiro", "paralama_traseiro_esquerdo", "paralama_traseiro_direito",
-                "retrovisor_esquerdo", "retrovisor_direito"
+                "paralama_traseiro", "paralama_traseiro_esquerdo", "paralama_traseiro_direito", "paralama_esquerdo", "paralama_direito",
+                "retrovisor_esquerdo", "retrovisor_direito", 
+                # novo
+                "parabarro_esquerdo", "parabarro_direito",
             },
             "classe": PeritoLataria,
             "config": ConfigPeritoLataria(caminho_lpu_xlsx=config.caminho_lpu_xlsx)
