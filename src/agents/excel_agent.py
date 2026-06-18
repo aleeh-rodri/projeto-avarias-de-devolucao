@@ -634,9 +634,18 @@ class ExcelAgent:
 
             perito_force_include = bool(resultado.get("force_include") is True)
             perito_needs_human_review = bool(resultado.get("needs_human_review") is True)
+            resultado_origin = str(resultado.get("origin") or "").strip()
             # Heurística de origem: só rotular como AGENTE_IA quando for linha "manual/revisão"
             # (ex.: force_include/needs_human_review). Serviços normais do LPU ficam sem rótulo.
-            perito_origem = "agente_ia" if (perito_force_include or perito_needs_human_review) else None
+            perito_origem = (
+                None
+                if resultado_origin == "checklist_chave_reserva_visual"
+                else (
+                    "checklist"
+                    if resultado_origin.startswith("checklist_")
+                    else ("agente_ia" if (perito_force_include or perito_needs_human_review) else None)
+                )
+            )
 
             # Preferir fotos por item (mais preciso) quando houver breakdown em "itens".
             itens = resultado.get("itens")

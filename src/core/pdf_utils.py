@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import os
 import re
+import unicodedata
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -53,6 +54,25 @@ _RE_SPACES = re.compile(r"\s+")
 
 def _norm(s: str) -> str:
     return _RE_SPACES.sub(" ", (s or "").strip().lower())
+
+
+def _norm_ascii(s: str) -> str:
+    text = unicodedata.normalize("NFKD", str(s or ""))
+    text = "".join(c for c in text if not unicodedata.combining(c))
+    return _RE_SPACES.sub(" ", text.strip().lower())
+
+
+def is_chave_reserva_nao_tem_row(row: ChecklistRow) -> bool:
+    """Identifica a linha do RELDEV que marca Chave Reserva como Nao Tem."""
+    descricao = _norm_ascii(row.descricao)
+    item = _norm_ascii(row.item)
+    registro = _norm_ascii(row.registro)
+
+    return (
+        "itens de conferencia" in descricao
+        and "chave reserva" in item
+        and registro == "nao tem"
+    )
 
 
 def _map_checklist_row_to_part_id(descricao: str, item: str) -> str | None:
@@ -298,3 +318,8 @@ def extract_reldev_avaria_part_ids(pdf_path: str | Path) -> set[str]:
         if item.part_id:
             out.add(item.part_id)
     return out
+
+
+def extract_reldev_chave_reserva_nao_tem(pdf_path: str | Path) -> bool:
+    """Retorna True quando o RELDEV marca Itens De Conferencia / Chave Reserva / Nao Tem."""
+    return any(is_chave_reserva_nao_tem_row(row) for row in extract_reldev_rows(pdf_path))
