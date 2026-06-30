@@ -76,6 +76,7 @@ def _total_price(selected: list[LpuItem]) -> float | str:
     return sum(float(s.preco) for s in selected if isinstance(s.preco, (int, float)))
 
 
+
 class PeritoAcessorios(BasePerito):
     def __init__(self, config: ConfigPeritoAcessorios):
         self.config = config
