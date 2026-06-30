@@ -24,7 +24,7 @@ def build_quality_prompt(part_id: str, checklist_damage_reported: bool | None = 
     if checklist_damage_reported is True:
         checklist_hint = (
             "\nCONTEXTO EXTRA: o checklist reportou avaria para esta peca. "
-            "Se a foto for minimamente utilizavel para analise/orcamento, mantenha qualidade media ou alta.\n"
+            "Se a foto for minimamente utilizavel para analise/orcamento, NÃO reprove por excesso de rigor.\n"
         )
 
     return f"""
@@ -48,8 +48,12 @@ Criterios de avaliacao:
    - Divergencia forte de peca e tratada pela triagem via `needs_human_review`, nao por este agente.
 
 3. Decisao de aprovacao:
-   - Aprovada se a qualidade for "media" ou "alta".
+   - Regra padrão: Aprovada se Qualidade for "media" ou "alta". 
    - Reprovada se a qualidade for "baixa".
+   - EXCEÇÃO (quando o checklist reportou avaria):
+        - Aprovada se a foto for utilizável para análise/orçamento (qualidade "media" ou "alta").
+        - Reprove apenas se a foto for claramente inútil (qualidade "baixa" por estar ilegível) OU não mostrar nada relacionado.
+  
 
 Formato de saida:
 RETORNE SOMENTE JSON VALIDO (sem texto extra e sem blocos ```):
@@ -101,6 +105,13 @@ def run_quality_check(case_id: str, triage_images: list[TriageImage], output_dir
             # Compatibility disagreement is handled by triage (`needs_human_review`).
             # Quality approval only decides whether the image is usable for an expert.
             aprovada = qualidade_imagem in {"media", "alta"}
+
+            if img.checklist_damage_reported is True and qualidade_imagem == "baixa":
+                aprovada = True
+                motivo = (
+                    "Checklist reportou avaria; imagem mantida para análise/orçamento "
+                    "apesar da qualidade baixa."
+                )
 
             if aprovada and (motivo or "").strip() == "":
                 motivo = None
