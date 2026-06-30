@@ -1,5 +1,6 @@
 from __future__ import annotations
 import json
+import unicodedata
 from dataclasses import dataclass
 from typing import Any
 from core.llm_gate_client import call_llm_with_image
@@ -21,6 +22,25 @@ def _clean_json_fences(raw: str) -> str:
     if raw.startswith("```"):
         raw = raw.replace("```json", "").replace("```", "").strip()
     return raw
+
+
+def _norm_ascii(text: Any) -> str:
+    normalized = unicodedata.normalize("NFKD", str(text or ""))
+    normalized = "".join(c for c in normalized if not unicodedata.combining(c))
+    return " ".join(normalized.strip().lower().split())
+
+
+def _is_vehicle_key_piece(text: Any) -> bool:
+    normalized = _norm_ascii(text)
+    return "chave" in normalized and "roda" not in normalized
+
+
+def _contains_vehicle_key_service(items: list[LpuItem]) -> bool:
+    for item in items:
+        desc = _norm_ascii(item.descricao)
+        if "chave principal" in desc or "chave reserva" in desc:
+            return True
+    return False
 
 
 def _build_key_count_prompt() -> str:
@@ -189,7 +209,7 @@ class PeritoAcessorios(BasePerito):
             "validacao_chave_reserva": analyses,
         }
 
-    def run(self, image_paths: list[str], **kwargs) -> dict[str, Any]:
+    def _run_generico_acessorio(self, image_paths: list[str], **kwargs) -> dict[str, Any]:
         checklist_summary = kwargs.get("checklist_summary", "Nenhuma observação no checklist.")
         
         if kwargs.get("chave_reserva_nao_tem") is True:
@@ -216,6 +236,11 @@ CRITÉRIOS
 ANTI-EXCESSO
 - Se a imagem não mostra o item com clareza, prefira um resultado conservador e descreva que precisa de foto específica do acessório.
 
+REGRA DE CHAVE DO VEICULO
+- Nao cobre chave principal ou chave reserva neste fluxo generico.
+- Chave principal/reserva so pode ser cobrada pela rotina especifica de chave reserva, quando o checklist marcar "Nao Tem" e a validacao visual confirmar apenas uma chave.
+- Etiqueta, adesivo, chaveiro ou identificador preso a chave nao e dano de chave.
+
 RETORNE SOMENTE ESTE JSON:
 {{
     "peca": "nome da peça",
@@ -226,16 +251,153 @@ RETORNE SOMENTE ESTE JSON:
         try:
             raw = call_llm_with_image(prompt=prompt, image_path=image_paths[0])
             res = json.loads(raw.strip().replace("```json", "").replace("```", "").strip())
+            if _is_vehicle_key_piece(res.get("peca")):
+                return {
+                    "nivel_dano": "sem_dano",
+                    "peca": str(res.get("peca") or "chave"),
+                    "servicos": [],
+                    "preco_total": 0,
+                    "justificativa": (
+                        "Chave principal/reserva nao e cobrada pelo fluxo generico de acessorios; "
+                        "aplica-se somente a regra especifica de chave reserva."
+                    ),
+                    "fotos_analisadas": image_paths,
+                }
+            acao = str(res.get("acao") or "").strip().lower()
+            if acao not in {"reposicao", "reparo"}:
+                return {
+                    "nivel_dano": "sem_dano",
+                    "peca": str(res.get("peca") or "acessorio"),
+                    "servicos": [],
+                    "preco_total": 0,
+                    "justificativa": "Acao invalida ou ausente na analise generica de acessorios.",
+                    "fotos_analisadas": image_paths,
+                }
             selected = find_services(
                 self.lpu_items,
-                [res['peca'], res['acao']],
+                [res["peca"], acao],
                 perito_filtro="acessorios",
                 allow_global_fallback=False,
             )[:1]
+            if _contains_vehicle_key_service(selected):
+                return {
+                    "nivel_dano": "sem_dano",
+                    "peca": str(res.get("peca") or "chave"),
+                    "servicos": [],
+                    "preco_total": 0,
+                    "justificativa": (
+                        "Servico de chave principal/reserva bloqueado no fluxo generico de acessorios; "
+                        "aplica-se somente a regra especifica de chave reserva."
+                    ),
+                    "fotos_analisadas": image_paths,
+                }
             servicos_out = [ServiceItem(descricao=s.descricao, preco=s.preco) for s in selected]
             return ExpertConsolidatedOutput(
-                nivel_dano="reposicao", peca=res['peca'], servicos=servicos_out,
+                nivel_dano=acao if selected else "sem_dano", peca=res["peca"], servicos=servicos_out,
                 preco_total=_total_price(selected),
-                justificativa=res['justificativa'], fotos_analisadas=image_paths
+                justificativa=res.get("justificativa"), fotos_analisadas=image_paths
             ).model_dump()
         except: return {"erro": "falha acessorios"}
+
+    def _merge_results(self, results: list[dict[str, Any]], image_paths: list[str]) -> dict[str, Any]:
+        valid_results = [r for r in results if isinstance(r, dict) and not r.get("erro")]
+        charged_items = [
+            r
+            for r in valid_results
+            if isinstance(r.get("servicos"), list) and len(r.get("servicos") or []) > 0
+        ]
+
+        if not charged_items:
+            justificativas = [
+                str(r.get("justificativa") or "").strip()
+                for r in valid_results
+                if str(r.get("justificativa") or "").strip()
+            ]
+            out: dict[str, Any] = {
+                "nivel_dano": "sem_dano",
+                "peca": "acessorios",
+                "servicos": [],
+                "preco_total": 0,
+                "justificativa": "; ".join(justificativas) if justificativas else "Sem danos identificados em acessorios.",
+                "fotos_analisadas": image_paths,
+            }
+            for result in valid_results:
+                if result.get("validacao_chave_reserva"):
+                    out["validacao_chave_reserva"] = result.get("validacao_chave_reserva")
+                    break
+            return out
+
+        if len(charged_items) == 1:
+            return charged_items[0]
+
+        servicos_flat: list[Any] = []
+        fotos_flat: list[str] = []
+        preco_total = 0.0
+        any_sob_consulta = False
+        has_reposicao = False
+
+        for item in charged_items:
+            if str(item.get("nivel_dano") or "").strip().lower() == "reposicao":
+                has_reposicao = True
+
+            servicos = item.get("servicos")
+            if isinstance(servicos, list):
+                servicos_flat.extend(servicos)
+
+            fotos = item.get("fotos_analisadas")
+            if isinstance(fotos, list):
+                fotos_flat.extend([p for p in fotos if isinstance(p, str)])
+
+            pt = item.get("preco_total")
+            if isinstance(pt, (int, float)):
+                preco_total += float(pt)
+            elif str(pt).strip().lower() == "sob consulta":
+                any_sob_consulta = True
+
+        fotos_out: list[str] = []
+        seen: set[str] = set()
+        for path in fotos_flat:
+            if path in seen:
+                continue
+            seen.add(path)
+            fotos_out.append(path)
+
+        out = {
+            "nivel_dano": "reposicao" if has_reposicao else "reparo",
+            "peca": "acessorios",
+            "servicos": servicos_flat,
+            "preco_total": "Sob consulta" if any_sob_consulta else float(preco_total),
+            "justificativa": "; ".join(
+                [
+                    f"{item.get('peca')}: {item.get('justificativa')}"
+                    for item in charged_items
+                    if item.get("peca")
+                ]
+            ),
+            "fotos_analisadas": fotos_out,
+            "itens": charged_items,
+        }
+        for result in valid_results:
+            if result.get("validacao_chave_reserva"):
+                out["validacao_chave_reserva"] = result.get("validacao_chave_reserva")
+                break
+        return out
+
+    def run(self, image_paths: list[str], **kwargs) -> dict[str, Any]:
+        checklist_summary = kwargs.get("checklist_summary", "Nenhuma observacao no checklist.")
+        results: list[dict[str, Any]] = []
+
+        if kwargs.get("chave_reserva_nao_tem") is True:
+            results.append(self._run_chave_reserva_nao_tem(image_paths))
+
+        generic_paths = [p for p in image_paths if not self._is_key_reserve_photo(p)]
+        if generic_paths:
+            results.append(
+                self._run_generico_acessorio(
+                    generic_paths,
+                    checklist_summary=checklist_summary,
+                    chave_reserva_nao_tem=False,
+                )
+            )
+
+        return self._merge_results(results, image_paths)

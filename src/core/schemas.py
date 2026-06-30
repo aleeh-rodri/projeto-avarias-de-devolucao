@@ -16,16 +16,16 @@ PART_IDS: list[str] = [
 	"capo",
 	"teto",
 	"tampa_porta_malas",
-	"porta_dianteira",
+	# "porta_dianteira",
 	"porta_dianteira_esquerda",
 	"porta_dianteira_direita",
-	"porta_traseira",
+	# "porta_traseira",
 	"porta_traseira_esquerda",
 	"porta_traseira_direita",
-	"paralama_dianteiro",
+	# "paralama_dianteiro",
 	"paralama_dianteiro_esquerdo",
 	"paralama_dianteiro_direito",
-	"paralama_traseiro",
+	# "paralama_traseiro",
 	"paralama_traseiro_esquerdo",
 	"paralama_traseiro_direito",
 	"retrovisor_esquerdo",
@@ -39,15 +39,20 @@ PART_IDS: list[str] = [
 	"interior",
 	"acessorios",
     #novas partes
-    "farol_esquerdo",
-    "farol_direito",
-    "lanterna_esquerda",
-    "lanterna_direita",
-    "parabarro_esquerdo", #adicionado
-    "parabarro_direito", #adicionado
-    "paralama_esquerdo", #adicionado
-    "paralama_direito", #adicionado
-    "motor",
+    "farol_dianteiro_esquerdo",
+    "farol_dianteiro_direito",
+    "lanterna_traseira_esquerda",
+    "lanterna_traseira_direita",
+    "caixa_ar_esquerda",
+    "caixa_ar_direita",
+    "coluna_esquerda",
+    "coluna_direita",
+    "parabarro_esquerdo", 
+    "parabarro_direito",
+
+    # "paralama_esquerdo", #adicionado
+    # "paralama_direito", #adicionado
+    # "motor",
 ]
 
 # Peças que podem existir no checklist/Excel,
@@ -58,6 +63,7 @@ CHECKLIST_PART_IDS: list[str] = sorted(set(PART_IDS + [
     "grade_dianteira",
     "lateral_esquerda",
     "lateral_direita",
+   
 ]))
 
 class TriageImage(BaseModel):

@@ -36,11 +36,23 @@ class PeritoLataria(BasePerito):
                 return ("teto", "nao_se_aplica")
             if pid == "tampa_porta_malas":
                 return ("tampa porta-malas", "nao_se_aplica")
+            
             if pid == "parabarro_esquerdo":
                 return ("para-barro", "esquerdo")
-
             if pid == "parabarro_direito":
                 return ("para-barro", "direito")
+            
+            if pid == "caixa_ar_esquerda":
+                return ("caixa de ar", "esquerdo")
+
+            if pid == "caixa_ar_direita":
+                return ("caixa de ar", "direito")
+
+            if pid == "coluna_esquerda":
+                return ("coluna", "esquerdo")
+
+            if pid == "coluna_direita":
+                return ("coluna", "direito")
             
             if pid.startswith("retrovisor_"):
                 # Não force o lado: triagem pode errar esquerdo/direito.
@@ -189,6 +201,12 @@ RETORNE SOMENTE ESTE JSON:
                     kws.append("esquerdo")
                 elif lado_norm == "direito":
                     kws.append("direito")
+            elif "coluna" in peca_norm:
+                kws = ["coluna", acao]
+                if lado_norm == "esquerdo":
+                    kws.append("esquerdo")
+                elif lado_norm == "direito":
+                    kws.append("direito")
             elif "paralama" in peca_norm:
                 kws = ["paralama", acao]
                 # Use prefixos para casar com "direito/direita" e "esquerdo/esquerda".
@@ -210,20 +228,6 @@ RETORNE SOMENTE ESTE JSON:
                     kws.append("esquerdo")
                 elif lado_norm == "direito":
                     kws.append("direito")
-
-            if selected and ("para-barro" in peca_norm or "parabarro" in peca_norm or "para barro" in peca_norm):
-                if lado_norm == "esquerdo":
-                    filtered = [
-                        s for s in selected
-                        if "esquerd" in (s.descricao or "").lower()
-                    ]
-                    selected = filtered or selected
-                elif lado_norm == "direito":
-                    filtered = [
-                        s for s in selected
-                        if "direit" in (s.descricao or "").lower()
-                    ]
-                    selected = filtered or selected
 
             return kws
 
@@ -331,6 +335,36 @@ RETORNE SOMENTE ESTE JSON:
                 ]
                 selected = filtered_side or selected
 
+
+            if selected and ("para-barro" in peca_norm or "parabarro" in peca_norm or "para barro" in peca_norm):
+                if lado_norm == "esquerdo":
+                    filtered = [
+                        s for s in selected
+                        if "esquerd" in (s.descricao or "").lower()
+                    ]
+                    selected = filtered or selected
+                elif lado_norm == "direito":
+                    filtered = [
+                        s for s in selected
+                        if "direit" in (s.descricao or "").lower()
+                    ]
+                    selected = filtered or selected
+        
+            
+            # Caixa de ar / coluna: se o lado é conhecido, não misturar serviços do outro lado.
+            if selected and (
+                ("caixa" in peca_norm and "ar" in peca_norm)
+                or "coluna" in peca_norm
+            ) and lado_norm in {"esquerdo", "direito"}:
+                lado_tokens = ["esquerd"] if lado_norm == "esquerdo" else ["direit"]
+
+                filtered_side = [
+                    s
+                    for s in selected
+                    if any(tok in (s.descricao or "").lower() for tok in lado_tokens)
+                ]
+                selected = filtered_side or selected
+
             # Evita itens genéricos multi-peças quando a peça é específica
             if selected and (
                 "porta" in peca_norm
@@ -340,6 +374,7 @@ RETORNE SOMENTE ESTE JSON:
                 or "parabarro" in peca_norm
                 or "para barro" in peca_norm
                 or ("caixa" in peca_norm and "ar" in peca_norm)
+                or "coluna" in peca_norm
             ):
                 filtered = [
                     s

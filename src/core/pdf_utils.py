@@ -150,6 +150,29 @@ def _map_checklist_row_to_part_id(descricao: str, item: str) -> str | None:
         if "esquerd" in combined:
             return "retrovisor_esquerdo"
         return None
+    
+    if "para-barro" in combined or "para barro" in combined or "parabarro" in combined:
+        if "esquerd" in combined:
+            return "parabarro_esquerdo"
+        if "direit" in combined:
+            return "parabarro_direito"
+        return None
+    
+    # Caixa de ar
+    if "caixa" in combined and "ar" in combined:
+        if "esquerd" in combined:
+            return "caixa_ar_esquerda"
+        if "direit" in combined:
+            return "caixa_ar_direita"
+        return None
+    
+    # Coluna
+    if "coluna" in combined:
+        if "esquerd" in combined:
+            return "coluna_esquerda"
+        if "direit" in combined:
+            return "coluna_direita"
+        return None
 
     return None
 

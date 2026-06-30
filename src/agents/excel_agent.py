@@ -684,7 +684,7 @@ class ExcelAgent:
                             "qtd": 1,
                             "fotos": fotos_line,
                             "triage_meta": triage_meta,
-                            "force_include": perito_force_include,
+                            "force_include": perito_force_include or bool(it.get("force_include") is True),
                         })
             else:
                 servicos = resultado.get("servicos", [])

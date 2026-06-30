@@ -204,8 +204,10 @@ def _rank_nivel(nivel: str) -> int:
     return {
         "sem_dano": 0,
         "leve": 1,
+        "reparo": 1,
         "moderado": 2,
         "grave": 3,
+        "reposicao": 4,
         "troca": 4,
     }.get(n, 0)
 
@@ -240,6 +242,9 @@ def _apply_billing_policy_to_result(
         kept: list[dict[str, Any]] = []
         for it in itens:
             if not isinstance(it, dict):
+                continue
+            if it.get("force_include") is True:
+                kept.append(it)
                 continue
             image_ids = _image_ids_from_photo_paths(it.get("fotos_analisadas"))
             if not image_ids:
@@ -588,13 +593,15 @@ def rodar_orquestrador(
         "lataria": {
             "part_ids": {
                 "capo", "teto", "tampa_porta_malas",
-                "porta_dianteira", "porta_dianteira_esquerda", "porta_dianteira_direita",
-                "porta_traseira", "porta_traseira_esquerda", "porta_traseira_direita",
-                "paralama_dianteiro", "paralama_dianteiro_esquerdo", "paralama_dianteiro_direito",
-                "paralama_traseiro", "paralama_traseiro_esquerdo", "paralama_traseiro_direito", "paralama_esquerdo", "paralama_direito",
+                "porta_dianteira_esquerda", "porta_dianteira_direita",
+                "porta_traseira_esquerda", "porta_traseira_direita",
+                "paralama_dianteiro_esquerdo", "paralama_dianteiro_direito",
+                "paralama_traseiro_esquerdo", "paralama_traseiro_direito", 
                 "retrovisor_esquerdo", "retrovisor_direito", 
                 # novo
                 "parabarro_esquerdo", "parabarro_direito",
+                "caixa_ar_esquerda", "caixa_ar_direita",
+                "coluna_esquerda", "coluna_direita",
             },
             "classe": PeritoLataria,
             "config": ConfigPeritoLataria(caminho_lpu_xlsx=config.caminho_lpu_xlsx)
