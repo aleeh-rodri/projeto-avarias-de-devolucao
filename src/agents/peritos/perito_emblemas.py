@@ -174,46 +174,58 @@ class PeritoEmblemas(BasePerito):
         pecas_a_cotar: list[dict[str, Any]] = []
         fotos_analisadas: list[str] = []
         justificativas: list[str] = []
+        itens: list[dict[str, Any]] = []
 
         def _add_issue(*, pos: str, status: str, path: str, just: str | None) -> None:
-            nonlocal servicos, pecas_a_cotar, fotos_analisadas, justificativas
+            nonlocal servicos, pecas_a_cotar, fotos_analisadas, justificativas, itens
 
             pos_label = "dianteiro" if pos == "dianteiro" else "traseiro"
+            servico: ServiceItem | None = None
+            observacao = ""
 
             if status == "faltando":
-                servicos.append(
-                    ServiceItem(
-                        descricao=f"REVISAR - Emblema {pos_label} faltando (reposicao)",
-                        preco=0.0,
-                    )
+                servico = ServiceItem(
+                    descricao=f"REVISAR - Emblema {pos_label} faltando (reposicao)",
+                    preco=0.0,
                 )
-                pecas_a_cotar.append(
-                    {
-                        "descricao": f"emblema {pos_label}",
-                        "quantidade": 1,
-                        "observacao": "Item faltante detectado visualmente; revisar cobranca e cotar peca se aplicavel.",
-                    }
-                )
+                observacao = "Item faltante detectado visualmente; revisar cobranca e cotar peca se aplicavel."
 
             elif status == "danificado":
-                servicos.append(
-                    ServiceItem(
-                        descricao=(
-                            f"REVISAR - Emblema {pos_label} danificado/solto (inspecionar e substituir se necessario)"
-                        ),
-                        preco=0.0,
-                    )
+                servico = ServiceItem(
+                    descricao=(
+                        f"REVISAR - Emblema {pos_label} danificado/solto (inspecionar e substituir se necessario)"
+                    ),
+                    preco=0.0,
                 )
-                pecas_a_cotar.append(
-                    {
-                        "descricao": f"emblema {pos_label}",
-                        "quantidade": 1,
-                        "observacao": (
-                            "Possivel dano/soltura do emblema detectado visualmente; "
-                            "inspecionar e cotar substituicao se aplicavel."
-                        ),
-                    }
+                observacao = (
+                    "Possivel dano/soltura do emblema detectado visualmente; "
+                    "inspecionar e cotar substituicao se aplicavel."
                 )
+
+            if servico is None:
+                return
+
+            servicos.append(servico)
+            pecas_a_cotar.append(
+                {
+                    "descricao": f"emblema {pos_label}",
+                    "quantidade": 1,
+                    "observacao": observacao,
+                    "fotos_analisadas": [path],
+                }
+            )
+            itens.append(
+                {
+                    "nivel_dano": "reposicao",
+                    "peca": f"emblema {pos_label}",
+                    "servicos": [servico.model_dump()],
+                    "preco_total": 0.0,
+                    "justificativa": just,
+                    "fotos_analisadas": [path],
+                    "force_include": True,
+                    "needs_human_review": True,
+                }
+            )
 
             fotos_analisadas.append(path)
             if just:
@@ -231,6 +243,17 @@ class PeritoEmblemas(BasePerito):
             if status in {"faltando", "danificado"}:
                 _add_issue(pos=pos, status=status, path=path, just=just)
             else:
+                pos_label = "dianteiro" if pos == "dianteiro" else "traseiro"
+                itens.append(
+                    {
+                        "nivel_dano": "sem_dano",
+                        "peca": f"emblema {pos_label}",
+                        "servicos": [],
+                        "preco_total": 0.0,
+                        "justificativa": just,
+                        "fotos_analisadas": [path],
+                    }
+                )
                 fotos_analisadas.append(path)
                 if just:
                     justificativas.append(f"{pos}: {just}")
@@ -246,6 +269,7 @@ class PeritoEmblemas(BasePerito):
             justificativa=justificativa_final,
             fotos_analisadas=fotos_analisadas,
         ).model_dump()
+        out["itens"] = itens
 
         if any_issue:
             out["force_include"] = True

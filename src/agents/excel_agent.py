@@ -720,7 +720,9 @@ class ExcelAgent:
                     if obs:
                         full_desc += f" — {obs}"
 
-                    fotos_p = (resultado.get("fotos_analisadas", []) or [])
+                    fotos_p = p.get("fotos_analisadas")
+                    if not isinstance(fotos_p, list) or not fotos_p:
+                        fotos_p = (resultado.get("fotos_analisadas", []) or [])
                     triage_meta = self._triage_meta_for_photo(
                         triage_index,
                         fotos_p[0] if isinstance(fotos_p, list) and fotos_p else None,
