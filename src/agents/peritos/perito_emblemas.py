@@ -23,29 +23,43 @@ def _clean_json_fences(raw: str) -> str:
     return raw
 
 
-def build_emblemas_prompt(checklist_summary: str = "") -> str:
+GRUPO_DIANTEIRO_PART_IDS = {"parachoque_dianteiro"}
+GRUPO_TRASEIRO_PART_IDS = {"parachoque_traseiro", "tampa_porta_malas"}
+
+
+def _posicao_por_part_id(part_id: Any) -> str | None:
+    pid = str(part_id or "").strip().lower()
+    if pid in GRUPO_DIANTEIRO_PART_IDS:
+        return "dianteiro"
+    if pid in GRUPO_TRASEIRO_PART_IDS:
+        return "traseiro"
+    return None
+
+
+def build_emblemas_prompt(posicao: str, checklist_summary: str) -> str:
+    posicao_label = "DIANTEIRA" if posicao == "dianteiro" else "TRASEIRA"
     return f"""
-Você é um PERITO TÉCNICO DE ITENS EXTERNOS (emblemas/logotipos do veículo).
+Voce e um PERITO TECNICO DE ITENS EXTERNOS (emblemas/logotipos do veiculo).
 
 TAREFA
-- Identificar se a foto mostra a DIANTEIRA ou a TRASEIRA do carro.
-- Verificar se o EMBLEMA/LOGO da montadora (normalmente no centro) está PRESENTE, FALTANDO ou DANIFICADO.
-- Seja conservador: só marque como faltando/danificado se houver evidência visual clara.
-- Se a foto não mostrar a região do emblema com nitidez suficiente, responda como nao_conclusivo.
+- A foto pertence a {posicao_label} do carro. Use esse contexto como dado de entrada.
+- Nao classifique se a foto e dianteira ou traseira.
+- Verificar se o EMBLEMA/LOGO da montadora (normalmente no centro) esta PRESENTE, FALTANDO ou DANIFICADO.
+- Seja conservador: so marque como faltando/danificado se houver evidencia visual clara.
+- Se a foto nao mostrar a regiao do emblema com nitidez suficiente, responda como nao_conclusivo.
 
-DEFINIÇÕES (use exatamente estas)
-- "faltando": o emblema NÃO está presente onde deveria (ex.: espaço vazio, base sem logo, buraco/encaixe visível).
-- "danificado": o emblema está presente, mas quebrado, trincado, solto, arrancando ou claramente avariado.
-- Se estiver em dúvida entre "faltando" e "danificado", escolha "nao_conclusivo".
+DEFINICOES (use exatamente estas)
+- "faltando": o emblema NAO esta presente onde deveria (ex.: espaco vazio, base sem logo, buraco/encaixe visivel).
+- "danificado": o emblema esta presente, mas quebrado, trincado, solto, arrancando ou claramente avariado.
+- Se estiver em duvida entre "faltando" e "danificado", escolha "nao_conclusivo".
 
-CONTEXTO DO CHECKLIST (apenas como pista; evidência visual prevalece):
+CONTEXTO DO CHECKLIST (apenas como pista; evidencia visual prevalece):
 {checklist_summary}
 
-RETORNE SOMENTE JSON VÁLIDO (sem texto extra):
+RETORNE SOMENTE JSON VALIDO (sem texto extra):
 {{
-  "posicao": "dianteiro|traseiro|nao_identificavel",
   "status": "presente|faltando|danificado|nao_conclusivo",
-  "justificativa": "breve descrição objetiva do que foi visto"
+  "justificativa": "breve descricao objetiva do que foi visto"
 }}
 """.strip()
 
@@ -69,46 +83,82 @@ class PeritoEmblemas(BasePerito):
             return {"erro": "nenhuma imagem elegivel"}
 
         checklist_summary = kwargs.get("checklist_summary", "") or ""
-        prompt = build_emblemas_prompt(checklist_summary)
+        imagens_usadas = kwargs.get("imagens_usadas") or []
 
         progress_enabled = os.getenv("AGENTE_PROGRESS", "1").strip().lower() not in ("0", "false", "no")
         total = len(image_paths or [])
 
-        avaliados: list[dict[str, Any]] = []
-        for idx, img_path in enumerate(image_paths, start=1):
-            if progress_enabled:
-                try:
-                    name = Path(img_path).stem
-                except Exception:
-                    name = str(img_path)
-                print(f"[perito_emblemas] {idx}/{total} {name}", flush=True)
-            try:
-                raw = call_llm_with_image(prompt=prompt, image_path=img_path)
-                raw = _clean_json_fences(raw)
-                d = json.loads(raw)
-            except Exception:
-                continue
+        grupo_dianteiro: list[dict[str, Any]] = []
+        grupo_traseiro: list[dict[str, Any]] = []
 
-            posicao = str(d.get("posicao") or "").strip().lower()
-            status = str(d.get("status") or "").strip().lower()
-            justificativa = str(d.get("justificativa") or "").strip() or None
-
-            if posicao not in {"dianteiro", "traseiro", "nao_identificavel"}:
-                posicao = "nao_identificavel"
-            if status not in {"presente", "faltando", "danificado", "nao_conclusivo"}:
-                status = "nao_conclusivo"
-
-            avaliados.append(
-                {
-                    "posicao": posicao,
-                    "status": status,
-                    "justificativa": justificativa,
-                    "path": img_path,
-                }
+        for idx, img_path in enumerate(image_paths):
+            meta = (
+                imagens_usadas[idx]
+                if idx < len(imagens_usadas) and isinstance(imagens_usadas[idx], dict)
+                else {}
             )
+            part_id = str(meta.get("part_id") or "").strip().lower()
+            posicao = _posicao_por_part_id(part_id)
+            item = {
+                "path": img_path,
+                "part_id": part_id,
+                "index": idx + 1,
+            }
+
+            if posicao == "dianteiro":
+                grupo_dianteiro.append(item)
+            elif posicao == "traseiro":
+                grupo_traseiro.append(item)
+
+        avaliados: list[dict[str, Any]] = []
+
+        def _avaliar_grupo(posicao: str, grupo: list[dict[str, Any]]) -> None:
+            if not grupo:
+                return
+
+            prompt = build_emblemas_prompt(posicao, checklist_summary)
+
+            for item in grupo:
+                img_path = str(item.get("path") or "")
+
+                if progress_enabled:
+                    try:
+                        name = Path(img_path).stem
+                    except Exception:
+                        name = img_path
+                    print(
+                        f"[perito_emblemas] {item.get('index')}/{total} {posicao} {name}",
+                        flush=True,
+                    )
+
+                try:
+                    raw = call_llm_with_image(prompt=prompt, image_path=img_path)
+                    raw = _clean_json_fences(raw)
+                    d = json.loads(raw)
+                except Exception:
+                    continue
+
+                status = str(d.get("status") or "").strip().lower()
+                justificativa = str(d.get("justificativa") or "").strip() or None
+
+                if status not in {"presente", "faltando", "danificado", "nao_conclusivo"}:
+                    status = "nao_conclusivo"
+
+                avaliados.append(
+                    {
+                        "posicao": posicao,
+                        "status": status,
+                        "justificativa": justificativa,
+                        "path": img_path,
+                        "part_id": item.get("part_id"),
+                    }
+                )
+
+        _avaliar_grupo("dianteiro", grupo_dianteiro)
+        _avaliar_grupo("traseiro", grupo_traseiro)
 
         if not avaliados:
-            return {"erro": "falha emblemas: nenhuma avaliacao valida"}
+            return {"erro": "falha emblemas: nenhuma avaliacao valida com part_id dianteiro/traseiro"}
 
         def _best_for(posicao: str) -> dict[str, Any] | None:
             return max(
@@ -133,7 +183,7 @@ class PeritoEmblemas(BasePerito):
             if status == "faltando":
                 servicos.append(
                     ServiceItem(
-                        descricao=f"REVISAR — Emblema {pos_label} faltando (reposição)",
+                        descricao=f"REVISAR - Emblema {pos_label} faltando (reposicao)",
                         preco=0.0,
                     )
                 )
@@ -141,7 +191,7 @@ class PeritoEmblemas(BasePerito):
                     {
                         "descricao": f"emblema {pos_label}",
                         "quantidade": 1,
-                        "observacao": "Item faltante detectado visualmente; revisar cobrança e cotar peça se aplicável.",
+                        "observacao": "Item faltante detectado visualmente; revisar cobranca e cotar peca se aplicavel.",
                     }
                 )
 
@@ -149,7 +199,7 @@ class PeritoEmblemas(BasePerito):
                 servicos.append(
                     ServiceItem(
                         descricao=(
-                            f"REVISAR — Emblema {pos_label} danificado/solto (inspecionar e substituir se necessário)"
+                            f"REVISAR - Emblema {pos_label} danificado/solto (inspecionar e substituir se necessario)"
                         ),
                         preco=0.0,
                     )
@@ -159,8 +209,8 @@ class PeritoEmblemas(BasePerito):
                         "descricao": f"emblema {pos_label}",
                         "quantidade": 1,
                         "observacao": (
-                            "Possível dano/soltura do emblema detectado visualmente; "
-                            "inspecionar e cotar substituição se aplicável."
+                            "Possivel dano/soltura do emblema detectado visualmente; "
+                            "inspecionar e cotar substituicao se aplicavel."
                         ),
                     }
                 )

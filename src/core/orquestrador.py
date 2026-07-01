@@ -680,6 +680,24 @@ def rodar_orquestrador(
 
             melhores = reservadas + complementares
 
+        # Emblemas: cobre dianteira/traseira para que o perito receba o contexto pelo part_id.
+        elif nome_perito == "emblemas":
+            for r in registros:
+                pid = str(r.get("part_id", "") or "").strip().lower()
+                if pid in {"parachoque_dianteiro", "dianteira", "grade_dianteira"}:
+                    r["emblema_posicao"] = "dianteiro"
+                elif pid in {"parachoque_traseiro", "tampa_porta_malas", "traseira"}:
+                    r["emblema_posicao"] = "traseiro"
+                else:
+                    r["emblema_posicao"] = "__unknown__"
+
+            melhores = _escolher_melhores_imagens_diversificadas_por_peca(
+                registros,
+                preferir_view=config.preferir_view,
+                max_total=max(2, config.max_fotos_por_peca),
+                key_field="emblema_posicao",
+            )
+
         # Para-choque: tende a ter poucas peças (dianteiro/traseiro), mas ainda assim queremos diversidade.
         elif nome_perito == "parachoque":
             melhores = _escolher_melhores_imagens_diversificadas_por_peca(
