@@ -2,13 +2,12 @@ from __future__ import annotations
 
 import json
 import os
-from dataclasses import dataclass
 
 from pathlib import Path
 from typing import Any
 
 from core.config import config as global_config
-from core.llm_gate_client import call_llm_with_image, call_llm_with_reference_images
+from core.llm_gate_client import call_llm_with_image
 from core.schemas import CHECKLIST_PART_IDS, PART_IDS, TriageImage, TriageOutput
 from core.pdf_utils import extract_reldev_avaria_part_ids, extract_checklist_text
 from core.photo_part_metadata import PhotoPartMetadataCache, extract_photo_part_code
@@ -20,16 +19,6 @@ LATERALIZABLE_BASE_PART_IDS = {
     "paralama_dianteiro",
     "paralama_traseiro",
 }
-
-try:
-    LATERAL_SIDE_SCORE_MIN = float(
-        os.getenv(
-            "AGENTE_TRIAGE_LATERAL_SIDE_MIN_SCORE",
-            os.getenv("AGENTE_TRIAGE_LATERAL_SIDE_MIN_CONF", "0.72"),
-        )
-    )
-except ValueError:
-    LATERAL_SIDE_SCORE_MIN = 0.72
 
 try:
     PART_VALIDATION_MIN_CONFIDENCE = float(
@@ -54,28 +43,6 @@ PHOTO_PART_MAPPING_XLSX = Path(
         str(global_config.BASE_DIR / "input" / "photo_part_mapping.xlsx"),
     )
 )
-
-@dataclass(frozen=True)
-class LateralReferencePaths:
-    right: str
-    left: str
-
-
-@dataclass(frozen=True)
-class LateralReferenceMatch:
-    similarity_score: float
-    confidence: float
-
-
-@dataclass(frozen=True)
-class LateralSideDecision:
-    lado: str
-    confidence: float
-    reason: str
-    right_match: LateralReferenceMatch | None
-    left_match: LateralReferenceMatch | None
-    right_error: str | None = None
-    left_error: str | None = None
 
 
 def _base_lateral_part_id(part_id: str) -> str | None:
@@ -451,174 +418,12 @@ def _infer_retrovisor_side(image_path: str) -> tuple[str, float]:
     return (lado, conf_f)
 
 
-def _build_lateralized_part_id(base_part_id: str, lado: str) -> str:
-    lado_norm = (lado or "").strip().lower()
-    if base_part_id.startswith("porta_"):
-        suffix = "direita" if lado_norm == "direita" else "esquerda"
-    else:
-        suffix = "direito" if lado_norm == "direita" else "esquerdo"
-    return f"{base_part_id}_{suffix}"
-
-
 def _clamp01(value: object) -> float:
     try:
         value_f = float(value)
     except Exception:
         return 0.0
     return max(0.0, min(value_f, 1.0))
-
-
-def _infer_lateral_reference_match(
-    image_path: str,
-    base_part_id: str,
-    reference_path: str,
-    reference_label: str,
-) -> LateralReferenceMatch:
-    raw = call_llm_with_reference_images(
-        prompt=build_lateral_side_prompt(base_part_id, reference_label),
-        main_image_path=image_path,
-        reference_image_path=reference_path,
-    )
-    raw = _clean_json_fences(raw)
-    d = json.loads(raw)
-    return LateralReferenceMatch(
-        similarity_score=_clamp01(d.get("similarity_score", 0.0)),
-        confidence=_clamp01(d.get("confidence", 0.0)),
-    )
-
-
-def _infer_lateral_reference_match_safely(
-    image_path: str,
-    base_part_id: str,
-    reference_path: str,
-    reference_label: str,
-) -> tuple[LateralReferenceMatch | None, str | None]:
-    try:
-        match = _infer_lateral_reference_match(
-            image_path=image_path,
-            base_part_id=base_part_id,
-            reference_path=reference_path,
-            reference_label=reference_label,
-        )
-    except Exception as exc:
-        return (None, f"{type(exc).__name__}: {exc}")
-    return (match, None)
-
-
-def _decide_lateral_side(
-    right_match: LateralReferenceMatch | None,
-    left_match: LateralReferenceMatch | None,
-    right_error: str | None = None,
-    left_error: str | None = None,
-) -> LateralSideDecision:
-    right_score = right_match.similarity_score if right_match else 0.0
-    left_score = left_match.similarity_score if left_match else 0.0
-
-    if (
-        right_match is not None
-        and right_score >= LATERAL_SIDE_SCORE_MIN
-        and right_score > left_score
-    ):
-        return LateralSideDecision(
-            lado="direita",
-            confidence=right_match.confidence,
-            reason="right_score_above_threshold",
-            right_match=right_match,
-            left_match=left_match,
-            right_error=right_error,
-            left_error=left_error,
-        )
-    if (
-        left_match is not None
-        and left_score >= LATERAL_SIDE_SCORE_MIN
-        and left_score > right_score
-    ):
-        return LateralSideDecision(
-            lado="esquerda",
-            confidence=left_match.confidence,
-            reason="left_score_above_threshold",
-            right_match=right_match,
-            left_match=left_match,
-            right_error=right_error,
-            left_error=left_error,
-        )
-
-    confidences = [
-        match.confidence
-        for match in (right_match, left_match)
-        if match is not None
-    ]
-    if right_match is None and left_match is None:
-        return LateralSideDecision(
-            lado="incerto",
-            confidence=0.0,
-            reason="both_reference_calls_failed",
-            right_match=right_match,
-            left_match=left_match,
-            right_error=right_error,
-            left_error=left_error,
-        )
-
-    if right_score == left_score and right_score >= LATERAL_SIDE_SCORE_MIN:
-        reason = "fallback_ambiguous_equal_scores"
-    elif right_score < LATERAL_SIDE_SCORE_MIN and left_score < LATERAL_SIDE_SCORE_MIN:
-        reason = "fallback_both_scores_below_threshold"
-    else:
-        reason = "fallback_ambiguous_scores"
-
-    fallback_lado = "direita" if right_score >= left_score else "esquerda"
-    return LateralSideDecision(
-        lado=fallback_lado,
-        confidence=max(confidences) if confidences else 0.0,
-        reason=reason,
-        right_match=right_match,
-        left_match=left_match,
-        right_error=right_error,
-        left_error=left_error,
-    )
-
-
-def _infer_lateral_side(
-    image_path: str,
-    base_part_id: str,
-    references: LateralReferencePaths,
-) -> LateralSideDecision:
-    """Retorna a decisao de lado com matches e erros separados por referencia."""
-    right_match, right_error = _infer_lateral_reference_match_safely(
-        image_path=image_path,
-        base_part_id=base_part_id,
-        reference_path=references.right,
-        reference_label="direita",
-    )
-    left_match, left_error = _infer_lateral_reference_match_safely(
-        image_path=image_path,
-        base_part_id=base_part_id,
-        reference_path=references.left,
-        reference_label="esquerda",
-    )
-
-    return _decide_lateral_side(
-        right_match=right_match,
-        left_match=left_match,
-        right_error=right_error,
-        left_error=left_error,
-    )
-
-
-def _extract_lateral_references_once(checklist_path: str, output_dir: str) -> LateralReferencePaths | None:
-    refs_dir = os.path.join(output_dir, "checklist_lateral_references")
-    try:
-        from core.checklist_lateral_cropper import extract_lateral_reference_images
-
-        result = extract_lateral_reference_images(checklist_path, refs_dir)
-    except Exception as exc:
-        print(f"[triage] Nao foi possivel gerar referencias laterais do checklist: {exc}", flush=True)
-        return None
-
-    return LateralReferencePaths(
-        right=result.lateral_direita_path,
-        left=result.lateral_esquerda_path,
-    )
 
 
 def _checklist_damage_for_part(part_id: str, checklist_part_ids: set[str] | None) -> bool | None:
@@ -645,10 +450,8 @@ def run_triage(case_id: str, fotos_dir: str, output_dir: str, checklist_path: st
     
     checklist_text = ""
     checklist_part_ids: set[str] | None = None
-    lateral_references: LateralReferencePaths | None = None
     if checklist_path and os.path.exists(checklist_path):
         os.makedirs(output_dir, exist_ok=True)
-        lateral_references = _extract_lateral_references_once(checklist_path, output_dir)
 
         # Extração determinística do RELDEV: evita falsos positivos do modelo.
         try:
