@@ -38,31 +38,52 @@ def _posicao_por_part_id(part_id: Any) -> str | None:
 
 def build_emblemas_prompt(posicao: str, checklist_summary: str) -> str:
     posicao_label = "DIANTEIRA" if posicao == "dianteiro" else "TRASEIRA"
+    emblema_label = "dianteiro" if posicao == "dianteiro" else "traseiro"
+
     return f"""
-Voce e um PERITO TECNICO DE ITENS EXTERNOS (emblemas/logotipos do veiculo).
+Voce e um PERITO TECNICO DE ITENS EXTERNOS, especializado em emblemas e logotipos de veiculos.
+
+CONTEXTO DEFINIDO PELO SISTEMA
+- O sistema ja determinou que esta foto pertence a regiao {posicao_label} do carro.
+- Essa informacao deve ser tratada como fixa.
+- Nao tente classificar se a foto e dianteira ou traseira.
+- Analise APENAS o emblema {emblema_label} da montadora.
 
 TAREFA
-- A foto pertence a {posicao_label} do carro. Use esse contexto como dado de entrada.
-- Nao classifique se a foto e dianteira ou traseira.
-- Verificar se o EMBLEMA/LOGO da montadora (normalmente no centro) esta PRESENTE, FALTANDO ou DANIFICADO.
-- Seja conservador: so marque como faltando/danificado se houver evidencia visual clara.
-- Se a foto nao mostrar a regiao do emblema com nitidez suficiente, responda como nao_conclusivo.
+- Verificar se o emblema/logotipo da montadora esta:
+  - presente
+  - faltando
+  - danificado
+  - nao_conclusivo
 
-DEFINICOES (use exatamente estas)
-- "faltando": o emblema NAO esta presente onde deveria (ex.: espaco vazio, base sem logo, buraco/encaixe visivel).
-- "danificado": o emblema esta presente, mas quebrado, trincado, solto, arrancando ou claramente avariado.
-- Se estiver em duvida entre "faltando" e "danificado", escolha "nao_conclusivo".
+REGRA PRINCIPAL
+- So marque como "faltando" quando a regiao onde o emblema deveria estar estiver claramente visivel e o emblema nao estiver presente.
+- Se a regiao do emblema nao estiver visivel, estiver cortada, distante, escura, borrada ou com reflexo forte, responda "nao_conclusivo".
+- Nao confunda emblema fora do enquadramento com emblema faltando.
 
-CONTEXTO DO CHECKLIST (apenas como pista; evidencia visual prevalece):
+DEFINICOES
+- "presente": o emblema/logotipo da montadora esta visivel e aparentemente inteiro.
+- "faltando": a area onde o emblema deveria estar esta visivel, mas o emblema nao esta presente. Pode haver espaco vazio, base sem logo, marca de cola, buraco, encaixe ou contorno indicando ausencia.
+- "danificado": o emblema esta presente, mas quebrado, trincado, solto, torto, parcialmente arrancado, descascado ou claramente avariado.
+- "nao_conclusivo": nao ha evidencia visual suficiente para afirmar que o emblema esta presente, faltando ou danificado.
+
+REGRAS ANTI-FALSO POSITIVO
+- Nao marque "faltando" apenas porque o emblema nao apareceu na foto.
+- Nao marque "faltando" se a foto mostra apenas canto do para-choque, farol, lanterna, placa, lateral ou outra area sem a regiao central do emblema.
+- Nao marque "danificado" por reflexo, sujeira, sombra, baixa resolucao ou distorcao da imagem.
+- Se houver duvida entre "faltando" e "nao_conclusivo", escolha "nao_conclusivo".
+- Se houver duvida entre "danificado" e "nao_conclusivo", escolha "nao_conclusivo".
+
+CONTEXTO DO CHECKLIST
+Use apenas como pista fraca. A evidencia visual da foto prevalece.
 {checklist_summary}
 
-RETORNE SOMENTE JSON VALIDO (sem texto extra):
+RETORNE SOMENTE JSON VALIDO, sem markdown e sem texto extra:
 {{
   "status": "presente|faltando|danificado|nao_conclusivo",
-  "justificativa": "breve descricao objetiva do que foi visto"
+  "justificativa": "breve descricao objetiva do que foi visto, indicando se a regiao do emblema estava visivel"
 }}
 """.strip()
-
 
 def _rank_status(status: str) -> int:
     s = (status or "").strip().lower()
