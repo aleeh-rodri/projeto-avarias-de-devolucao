@@ -134,14 +134,32 @@ class PeritoAcessorios(BasePerito):
     def _run_chave_reserva_nao_tem(self, image_paths: list[str]) -> dict[str, Any]:
         key_paths = [p for p in image_paths if self._is_key_reserve_photo(p)]
         if not key_paths:
-            return {
-                "nivel_dano": "sem_dano",
-                "peca": "chave reserva",
-                "servicos": [],
-                "preco_total": 0,
-                "justificativa": "Checklist marcou chave reserva como nao tem, mas nenhuma foto de chave (ids 7, 8 ou 174) foi encontrada para validacao visual.",
-                "fotos_analisadas": [],
-            }
+            selected = find_services(
+                self.lpu_items,
+                ["chave reserva", "reposicao"],
+                perito_filtro="acessorios",
+                allow_global_fallback=False,
+            )[:1]
+            servicos_out = [ServiceItem(descricao=s.descricao, preco=s.preco) for s in selected]
+            result = ExpertConsolidatedOutput(
+                nivel_dano="reposicao",
+                peca="chave reserva",
+                servicos=servicos_out,
+                preco_total=_total_price(selected),
+                justificativa=(
+                    "Checklist marcou chave reserva como nao tem. Nenhuma foto de chave "
+                    "(ids 7, 8 ou 174) foi encontrada, mas a cobranca foi mantida pelo checklist."
+                ),
+                fotos_analisadas=[],
+            ).model_dump()
+            result.update(
+                {
+                    "force_include": True,
+                    "origin": "checklist_chave_reserva_sem_foto",
+                    "validacao_chave_reserva": [],
+                }
+            )
+            return result
 
         analyses: list[dict[str, Any]] = []
         for path in key_paths:

@@ -735,7 +735,8 @@ def rodar_orquestrador(
                 ]
                 melhores = (key_melhores + complementares)[: config.max_fotos_por_peca]
 
-        if melhores:
+        should_run_without_images = nome_perito == "acessorios" and chave_reserva_nao_tem
+        if melhores or should_run_without_images:
             image_paths = []
             imagens_usadas = []
             for r in melhores:
