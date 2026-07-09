@@ -612,11 +612,18 @@ class ExcelAgent:
         _clear_budget_section(AVARIAS_START_ROW, AVARIAS_END_ROW)
         _clear_budget_section(PECAS_START_ROW, PECAS_END_ROW)
 
+        def _set_cell_value(cell_ref: str, value: Any) -> None:
+            for merged_range in ws_orcamento.merged_cells.ranges:
+                if cell_ref in merged_range:
+                    ws_orcamento.cell(merged_range.min_row, merged_range.min_col).value = value
+                    return
+            ws_orcamento[cell_ref] = value
+
         # Cabeçalho do novo template
-        ws_orcamento["C18"] = "xxx"
-        ws_orcamento["C19"] = "xxx"
-        ws_orcamento["C20"] = pdf_info["placa"]
-        ws_orcamento["C21"] = pdf_info["modelo"]
+        _set_cell_value("C18", "xxx")
+        _set_cell_value("C19", "xxx")
+        _set_cell_value("C20", pdf_info["placa"])
+        _set_cell_value("C21", pdf_info["modelo"])
 
         # Mantém E19/F67/F109 com as fórmulas do template.
         # Não sobrescrever fórmulas aqui.
@@ -654,6 +661,7 @@ class ExcelAgent:
                     if not isinstance(it, dict):
                         continue
 
+                    item_has_photo_field = "fotos_analisadas" in it
                     fotos_it = it.get("fotos_analisadas", [])
                     servicos_it = it.get("servicos", [])
                     if not isinstance(servicos_it, list):
@@ -672,7 +680,7 @@ class ExcelAgent:
                                 fotos_line = [fotos_it[svc_idx]]
                             else:
                                 fotos_line = [fotos_it[0]]
-                        else:
+                        elif not item_has_photo_field:
                             fotos_res = resultado.get("fotos_analisadas", [])
                             if isinstance(fotos_res, list) and fotos_res:
                                 fotos_line = [fotos_res[0]]
@@ -947,7 +955,10 @@ class ExcelAgent:
         for idx in range(len(detail_items)):
             temp_path = f"temp_img_{idx}_{pdf_info['placa']}.png"
             if os.path.exists(temp_path):
-                os.remove(temp_path)
+                try:
+                    os.remove(temp_path)
+                except PermissionError:
+                    pass
 
         print(f"Relatório Excel gerado: {output_path}")
         return output_path
