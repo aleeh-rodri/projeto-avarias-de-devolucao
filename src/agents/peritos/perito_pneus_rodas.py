@@ -111,7 +111,7 @@ RETORNE APENAS ESTE JSON:
             raw = call_llm_with_image(
                 prompt=prompt,
                 image_path=image_paths[0],
-                max_completion_tokens=1000,
+                max_completion_tokens=2000,
                 use_basic_model=False,
             )
             raw = raw.strip()
