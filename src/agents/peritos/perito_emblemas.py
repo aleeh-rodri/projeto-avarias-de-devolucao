@@ -23,32 +23,67 @@ def _clean_json_fences(raw: str) -> str:
     return raw
 
 
-def build_emblemas_prompt(checklist_summary: str = "") -> str:
+GRUPO_DIANTEIRO_PART_IDS = {"parachoque_dianteiro"}
+GRUPO_TRASEIRO_PART_IDS = {"parachoque_traseiro", "tampa_porta_malas"}
+
+
+def _posicao_por_part_id(part_id: Any) -> str | None:
+    pid = str(part_id or "").strip().lower()
+    if pid in GRUPO_DIANTEIRO_PART_IDS:
+        return "dianteiro"
+    if pid in GRUPO_TRASEIRO_PART_IDS:
+        return "traseiro"
+    return None
+
+
+def build_emblemas_prompt(posicao: str, checklist_summary: str) -> str:
+    posicao_label = "DIANTEIRA" if posicao == "dianteiro" else "TRASEIRA"
+    emblema_label = "dianteiro" if posicao == "dianteiro" else "traseiro"
+
     return f"""
-Você é um PERITO TÉCNICO DE ITENS EXTERNOS (emblemas/logotipos do veículo).
+Voce e um PERITO TECNICO DE ITENS EXTERNOS, especializado em emblemas e logotipos de veiculos.
+
+CONTEXTO DEFINIDO PELO SISTEMA
+- O sistema ja determinou que esta foto pertence a regiao {posicao_label} do carro.
+- Essa informacao deve ser tratada como fixa.
+- Nao tente classificar se a foto e dianteira ou traseira.
+- Analise APENAS o emblema {emblema_label} da montadora.
 
 TAREFA
-- Identificar se a foto mostra a DIANTEIRA ou a TRASEIRA do carro.
-- Verificar se o EMBLEMA/LOGO da montadora (normalmente no centro) está PRESENTE, FALTANDO ou DANIFICADO.
-- Seja conservador: só marque como faltando/danificado se houver evidência visual clara.
-- Se a foto não mostrar a região do emblema com nitidez suficiente, responda como nao_conclusivo.
+- Verificar se o emblema/logotipo da montadora esta:
+  - presente
+  - faltando
+  - danificado
+  - nao_conclusivo
 
-DEFINIÇÕES (use exatamente estas)
-- "faltando": o emblema NÃO está presente onde deveria (ex.: espaço vazio, base sem logo, buraco/encaixe visível).
-- "danificado": o emblema está presente, mas quebrado, trincado, solto, arrancando ou claramente avariado.
-- Se estiver em dúvida entre "faltando" e "danificado", escolha "nao_conclusivo".
+REGRA PRINCIPAL
+- So marque como "faltando" quando a regiao onde o emblema deveria estar estiver claramente visivel e o emblema nao estiver presente.
+- Se a regiao do emblema nao estiver visivel, estiver cortada, distante, escura, borrada ou com reflexo forte, responda "nao_conclusivo".
+- Nao confunda emblema fora do enquadramento com emblema faltando.
 
-CONTEXTO DO CHECKLIST (apenas como pista; evidência visual prevalece):
+DEFINICOES
+- "presente": o emblema/logotipo da montadora esta visivel e aparentemente inteiro.
+- "faltando": a area onde o emblema deveria estar esta visivel, mas o emblema nao esta presente. Pode haver espaco vazio, base sem logo, marca de cola, buraco, encaixe ou contorno indicando ausencia.
+- "danificado": o emblema esta presente, mas quebrado, trincado, solto, torto, parcialmente arrancado, descascado ou claramente avariado.
+- "nao_conclusivo": nao ha evidencia visual suficiente para afirmar que o emblema esta presente, faltando ou danificado.
+
+REGRAS ANTI-FALSO POSITIVO
+- Nao marque "faltando" apenas porque o emblema nao apareceu na foto.
+- Nao marque "faltando" se a foto mostra apenas canto do para-choque, farol, lanterna, placa, lateral ou outra area sem a regiao central do emblema.
+- Nao marque "danificado" por reflexo, sujeira, sombra, baixa resolucao ou distorcao da imagem.
+- Se houver duvida entre "faltando" e "nao_conclusivo", escolha "nao_conclusivo".
+- Se houver duvida entre "danificado" e "nao_conclusivo", escolha "nao_conclusivo".
+
+CONTEXTO DO CHECKLIST
+Use apenas como pista fraca. A evidencia visual da foto prevalece.
 {checklist_summary}
 
-RETORNE SOMENTE JSON VÁLIDO (sem texto extra):
+RETORNE SOMENTE JSON VALIDO, sem markdown e sem texto extra:
 {{
-  "posicao": "dianteiro|traseiro|nao_identificavel",
   "status": "presente|faltando|danificado|nao_conclusivo",
-  "justificativa": "breve descrição objetiva do que foi visto"
+  "justificativa": "breve descricao objetiva do que foi visto, indicando se a regiao do emblema estava visivel"
 }}
 """.strip()
-
 
 def _rank_status(status: str) -> int:
     s = (status or "").strip().lower()
@@ -69,46 +104,82 @@ class PeritoEmblemas(BasePerito):
             return {"erro": "nenhuma imagem elegivel"}
 
         checklist_summary = kwargs.get("checklist_summary", "") or ""
-        prompt = build_emblemas_prompt(checklist_summary)
+        imagens_usadas = kwargs.get("imagens_usadas") or []
 
         progress_enabled = os.getenv("AGENTE_PROGRESS", "1").strip().lower() not in ("0", "false", "no")
         total = len(image_paths or [])
 
-        avaliados: list[dict[str, Any]] = []
-        for idx, img_path in enumerate(image_paths, start=1):
-            if progress_enabled:
-                try:
-                    name = Path(img_path).stem
-                except Exception:
-                    name = str(img_path)
-                print(f"[perito_emblemas] {idx}/{total} {name}", flush=True)
-            try:
-                raw = call_llm_with_image(prompt=prompt, image_path=img_path)
-                raw = _clean_json_fences(raw)
-                d = json.loads(raw)
-            except Exception:
-                continue
+        grupo_dianteiro: list[dict[str, Any]] = []
+        grupo_traseiro: list[dict[str, Any]] = []
 
-            posicao = str(d.get("posicao") or "").strip().lower()
-            status = str(d.get("status") or "").strip().lower()
-            justificativa = str(d.get("justificativa") or "").strip() or None
-
-            if posicao not in {"dianteiro", "traseiro", "nao_identificavel"}:
-                posicao = "nao_identificavel"
-            if status not in {"presente", "faltando", "danificado", "nao_conclusivo"}:
-                status = "nao_conclusivo"
-
-            avaliados.append(
-                {
-                    "posicao": posicao,
-                    "status": status,
-                    "justificativa": justificativa,
-                    "path": img_path,
-                }
+        for idx, img_path in enumerate(image_paths):
+            meta = (
+                imagens_usadas[idx]
+                if idx < len(imagens_usadas) and isinstance(imagens_usadas[idx], dict)
+                else {}
             )
+            part_id = str(meta.get("part_id") or "").strip().lower()
+            posicao = _posicao_por_part_id(part_id)
+            item = {
+                "path": img_path,
+                "part_id": part_id,
+                "index": idx + 1,
+            }
+
+            if posicao == "dianteiro":
+                grupo_dianteiro.append(item)
+            elif posicao == "traseiro":
+                grupo_traseiro.append(item)
+
+        avaliados: list[dict[str, Any]] = []
+
+        def _avaliar_grupo(posicao: str, grupo: list[dict[str, Any]]) -> None:
+            if not grupo:
+                return
+
+            prompt = build_emblemas_prompt(posicao, checklist_summary)
+
+            for item in grupo:
+                img_path = str(item.get("path") or "")
+
+                if progress_enabled:
+                    try:
+                        name = Path(img_path).stem
+                    except Exception:
+                        name = img_path
+                    print(
+                        f"[perito_emblemas] {item.get('index')}/{total} {posicao} {name}",
+                        flush=True,
+                    )
+
+                try:
+                    raw = call_llm_with_image(prompt=prompt, image_path=img_path)
+                    raw = _clean_json_fences(raw)
+                    d = json.loads(raw)
+                except Exception:
+                    continue
+
+                status = str(d.get("status") or "").strip().lower()
+                justificativa = str(d.get("justificativa") or "").strip() or None
+
+                if status not in {"presente", "faltando", "danificado", "nao_conclusivo"}:
+                    status = "nao_conclusivo"
+
+                avaliados.append(
+                    {
+                        "posicao": posicao,
+                        "status": status,
+                        "justificativa": justificativa,
+                        "path": img_path,
+                        "part_id": item.get("part_id"),
+                    }
+                )
+
+        _avaliar_grupo("dianteiro", grupo_dianteiro)
+        _avaliar_grupo("traseiro", grupo_traseiro)
 
         if not avaliados:
-            return {"erro": "falha emblemas: nenhuma avaliacao valida"}
+            return {"erro": "falha emblemas: nenhuma avaliacao valida com part_id dianteiro/traseiro"}
 
         def _best_for(posicao: str) -> dict[str, Any] | None:
             return max(
@@ -124,46 +195,58 @@ class PeritoEmblemas(BasePerito):
         pecas_a_cotar: list[dict[str, Any]] = []
         fotos_analisadas: list[str] = []
         justificativas: list[str] = []
+        itens: list[dict[str, Any]] = []
 
         def _add_issue(*, pos: str, status: str, path: str, just: str | None) -> None:
-            nonlocal servicos, pecas_a_cotar, fotos_analisadas, justificativas
+            nonlocal servicos, pecas_a_cotar, fotos_analisadas, justificativas, itens
 
             pos_label = "dianteiro" if pos == "dianteiro" else "traseiro"
+            servico: ServiceItem | None = None
+            observacao = ""
 
             if status == "faltando":
-                servicos.append(
-                    ServiceItem(
-                        descricao=f"REVISAR — Emblema {pos_label} faltando (reposição)",
-                        preco=0.0,
-                    )
+                servico = ServiceItem(
+                    descricao=f"REVISAR - Emblema {pos_label} faltando (reposicao)",
+                    preco=0.0,
                 )
-                pecas_a_cotar.append(
-                    {
-                        "descricao": f"emblema {pos_label}",
-                        "quantidade": 1,
-                        "observacao": "Item faltante detectado visualmente; revisar cobrança e cotar peça se aplicável.",
-                    }
-                )
+                observacao = "Item faltante detectado visualmente; revisar cobranca e cotar peca se aplicavel."
 
             elif status == "danificado":
-                servicos.append(
-                    ServiceItem(
-                        descricao=(
-                            f"REVISAR — Emblema {pos_label} danificado/solto (inspecionar e substituir se necessário)"
-                        ),
-                        preco=0.0,
-                    )
+                servico = ServiceItem(
+                    descricao=(
+                        f"REVISAR - Emblema {pos_label} danificado/solto (inspecionar e substituir se necessario)"
+                    ),
+                    preco=0.0,
                 )
-                pecas_a_cotar.append(
-                    {
-                        "descricao": f"emblema {pos_label}",
-                        "quantidade": 1,
-                        "observacao": (
-                            "Possível dano/soltura do emblema detectado visualmente; "
-                            "inspecionar e cotar substituição se aplicável."
-                        ),
-                    }
+                observacao = (
+                    "Possivel dano/soltura do emblema detectado visualmente; "
+                    "inspecionar e cotar substituicao se aplicavel."
                 )
+
+            if servico is None:
+                return
+
+            servicos.append(servico)
+            pecas_a_cotar.append(
+                {
+                    "descricao": f"emblema {pos_label}",
+                    "quantidade": 1,
+                    "observacao": observacao,
+                    "fotos_analisadas": [path],
+                }
+            )
+            itens.append(
+                {
+                    "nivel_dano": "reposicao",
+                    "peca": f"emblema {pos_label}",
+                    "servicos": [servico.model_dump()],
+                    "preco_total": 0.0,
+                    "justificativa": just,
+                    "fotos_analisadas": [path],
+                    "force_include": True,
+                    "needs_human_review": True,
+                }
+            )
 
             fotos_analisadas.append(path)
             if just:
@@ -181,6 +264,17 @@ class PeritoEmblemas(BasePerito):
             if status in {"faltando", "danificado"}:
                 _add_issue(pos=pos, status=status, path=path, just=just)
             else:
+                pos_label = "dianteiro" if pos == "dianteiro" else "traseiro"
+                itens.append(
+                    {
+                        "nivel_dano": "sem_dano",
+                        "peca": f"emblema {pos_label}",
+                        "servicos": [],
+                        "preco_total": 0.0,
+                        "justificativa": just,
+                        "fotos_analisadas": [path],
+                    }
+                )
                 fotos_analisadas.append(path)
                 if just:
                     justificativas.append(f"{pos}: {just}")
@@ -196,6 +290,7 @@ class PeritoEmblemas(BasePerito):
             justificativa=justificativa_final,
             fotos_analisadas=fotos_analisadas,
         ).model_dump()
+        out["itens"] = itens
 
         if any_issue:
             out["force_include"] = True

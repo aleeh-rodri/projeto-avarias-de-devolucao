@@ -16,7 +16,7 @@ def main() -> None:
     out = call_llm_with_image(
         prompt=prompt,
         image_path="Fotos/case_id/fe3475ac-2b61-a507-bb51-aa6a2da63b39-v1.jpg",
-        max_tokens=80,
+        max_completion_tokens=80,
     )
     print(out)
 

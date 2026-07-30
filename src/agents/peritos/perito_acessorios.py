@@ -76,6 +76,12 @@ def _total_price(selected: list[LpuItem]) -> float | str:
     return sum(float(s.preco) for s in selected if isinstance(s.preco, (int, float)))
 
 
+def _chave_reserva_checklist_text(registro: Any = None) -> str:
+    if str(registro or "").strip().lower() == "avaria":
+        return "Checklist marcou chave reserva como avaria"
+    return "Checklist marcou chave reserva como nao tem"
+
+
 
 class PeritoAcessorios(BasePerito):
     def __init__(self, config: ConfigPeritoAcessorios):
@@ -90,7 +96,7 @@ class PeritoAcessorios(BasePerito):
             prompt=_build_key_count_prompt(),
             image_path=image_path,
             temperature=0,
-            max_tokens=400,
+            max_completion_tokens=400,
         )
         raw = _clean_json_fences(raw)
         try:
@@ -131,17 +137,41 @@ class PeritoAcessorios(BasePerito):
             "justificativa": str(data.get("justificativa") or "").strip(),
         }
 
-    def _run_chave_reserva_nao_tem(self, image_paths: list[str]) -> dict[str, Any]:
+    def _run_chave_reserva_nao_tem(
+        self,
+        image_paths: list[str],
+        *,
+        checklist_registro: str | None = None,
+    ) -> dict[str, Any]:
+        checklist_text = _chave_reserva_checklist_text(checklist_registro)
         key_paths = [p for p in image_paths if self._is_key_reserve_photo(p)]
         if not key_paths:
-            return {
-                "nivel_dano": "sem_dano",
-                "peca": "chave reserva",
-                "servicos": [],
-                "preco_total": 0,
-                "justificativa": "Checklist marcou chave reserva como nao tem, mas nenhuma foto de chave (ids 7, 8 ou 174) foi encontrada para validacao visual.",
-                "fotos_analisadas": [],
-            }
+            selected = find_services(
+                self.lpu_items,
+                ["chave reserva", "reposicao"],
+                perito_filtro="acessorios",
+                allow_global_fallback=False,
+            )[:1]
+            servicos_out = [ServiceItem(descricao=s.descricao, preco=s.preco) for s in selected]
+            result = ExpertConsolidatedOutput(
+                nivel_dano="reposicao",
+                peca="chave reserva",
+                servicos=servicos_out,
+                preco_total=_total_price(selected),
+                justificativa=(
+                    f"{checklist_text}. Nenhuma foto de chave "
+                    "(ids 7, 8 ou 174) foi encontrada, mas a cobranca foi mantida pelo checklist."
+                ),
+                fotos_analisadas=[],
+            ).model_dump()
+            result.update(
+                {
+                    "force_include": True,
+                    "origin": "checklist_chave_reserva_sem_foto",
+                    "validacao_chave_reserva": [],
+                }
+            )
+            return result
 
         analyses: list[dict[str, Any]] = []
         for path in key_paths:
@@ -151,7 +181,7 @@ class PeritoAcessorios(BasePerito):
 
         two_keys = [
             a for a in analyses
-            if a.get("status") == "duas_ou_mais" and float(a.get("confidence") or 0.0) >= 0.7
+            if a.get("status") == "duas_ou_mais" and float(a.get("confidence") or 0.0) >= 0.8
         ]
         if two_keys:
             chosen = max(two_keys, key=lambda a: float(a.get("confidence") or 0.0))
@@ -161,7 +191,7 @@ class PeritoAcessorios(BasePerito):
                 "servicos": [],
                 "preco_total": 0,
                 "justificativa": (
-                    "Checklist marcou chave reserva como nao tem, mas a foto de chave mostra duas ou mais chaves. "
+                    f"{checklist_text}, mas a foto de chave mostra duas ou mais chaves. "
                     "Cobranca de chave reserva invalidada."
                 ),
                 "fotos_analisadas": [chosen.get("foto")] if chosen.get("foto") else key_paths[:1],
@@ -187,7 +217,7 @@ class PeritoAcessorios(BasePerito):
                 servicos=servicos_out,
                 preco_total=_total_price(selected),
                 justificativa=(
-                    "Checklist marcou chave reserva como nao tem e a foto de chave mostra apenas uma chave."
+                    f"{checklist_text} e a foto de chave mostra apenas uma chave."
                 ),
                 fotos_analisadas=[str(chosen.get("foto") or key_paths[0])],
             ).model_dump()
@@ -200,21 +230,41 @@ class PeritoAcessorios(BasePerito):
             )
             return result
 
-        return {
-            "nivel_dano": "sem_dano",
-            "peca": "chave reserva",
-            "servicos": [],
-            "preco_total": 0,
-            "justificativa": "Checklist marcou chave reserva como nao tem, mas a foto de chave nao permitiu confirmar se havia uma ou duas chaves.",
-            "fotos_analisadas": key_paths[:1],
-            "validacao_chave_reserva": analyses,
-        }
+        selected = find_services(
+            self.lpu_items,
+            ["chave reserva", "reposicao"],
+            perito_filtro="acessorios",
+            allow_global_fallback=False,
+        )[:1]
+        servicos_out = [ServiceItem(descricao=s.descricao, preco=s.preco) for s in selected]
+        result = ExpertConsolidatedOutput(
+            nivel_dano="reposicao",
+            peca="chave reserva",
+            servicos=servicos_out,
+            preco_total=_total_price(selected),
+            justificativa=(
+                f"{checklist_text} e a validacao visual nao confirmou duas ou mais chaves. "
+                "Cobranca de chave reserva mantida."
+            ),
+            fotos_analisadas=key_paths[:1],
+        ).model_dump()
+        result.update(
+            {
+                "force_include": True,
+                "origin": "checklist_chave_reserva_visual",
+                "validacao_chave_reserva": analyses,
+            }
+        )
+        return result
 
     def _run_generico_acessorio(self, image_paths: list[str], **kwargs) -> dict[str, Any]:
         checklist_summary = kwargs.get("checklist_summary", "Nenhuma observação no checklist.")
         
         if kwargs.get("chave_reserva_nao_tem") is True:
-            return self._run_chave_reserva_nao_tem(image_paths)
+            return self._run_chave_reserva_nao_tem(
+                image_paths,
+                checklist_registro=kwargs.get("chave_reserva_registro"),
+            )
 
         prompt = f"""
 Você é um PERITO TÉCNICO DE ACESSÓRIOS AUTOMOTIVOS.
@@ -239,7 +289,7 @@ ANTI-EXCESSO
 
 REGRA DE CHAVE DO VEICULO
 - Nao cobre chave principal ou chave reserva neste fluxo generico.
-- Chave principal/reserva so pode ser cobrada pela rotina especifica de chave reserva, quando o checklist marcar "Nao Tem" e a validacao visual confirmar apenas uma chave.
+- Chave principal/reserva so pode ser cobrada pela rotina especifica de chave reserva, quando o checklist marcar "Nao Tem" ou "Avaria" e a validacao visual nao confirmar duas ou mais chaves.
 - Etiqueta, adesivo, chaveiro ou identificador preso a chave nao e dano de chave.
 
 RETORNE SOMENTE ESTE JSON:
@@ -389,7 +439,12 @@ RETORNE SOMENTE ESTE JSON:
         results: list[dict[str, Any]] = []
 
         if kwargs.get("chave_reserva_nao_tem") is True:
-            results.append(self._run_chave_reserva_nao_tem(image_paths))
+            results.append(
+                self._run_chave_reserva_nao_tem(
+                    image_paths,
+                    checklist_registro=kwargs.get("chave_reserva_registro"),
+                )
+            )
 
         generic_paths = [p for p in image_paths if not self._is_key_reserve_photo(p)]
         if generic_paths:

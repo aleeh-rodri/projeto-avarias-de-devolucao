@@ -75,6 +75,19 @@ def is_chave_reserva_nao_tem_row(row: ChecklistRow) -> bool:
     )
 
 
+def is_chave_reserva_avaria_row(row: ChecklistRow) -> bool:
+    """Identifica a linha do RELDEV que marca Chave Reserva como Avaria."""
+    descricao = _norm_ascii(row.descricao)
+    item = _norm_ascii(row.item)
+    registro = _norm_ascii(row.registro)
+
+    return (
+        "itens de conferencia" in descricao
+        and "chave reserva" in item
+        and registro == "avaria"
+    )
+
+
 def _map_checklist_row_to_part_id(descricao: str, item: str) -> str | None:
     """Mapeia (descrição, item) do RELDEV para um part_id canônico do projeto."""
     d = _norm(descricao)
@@ -346,3 +359,17 @@ def extract_reldev_avaria_part_ids(pdf_path: str | Path) -> set[str]:
 def extract_reldev_chave_reserva_nao_tem(pdf_path: str | Path) -> bool:
     """Retorna True quando o RELDEV marca Itens De Conferencia / Chave Reserva / Nao Tem."""
     return any(is_chave_reserva_nao_tem_row(row) for row in extract_reldev_rows(pdf_path))
+
+
+def extract_reldev_chave_reserva_registro(pdf_path: str | Path) -> str | None:
+    """Retorna o registro que deve acionar o fluxo visual de chave reserva.
+
+    Valores possiveis: "nao_tem", "avaria" ou None.
+    """
+    found_avaria = False
+    for row in extract_reldev_rows(pdf_path):
+        if is_chave_reserva_nao_tem_row(row):
+            return "nao_tem"
+        if is_chave_reserva_avaria_row(row):
+            found_avaria = True
+    return "avaria" if found_avaria else None
