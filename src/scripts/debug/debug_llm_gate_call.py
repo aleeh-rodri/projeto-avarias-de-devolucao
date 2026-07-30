@@ -30,7 +30,12 @@ def _parse_args() -> argparse.Namespace:
         default='Responda apenas com JSON valido: {"ok": true}',
         help="Prompt de teste enviado junto com a imagem.",
     )
-    parser.add_argument("--max-tokens", type=int, default=120, help="max_tokens do payload.")
+    parser.add_argument(
+        "--max-completion-tokens",
+        type=int,
+        default=120,
+        help="max_completion_tokens do payload.",
+    )
     parser.add_argument("--temperature", type=float, default=0.0, help="temperature do payload.")
     parser.add_argument(
         "--no-proxy",
@@ -40,8 +45,15 @@ def _parse_args() -> argparse.Namespace:
     return parser.parse_args()
 
 
-def _build_payload(*, model: str, prompt: str, data_url: str, max_tokens: int, temperature: float) -> dict[str, Any]:
-    return {
+def _build_payload(
+    *,
+    model: str,
+    prompt: str,
+    data_url: str,
+    max_completion_tokens: int,
+    temperature: float,
+) -> dict[str, Any]:
+    payload = {
         "model": model,
         "messages": [
             {
@@ -52,10 +64,12 @@ def _build_payload(*, model: str, prompt: str, data_url: str, max_tokens: int, t
                 ],
             }
         ],
-        "max_tokens": max_tokens,
-        "temperature": temperature,
+        "max_completion_tokens": max_completion_tokens,
         "response_format": {"type": "text"},
     }
+    if not model.lower().startswith("gpt-5"):
+        payload["temperature"] = temperature
+    return payload
 
 
 def main() -> None:
@@ -76,7 +90,7 @@ def main() -> None:
         model=cfg.model,
         prompt=args.prompt,
         data_url=data_url,
-        max_tokens=args.max_tokens,
+        max_completion_tokens=args.max_completion_tokens,
         temperature=args.temperature,
     )
 

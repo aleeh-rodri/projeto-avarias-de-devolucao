@@ -5,7 +5,7 @@ Foco: destravar o Agente de Triagem 1.
 Formato esperado (conforme teu exemplo curl):
 - POST https://.../llm-gate/v2/chat/completions
 - Headers: Content-Type, X-Correlation-Id, API_KEY
-- Body: { model, messages: [{role:'user', content:[text, image_url]}], max_tokens, ... }
+- Body: { model, messages: [{role:'user', content:[text, image_url]}], max_completion_tokens, ... }
 
 Configuração via `AGENTE_AVARIAS_DEVOLUCAO/.env`.
 """
@@ -41,12 +41,18 @@ class LLMGateConfig:
 	client_id: str | None = None
 
 
-def _get_config() -> LLMGateConfig:
+def _get_config(*, use_basic_model: bool = True) -> LLMGateConfig:
 	# Usa a nova estrutura de config centralizada
 	base_url = os.getenv("LLM_GATE_BASE_URL", "").strip()
 	route = os.getenv("LLM_GATE_ROUTE", "").strip()
-	api_key = config.LLM_GATE_API_KEY
-	model = os.getenv("LLM_MODEL", "gpt-4o-mini").strip()
+	if use_basic_model:
+		api_key = config.LLM_GATE_API_KEY_BASIC
+		model = os.getenv("LLM_MODEL_BASIC", "gpt-4o-mini").strip()
+		api_key_env_name = "LLM_GATE_API_KEY_BASIC"
+	else:
+		api_key = config.LLM_GATE_API_KEY
+		model = os.getenv("LLM_MODEL", "gpt-5").strip()
+		api_key_env_name = "LLM_GATE_API_KEY"
 	x_user_id = os.getenv("LLM_GATE_X_USER_ID", "").strip() or None
 	client_id = os.getenv("LLM_GATE_CLIENT_ID", "").strip() or None
 	verify_ssl_env = os.getenv("LLM_GATE_VERIFY_SSL", "true").strip().lower()
@@ -57,7 +63,7 @@ def _get_config() -> LLMGateConfig:
 	if not route:
 		raise RuntimeError("LLM_GATE_ROUTE não configurado no .env")
 	if not api_key:
-		raise RuntimeError("LLM_GATE_API_KEY (ou API_KEY) não configurado no .env")
+		raise RuntimeError(f"{api_key_env_name} não configurado no .env")
 
 	return LLMGateConfig(
 		base_url=base_url.rstrip("/"),
@@ -127,14 +133,15 @@ def call_llm_with_image(
 	prompt: str,
 	image_path: str,
 	temperature: float = 0,
-	max_tokens: int = 400,
+	max_completion_tokens: int = 400,
+	use_basic_model: bool = True,
 ) -> str:
 	"""Chama o LLM Gate (v2/chat/completions) com prompt + imagem.
 
 	Payload/headers alinhados ao exemplo curl e ao `antigo_agente_avarias.py`.
 	Esperado: resposta estilo OpenAI em `choices[0].message.content`.
 	"""
-	cfg = _get_config()
+	cfg = _get_config(use_basic_model=use_basic_model)
 	# Quando o ambiente usa TLS sem CA confiável (ex.: NP), o requests/urllib3
 	# emite `InsecureRequestWarning` a cada chamada e polui o console.
 	# Mantemos a opção de desabilitar via env (default: silenciar quando verify_ssl=False).
@@ -160,10 +167,11 @@ def call_llm_with_image(
 				],
 			}
 		],
-		"max_tokens": max_tokens,
-		"temperature": temperature,
+		"max_completion_tokens": max_completion_tokens,
 		"response_format": {"type": "text"},
 	}
+	if not cfg.model.lower().startswith("gpt-5"):
+		payload["temperature"] = temperature
 
 	headers: dict[str, str] = {
 		"Content-Type": "application/json",
@@ -232,10 +240,11 @@ def call_llm_with_reference_images(
 	main_image_path: str,
 	reference_image_path: str,
 	temperature: float = 0,
-	max_tokens: int = 400,
+	max_completion_tokens: int = 400,
+	use_basic_model: bool = True,
 ) -> str:
 	"""Chama o LLM Gate (v2/chat/completions) com prompt + imagem principal + uma referência."""
-	cfg = _get_config()
+	cfg = _get_config(use_basic_model=use_basic_model)
 	if cfg.verify_ssl is False:
 		suppress = os.getenv("LLM_GATE_SUPPRESS_INSECURE_WARNING", "true").strip().lower() not in ("0", "false", "no")
 		if suppress:
@@ -266,10 +275,11 @@ def call_llm_with_reference_images(
 				],
 			}
 		],
-		"max_tokens": max_tokens,
-		"temperature": temperature,
+		"max_completion_tokens": max_completion_tokens,
 		"response_format": {"type": "text"},
 	}
+	if not cfg.model.lower().startswith("gpt-5"):
+		payload["temperature"] = temperature
 
 	headers: dict[str, str] = {
 		"Content-Type": "application/json",

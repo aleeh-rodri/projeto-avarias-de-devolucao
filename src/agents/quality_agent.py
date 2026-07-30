@@ -93,7 +93,13 @@ def run_quality_check(case_id: str, triage_images: list[TriageImage], output_dir
             print(f"[quality] {idx}/{total} {img.image_id} ({img.part_id})", flush=True)
 
         prompt = build_quality_prompt(img.part_id, img.checklist_damage_reported)
-        raw = _clean_json_fences(call_llm_with_image(prompt=prompt, image_path=img.photo_path))
+        raw = _clean_json_fences(
+            call_llm_with_image(
+                prompt=prompt,
+                image_path=img.photo_path,
+                max_completion_tokens=1000,
+            )
+        )
 
         try:
             result_dict = json.loads(raw)

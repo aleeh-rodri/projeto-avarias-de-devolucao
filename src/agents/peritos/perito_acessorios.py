@@ -96,7 +96,7 @@ class PeritoAcessorios(BasePerito):
             prompt=_build_key_count_prompt(),
             image_path=image_path,
             temperature=0,
-            max_tokens=400,
+            max_completion_tokens=400,
         )
         raw = _clean_json_fences(raw)
         try:

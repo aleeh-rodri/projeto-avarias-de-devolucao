@@ -7,7 +7,7 @@ from pathlib import Path
 from typing import Any
 
 from core.config import config as global_config
-from core.pdf_utils import extract_reldev_avaria_part_ids, extract_reldev_chave_reserva_nao_tem
+from core.pdf_utils import extract_reldev_avaria_part_ids, extract_reldev_chave_reserva_registro
 from core.schemas import TriageOutput, QualityOutput
 from agents.triage_agent import run_triage
 from agents.quality_agent import run_quality_check
@@ -563,11 +563,14 @@ def rodar_orquestrador(
     quality_out = QualityOutput(**quality_raw)
 
     chave_reserva_nao_tem = False
+    chave_reserva_registro = None
     if checklist_path and os.path.exists(checklist_path):
         try:
-            chave_reserva_nao_tem = extract_reldev_chave_reserva_nao_tem(checklist_path)
+            chave_reserva_registro = extract_reldev_chave_reserva_registro(checklist_path)
+            chave_reserva_nao_tem = chave_reserva_registro in {"nao_tem", "avaria"}
         except Exception:
             chave_reserva_nao_tem = False
+            chave_reserva_registro = None
 
     aprovadas_ids = {a.image_id for a in quality_out.assessments if a.aprovada}
 
@@ -757,6 +760,7 @@ def rodar_orquestrador(
                     checklist_summary=triage_out.checklist_summary,
                     imagens_usadas=imagens_usadas,
                     chave_reserva_nao_tem=chave_reserva_nao_tem,
+                    chave_reserva_registro=chave_reserva_registro,
                     wheel_type=wheel_type,
                 )
                 
@@ -833,6 +837,7 @@ def rodar_orquestrador(
             "total_imagens": len(triage_out.images),
             "imagens_aprovadas_qualidade": len(imagens_filtradas),
             "chave_reserva_nao_tem": chave_reserva_nao_tem,
+            "chave_reserva_registro": chave_reserva_registro,
         },
         "peritos": resultados_peritos,
         "divergencias_checklist": divergencias_checklist,
