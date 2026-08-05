@@ -11,6 +11,7 @@ class Config:
     # API Keys e URLs
     LLM_GATE_URL = os.getenv("LLM_GATE_URL", "http://localhost:8000/v1/chat/completions")
     LLM_GATE_API_KEY = os.getenv("LLM_GATE_API_KEY") or os.getenv("API_KEY") or ""
+    LLM_GATE_API_KEY_BASIC = os.getenv("LLM_GATE_API_KEY_BASIC") or ""
     
     # Caminhos padrão
     BASE_DIR = Path(__file__).parent.parent.parent

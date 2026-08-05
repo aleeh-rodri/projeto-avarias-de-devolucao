@@ -378,7 +378,7 @@ def _validate_part_with_llm(
         prompt=prompt,
         image_path=image_path,
         temperature=0,
-        max_tokens=500,
+        max_completion_tokens=500,
     )
     raw = _clean_json_fences(raw)
 

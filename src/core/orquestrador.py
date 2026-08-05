@@ -689,6 +689,23 @@ def rodar_orquestrador(
                 key_field="part_id",
             )
 
+        # Pneus/rodas: uma evidência aprovada pela qualidade para cada part_id.
+        # O limite global de fotos não pode eliminar uma das quatro rodas.
+        elif nome_perito == "pneus_rodas":
+            total_part_ids = len(
+                {
+                    str(r.get("part_id") or "").strip().lower()
+                    for r in registros
+                    if str(r.get("part_id") or "").strip()
+                }
+            )
+            melhores = _escolher_melhores_imagens_diversificadas_por_peca(
+                registros,
+                preferir_view=config.preferir_view,
+                max_total=total_part_ids,
+                key_field="part_id",
+            )
+
         else:
             melhores = _escolher_melhores_imagens(
                 registros,

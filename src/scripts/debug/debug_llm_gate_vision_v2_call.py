@@ -33,7 +33,7 @@ def main() -> None:
                 ],
             }
         ],
-        "max_tokens": 80,
+        "max_completion_tokens": 80,
         "response_format": {"type": "text"},
     }
 
