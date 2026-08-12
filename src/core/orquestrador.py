@@ -474,6 +474,46 @@ def _escolher_melhores_imagens(
     return ordered[:max_itens] if max_itens > 0 else ordered
 
 
+def _escolher_imagens_lataria_por_peca(
+    registros: list[dict[str, Any]],
+    preferir_view: tuple[str, ...],
+    max_fotos_por_peca: int,
+) -> list[dict[str, Any]]:
+    """Aplica o limite de fotos da lataria individualmente por ``part_id``.
+
+    Peças sem avaria indicada no checklist usam somente a melhor foto. Peças
+    marcadas usam até ``max_fotos_por_peca``, preservando o ranking de vista e
+    confiança.
+    """
+    if not registros:
+        return []
+
+    grupos: dict[str, list[dict[str, Any]]] = {}
+    for registro in registros:
+        part_id = str(registro.get("part_id") or "").strip().lower()
+        if not part_id:
+            continue
+        grupos.setdefault(part_id, []).append(registro)
+
+    limite_com_avaria = max(1, int(max_fotos_por_peca))
+    selecionadas: list[dict[str, Any]] = []
+    for grupo in grupos.values():
+        checklist_marcou_avaria = any(
+            registro.get("checklist_damage_reported") is True
+            for registro in grupo
+        )
+        limite = limite_com_avaria if checklist_marcou_avaria else 1
+        selecionadas.extend(
+            _escolher_melhores_imagens(
+                grupo,
+                preferir_view=preferir_view,
+                max_itens=limite,
+            )
+        )
+
+    return selecionadas
+
+
 def _escolher_melhores_imagens_diversificadas_por_peca(
     registros: list[dict[str, Any]],
     preferir_view: tuple[str, ...],
@@ -657,28 +697,14 @@ def rodar_orquestrador(
         
         registros = [img.model_dump() for img in elegiveis]
 
-        # Lataria: garantir cobertura de retrovisores (até 2 fotos), pois o lado pode ser confundido
-        # na triagem e/ou na qualidade.
+        # Lataria: o limite é por peça, não pelo perito inteiro. Peças sem avaria no
+        # checklist usam uma foto; peças marcadas usam até max_fotos_por_peca.
         if nome_perito == "lataria":
-            retrovisores = [r for r in registros if str(r.get("part_id", "")).lower().startswith("retrovisor_")]
-            reservadas = _escolher_melhores_imagens(
-                retrovisores,
+            melhores = _escolher_imagens_lataria_por_peca(
+                registros,
                 preferir_view=config.preferir_view,
-                max_itens=min(2, config.max_fotos_por_peca),
+                max_fotos_por_peca=config.max_fotos_por_peca,
             )
-
-            usados_ids = {str(r.get("image_id")) for r in reservadas if r.get("image_id")}
-            restantes = [r for r in registros if str(r.get("image_id")) not in usados_ids]
-
-            slots_restantes = max(0, config.max_fotos_por_peca - len(reservadas))
-            complementares = _escolher_melhores_imagens_diversificadas_por_peca(
-                restantes,
-                preferir_view=config.preferir_view,
-                max_total=slots_restantes,
-                key_field="part_id",
-            )
-
-            melhores = reservadas + complementares
 
         # Para-choque: tende a ter poucas peças (dianteiro/traseiro), mas ainda assim queremos diversidade.
         elif nome_perito == "parachoque":
