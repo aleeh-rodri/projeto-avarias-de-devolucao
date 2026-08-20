@@ -250,7 +250,7 @@ RETORNE SOMENTE ESTE JSON:
 }}
 """
         try:
-            raw = call_llm_with_image(prompt=prompt, image_path=image_paths[0])
+            raw = call_llm_with_image(prompt=prompt, image_path=image_paths[0], use_basic_model=False, max_completion_tokens=2000)
             res = json.loads(raw.strip().replace("```json", "").replace("```", "").strip())
             if _is_vehicle_key_piece(res.get("peca")):
                 return {

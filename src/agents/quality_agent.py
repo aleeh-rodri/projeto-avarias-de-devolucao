@@ -45,7 +45,8 @@ Criterios de avaliacao:
 2. Correspondencia:
    - Informe `corresponde_a_peca` como diagnostico visual.
    - Nao reprove a foto apenas por duvida de correspondencia com a peca.
-   - Divergencia forte de peca e tratada pela triagem via `needs_human_review`, nao por este agente.
+   - Divergencia forte de peca e registrada pela triagem via `needs_human_review`.
+   - Essa flag e apenas de auditoria: nao reprove nem coloque a foto em quarentena por causa dela.
 
 3. Decisao de aprovacao:
    - Regra padrão: Aprovada se Qualidade for "media" ou "alta". 
@@ -102,8 +103,8 @@ def run_quality_check(case_id: str, triage_images: list[TriageImage], output_dir
             corresponde_a_peca = bool(result_dict.get("corresponde_a_peca"))
             motivo = result_dict.get("motivo")
 
-            # Compatibility disagreement is handled by triage (`needs_human_review`).
-            # Quality approval only decides whether the image is usable for an expert.
+            # `needs_human_review` is audit metadata and does not quarantine the image.
+            # Quality approval decides whether the image is usable for an expert.
             aprovada = qualidade_imagem in {"media", "alta"}
 
             if img.checklist_damage_reported is True and qualidade_imagem == "baixa":

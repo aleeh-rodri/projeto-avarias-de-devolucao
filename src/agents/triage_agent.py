@@ -739,10 +739,8 @@ def run_triage(case_id: str, fotos_dir: str, output_dir: str, checklist_path: st
             # confidence representa a fonte usada para o part_id final.
             base_confidence = validation_conf if should_autocorrect_part_id else 1.0
 
-            # Se a imagem tem divergência, reduzimos a confiança para não ir ao perito
-            # caso o orquestrador ainda não filtre needs_human_review.
-            if needs_human_review:
-                base_confidence = 0.0
+            # `needs_human_review` fica apenas como metadado de auditoria. Uma
+            # divergência não reduz a confiança nem impede o envio ao perito.
 
             view = "media"
 

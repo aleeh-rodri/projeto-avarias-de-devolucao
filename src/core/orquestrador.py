@@ -615,7 +615,6 @@ def rodar_orquestrador(
         img
         for img in triage_out.images
         if img.image_id in aprovadas_ids
-        and not bool(getattr(img, "needs_human_review", False))
     ]
 
     # 3) Mapeamento de Peritos
@@ -625,11 +624,11 @@ def rodar_orquestrador(
             "classe": PeritoParachoque,
             "config": ConfigPeritoParachoque(caminho_lpu_xlsx=config.caminho_lpu_xlsx)
         },
-        "emblemas": {
-            "part_ids": {"parachoque_dianteiro", "parachoque_traseiro", "tampa_porta_malas"},
-            "classe": PeritoEmblemas,
-            "config": ConfigPeritoEmblemas(caminho_lpu_xlsx=config.caminho_lpu_xlsx)
-        },
+        # "emblemas": {
+        #     "part_ids": {"parachoque_dianteiro", "parachoque_traseiro", "tampa_porta_malas"},
+        #     "classe": PeritoEmblemas,
+        #     "config": ConfigPeritoEmblemas(caminho_lpu_xlsx=config.caminho_lpu_xlsx)
+        # },
         "lataria": {
             "part_ids": {
                 "capo", "teto", "tampa_porta_malas",
@@ -744,7 +743,6 @@ def rodar_orquestrador(
                 img.model_dump()
                 for img in (triage_out.images or [])
                 if _is_key_reserve_photo(img)
-                and not bool(getattr(img, "needs_human_review", False))
             ]
             if key_registros:
                 key_melhores = _escolher_melhores_imagens(

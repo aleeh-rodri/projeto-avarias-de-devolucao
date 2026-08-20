@@ -420,25 +420,85 @@ RETORNE SOMENTE ESTE JSON:
             return selected[:2] if selected else []
 
         avaliados: list[dict[str, Any]] = []
+        analises: list[dict[str, Any]] = []
         for idx, p in enumerate(image_paths):
             expected_part_id = expected_part_ids_by_index[idx] if idx < len(expected_part_ids_by_index) else None
+            meta = (
+                imagens_usadas[idx]
+                if isinstance(imagens_usadas, list)
+                and idx < len(imagens_usadas)
+                and isinstance(imagens_usadas[idx], dict)
+                else {}
+            )
+            analise: dict[str, Any] = {
+                "image_id": str(meta.get("image_id") or "").strip() or None,
+                "part_id": expected_part_id,
+                "foto": p,
+            }
             expected_peca, expected_lado = (None, None)
             if expected_part_id:
                 ep, el = _expected_from_part_id(expected_part_id)
                 expected_peca = ep or None
                 expected_lado = el or None
 
-            raw = call_llm_with_image(
-                prompt=_build_prompt(expected_part_id, expected_peca, expected_lado),
-                image_path=p,
-                use_basic_model=False,
-                max_completion_tokens=2000,
-            )
-            raw = _clean_json_fences(raw)
+            try:
+                raw_original = call_llm_with_image(
+                    prompt=_build_prompt(expected_part_id, expected_peca, expected_lado),
+                    image_path=p,
+                    use_basic_model=False,
+                    max_completion_tokens=2000,
+                )
+            except Exception as exc:
+                analise.update(
+                    {
+                        "status": "erro_chamada",
+                        "resposta_gpt": None,
+                        "resposta_bruta": None,
+                        "erro": str(exc),
+                    }
+                )
+                analises.append(analise)
+                continue
+
+            raw_original = raw_original or ""
+            raw = _clean_json_fences(raw_original)
             try:
                 d = json.loads(raw)
-            except Exception:
+            except Exception as exc:
+                analise.update(
+                    {
+                        "status": "resposta_invalida",
+                        "resposta_gpt": None,
+                        "resposta_bruta": raw_original,
+                        "erro": str(exc),
+                    }
+                )
+                analises.append(analise)
                 continue
+
+            if not isinstance(d, dict):
+                analise.update(
+                    {
+                        "status": "resposta_invalida",
+                        "resposta_gpt": None,
+                        "resposta_bruta": raw_original,
+                        "erro": "A resposta JSON do GPT não é um objeto.",
+                    }
+                )
+                analises.append(analise)
+                continue
+
+            # Guarda o JSON original antes de o sistema impor peça e lado vindos
+            # da triagem. Assim, o laudo mostra exatamente o que o GPT respondeu.
+            analise.update(
+                {
+                    "status": "sucesso",
+                    "resposta_gpt": dict(d),
+                    "resposta_bruta": raw_original,
+                    "erro": None,
+                }
+            )
+            analises.append(analise)
 
             # O part_id vem validado pela triagem e é a fonte oficial para peça e lado.
             if expected_part_id and expected_peca:
@@ -504,7 +564,7 @@ RETORNE SOMENTE ESTE JSON:
             )
 
         if not avaliados:
-            return {"erro": "imagem invalida"}
+            return {"erro": "imagem invalida", "analises": analises}
 
         def _part_key(a: dict[str, Any]) -> str:
             part_id = str(a.get("part_id", "") or "").strip().lower()
@@ -592,7 +652,7 @@ RETORNE SOMENTE ESTE JSON:
 
         if not itens:
             # compatibilidade: se não achou dano em nada
-            return ExpertConsolidatedOutput(
+            result = ExpertConsolidatedOutput(
                 nivel_dano="sem_dano",
                 peca="lataria",
                 servicos=[],
@@ -600,6 +660,8 @@ RETORNE SOMENTE ESTE JSON:
                 justificativa="Sem evidência de dano em lataria nas fotos fornecidas.",
                 fotos_analisadas=image_paths,
             ).model_dump()
+            result["analises"] = analises
+            return result
 
         nivel_final = max((i["nivel_dano"] for i in itens), key=_severity_rank)
 
@@ -619,6 +681,7 @@ RETORNE SOMENTE ESTE JSON:
             "nivel_dano": nivel_final,
             "peca": "lataria",
             "itens": itens,
+            "analises": analises,
             "servicos": [s.model_dump() for s in deduped],
             "preco_total": round(total_geral, 2),
             "justificativa": "; ".join(justificativas) if justificativas else None,

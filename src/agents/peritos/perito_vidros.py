@@ -62,7 +62,7 @@ RETORNE APENAS ESTE JSON:
 }}
 """
         try:
-            raw = call_llm_with_image(prompt=prompt, image_path=image_paths[0])
+            raw = call_llm_with_image(prompt=prompt, image_path=image_paths[0], use_basic_model=False, max_completion_tokens=3000)
             raw = raw.strip().replace("```json", "").replace("```", "").strip()
             res = json.loads(raw)
 

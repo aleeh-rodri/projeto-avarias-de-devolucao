@@ -210,7 +210,7 @@ def run_perito_parachoque_multiplas_fotos(
             except Exception:
                 name = str(p)
             print(f"[perito_parachoque] {idx}/{total} {name}", flush=True)
-        raw = call_llm_with_image(prompt=build_bumper_prompt(checklist_summary), image_path=p)
+        raw = call_llm_with_image(prompt=build_bumper_prompt(checklist_summary), image_path=p, use_basic_model=False, max_completion_tokens=2000)
         raw = _clean_json_fences(raw)
 
         try:
