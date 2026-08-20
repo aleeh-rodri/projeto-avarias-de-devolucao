@@ -187,6 +187,11 @@ def _map_checklist_row_to_part_id(descricao: str, item: str) -> str | None:
             return "coluna_direita"
         return None
 
+    # Tampa traseira / tampa do porta-malas
+    if "tampa" in it:
+        if "traseira" in d or "traseiro" in d:
+            return "tampa_porta_malas"
+
     return None
 
 

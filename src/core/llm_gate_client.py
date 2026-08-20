@@ -334,4 +334,3 @@ def call_llm_with_reference_images(
 		return data["choices"][0]["message"]["content"]
 	except Exception as e:  # noqa: BLE001
 		raise RuntimeError(f"Resposta inesperada do LLM Gate: {data}") from e
-

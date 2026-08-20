@@ -55,9 +55,7 @@ class PeritoLataria(BasePerito):
                 return ("coluna", "direito")
             
             if pid.startswith("retrovisor_"):
-                # Não force o lado: triagem pode errar esquerdo/direito.
-                # O modelo deve inferir o lado pela imagem quando possível.
-                return ("retrovisor", "")
+                return ("retrovisor", "direito" if pid.endswith("direito") else "esquerdo")
             if pid.startswith("porta_dianteira_"):
                 return ("porta dianteira", "direito" if pid.endswith("direita") else "esquerdo")
             if pid.startswith("porta_traseira_"):
@@ -77,17 +75,32 @@ class PeritoLataria(BasePerito):
 
         def _build_prompt(expected_part_id: str | None, expected_peca: str | None, expected_lado: str | None) -> str:
             expected_block = ""
-            if expected_part_id and expected_peca and expected_lado:
+            if expected_part_id and expected_peca:
+                pid = expected_part_id.lower()
+                posicao_longitudinal = (
+                    "dianteira"
+                    if "dianteir" in pid
+                    else ("traseira" if "traseir" in pid else "nao_se_aplica")
+                )
+                lado_veiculo = expected_lado or "nao_se_aplica"
                 expected_block = f"""
 
-PEÇA ESPERADA (da triagem): {expected_part_id}
-Você DEVE avaliar SOMENTE esta peça. Se a foto NÃO mostrar claramente essa peça (ex.: capô aberto mostrando o motor, sem a superfície externa), responda:
-- nivel_dano = sem_dano
-- justificativa = explique que a peça esperada não está visível/avaliável
+IDENTIFICACAO DETERMINISTICA DA PECA (fonte oficial do sistema)
+- part_id: {expected_part_id}
+- peca: {expected_peca}
+- posicao longitudinal: {posicao_longitudinal}
+- lado do veiculo: {lado_veiculo}
 
-Preencha obrigatoriamente:
-- peca = \"{expected_peca}\"
-- lado = \"{expected_lado}\"
+REGRAS DE POSICAO
+- Considere os dados acima como verdade. Nao tente redescobrir, inverter ou corrigir a posicao pela imagem.
+- "direito" e "esquerdo" sempre se referem ao lado do veiculo na perspectiva de quem esta sentado ao volante e olhando para a frente. A peca pode aparecer no lado oposto do enquadramento da foto.
+- "dianteira" e "traseira" identificam a posicao da peca no veiculo, nao a direcao para a qual a camera aponta.
+- Avalie SOMENTE o part_id informado, mesmo que outras pecas estejam visiveis.
+- Nao transfira para esta peca uma avaria que esteja em uma peca vizinha.
+
+Se a foto NAO mostrar claramente a peca informada (ex.: capo aberto mostrando o motor, sem a superficie externa), responda:
+- nivel_dano = sem_dano
+- justificativa = explique que a peca informada nao esta visivel ou avaliavel
 """
 
             return f"""
@@ -132,23 +145,16 @@ REGRAS ANTI-EXCESSO
 - Não marque dano por reflexo, sujeira, sombra ou água.
 
 COMO PREENCHER
-- "peca": nome direto da peça.
-- "lado": "esquerdo"/"direito" quando aplicável; senão "nao_se_aplica".
 - "localizacao_avaria": onde está o dano principal.
 - "tipo_avaria": escolha o tipo predominante.
 - "justificativa": objetiva, técnica, cite evidência visual.
 
-REGRA IMPORTANTE (RETROVISOR)
-- Se a peça for "retrovisor", o campo "lado" DEVE ser "esquerdo" ou "direito".
-- NÃO use "nao_se_aplica" para retrovisor.
-
 RETORNE SOMENTE ESTE JSON:
 {{
-  "peca": "nome da peca",
-  "lado": "esquerdo|direito|nao_se_aplica",
   "nivel_dano": "sem_dano|leve|moderado|grave",
   "localizacao_avaria": "canto_esquerdo|canto_direito|centro|superior|inferior|nao_identificavel",
   "tipo_avaria": "arranhao|amassado|quebra|trinca|outro",
+  "acao_recomendada": "pintura|martelinho|recuperacao|troca|nenhuma",
   "justificativa": "descrição técnica baseada na evidência visual e checklist como contexto"
 }}
 """
@@ -219,7 +225,12 @@ RETORNE SOMENTE ESTE JSON:
             elif "teto" in peca_norm:
                 kws = ["teto", acao]
             elif "tampa" in peca_norm and ("malas" in peca_norm or "porta" in peca_norm):
-                kws = ["tampa", "porta", "malas", acao]
+                if acao == "pintura":
+                    kws = ["pintura", "tampa", "traseira"]
+                elif acao == "recuperação":
+                    kws = ["recuperação", "pintura", "tampa", "traseira"]
+                elif acao == "troca":
+                    kws = ["mão", "obra", "troca", "tampa", "traseira"]
 
             elif "para-barro" in peca_norm or "parabarro" in peca_norm or "para barro" in peca_norm:
                 kws = ["para", "barro", acao]
@@ -307,6 +318,25 @@ RETORNE SOMENTE ESTE JSON:
                     if alt and _looks_like_paralama(alt):
                         selected = alt
 
+            # Tampa do porta-malas: não aceitar portas laterais, teto etc.
+            if selected and "tampa" in peca_norm and (
+                "malas" in peca_norm or "porta" in peca_norm
+            ):
+                def _is_tampa_porta_malas(service: LpuItem) -> bool:
+                    desc = (service.descricao or "").strip().lower()
+
+                    return (
+                        "tampa traseira" in desc
+                        or "tampa do porta-malas" in desc
+                        or "tampa do porta malas" in desc
+                    )
+
+                selected = [
+                    service
+                    for service in selected
+                    if _is_tampa_porta_malas(service)
+                ]
+
             # Portas: se a peça é dianteira/traseira, filtra para não puxar serviço da outra.
             if selected and "porta" in peca_norm:
                 if "dianteira" in peca_norm:
@@ -390,26 +420,87 @@ RETORNE SOMENTE ESTE JSON:
             return selected[:2] if selected else []
 
         avaliados: list[dict[str, Any]] = []
+        analises: list[dict[str, Any]] = []
         for idx, p in enumerate(image_paths):
             expected_part_id = expected_part_ids_by_index[idx] if idx < len(expected_part_ids_by_index) else None
+            meta = (
+                imagens_usadas[idx]
+                if isinstance(imagens_usadas, list)
+                and idx < len(imagens_usadas)
+                and isinstance(imagens_usadas[idx], dict)
+                else {}
+            )
+            analise: dict[str, Any] = {
+                "image_id": str(meta.get("image_id") or "").strip() or None,
+                "part_id": expected_part_id,
+                "foto": p,
+            }
             expected_peca, expected_lado = (None, None)
             if expected_part_id:
                 ep, el = _expected_from_part_id(expected_part_id)
                 expected_peca = ep or None
                 expected_lado = el or None
 
-            raw = call_llm_with_image(
-                prompt=_build_prompt(expected_part_id, expected_peca, expected_lado),
-                image_path=p,
-            )
-            raw = _clean_json_fences(raw)
             try:
-                d = json.loads(raw)
-            except Exception:
+                raw_original = call_llm_with_image(
+                    prompt=_build_prompt(expected_part_id, expected_peca, expected_lado),
+                    image_path=p,
+                    use_basic_model=False,
+                    max_completion_tokens=2000,
+                )
+            except Exception as exc:
+                analise.update(
+                    {
+                        "status": "erro_chamada",
+                        "resposta_gpt": None,
+                        "resposta_bruta": None,
+                        "erro": str(exc),
+                    }
+                )
+                analises.append(analise)
                 continue
 
-            # Se temos part_id esperado, força peca consistente.
-            # Lado só é forçado quando for determinístico (não retrovisor).
+            raw_original = raw_original or ""
+            raw = _clean_json_fences(raw_original)
+            try:
+                d = json.loads(raw)
+            except Exception as exc:
+                analise.update(
+                    {
+                        "status": "resposta_invalida",
+                        "resposta_gpt": None,
+                        "resposta_bruta": raw_original,
+                        "erro": str(exc),
+                    }
+                )
+                analises.append(analise)
+                continue
+
+            if not isinstance(d, dict):
+                analise.update(
+                    {
+                        "status": "resposta_invalida",
+                        "resposta_gpt": None,
+                        "resposta_bruta": raw_original,
+                        "erro": "A resposta JSON do GPT não é um objeto.",
+                    }
+                )
+                analises.append(analise)
+                continue
+
+            # Guarda o JSON original antes de o sistema impor peça e lado vindos
+            # da triagem. Assim, o laudo mostra exatamente o que o GPT respondeu.
+            analise.update(
+                {
+                    "status": "sucesso",
+                    "resposta_gpt": dict(d),
+                    "resposta_bruta": raw_original,
+                    "erro": None,
+                }
+            )
+            analises.append(analise)
+
+            # O part_id vem validado pela triagem e é a fonte oficial para peça e lado.
             if expected_part_id and expected_peca:
                 d["peca"] = expected_peca
                 if expected_lado:
@@ -473,9 +564,12 @@ RETORNE SOMENTE ESTE JSON:
             )
 
         if not avaliados:
-            return {"erro": "imagem invalida"}
+            return {"erro": "imagem invalida", "analises": analises}
 
         def _part_key(a: dict[str, Any]) -> str:
+            part_id = str(a.get("part_id", "") or "").strip().lower()
+            if part_id:
+                return part_id
             peca = str(a.get("peca", "") or "").strip()
             lado = str(a.get("lado", "") or "").strip()
             return f"{peca} {lado}".strip().lower()
@@ -558,7 +652,7 @@ RETORNE SOMENTE ESTE JSON:
 
         if not itens:
             # compatibilidade: se não achou dano em nada
-            return ExpertConsolidatedOutput(
+            result = ExpertConsolidatedOutput(
                 nivel_dano="sem_dano",
                 peca="lataria",
                 servicos=[],
@@ -566,6 +660,8 @@ RETORNE SOMENTE ESTE JSON:
                 justificativa="Sem evidência de dano em lataria nas fotos fornecidas.",
                 fotos_analisadas=image_paths,
             ).model_dump()
+            result["analises"] = analises
+            return result
 
         nivel_final = max((i["nivel_dano"] for i in itens), key=_severity_rank)
 
@@ -585,6 +681,7 @@ RETORNE SOMENTE ESTE JSON:
             "nivel_dano": nivel_final,
             "peca": "lataria",
             "itens": itens,
+            "analises": analises,
             "servicos": [s.model_dump() for s in deduped],
             "preco_total": round(total_geral, 2),
             "justificativa": "; ".join(justificativas) if justificativas else None,

@@ -7,7 +7,7 @@ from pathlib import Path
 from typing import Any
 
 from core.config import config as global_config
-from core.pdf_utils import extract_reldev_avaria_part_ids, extract_reldev_chave_reserva_registro
+from core.pdf_utils import extract_reldev_avaria_part_ids, extract_reldev_chave_reserva_nao_tem
 from core.schemas import TriageOutput, QualityOutput
 from agents.triage_agent import run_triage
 from agents.quality_agent import run_quality_check
@@ -474,6 +474,46 @@ def _escolher_melhores_imagens(
     return ordered[:max_itens] if max_itens > 0 else ordered
 
 
+def _escolher_imagens_lataria_por_peca(
+    registros: list[dict[str, Any]],
+    preferir_view: tuple[str, ...],
+    max_fotos_por_peca: int,
+) -> list[dict[str, Any]]:
+    """Aplica o limite de fotos da lataria individualmente por ``part_id``.
+
+    Peças sem avaria indicada no checklist usam somente a melhor foto. Peças
+    marcadas usam até ``max_fotos_por_peca``, preservando o ranking de vista e
+    confiança.
+    """
+    if not registros:
+        return []
+
+    grupos: dict[str, list[dict[str, Any]]] = {}
+    for registro in registros:
+        part_id = str(registro.get("part_id") or "").strip().lower()
+        if not part_id:
+            continue
+        grupos.setdefault(part_id, []).append(registro)
+
+    limite_com_avaria = max(1, int(max_fotos_por_peca))
+    selecionadas: list[dict[str, Any]] = []
+    for grupo in grupos.values():
+        checklist_marcou_avaria = any(
+            registro.get("checklist_damage_reported") is True
+            for registro in grupo
+        )
+        limite = limite_com_avaria if checklist_marcou_avaria else 1
+        selecionadas.extend(
+            _escolher_melhores_imagens(
+                grupo,
+                preferir_view=preferir_view,
+                max_itens=limite,
+            )
+        )
+
+    return selecionadas
+
+
 def _escolher_melhores_imagens_diversificadas_por_peca(
     registros: list[dict[str, Any]],
     preferir_view: tuple[str, ...],
@@ -563,14 +603,11 @@ def rodar_orquestrador(
     quality_out = QualityOutput(**quality_raw)
 
     chave_reserva_nao_tem = False
-    chave_reserva_registro = None
     if checklist_path and os.path.exists(checklist_path):
         try:
-            chave_reserva_registro = extract_reldev_chave_reserva_registro(checklist_path)
-            chave_reserva_nao_tem = chave_reserva_registro in {"nao_tem", "avaria"}
+            chave_reserva_nao_tem = extract_reldev_chave_reserva_nao_tem(checklist_path)
         except Exception:
             chave_reserva_nao_tem = False
-            chave_reserva_registro = None
 
     aprovadas_ids = {a.image_id for a in quality_out.assessments if a.aprovada}
 
@@ -578,7 +615,6 @@ def rodar_orquestrador(
         img
         for img in triage_out.images
         if img.image_id in aprovadas_ids
-        and not bool(getattr(img, "needs_human_review", False))
     ]
 
     # 3) Mapeamento de Peritos
@@ -588,11 +624,11 @@ def rodar_orquestrador(
             "classe": PeritoParachoque,
             "config": ConfigPeritoParachoque(caminho_lpu_xlsx=config.caminho_lpu_xlsx)
         },
-        "emblemas": {
-            "part_ids": {"parachoque_dianteiro", "parachoque_traseiro", "tampa_porta_malas"},
-            "classe": PeritoEmblemas,
-            "config": ConfigPeritoEmblemas(caminho_lpu_xlsx=config.caminho_lpu_xlsx)
-        },
+        # "emblemas": {
+        #     "part_ids": {"parachoque_dianteiro", "parachoque_traseiro", "tampa_porta_malas"},
+        #     "classe": PeritoEmblemas,
+        #     "config": ConfigPeritoEmblemas(caminho_lpu_xlsx=config.caminho_lpu_xlsx)
+        # },
         "lataria": {
             "part_ids": {
                 "capo", "teto", "tampa_porta_malas",
@@ -660,45 +696,13 @@ def rodar_orquestrador(
         
         registros = [img.model_dump() for img in elegiveis]
 
-        # Lataria: garantir cobertura de retrovisores (até 2 fotos), pois o lado pode ser confundido
-        # na triagem e/ou na qualidade.
+        # Lataria: o limite é por peça, não pelo perito inteiro. Peças sem avaria no
+        # checklist usam uma foto; peças marcadas usam até max_fotos_por_peca.
         if nome_perito == "lataria":
-            retrovisores = [r for r in registros if str(r.get("part_id", "")).lower().startswith("retrovisor_")]
-            reservadas = _escolher_melhores_imagens(
-                retrovisores,
-                preferir_view=config.preferir_view,
-                max_itens=min(2, config.max_fotos_por_peca),
-            )
-
-            usados_ids = {str(r.get("image_id")) for r in reservadas if r.get("image_id")}
-            restantes = [r for r in registros if str(r.get("image_id")) not in usados_ids]
-
-            slots_restantes = max(0, config.max_fotos_por_peca - len(reservadas))
-            complementares = _escolher_melhores_imagens_diversificadas_por_peca(
-                restantes,
-                preferir_view=config.preferir_view,
-                max_total=slots_restantes,
-                key_field="part_id",
-            )
-
-            melhores = reservadas + complementares
-
-        # Emblemas: cobre dianteira/traseira para que o perito receba o contexto pelo part_id.
-        elif nome_perito == "emblemas":
-            for r in registros:
-                pid = str(r.get("part_id", "") or "").strip().lower()
-                if pid in {"parachoque_dianteiro", "dianteira", "grade_dianteira"}:
-                    r["emblema_posicao"] = "dianteiro"
-                elif pid in {"parachoque_traseiro", "tampa_porta_malas", "traseira"}:
-                    r["emblema_posicao"] = "traseiro"
-                else:
-                    r["emblema_posicao"] = "__unknown__"
-
-            melhores = _escolher_melhores_imagens_diversificadas_por_peca(
+            melhores = _escolher_imagens_lataria_por_peca(
                 registros,
                 preferir_view=config.preferir_view,
-                max_total=max(2, config.max_fotos_por_peca),
-                key_field="emblema_posicao",
+                max_fotos_por_peca=config.max_fotos_por_peca,
             )
 
         # Para-choque: tende a ter poucas peças (dianteiro/traseiro), mas ainda assim queremos diversidade.
@@ -707,6 +711,23 @@ def rodar_orquestrador(
                 registros,
                 preferir_view=config.preferir_view,
                 max_total=config.max_fotos_por_peca,
+                key_field="part_id",
+            )
+
+        # Pneus/rodas: uma evidência aprovada pela qualidade para cada part_id.
+        # O limite global de fotos não pode eliminar uma das quatro rodas.
+        elif nome_perito == "pneus_rodas":
+            total_part_ids = len(
+                {
+                    str(r.get("part_id") or "").strip().lower()
+                    for r in registros
+                    if str(r.get("part_id") or "").strip()
+                }
+            )
+            melhores = _escolher_melhores_imagens_diversificadas_por_peca(
+                registros,
+                preferir_view=config.preferir_view,
+                max_total=total_part_ids,
                 key_field="part_id",
             )
 
@@ -722,7 +743,6 @@ def rodar_orquestrador(
                 img.model_dump()
                 for img in (triage_out.images or [])
                 if _is_key_reserve_photo(img)
-                and not bool(getattr(img, "needs_human_review", False))
             ]
             if key_registros:
                 key_melhores = _escolher_melhores_imagens(
@@ -738,8 +758,7 @@ def rodar_orquestrador(
                 ]
                 melhores = (key_melhores + complementares)[: config.max_fotos_por_peca]
 
-        should_run_without_images = nome_perito == "acessorios" and chave_reserva_nao_tem
-        if melhores or should_run_without_images:
+        if melhores:
             image_paths = []
             imagens_usadas = []
             for r in melhores:
@@ -760,7 +779,6 @@ def rodar_orquestrador(
                     checklist_summary=triage_out.checklist_summary,
                     imagens_usadas=imagens_usadas,
                     chave_reserva_nao_tem=chave_reserva_nao_tem,
-                    chave_reserva_registro=chave_reserva_registro,
                     wheel_type=wheel_type,
                 )
                 
@@ -837,7 +855,6 @@ def rodar_orquestrador(
             "total_imagens": len(triage_out.images),
             "imagens_aprovadas_qualidade": len(imagens_filtradas),
             "chave_reserva_nao_tem": chave_reserva_nao_tem,
-            "chave_reserva_registro": chave_reserva_registro,
         },
         "peritos": resultados_peritos,
         "divergencias_checklist": divergencias_checklist,

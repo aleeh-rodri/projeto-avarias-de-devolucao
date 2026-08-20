@@ -10,3 +10,4 @@ backup_input/
 backup_output/
 input/
 output/
+tests/

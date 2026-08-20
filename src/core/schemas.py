@@ -86,7 +86,8 @@ class TriageImage(BaseModel):
     # Novo: resultado bruto/estruturado da validação do LLM
     llm_part_validation: dict[str, Any] | None = None
 
-    # Novo: quando LLM indicar divergência forte
+    # Metadado de auditoria quando o LLM indicar divergência forte.
+    # Não impede o processamento automático da imagem.
     needs_human_review: bool = False
 
 class TriageOutput(BaseModel):

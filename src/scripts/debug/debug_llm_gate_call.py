@@ -15,7 +15,7 @@ SRC_DIR = BASE_DIR / "src"
 if str(SRC_DIR) not in sys.path:
     sys.path.insert(0, str(SRC_DIR))
 
-from core.llm_gate_client import _get_config, _guess_mime_type
+from core.llm_gate_client import _get_config, _guess_mime_type, _supports_custom_temperature
 
 
 def _parse_args() -> argparse.Namespace:
@@ -30,12 +30,7 @@ def _parse_args() -> argparse.Namespace:
         default='Responda apenas com JSON valido: {"ok": true}',
         help="Prompt de teste enviado junto com a imagem.",
     )
-    parser.add_argument(
-        "--max-completion-tokens",
-        type=int,
-        default=120,
-        help="max_completion_tokens do payload.",
-    )
+    parser.add_argument("--max-tokens", type=int, default=120, help="Limite max_completion_tokens do payload.")
     parser.add_argument("--temperature", type=float, default=0.0, help="temperature do payload.")
     parser.add_argument(
         "--no-proxy",
@@ -45,14 +40,7 @@ def _parse_args() -> argparse.Namespace:
     return parser.parse_args()
 
 
-def _build_payload(
-    *,
-    model: str,
-    prompt: str,
-    data_url: str,
-    max_completion_tokens: int,
-    temperature: float,
-) -> dict[str, Any]:
+def _build_payload(*, model: str, prompt: str, data_url: str, max_tokens: int, temperature: float) -> dict[str, Any]:
     payload = {
         "model": model,
         "messages": [
@@ -64,10 +52,10 @@ def _build_payload(
                 ],
             }
         ],
-        "max_completion_tokens": max_completion_tokens,
+        "max_completion_tokens": max_tokens,
         "response_format": {"type": "text"},
     }
-    if not model.lower().startswith("gpt-5"):
+    if _supports_custom_temperature(model):
         payload["temperature"] = temperature
     return payload
 
@@ -90,7 +78,7 @@ def main() -> None:
         model=cfg.model,
         prompt=args.prompt,
         data_url=data_url,
-        max_completion_tokens=args.max_completion_tokens,
+        max_tokens=args.max_tokens,
         temperature=args.temperature,
     )
 
