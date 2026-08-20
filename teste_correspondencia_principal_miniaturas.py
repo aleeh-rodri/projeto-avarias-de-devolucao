@@ -108,7 +108,7 @@ def _run_llm_on_image(*, image_path: Path, call_llm_with_image: Any) -> TestResu
             prompt=PROMPT_CORRESPONDENCIA_PRINCIPAL_MINIATURAS,
             image_path=str(image_path),
             temperature=0,
-            max_tokens=500,
+            max_completion_tokens=500,
         )
         parsed_response = _parse_json_response(raw_response)
         if parsed_response is None:
