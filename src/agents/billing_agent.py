@@ -1,364 +1,177 @@
 from __future__ import annotations
 
-import json
-from dataclasses import dataclass
 from typing import Any, Literal
-
-from core.llm_gate_client import call_llm_with_image
 
 
 BillingDecision = Literal["cobrar", "nao_cobrar", "revisar"]
 BillingClassification = Literal["dano_cobravel", "desgaste_leve", "inconclusivo"]
-DamageType = Literal["arranhao", "quebra", "trinca", "outro", "incerto"]
-DamageDepth = Literal["superficial", "moderada", "profunda", "incerta"]
-DamageExtent = Literal["pequena", "media", "grande", "incerta"]
-
-
-@dataclass(frozen=True)
-class BillingAgentConfig:
-    confidence_min_automatico: float = 0.70
-    use_basic_model: bool = False
-    max_completion_tokens: int = 1200
 
 
 class BillingAgent:
-    """Avalia elegibilidade de cobranca depois da analise tecnica do perito.
+    """Aplica regras deterministicas de cobranca ao parecer tecnico do perito.
 
-    MVP atual:
-    - somente calotas;
-    - nao substitui a analise tecnica do perito;
-    - decide entre cobrar / nao_cobrar / revisar;
-    - usa foto + resultado estruturado do perito;
-    - em caso de erro, ambiguidade ou baixa confianca, retorna revisar.
+    O agente nao acessa imagem, LLM, servicos, precos ou LPU. Ele recebe somente
+    os atributos tecnicos que ja foram extraidos pelo perito de pneus e rodas.
+    Neste MVP, apenas calotas sao suportadas.
     """
 
-    def __init__(self, config: BillingAgentConfig | None = None):
-        self.config = config or BillingAgentConfig()
+    _DAMAGE_TYPES = {"sem_dano", "arranhao", "quebra", "trinca", "outro", "incerto"}
+    _DEPTHS = {"nao_aplicavel", "superficial", "moderada", "profunda", "incerta"}
+    _EXTENTS = {"nao_aplicavel", "pequena", "media", "grande", "incerta"}
 
     @staticmethod
-    def _clean_json_fences(raw: str) -> str:
-        value = (raw or "").strip()
-        if value.startswith("```"):
-            value = value.replace("```json", "").replace("```", "").strip()
-        return value
+    def _normalize(value: object) -> str:
+        return str(value or "").strip().lower()
 
-    @staticmethod
-    def _clamp01(value: object) -> float:
-        try:
-            value_f = float(value)
-        except Exception:
-            return 0.0
-        return max(0.0, min(value_f, 1.0))
-
-    @staticmethod
-    def _to_bool(value: object) -> bool:
-        if value is True:
-            return True
-        if value is False:
-            return False
+    @classmethod
+    def _bool_or_invalid(cls, value: object) -> bool | None:
+        if value is True or value is False:
+            return value
         if isinstance(value, str):
-            normalized = value.strip().lower()
+            normalized = cls._normalize(value)
             if normalized in {"true", "1", "sim", "yes"}:
                 return True
             if normalized in {"false", "0", "nao", "não", "no"}:
                 return False
-        return False
+        return None
 
     @staticmethod
-    def _normalize_enum(value: object, allowed: set[str], fallback: str) -> str:
-        normalized = str(value or "").strip().lower()
-        return normalized if normalized in allowed else fallback
-
-    @staticmethod
-    def _fallback_review(
+    def _result(
         *,
-        reason: str,
-        raw_response: str | None = None,
-        confidence: float = 0.0,
+        decisao: BillingDecision,
+        classificacao: BillingClassification,
+        regra: str,
+        justificativa: str,
+        criterios: dict[str, Any],
     ) -> dict[str, Any]:
-        out: dict[str, Any] = {
-            "decisao": "revisar",
-            "classificacao": "inconclusivo",
-            "confidence": max(0.0, min(float(confidence or 0.0), 1.0)),
-            "criterios": {
-                "tipo_dano": "incerto",
-                "profundidade": "incerta",
-                "extensao": "incerta",
-                "quebra": False,
-                "trinca": False,
-                "perda_material": False,
-            },
-            "justificativa": reason,
-            "needs_human_review": True,
-        }
-        if raw_response:
-            out["raw_response"] = raw_response
-        return out
-
-    @staticmethod
-    def _validate_input(analise_perito: dict[str, Any]) -> tuple[bool, str | None]:
-        if not isinstance(analise_perito, dict):
-            return (False, "Analise do perito invalida ou ausente.")
-
-        peca = str(analise_perito.get("peca") or "").strip().lower()
-        if peca != "calota":
-            return (False, "BillingAgent MVP aceita somente analises de calota.")
-
-        nivel = str(analise_perito.get("nivel_dano") or "").strip().lower()
-        if nivel not in {"sem_dano", "leve", "moderado", "grave"}:
-            return (False, "nivel_dano invalido na analise do perito.")
-
-        return (True, None)
-
-    @staticmethod
-    def _build_calota_billing_prompt(analise_perito: dict[str, Any]) -> str:
-        perito_json = json.dumps(analise_perito, ensure_ascii=False, indent=2)
-
-        return f"""
-Voce e um AVALIADOR DE ELEGIBILIDADE DE COBRANCA DE AVARIAS AUTOMOTIVAS.
-
-PAPEL DESTA ETAPA
-- Um perito tecnico ja analisou a imagem e identificou a existencia da avaria.
-- Sua funcao NAO e substituir o perito tecnico.
-- Sua funcao e decidir se a avaria identificada deve gerar cobranca segundo a politica disponivel.
-- Uma avaria pode existir visualmente e ainda assim nao ser cobravel.
-
-PECA ANALISADA
-CALOTA
-
-ANALISE TECNICA PRODUZIDA PELO PERITO
-{perito_json}
-
-OBJETIVO
-Classificar a avaria em exatamente uma destas decisoes:
-- "cobrar": ha evidencia suficiente de dano que ultrapassa desgaste superficial leve.
-- "nao_cobrar": existe avaria visual, mas ela e claramente superficial/leve e compativel com desgaste que nao deve gerar cobranca.
-- "revisar": a imagem ou a evidencia nao permite decidir com seguranca entre cobrar e nao cobrar.
-
-POLITICA DISPONIVEL NESTE MVP
-- Arranhoes ou riscos claramente superficiais, leves e de pequena extensao podem ser tratados como desgaste leve e nao gerar cobranca.
-- Quebra, trinca, falta/perda de material ou dano claramente profundo nao devem ser tratados como simples desgaste superficial.
-- Se a profundidade, extensao ou natureza do dano nao puder ser avaliada com seguranca, escolha "revisar".
-- Nao invente criterios de cobranca que nao estejam definidos aqui.
-- Na duvida entre cobrar e nao cobrar, escolha "revisar".
-
-O QUE OBSERVAR NA FOTO
-- tipo predominante de dano;
-- profundidade aparente;
-- extensao aparente;
-- existencia de quebra;
-- existencia de trinca;
-- existencia de perda de material.
-
-REGRAS IMPORTANTES
-- O fato de o perito ter retornado "leve" NAO significa automaticamente "nao_cobrar".
-- O fato de o perito ter retornado "moderado" ou "grave" e um sinal tecnico relevante, mas a decisao deve continuar baseada na evidencia visual.
-- Nao transforme sujeira, reflexo, sombra ou brilho em dano cobravel.
-- Nao altere a peca analisada.
-- Nao retorne servico, preco ou item da LPU.
-
-ESCALA DE CONFIDENCE
-- 0.90 a 1.00: decisao muito segura.
-- 0.75 a 0.89: decisao segura.
-- 0.60 a 0.74: alguma incerteza.
-- abaixo de 0.60: decisao incerta; prefira "revisar".
-
-RETORNE SOMENTE JSON VALIDO, sem Markdown e sem texto extra:
-{{
-  "decisao": "cobrar|nao_cobrar|revisar",
-  "classificacao": "dano_cobravel|desgaste_leve|inconclusivo",
-  "confidence": 0.0,
-  "criterios": {{
-    "tipo_dano": "arranhao|quebra|trinca|outro|incerto",
-    "profundidade": "superficial|moderada|profunda|incerta",
-    "extensao": "pequena|media|grande|incerta",
-    "quebra": true,
-    "trinca": false,
-    "perda_material": false
-  }},
-  "justificativa": "explicacao curta, objetiva e baseada na evidencia visual"
-}}
-""".strip()
-
-    def _normalize_response(self, data: dict[str, Any]) -> dict[str, Any]:
-        decision = self._normalize_enum(
-            data.get("decisao"),
-            {"cobrar", "nao_cobrar", "revisar"},
-            "revisar",
-        )
-        classification = self._normalize_enum(
-            data.get("classificacao"),
-            {"dano_cobravel", "desgaste_leve", "inconclusivo"},
-            "inconclusivo",
-        )
-        confidence = self._clamp01(data.get("confidence"))
-
-        criteria_raw = data.get("criterios")
-        if not isinstance(criteria_raw, dict):
-            criteria_raw = {}
-
-        criteria = {
-            "tipo_dano": self._normalize_enum(
-                criteria_raw.get("tipo_dano"),
-                {"arranhao", "quebra", "trinca", "outro", "incerto"},
-                "incerto",
-            ),
-            "profundidade": self._normalize_enum(
-                criteria_raw.get("profundidade"),
-                {"superficial", "moderada", "profunda", "incerta"},
-                "incerta",
-            ),
-            "extensao": self._normalize_enum(
-                criteria_raw.get("extensao"),
-                {"pequena", "media", "grande", "incerta"},
-                "incerta",
-            ),
-            "quebra": self._to_bool(criteria_raw.get("quebra")),
-            "trinca": self._to_bool(criteria_raw.get("trinca")),
-            "perda_material": self._to_bool(criteria_raw.get("perda_material")),
-        }
-
-        justification = str(data.get("justificativa") or "").strip()
-        if not justification:
-            justification = "Decisao sem justificativa suficiente; revisar manualmente."
-            decision = "revisar"
-            classification = "inconclusivo"
-
-        # Consistencia minima entre decisao e classificacao.
-        if decision == "cobrar":
-            classification = "dano_cobravel"
-        elif decision == "nao_cobrar":
-            classification = "desgaste_leve"
-        else:
-            classification = "inconclusivo"
-
-        # Sinais fortes de dano nao devem terminar como nao_cobrar.
-        strong_damage_signal = (
-            criteria["quebra"]
-            or criteria["trinca"]
-            or criteria["perda_material"]
-            or criteria["profundidade"] == "profunda"
-        )
-        if decision == "nao_cobrar" and strong_damage_signal:
-            decision = "revisar"
-            classification = "inconclusivo"
-            justification = (
-                "Resposta inconsistente: havia sinal de quebra/trinca/perda de material "
-                "ou dano profundo, mas a decisao veio como nao_cobrar. Encaminhado para revisao."
-            )
-
-        # Baixa confianca nunca automatiza uma decisao de negocio.
-        if (
-            decision in {"cobrar", "nao_cobrar"}
-            and confidence < self.config.confidence_min_automatico
-        ):
-            original_decision = decision
-            decision = "revisar"
-            classification = "inconclusivo"
-            justification = (
-                f"Decisao original '{original_decision}' com confidence {confidence:.2f}, "
-                f"abaixo do minimo automatico {self.config.confidence_min_automatico:.2f}. "
-                f"Justificativa original: {justification}"
-            )
-
         return {
-            "decisao": decision,
-            "classificacao": classification,
-            "confidence": round(confidence, 4),
-            "criterios": criteria,
-            "justificativa": justification,
-            "needs_human_review": decision == "revisar",
+            "decisao": decisao,
+            "classificacao": classificacao,
+            "confidence": 1.0 if decisao != "revisar" else 0.0,
+            "regra_aplicada": regra,
+            "criterios": criterios,
+            "justificativa": justificativa,
+            "needs_human_review": decisao == "revisar",
+            "source": "deterministic_billing_policy",
         }
 
-    def avaliar_calota(
-        self,
-        *,
-        image_path: str,
-        analise_perito: dict[str, Any],
+    @classmethod
+    def _review(
+        cls,
+        reason: str,
+        criterios: dict[str, Any] | None = None,
     ) -> dict[str, Any]:
-        """Decide se uma avaria de calota deve ser cobrada.
+        return cls._result(
+            decisao="revisar",
+            classificacao="inconclusivo",
+            regra="entrada_invalida_ou_regra_nao_definida",
+            justificativa=reason,
+            criterios=criterios or {},
+        )
 
-        Retorna sempre um dict estruturado. Qualquer erro vira decisao="revisar".
-        """
-        valid, reason = self._validate_input(analise_perito)
-        if not valid:
-            return self._fallback_review(reason=reason or "Entrada invalida.")
+    def avaliar_calota(self, *, analise_perito: dict[str, Any]) -> dict[str, Any]:
+        """Decide a cobranca usando exclusivamente o JSON tecnico do perito."""
+        if not isinstance(analise_perito, dict):
+            return self._review("Analise do perito invalida ou ausente.")
 
-        nivel = str(analise_perito.get("nivel_dano") or "").strip().lower()
+        peca = self._normalize(analise_perito.get("peca"))
+        part_id = self._normalize(analise_perito.get("part_id"))
+        nivel = self._normalize(analise_perito.get("nivel_dano"))
+        tipo = self._normalize(analise_perito.get("tipo_dano"))
+        profundidade = self._normalize(analise_perito.get("profundidade"))
+        extensao = self._normalize(analise_perito.get("extensao"))
+
+        if peca != "calota":
+            return self._review("BillingAgent MVP aceita somente analises de calota.")
+        if not part_id:
+            return self._review("part_id ausente na analise tecnica da calota.")
+        if nivel not in {"sem_dano", "leve", "moderado", "grave"}:
+            return self._review("nivel_dano invalido na analise tecnica da calota.")
+        if tipo not in self._DAMAGE_TYPES:
+            return self._review("tipo_dano invalido na analise tecnica da calota.")
+        if profundidade not in self._DEPTHS:
+            return self._review("profundidade invalida na analise tecnica da calota.")
+        if extensao not in self._EXTENTS:
+            return self._review("extensao invalida na analise tecnica da calota.")
+
+        quebra = self._bool_or_invalid(analise_perito.get("quebra"))
+        trinca = self._bool_or_invalid(analise_perito.get("trinca"))
+        perda_material = self._bool_or_invalid(analise_perito.get("perda_material"))
+        if quebra is None or trinca is None or perda_material is None:
+            return self._review(
+                "quebra, trinca e perda_material devem ser booleanos na analise tecnica."
+            )
+
+        criterios = {
+            "peca": peca,
+            "part_id": part_id,
+            "nivel_dano": nivel,
+            "tipo_dano": tipo,
+            "profundidade": profundidade,
+            "extensao": extensao,
+            "quebra": quebra,
+            "trinca": trinca,
+            "perda_material": perda_material,
+        }
+
+        sinal_quebra = quebra or tipo == "quebra"
+        sinal_trinca = trinca or tipo == "trinca"
+
+        # Dados contraditorios nao devem produzir uma decisao financeira automatica.
+        if nivel == "sem_dano" and (sinal_quebra or sinal_trinca or perda_material):
+            return self._review(
+                "Analise contraditoria: sem_dano acompanhado de quebra, trinca ou perda de material.",
+                criterios,
+            )
+
         if nivel == "sem_dano":
-            return {
-                "decisao": "nao_cobrar",
-                "classificacao": "desgaste_leve",
-                "confidence": 1.0,
-                "criterios": {
-                    "tipo_dano": "incerto",
-                    "profundidade": "incerta",
-                    "extensao": "incerta",
-                    "quebra": False,
-                    "trinca": False,
-                    "perda_material": False,
-                },
-                "justificativa": "O perito tecnico classificou a calota como sem_dano; nenhuma cobranca deve ser gerada.",
-                "needs_human_review": False,
-                "source": "deterministic_sem_dano",
-            }
-
-        if not image_path or not str(image_path).strip():
-            return self._fallback_review(
-                reason="Analise de calota com dano, mas sem foto disponivel para avaliar elegibilidade de cobranca."
+            return self._result(
+                decisao="nao_cobrar",
+                classificacao="desgaste_leve",
+                regra="sem_dano_nao_cobra",
+                justificativa="Calota classificada pelo perito como sem dano; nao cobrar.",
+                criterios=criterios,
             )
 
-        prompt = self._build_calota_billing_prompt(analise_perito)
-
-        try:
-            raw = call_llm_with_image(
-                prompt=prompt,
-                image_path=str(image_path),
-                temperature=0,
-                max_completion_tokens=self.config.max_completion_tokens,
-                use_basic_model=self.config.use_basic_model,
-            )
-        except Exception as exc:
-            return self._fallback_review(
-                reason=f"Falha ao chamar o LLM no BillingAgent: {type(exc).__name__}: {exc}"
+        if sinal_quebra:
+            return self._result(
+                decisao="cobrar",
+                classificacao="dano_cobravel",
+                regra="quebra_cobra",
+                justificativa="O parecer tecnico identificou quebra na calota; cobrar.",
+                criterios=criterios,
             )
 
-        cleaned = self._clean_json_fences(raw)
-        try:
-            parsed = json.loads(cleaned)
-        except Exception:
-            return self._fallback_review(
-                reason="Resposta do BillingAgent nao veio em JSON valido.",
-                raw_response=raw,
+        if sinal_trinca:
+            return self._result(
+                decisao="cobrar",
+                classificacao="dano_cobravel",
+                regra="trinca_cobra",
+                justificativa="O parecer tecnico identificou trinca na calota; cobrar.",
+                criterios=criterios,
             )
 
-        if not isinstance(parsed, dict):
-            return self._fallback_review(
-                reason="Resposta do BillingAgent nao e um objeto JSON.",
-                raw_response=raw,
+        if nivel == "leve" and tipo == "arranhao" and profundidade == "superficial":
+            return self._result(
+                decisao="nao_cobrar",
+                classificacao="desgaste_leve",
+                regra="arranhao_leve_superficial_nao_cobra",
+                justificativa="Arranhao leve e superficial na calota; nao cobrar.",
+                criterios=criterios,
             )
 
-        result = self._normalize_response(parsed)
-        result["source"] = "llm_billing_policy"
-        return result
+        return self._review(
+            "A combinacao tecnica informada ainda nao possui regra de cobranca definida.",
+            criterios,
+        )
 
-    def avaliar_item(
-        self,
-        *,
-        image_path: str,
-        analise_perito: dict[str, Any],
-    ) -> dict[str, Any]:
-        """Ponto de entrada generico para futuras pecas.
-
-        No MVP atual, somente calota esta habilitada.
-        """
-        peca = str((analise_perito or {}).get("peca") or "").strip().lower()
+    def avaliar_item(self, *, analise_perito: dict[str, Any]) -> dict[str, Any]:
+        """Ponto de entrada generico para as pecas suportadas pelo billing."""
+        if not isinstance(analise_perito, dict):
+            return self._review("Analise do perito invalida ou ausente.")
+        peca = self._normalize(analise_perito.get("peca"))
         if peca == "calota":
-            return self.avaliar_calota(
-                image_path=image_path,
-                analise_perito=analise_perito,
-            )
-
-        return self._fallback_review(
-            reason=f"Peca '{peca or 'desconhecida'}' ainda nao suportada pelo BillingAgent MVP."
+            return self.avaliar_calota(analise_perito=analise_perito)
+        return self._review(
+            f"Peca '{peca or 'desconhecida'}' ainda nao suportada pelo BillingAgent MVP."
         )

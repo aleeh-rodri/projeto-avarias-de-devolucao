@@ -43,6 +43,53 @@ class PeritoPneusRodas(BasePerito):
             raise ValueError("resposta do perito não é um objeto JSON")
         return parsed
 
+    @staticmethod
+    def _to_bool(value: object) -> bool:
+        if value is True:
+            return True
+        if isinstance(value, str):
+            return value.strip().lower() in {"true", "1", "sim", "yes"}
+        return False
+
+    @classmethod
+    def _billing_criteria(
+        cls,
+        result: dict[str, Any],
+        *,
+        nivel: str,
+    ) -> dict[str, Any]:
+        """Normaliza os fatos visuais que alimentam o billing determinístico."""
+        if nivel == "sem_dano":
+            return {
+                "tipo_dano": "sem_dano",
+                "profundidade": "nao_aplicavel",
+                "extensao": "nao_aplicavel",
+                "quebra": False,
+                "trinca": False,
+                "perda_material": False,
+            }
+
+        tipo = str(result.get("tipo_dano") or "incerto").strip().lower()
+        if tipo not in {"arranhao", "quebra", "trinca", "outro", "incerto"}:
+            tipo = "incerto"
+
+        profundidade = str(result.get("profundidade") or "incerta").strip().lower()
+        if profundidade not in {"superficial", "moderada", "profunda", "incerta"}:
+            profundidade = "incerta"
+
+        extensao = str(result.get("extensao") or "incerta").strip().lower()
+        if extensao not in {"pequena", "media", "grande", "incerta"}:
+            extensao = "incerta"
+
+        return {
+            "tipo_dano": tipo,
+            "profundidade": profundidade,
+            "extensao": extensao,
+            "quebra": cls._to_bool(result.get("quebra")) or tipo == "quebra",
+            "trinca": cls._to_bool(result.get("trinca")) or tipo == "trinca",
+            "perda_material": cls._to_bool(result.get("perda_material")),
+        }
+
     def _select_service(self, peca: str, acao: str, part_id: str | None) -> list[LpuItem]:
         peca_norm = (peca or "").strip().lower()
         if "calota" in peca_norm:
@@ -132,6 +179,9 @@ CRITERIOS TECNICOS
 - Roda de liga leve: ralado/arranhoes implicam reparo; amassado ou trinca e grave, com troca preferida para trinca clara.
 - Roda de ferro: amassado corrigivel implica reparo; trinca evidente implica troca.
 - Nao confunda sujeira com dano. Evidencia insuficiente deve ser classificada como sem_dano.
+- Para calota, descreva tambem o tipo, a profundidade e a extensao do dano.
+- Os booleanos quebra, trinca e perda_material devem refletir literalmente o que esta visivel.
+- Mantenha consistencia: tipo_dano "quebra" exige quebra=true e tipo_dano "trinca" exige trinca=true.
 
 SEVERIDADE
 - sem_dano: nada evidente OU foto nao permite avaliar.
@@ -143,6 +193,12 @@ RETORNE APENAS ESTE JSON:
 {{
   "peca": "roda liga leve|roda ferro|calota",
   "nivel_dano": "sem_dano|leve|moderado|grave",
+  "tipo_dano": "sem_dano|arranhao|quebra|trinca|outro|incerto",
+  "profundidade": "nao_aplicavel|superficial|moderada|profunda|incerta",
+  "extensao": "nao_aplicavel|pequena|media|grande|incerta",
+  "quebra": false,
+  "trinca": false,
+  "perda_material": false,
   "acao": "reparo|troca",
   "justificativa": "descricao tecnica objetiva baseada na evidencia visual"
 }}
@@ -168,6 +224,8 @@ RETORNE APENAS ESTE JSON:
         if peca == "calota":
             acao = "troca"
 
+        billing_criteria = self._billing_criteria(result, nivel=nivel)
+
         if nivel == "sem_dano":
             services: list[LpuItem] = []
         else:
@@ -186,6 +244,7 @@ RETORNE APENAS ESTE JSON:
             ).model_dump(),
             "part_id": part_id,
             "acao": acao,
+            **billing_criteria,
         }
 
     @staticmethod

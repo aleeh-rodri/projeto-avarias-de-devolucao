@@ -213,6 +213,20 @@ def _rank_nivel(nivel: str) -> int:
     }.get(n, 0)
 
 
+BILLING_CALOTA_INPUT_FIELDS = (
+    "peca",
+    "part_id",
+    "nivel_dano",
+    "tipo_dano",
+    "profundidade",
+    "extensao",
+    "quebra",
+    "trinca",
+    "perda_material",
+    "justificativa",
+)
+
+
 def _rebuild_billing_totals_from_items(resultado: dict[str, Any]) -> None:
     """Recalcula somente os campos financeiros derivados de ``itens``.
 
@@ -255,11 +269,14 @@ def _apply_billing_agent_to_pneus_rodas_result(
 ) -> dict[str, Any]:
     """Anexa a decisao de cobranca e aplica-a ao agregado financeiro.
 
-    Neste MVP, o BillingAgent avalia apenas analises de calota com dano. A
+    Neste MVP, o BillingAgent avalia apenas analises de calota. A
     analise individual permanece intacta e recebe somente o novo campo
     ``decisao_cobranca``. Uma cobranca consolidada de jogo de calotas e mantida
     se ao menos uma calota tiver decisao ``cobrar``; nos demais casos, seus
     servicos sao zerados para que nao cheguem ao Excel.
+
+    A fronteira do billing usa uma allowlist: fotos, acao, servicos, precos e
+    quaisquer dados da LPU nao fazem parte do JSON enviado ao agente.
     """
     if not isinstance(resultado, dict) or resultado.get("erro"):
         return resultado
@@ -268,29 +285,20 @@ def _apply_billing_agent_to_pneus_rodas_result(
     if not isinstance(analises, list):
         return resultado
 
-    analises_calota_com_dano: list[dict[str, Any]] = []
+    analises_calota: list[dict[str, Any]] = []
     for analise in analises:
         if not isinstance(analise, dict):
             continue
         peca = str(analise.get("peca") or "").strip().lower()
-        nivel = str(analise.get("nivel_dano") or "").strip().lower()
-        if peca != "calota" or nivel == "sem_dano":
+        if peca != "calota":
             continue
 
-        fotos = analise.get("fotos_analisadas")
-        image_path = ""
-        if isinstance(fotos, list) and fotos and isinstance(fotos[0], str):
-            image_path = fotos[0]
-
-        # Evita enviar uma decisao anterior de volta ao modelo em reprocessamentos.
         entrada_perito = {
-            chave: valor
-            for chave, valor in analise.items()
-            if chave != "decisao_cobranca"
+            chave: analise.get(chave)
+            for chave in BILLING_CALOTA_INPUT_FIELDS
         }
         try:
             decisao = billing_agent.avaliar_item(
-                image_path=image_path,
                 analise_perito=entrada_perito,
             )
         except Exception as exc:
@@ -322,9 +330,9 @@ def _apply_billing_agent_to_pneus_rodas_result(
             }
 
         analise["decisao_cobranca"] = decisao
-        analises_calota_com_dano.append(analise)
+        analises_calota.append(analise)
 
-    if not analises_calota_com_dano:
+    if not analises_calota:
         return resultado
 
     cobrar_jogo_calotas = any(
@@ -332,7 +340,7 @@ def _apply_billing_agent_to_pneus_rodas_result(
         .strip()
         .lower()
         == "cobrar"
-        for analise in analises_calota_com_dano
+        for analise in analises_calota
         if isinstance(analise.get("decisao_cobranca"), dict)
     )
 
@@ -806,27 +814,27 @@ def rodar_orquestrador(
         #     "classe": PeritoEmblemas,
         #     "config": ConfigPeritoEmblemas(caminho_lpu_xlsx=config.caminho_lpu_xlsx)
         # },
-        "lataria": {
-            "part_ids": {
-                "capo", "teto", "tampa_porta_malas",
-                "porta_dianteira_esquerda", "porta_dianteira_direita",
-                "porta_traseira_esquerda", "porta_traseira_direita",
-                "paralama_dianteiro_esquerdo", "paralama_dianteiro_direito",
-                "paralama_traseiro_esquerdo", "paralama_traseiro_direito", 
-                "retrovisor_esquerdo", "retrovisor_direito", 
-                # novo
-                "parabarro_esquerdo", "parabarro_direito",
-                "caixa_ar_esquerda", "caixa_ar_direita",
-                "coluna_esquerda", "coluna_direita",
-            },
-            "classe": PeritoLataria,
-            "config": ConfigPeritoLataria(caminho_lpu_xlsx=config.caminho_lpu_xlsx)
-        },
-        "vidros": {
-            "part_ids": {"parabrisa", "vidro_traseiro"},
-            "classe": PeritoVidros,
-            "config": ConfigPeritoVidros(caminho_lpu_xlsx=config.caminho_lpu_xlsx)
-        },
+        # "lataria": {
+        #     "part_ids": {
+        #         "capo", "teto", "tampa_porta_malas",
+        #         "porta_dianteira_esquerda", "porta_dianteira_direita",
+        #         "porta_traseira_esquerda", "porta_traseira_direita",
+        #         "paralama_dianteiro_esquerdo", "paralama_dianteiro_direito",
+        #         "paralama_traseiro_esquerdo", "paralama_traseiro_direito", 
+        #         "retrovisor_esquerdo", "retrovisor_direito", 
+        #         # novo
+        #         "parabarro_esquerdo", "parabarro_direito",
+        #         "caixa_ar_esquerda", "caixa_ar_direita",
+        #         "coluna_esquerda", "coluna_direita",
+        #     },
+        #     "classe": PeritoLataria,
+        #     "config": ConfigPeritoLataria(caminho_lpu_xlsx=config.caminho_lpu_xlsx)
+        # },
+        # "vidros": {
+        #     "part_ids": {"parabrisa", "vidro_traseiro"},
+        #     "classe": PeritoVidros,
+        #     "config": ConfigPeritoVidros(caminho_lpu_xlsx=config.caminho_lpu_xlsx)
+        # },
         "pneus_rodas": {
             "part_ids": {
                 "roda_dianteira_esquerda", "roda_dianteira_direita", 
@@ -834,17 +842,18 @@ def rodar_orquestrador(
             },
             "classe": PeritoPneusRodas,
             "config": ConfigPeritoPneusRodas(caminho_lpu_xlsx=config.caminho_lpu_xlsx)
-        },
-        "interior": {
-            "part_ids": {"interior"},
-            "classe": PeritoInterior,
-            "config": ConfigPeritoInterior(caminho_lpu_xlsx=config.caminho_lpu_xlsx)
-        },
-        "acessorios": {
-            "part_ids": {"acessorios"},
-            "classe": PeritoAcessorios,
-            "config": ConfigPeritoAcessorios(caminho_lpu_xlsx=config.caminho_lpu_xlsx)
         }
+        #,
+        # "interior": {
+        #     "part_ids": {"interior"},
+        #     "classe": PeritoInterior,
+        #     "config": ConfigPeritoInterior(caminho_lpu_xlsx=config.caminho_lpu_xlsx)
+        # },
+        # "acessorios": {
+        #     "part_ids": {"acessorios"},
+        #     "classe": PeritoAcessorios,
+        #     "config": ConfigPeritoAcessorios(caminho_lpu_xlsx=config.caminho_lpu_xlsx)
+        # }
     }
 
     resultados_peritos = {}
