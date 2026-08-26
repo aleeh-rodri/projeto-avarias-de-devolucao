@@ -11,6 +11,7 @@ from core.pdf_utils import extract_reldev_avaria_part_ids, extract_reldev_chave_
 from core.schemas import TriageOutput, QualityOutput
 from agents.triage_agent import run_triage
 from agents.quality_agent import run_quality_check
+from agents.billing_agent import BillingAgent
 from agents.peritos.perito_parachoque import ConfigPeritoParachoque, PeritoParachoque
 from agents.peritos.perito_lataria import ConfigPeritoLataria, PeritoLataria
 from agents.peritos.perito_vidros import ConfigPeritoVidros, PeritoVidros
@@ -210,6 +211,182 @@ def _rank_nivel(nivel: str) -> int:
         "reposicao": 4,
         "troca": 4,
     }.get(n, 0)
+
+
+def _rebuild_billing_totals_from_items(resultado: dict[str, Any]) -> None:
+    """Recalcula somente os campos financeiros derivados de ``itens``.
+
+    O nivel de dano, a justificativa e, principalmente, ``analises`` continuam
+    sendo o parecer tecnico original do perito. O BillingAgent pode retirar uma
+    cobranca, mas nao deve reescrever a conclusao tecnica que a originou.
+    """
+    itens = resultado.get("itens")
+    if not isinstance(itens, list):
+        return
+
+    servicos_flat: list[dict[str, Any]] = []
+    preco_total = 0.0
+    any_sob_consulta = False
+    for item in itens:
+        if not isinstance(item, dict):
+            continue
+
+        servicos = item.get("servicos")
+        if isinstance(servicos, list):
+            servicos_flat.extend(
+                servico for servico in servicos if isinstance(servico, dict)
+            )
+
+        preco = item.get("preco_total")
+        if isinstance(preco, (int, float)):
+            preco_total += float(preco)
+        elif str(preco).strip().lower() == "sob consulta":
+            any_sob_consulta = True
+
+    resultado["servicos"] = servicos_flat
+    resultado["preco_total"] = (
+        "Sob consulta" if any_sob_consulta else round(preco_total, 2)
+    )
+
+
+def _apply_billing_agent_to_pneus_rodas_result(
+    resultado: dict[str, Any],
+    billing_agent: BillingAgent,
+) -> dict[str, Any]:
+    """Anexa a decisao de cobranca e aplica-a ao agregado financeiro.
+
+    Neste MVP, o BillingAgent avalia apenas analises de calota com dano. A
+    analise individual permanece intacta e recebe somente o novo campo
+    ``decisao_cobranca``. Uma cobranca consolidada de jogo de calotas e mantida
+    se ao menos uma calota tiver decisao ``cobrar``; nos demais casos, seus
+    servicos sao zerados para que nao cheguem ao Excel.
+    """
+    if not isinstance(resultado, dict) or resultado.get("erro"):
+        return resultado
+
+    analises = resultado.get("analises")
+    if not isinstance(analises, list):
+        return resultado
+
+    analises_calota_com_dano: list[dict[str, Any]] = []
+    for analise in analises:
+        if not isinstance(analise, dict):
+            continue
+        peca = str(analise.get("peca") or "").strip().lower()
+        nivel = str(analise.get("nivel_dano") or "").strip().lower()
+        if peca != "calota" or nivel == "sem_dano":
+            continue
+
+        fotos = analise.get("fotos_analisadas")
+        image_path = ""
+        if isinstance(fotos, list) and fotos and isinstance(fotos[0], str):
+            image_path = fotos[0]
+
+        # Evita enviar uma decisao anterior de volta ao modelo em reprocessamentos.
+        entrada_perito = {
+            chave: valor
+            for chave, valor in analise.items()
+            if chave != "decisao_cobranca"
+        }
+        try:
+            decisao = billing_agent.avaliar_item(
+                image_path=image_path,
+                analise_perito=entrada_perito,
+            )
+        except Exception as exc:
+            # Falha inesperada nunca deve autorizar uma cobranca automaticamente.
+            decisao = {
+                "decisao": "revisar",
+                "classificacao": "inconclusivo",
+                "confidence": 0.0,
+                "justificativa": (
+                    "Falha inesperada ao avaliar a cobranca: "
+                    f"{type(exc).__name__}: {exc}"
+                ),
+                "needs_human_review": True,
+                "source": "billing_orchestrator_fallback",
+            }
+
+        if (
+            not isinstance(decisao, dict)
+            or str(decisao.get("decisao") or "").strip().lower()
+            not in {"cobrar", "nao_cobrar", "revisar"}
+        ):
+            decisao = {
+                "decisao": "revisar",
+                "classificacao": "inconclusivo",
+                "confidence": 0.0,
+                "justificativa": "Resposta invalida do BillingAgent; revisar manualmente.",
+                "needs_human_review": True,
+                "source": "billing_orchestrator_fallback",
+            }
+
+        analise["decisao_cobranca"] = decisao
+        analises_calota_com_dano.append(analise)
+
+    if not analises_calota_com_dano:
+        return resultado
+
+    cobrar_jogo_calotas = any(
+        str((analise.get("decisao_cobranca") or {}).get("decisao") or "")
+        .strip()
+        .lower()
+        == "cobrar"
+        for analise in analises_calota_com_dano
+        if isinstance(analise.get("decisao_cobranca"), dict)
+    )
+
+    itens = resultado.get("itens")
+    if not cobrar_jogo_calotas and isinstance(itens, list):
+        for item in itens:
+            if not isinstance(item, dict):
+                continue
+            if str(item.get("peca") or "").strip().lower() != "calota":
+                continue
+            item["servicos"] = []
+            item["preco_total"] = 0
+            item["cobranca_removida_pelo_billing"] = True
+
+        _rebuild_billing_totals_from_items(resultado)
+
+    return resultado
+
+
+def _part_ids_suppressed_by_billing(
+    resultados_peritos: dict[str, Any],
+) -> set[str]:
+    """Partes que o BillingAgent decidiu nao cobrar automaticamente.
+
+    Tambem inclui decisoes ``revisar``: sem aprovacao explicita ``cobrar``, uma
+    linha de fallback nao deve recriar o item no orcamento final.
+    """
+    rejeitados: set[str] = set()
+    aprovados: set[str] = set()
+
+    for perito_data in resultados_peritos.values():
+        if not isinstance(perito_data, dict):
+            continue
+        resultado = perito_data.get("resultado")
+        if not isinstance(resultado, dict):
+            continue
+        analises = resultado.get("analises")
+        if not isinstance(analises, list):
+            continue
+
+        for analise in analises:
+            if not isinstance(analise, dict):
+                continue
+            part_id = str(analise.get("part_id") or "").strip()
+            decisao = analise.get("decisao_cobranca")
+            if not part_id or not isinstance(decisao, dict):
+                continue
+            valor = str(decisao.get("decisao") or "").strip().lower()
+            if valor == "cobrar":
+                aprovados.add(part_id)
+            elif valor in {"nao_cobrar", "revisar"}:
+                rejeitados.add(part_id)
+
+    return rejeitados - aprovados
 
 
 def _apply_billing_policy_to_result(
@@ -797,7 +974,17 @@ def rodar_orquestrador(
         else:
             resultados_peritos[f"perito_{nome_perito}"] = {"resultado": {"erro": "nenhuma imagem elegivel"}}
 
-    # 4) consolidação (+ política de cobrança)
+    # 4) avaliacao de faturamento, executada depois de todos os peritos.
+    pneus_rodas_data = resultados_peritos.get("perito_pneus_rodas")
+    if isinstance(pneus_rodas_data, dict):
+        pneus_rodas_resultado = pneus_rodas_data.get("resultado")
+        if isinstance(pneus_rodas_resultado, dict):
+            _apply_billing_agent_to_pneus_rodas_result(
+                pneus_rodas_resultado,
+                BillingAgent(),
+            )
+
+    # 5) consolidacao (+ politica de checklist)
     triage_idx = _triage_index(triage_out)
     has_triage = bool(triage_idx)
 
@@ -848,6 +1035,14 @@ def rodar_orquestrador(
             resultados_peritos,
             checklist_part_ids=checklist_part_ids,
         )
+        suppressed_part_ids = _part_ids_suppressed_by_billing(resultados_peritos)
+        if suppressed_part_ids:
+            cobrancas_checklist_fallback = [
+                cobranca
+                for cobranca in cobrancas_checklist_fallback
+                if str(cobranca.get("part_id") or "").strip()
+                not in suppressed_part_ids
+            ]
 
     laudo = {
         "case_id": case_id,

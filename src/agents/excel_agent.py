@@ -182,6 +182,40 @@ class ExcelAgent:
 
         return out
 
+    def _parts_suppressed_by_billing_from_laudo(
+        self,
+        laudo_data: dict[str, Any],
+    ) -> set[str]:
+        """Evita que o fallback do Excel recrie uma cobranca recusada/revisada."""
+        rejeitados: set[str] = set()
+        aprovados: set[str] = set()
+        peritos = laudo_data.get("peritos", {}) if isinstance(laudo_data, dict) else {}
+        if not isinstance(peritos, dict):
+            return rejeitados
+
+        for perito_data in peritos.values():
+            if not isinstance(perito_data, dict):
+                continue
+            resultado = perito_data.get("resultado")
+            analises = resultado.get("analises") if isinstance(resultado, dict) else None
+            if not isinstance(analises, list):
+                continue
+
+            for analise in analises:
+                if not isinstance(analise, dict):
+                    continue
+                part_id = str(analise.get("part_id") or "").strip()
+                decisao = analise.get("decisao_cobranca")
+                if not part_id or not isinstance(decisao, dict):
+                    continue
+                valor = str(decisao.get("decisao") or "").strip().lower()
+                if valor == "cobrar":
+                    aprovados.add(part_id)
+                elif valor in {"nao_cobrar", "revisar"}:
+                    rejeitados.add(part_id)
+
+        return rejeitados - aprovados
+
     def extract_info_from_pdf(self, pdf_path):
         text = extract_checklist_text(str(pdf_path))
         info = {
@@ -334,6 +368,7 @@ class ExcelAgent:
         current_servicos: list[dict[str, Any]],
         checklist_part_ids: set[str] | None,
         checklist_avaria_items: list[Any] | None = None,
+        suppressed_part_ids: set[str] | None = None,
     ) -> list[dict[str, Any]]:
         """Cria linhas de revisão humana para peças marcadas no checklist que não viraram cobrança.
 
@@ -458,7 +493,14 @@ class ExcelAgent:
         missing_entries = [
             entry
             for entry in checklist_entries
-            if not entry.get("part_id") or str(entry.get("part_id") or "").strip() not in charged_parts
+            if (
+                not entry.get("part_id")
+                or (
+                    str(entry.get("part_id") or "").strip() not in charged_parts
+                    and str(entry.get("part_id") or "").strip()
+                    not in (suppressed_part_ids or set())
+                )
+            )
         ]
         if not missing_entries:
             return []
@@ -546,6 +588,10 @@ class ExcelAgent:
         """
         with open(laudo_path, 'r', encoding='utf-8') as f:
             laudo_data = json.load(f)
+
+        billing_suppressed_part_ids = self._parts_suppressed_by_billing_from_laudo(
+            laudo_data
+        )
 
         triage_index = self._load_triage_index(laudo_path)
         has_triage = bool(triage_index)
@@ -753,6 +799,11 @@ class ExcelAgent:
             for fb in fallback:
                 if not isinstance(fb, dict):
                     continue
+                if (
+                    str(fb.get("part_id") or "").strip()
+                    in billing_suppressed_part_ids
+                ):
+                    continue
 
                 fotos_fb = fb.get("fotos", [])
                 fotos_line: list[str] = []
@@ -785,6 +836,7 @@ class ExcelAgent:
                 current_servicos=all_servicos,
                 checklist_part_ids=checklist_part_ids,
                 checklist_avaria_items=checklist_avaria_items,
+                suppressed_part_ids=billing_suppressed_part_ids,
             )
             # Garantir prefixo CHECKLIST no modo compatibilidade também
             for s in computed_fb:
