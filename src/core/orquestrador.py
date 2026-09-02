@@ -7,11 +7,11 @@ from pathlib import Path
 from typing import Any
 
 from core.config import config as global_config
-from core.pdf_utils import extract_reldev_avaria_part_ids, extract_reldev_chave_reserva_nao_tem
+from core.pdf_utils import extract_reldev_avaria_part_ids, extract_reldev_chave_reserva_registro
 from core.schemas import TriageOutput, QualityOutput
 from agents.triage_agent import run_triage
 from agents.quality_agent import run_quality_check
-from agents.billing_agent import BillingAgent
+from agents.billing_agent import BillingAgent, calota_evidence_priority
 from agents.peritos.perito_parachoque import ConfigPeritoParachoque, PeritoParachoque
 from agents.peritos.perito_lataria import ConfigPeritoLataria, PeritoLataria
 from agents.peritos.perito_vidros import ConfigPeritoVidros, PeritoVidros
@@ -69,6 +69,10 @@ def _is_key_reserve_photo(img: Any) -> bool:
 
     desc = str(getattr(img, "expected_part_description", "") or "").strip().lower()
     return "chave" in desc and ("reserva" in desc or "titular" in desc or "original" in desc)
+
+
+def _deve_executar_fluxo_chave_reserva(registro: str | None) -> bool:
+    return registro in {"nao_tem", "avaria"}
 
 def _build_checklist_divergencias(
     triage_idx: dict[str, dict[str, Any]],
@@ -213,7 +217,7 @@ def _rank_nivel(nivel: str) -> int:
     }.get(n, 0)
 
 
-BILLING_CALOTA_INPUT_FIELDS = (
+BILLING_PNEUS_RODAS_INPUT_FIELDS = (
     "peca",
     "part_id",
     "nivel_dano",
@@ -225,6 +229,9 @@ BILLING_CALOTA_INPUT_FIELDS = (
     "perda_material",
     "justificativa",
 )
+
+# Compatibilidade para consumidores que importam o nome anterior.
+BILLING_CALOTA_INPUT_FIELDS = BILLING_PNEUS_RODAS_INPUT_FIELDS
 
 
 def _rebuild_billing_totals_from_items(resultado: dict[str, Any]) -> None:
@@ -269,11 +276,12 @@ def _apply_billing_agent_to_pneus_rodas_result(
 ) -> dict[str, Any]:
     """Anexa a decisao de cobranca e aplica-a ao agregado financeiro.
 
-    Neste MVP, o BillingAgent avalia apenas analises de calota. A
+    Neste MVP, o BillingAgent avalia calotas e rodas de liga leve. A
     analise individual permanece intacta e recebe somente o novo campo
     ``decisao_cobranca``. Uma cobranca consolidada de jogo de calotas e mantida
     se ao menos uma calota tiver decisao ``cobrar``; nos demais casos, seus
-    servicos sao zerados para que nao cheguem ao Excel.
+    servicos sao zerados para que nao cheguem ao Excel. Rodas de liga leve sao
+    aprovadas ou suprimidas individualmente por ``part_id``.
 
     A fronteira do billing usa uma allowlist: fotos, acao, servicos, precos e
     quaisquer dados da LPU nao fazem parte do JSON enviado ao agente.
@@ -286,16 +294,17 @@ def _apply_billing_agent_to_pneus_rodas_result(
         return resultado
 
     analises_calota: list[dict[str, Any]] = []
+    analises_liga_leve: list[dict[str, Any]] = []
     for analise in analises:
         if not isinstance(analise, dict):
             continue
         peca = str(analise.get("peca") or "").strip().lower()
-        if peca != "calota":
+        if peca not in {"calota", "roda liga leve"}:
             continue
 
         entrada_perito = {
             chave: analise.get(chave)
-            for chave in BILLING_CALOTA_INPUT_FIELDS
+            for chave in BILLING_PNEUS_RODAS_INPUT_FIELDS
         }
         try:
             decisao = billing_agent.avaliar_item(
@@ -330,9 +339,12 @@ def _apply_billing_agent_to_pneus_rodas_result(
             }
 
         analise["decisao_cobranca"] = decisao
-        analises_calota.append(analise)
+        if peca == "calota":
+            analises_calota.append(analise)
+        else:
+            analises_liga_leve.append(analise)
 
-    if not analises_calota:
+    if not analises_calota and not analises_liga_leve:
         return resultado
 
     cobrar_jogo_calotas = any(
@@ -345,7 +357,43 @@ def _apply_billing_agent_to_pneus_rodas_result(
     )
 
     itens = resultado.get("itens")
-    if not cobrar_jogo_calotas and isinstance(itens, list):
+    financeiro_alterado = False
+    if analises_calota and cobrar_jogo_calotas and isinstance(itens, list):
+        # O item de jogo de calotas agrega todas as calotas tecnicamente
+        # danificadas, inclusive as que o billing decidiu nao cobrar/revisar.
+        # Registre separadamente apenas as fotos que efetivamente fundamentaram
+        # uma decisao de cobranca para o Excel nao usar a primeira foto do
+        # agregado (que pode ser uma evidencia de desgaste nao cobravel).
+        analises_cobraveis = [
+            analise
+            for analise in analises_calota
+            if isinstance(analise.get("decisao_cobranca"), dict)
+            and str(analise["decisao_cobranca"].get("decisao") or "")
+            .strip()
+            .lower()
+            == "cobrar"
+        ]
+        analises_cobraveis.sort(key=calota_evidence_priority, reverse=True)
+
+        fotos_evidencia_cobranca: list[str] = []
+        for analise in analises_cobraveis:
+            for foto in analise.get("fotos_analisadas") or []:
+                if (
+                    isinstance(foto, str)
+                    and foto
+                    and foto not in fotos_evidencia_cobranca
+                ):
+                    fotos_evidencia_cobranca.append(foto)
+
+        for item in itens:
+            if not isinstance(item, dict):
+                continue
+            if str(item.get("peca") or "").strip().lower() == "calota":
+                # Mesmo vazia, a presenca do campo impede que o Excel use uma
+                # foto geral sem vinculo com a decisao financeira.
+                item["fotos_evidencia_cobranca"] = fotos_evidencia_cobranca.copy()
+
+    elif analises_calota and isinstance(itens, list):
         for item in itens:
             if not isinstance(item, dict):
                 continue
@@ -354,7 +402,43 @@ def _apply_billing_agent_to_pneus_rodas_result(
             item["servicos"] = []
             item["preco_total"] = 0
             item["cobranca_removida_pelo_billing"] = True
+            financeiro_alterado = True
 
+    if analises_liga_leve and isinstance(itens, list):
+        decisoes_liga_por_part_id = {
+            str(analise.get("part_id") or "").strip().lower(): analise
+            for analise in analises_liga_leve
+            if str(analise.get("part_id") or "").strip()
+        }
+        for item in itens:
+            if not isinstance(item, dict):
+                continue
+            if str(item.get("peca") or "").strip().lower() != "roda liga leve":
+                continue
+
+            part_id = str(item.get("part_id") or "").strip().lower()
+            analise = decisoes_liga_por_part_id.get(part_id)
+            decisao = analise.get("decisao_cobranca") if analise else None
+            valor = (
+                str(decisao.get("decisao") or "").strip().lower()
+                if isinstance(decisao, dict)
+                else ""
+            )
+            if valor == "cobrar":
+                item["fotos_evidencia_cobranca"] = [
+                    foto
+                    for foto in (analise.get("fotos_analisadas") or [])
+                    if isinstance(foto, str) and foto
+                ]
+                continue
+
+            # Sem aprovacao explicita, a roda nao pode permanecer no financeiro.
+            item["servicos"] = []
+            item["preco_total"] = 0
+            item["cobranca_removida_pelo_billing"] = True
+            financeiro_alterado = True
+
+    if financeiro_alterado:
         _rebuild_billing_totals_from_items(resultado)
 
     return resultado
@@ -787,12 +871,15 @@ def rodar_orquestrador(
     )
     quality_out = QualityOutput(**quality_raw)
 
-    chave_reserva_nao_tem = False
+    chave_reserva_registro: str | None = None
     if checklist_path and os.path.exists(checklist_path):
         try:
-            chave_reserva_nao_tem = extract_reldev_chave_reserva_nao_tem(checklist_path)
+            chave_reserva_registro = extract_reldev_chave_reserva_registro(checklist_path)
         except Exception:
-            chave_reserva_nao_tem = False
+            chave_reserva_registro = None
+
+    chave_reserva_nao_tem = chave_reserva_registro == "nao_tem"
+    chave_reserva_fluxo_ativo = _deve_executar_fluxo_chave_reserva(chave_reserva_registro)
 
     aprovadas_ids = {a.image_id for a in quality_out.assessments if a.aprovada}
 
@@ -842,18 +929,17 @@ def rodar_orquestrador(
             },
             "classe": PeritoPneusRodas,
             "config": ConfigPeritoPneusRodas(caminho_lpu_xlsx=config.caminho_lpu_xlsx)
-        }
-        #,
+        },
         # "interior": {
         #     "part_ids": {"interior"},
         #     "classe": PeritoInterior,
         #     "config": ConfigPeritoInterior(caminho_lpu_xlsx=config.caminho_lpu_xlsx)
         # },
-        # "acessorios": {
-        #     "part_ids": {"acessorios"},
-        #     "classe": PeritoAcessorios,
-        #     "config": ConfigPeritoAcessorios(caminho_lpu_xlsx=config.caminho_lpu_xlsx)
-        # }
+        "acessorios": {
+            "part_ids": {"acessorios"},
+            "classe": PeritoAcessorios,
+            "config": ConfigPeritoAcessorios(caminho_lpu_xlsx=config.caminho_lpu_xlsx)
+        }
     }
 
     resultados_peritos = {}
@@ -924,7 +1010,7 @@ def rodar_orquestrador(
                 max_itens=config.max_fotos_por_peca,
             )
 
-        if nome_perito == "acessorios" and chave_reserva_nao_tem:
+        if nome_perito == "acessorios" and chave_reserva_fluxo_ativo:
             key_registros = [
                 img.model_dump()
                 for img in (triage_out.images or [])
@@ -944,7 +1030,7 @@ def rodar_orquestrador(
                 ]
                 melhores = (key_melhores + complementares)[: config.max_fotos_por_peca]
 
-        if melhores:
+        if melhores or (nome_perito == "acessorios" and chave_reserva_fluxo_ativo):
             image_paths = []
             imagens_usadas = []
             for r in melhores:
@@ -964,7 +1050,8 @@ def rodar_orquestrador(
                     image_paths=image_paths, 
                     checklist_summary=triage_out.checklist_summary,
                     imagens_usadas=imagens_usadas,
-                    chave_reserva_nao_tem=chave_reserva_nao_tem,
+                    chave_reserva_nao_tem=chave_reserva_fluxo_ativo,
+                    chave_reserva_registro=chave_reserva_registro,
                     wheel_type=wheel_type,
                 )
                 
@@ -1059,6 +1146,7 @@ def rodar_orquestrador(
             "total_imagens": len(triage_out.images),
             "imagens_aprovadas_qualidade": len(imagens_filtradas),
             "chave_reserva_nao_tem": chave_reserva_nao_tem,
+            "chave_reserva_registro": chave_reserva_registro,
         },
         "peritos": resultados_peritos,
         "divergencias_checklist": divergencias_checklist,

@@ -9,6 +9,7 @@ from openpyxl.drawing.image import Image as OpenpyxlImage
 from copy import copy
 from PIL import Image as PILImage
 from PIL import ImageOps
+from agents.billing_agent import calota_evidence_priority
 from core.pdf_utils import extract_checklist_text, extract_reldev_avaria_items
 
 class ExcelAgent:
@@ -16,6 +17,95 @@ class ExcelAgent:
         self.template_path = Path(template_path)
         if not self.template_path.exists():
             raise FileNotFoundError(f"Template não encontrado: {template_path}")
+
+    @staticmethod
+    def _laudo_processou_chave_reserva(laudo_data: dict[str, Any]) -> bool:
+        """Indica se a rotina especifica ja decidiu a cobranca da chave reserva."""
+        for perito_data in (laudo_data.get("peritos") or {}).values():
+            if not isinstance(perito_data, dict):
+                continue
+            resultado = perito_data.get("resultado")
+            if not isinstance(resultado, dict):
+                continue
+
+            candidatos = [resultado]
+            if isinstance(resultado.get("itens"), list):
+                candidatos.extend(
+                    item for item in resultado["itens"] if isinstance(item, dict)
+                )
+
+            for item in candidatos:
+                peca = str(item.get("peca") or "").strip().lower()
+                origin = str(item.get("origin") or "").strip().lower()
+                if "validacao_chave_reserva" in item:
+                    return True
+                if peca == "chave reserva" and origin.startswith(
+                    "checklist_chave_reserva"
+                ):
+                    return True
+        return False
+
+    @staticmethod
+    def _charge_evidence_photos(
+        item: dict[str, Any],
+        resultado: dict[str, Any] | None = None,
+    ) -> list[str]:
+        """Seleciona a evidencia visual que fundamentou a cobranca do item.
+
+        Itens consolidados podem conter fotos de analises com decisoes de
+        billing diferentes. Quando o orquestrador fornece a linhagem explicita
+        da cobranca, ela tem prioridade sobre a lista geral de fotos analisadas.
+        """
+        if "fotos_evidencia_cobranca" in item:
+            photos = item.get("fotos_evidencia_cobranca")
+            if not isinstance(photos, list):
+                return []
+            return [photo for photo in photos if isinstance(photo, str) and photo]
+
+        # Compatibilidade com laudos gerados antes da criacao do campo acima:
+        # reconstrua a linhagem pelas decisoes individuais do billing.
+        item_peca = str(item.get("peca") or "").strip().lower()
+        item_part_ids = {
+            str(part_id).strip()
+            for part_id in (item.get("part_ids") or [])
+            if str(part_id).strip()
+        }
+        item_part_id = str(item.get("part_id") or "").strip()
+        if item_part_id:
+            item_part_ids.add(item_part_id)
+        analyses = resultado.get("analises") if isinstance(resultado, dict) else None
+        evidence: list[str] = []
+        if item_peca and isinstance(analyses, list):
+            matching_analyses: list[dict[str, Any]] = []
+            for analysis in analyses:
+                if not isinstance(analysis, dict):
+                    continue
+                if str(analysis.get("peca") or "").strip().lower() != item_peca:
+                    continue
+                analysis_part_id = str(analysis.get("part_id") or "").strip()
+                if item_part_ids and analysis_part_id not in item_part_ids:
+                    continue
+                decision = analysis.get("decisao_cobranca")
+                if (
+                    not isinstance(decision, dict)
+                    or str(decision.get("decisao") or "").strip().lower()
+                    != "cobrar"
+                ):
+                    continue
+                matching_analyses.append(analysis)
+
+            matching_analyses.sort(key=calota_evidence_priority, reverse=True)
+            for analysis in matching_analyses:
+                for photo in analysis.get("fotos_analisadas") or []:
+                    if isinstance(photo, str) and photo and photo not in evidence:
+                        evidence.append(photo)
+        if evidence:
+            return evidence
+
+        photos = item.get("fotos_analisadas")
+        if not isinstance(photos, list):
+            return []
+        return [photo for photo in photos if isinstance(photo, str) and photo]
 
     def _clear_orcamento_itens(self, ws, *, start_row: int = 24, end_row: int = 180) -> None:
         """Limpa a tabela de itens no template (descrição/qtd/valor).
@@ -592,6 +682,7 @@ class ExcelAgent:
         billing_suppressed_part_ids = self._parts_suppressed_by_billing_from_laudo(
             laudo_data
         )
+        chave_reserva_processada = self._laudo_processou_chave_reserva(laudo_data)
 
         triage_index = self._load_triage_index(laudo_path)
         has_triage = bool(triage_index)
@@ -603,6 +694,17 @@ class ExcelAgent:
         if pdf_path and os.path.exists(pdf_path):
             try:
                 checklist_avaria_items = extract_reldev_avaria_items(pdf_path)
+                if chave_reserva_processada:
+                    checklist_avaria_items = [
+                        item
+                        for item in checklist_avaria_items
+                        if not (
+                            "itens de conferencia"
+                            in str(getattr(item, "descricao", "") or "").strip().lower()
+                            and "chave reserva"
+                            in str(getattr(item, "item", "") or "").strip().lower()
+                        )
+                    ]
                 checklist_part_ids = {
                     str(item.part_id).strip()
                     for item in checklist_avaria_items
@@ -707,8 +809,11 @@ class ExcelAgent:
                     if not isinstance(it, dict):
                         continue
 
-                    item_has_photo_field = "fotos_analisadas" in it
-                    fotos_it = it.get("fotos_analisadas", [])
+                    item_has_photo_field = (
+                        "fotos_evidencia_cobranca" in it
+                        or "fotos_analisadas" in it
+                    )
+                    fotos_it = self._charge_evidence_photos(it, resultado)
                     servicos_it = it.get("servicos", [])
                     if not isinstance(servicos_it, list):
                         continue
