@@ -891,11 +891,11 @@ def rodar_orquestrador(
 
     # 3) Mapeamento de Peritos
     mapeamento_peritos = {
-        "parachoque": {
-            "part_ids": {"parachoque_dianteiro", "parachoque_traseiro"},
-            "classe": PeritoParachoque,
-            "config": ConfigPeritoParachoque(caminho_lpu_xlsx=config.caminho_lpu_xlsx)
-        },
+        # "parachoque": {
+        #     "part_ids": {"parachoque_dianteiro", "parachoque_traseiro"},
+        #     "classe": PeritoParachoque,
+        #     "config": ConfigPeritoParachoque(caminho_lpu_xlsx=config.caminho_lpu_xlsx)
+        # },
         # "emblemas": {
         #     "part_ids": {"parachoque_dianteiro", "parachoque_traseiro", "tampa_porta_malas"},
         #     "classe": PeritoEmblemas,

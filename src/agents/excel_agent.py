@@ -12,6 +12,12 @@ from PIL import ImageOps
 from agents.billing_agent import calota_evidence_priority
 from core.pdf_utils import extract_checklist_text, extract_reldev_avaria_items
 
+
+# Altere para True quando quiser incluir no Excel as avarias que vieram do
+# checklist, mas que os peritos nao conseguiram identificar/transformar em cobranca.
+MOSTRAR_FALLBACK_CHECKLIST_NO_EXCEL = False
+
+
 class ExcelAgent:
     def __init__(self, template_path):
         self.template_path = Path(template_path)
@@ -897,60 +903,73 @@ class ExcelAgent:
 
         # =========================================================
         # Fallback do checklist: quando o checklist marcou avaria, mas nenhum serviço foi gerado.
-        # Esses itens devem aparecer no Excel com sinalização de revisão humana.
+        # A inclusao dessas linhas no Excel pode ser ligada/desligada pela constante no topo.
         # =========================================================
-        fallback = laudo_data.get("cobrancas_checklist_fallback", [])
-        if isinstance(fallback, list) and fallback:
-            for fb in fallback:
-                if not isinstance(fb, dict):
-                    continue
-                if (
-                    str(fb.get("part_id") or "").strip()
-                    in billing_suppressed_part_ids
-                ):
-                    continue
+        if MOSTRAR_FALLBACK_CHECKLIST_NO_EXCEL:
+            fallback = laudo_data.get("cobrancas_checklist_fallback", [])
+            if isinstance(fallback, list) and fallback:
+                for fb in fallback:
+                    if not isinstance(fb, dict):
+                        continue
+                    if (
+                        str(fb.get("part_id") or "").strip()
+                        in billing_suppressed_part_ids
+                    ):
+                        continue
 
-                fotos_fb = fb.get("fotos", [])
-                fotos_line: list[str] = []
-                if isinstance(fotos_fb, list) and fotos_fb:
-                    fotos_line = [fotos_fb[0]] if isinstance(fotos_fb[0], str) else []
+                    fotos_fb = fb.get("fotos", [])
+                    fotos_line: list[str] = []
+                    if isinstance(fotos_fb, list) and fotos_fb:
+                        fotos_line = (
+                            [fotos_fb[0]] if isinstance(fotos_fb[0], str) else []
+                        )
 
-                triage_meta = self._triage_meta_for_photo(triage_index, fotos_line[0] if fotos_line else None)
-                all_servicos.append({
-                    "descricao": self._format_descricao_origem(
-                        fb.get("descricao", "Avaria reportada (REVISAR)"),
-                        origem="checklist",
-                    ),
-                    "valor": fb.get("valor", 0),
-                    "qtd": 1,
-                    "fotos": fotos_line,
-                    "triage_meta": triage_meta,
-                    "force_include": True,
-                    "part_id": str(fb.get("part_id") or "").strip(),
-                })
+                    triage_meta = self._triage_meta_for_photo(
+                        triage_index,
+                        fotos_line[0] if fotos_line else None,
+                    )
+                    all_servicos.append({
+                        "descricao": self._format_descricao_origem(
+                            fb.get("descricao", "Avaria reportada (REVISAR)"),
+                            origem="checklist",
+                        ),
+                        "valor": fb.get("valor", 0),
+                        "qtd": 1,
+                        "fotos": fotos_line,
+                        "triage_meta": triage_meta,
+                        "force_include": True,
+                        "part_id": str(fb.get("part_id") or "").strip(),
+                    })
 
-        # Complementa fallbacks usando o checklist PDF como fonte principal.
-        # Se não houver PDF/checklist_part_ids, usa o fallback antigo baseado na triagem.
-        should_compute_fallback = bool(checklist_avaria_items) or bool(checklist_part_ids) or ((not isinstance(fallback, list) or not fallback) and has_triage)
-        if should_compute_fallback:
-            computed_fb = self._compute_checklist_fallback_lines(
-                laudo_path=laudo_path,
-                case_id=pdf_info.get("placa"),
-                triage_raw=triage_raw,
-                triage_index=triage_index,
-                current_servicos=all_servicos,
-                checklist_part_ids=checklist_part_ids,
-                checklist_avaria_items=checklist_avaria_items,
-                suppressed_part_ids=billing_suppressed_part_ids,
+            # Complementa fallbacks usando o checklist PDF como fonte principal.
+            # Sem PDF/checklist_part_ids, usa o fallback antigo baseado na triagem.
+            should_compute_fallback = (
+                bool(checklist_avaria_items)
+                or bool(checklist_part_ids)
+                or ((not isinstance(fallback, list) or not fallback) and has_triage)
             )
-            # Garantir prefixo CHECKLIST no modo compatibilidade também
-            for s in computed_fb:
-                if not isinstance(s, dict):
-                    continue
-                s["descricao"] = self._format_descricao_origem(str(s.get("descricao") or ""), origem="checklist")
-                if "qtd" not in s:
-                    s["qtd"] = 1
-                all_servicos.append(s)
+            if should_compute_fallback:
+                computed_fb = self._compute_checklist_fallback_lines(
+                    laudo_path=laudo_path,
+                    case_id=pdf_info.get("placa"),
+                    triage_raw=triage_raw,
+                    triage_index=triage_index,
+                    current_servicos=all_servicos,
+                    checklist_part_ids=checklist_part_ids,
+                    checklist_avaria_items=checklist_avaria_items,
+                    suppressed_part_ids=billing_suppressed_part_ids,
+                )
+                # Garantir prefixo CHECKLIST no modo compatibilidade tambem.
+                for servico_fallback in computed_fb:
+                    if not isinstance(servico_fallback, dict):
+                        continue
+                    servico_fallback["descricao"] = self._format_descricao_origem(
+                        str(servico_fallback.get("descricao") or ""),
+                        origem="checklist",
+                    )
+                    if "qtd" not in servico_fallback:
+                        servico_fallback["qtd"] = 1
+                    all_servicos.append(servico_fallback)
 
         # =========================================================
         # FILTRO: cobrar somente o que estiver no checklist.

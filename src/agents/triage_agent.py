@@ -39,7 +39,7 @@ except ValueError:
 PHOTO_PART_MAPPING_XLSX = Path(
     os.getenv(
         "AGENTE_PHOTO_PART_MAPPING_XLSX",
-        str(global_config.BASE_DIR / "input" / "photo_part_mapping.xlsx"),
+        str(global_config.BASE_DIR / "input" / "photo_part_mapping_piloto.xlsx"),
     )
 )
 
